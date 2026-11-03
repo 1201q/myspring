@@ -1,7 +1,11 @@
-package com.example.permitmap;
+package com.example.permitmap.restaurant;
+
+import com.example.permitmap.restaurant.dto.RestaurantCreateRequest;
+import com.example.permitmap.restaurant.dto.RestaurantPageResponse;
+import com.example.permitmap.restaurant.dto.RestaurantResponse;
+import com.example.permitmap.restaurant.dto.RestaurantUpdateRequest;
 
 import java.net.URI;
-import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,6 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
 
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+
 @RestController
 public class RestaurantController {
 
@@ -25,9 +32,13 @@ public class RestaurantController {
   }
 
   @GetMapping("/api/restaurants")
-  public List<RestaurantResponse> getRestaurants(
-      @RequestParam(name = "category", required = false) String category) {
-    return restaurantService.findAll(category);
+  public RestaurantPageResponse getRestaurants(
+      @RequestParam(name = "category", required = false) String category,
+
+      @PageableDefault(size = 10, sort = "id") Pageable pageable
+
+  ) {
+    return restaurantService.findAll(category, pageable);
   }
 
   @PostMapping("/api/restaurants")

@@ -1,4 +1,6 @@
-package com.example.permitmap;
+package com.example.permitmap.restaurant.exception;
+
+import com.example.permitmap.restaurant.Restaurant;
 
 public class RestaurantNotFoundException extends RuntimeException {
   public RestaurantNotFoundException() {

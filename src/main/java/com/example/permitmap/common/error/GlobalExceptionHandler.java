@@ -1,4 +1,6 @@
-package com.example.permitmap;
+package com.example.permitmap.common.error;
+
+import com.example.permitmap.restaurant.exception.RestaurantNotFoundException;
 
 import org.springframework.http.HttpStatus;
 

@@ -1,4 +1,4 @@
-package com.example.permitmap;
+package com.example.permitmap.restaurant;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -40,7 +40,7 @@ public class RestaurantControllerTests {
     void 음식점_목록을_반환한다() throws Exception {
         mockMvc.perform(get("/api/restaurants"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.length()").value(3));
+                .andExpect(jsonPath("$.items.length()").value(3));
     }
 
     @Test
@@ -48,8 +48,8 @@ public class RestaurantControllerTests {
         mockMvc.perform(get("/api/restaurants")
                 .param("category", "한식"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].name").value("봄식당"))
-                .andExpect(jsonPath("$.length()").value(1));
+                .andExpect(jsonPath("$.items[0].name").value("봄식당"))
+                .andExpect(jsonPath("$.items.length()").value(1));
     }
 
     @Test
@@ -103,6 +103,6 @@ public class RestaurantControllerTests {
 
         mockMvc.perform(get("/api/restaurants"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.length()").value(3));
+                .andExpect(jsonPath("$.items.length()").value(3));
     }
 }

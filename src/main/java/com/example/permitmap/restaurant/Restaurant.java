@@ -1,4 +1,4 @@
-package com.example.permitmap;
+package com.example.permitmap.restaurant;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

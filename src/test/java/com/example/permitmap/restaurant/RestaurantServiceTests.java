@@ -1,4 +1,7 @@
-package com.example.permitmap;
+package com.example.permitmap.restaurant;
+
+import com.example.permitmap.restaurant.dto.RestaurantCreateRequest;
+import com.example.permitmap.restaurant.exception.RestaurantNotFoundException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -10,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 import jakarta.persistence.EntityManager;
+
+import org.springframework.data.domain.PageRequest;
 
 @SpringBootTest
 @Transactional
@@ -36,14 +41,18 @@ public class RestaurantServiceTests {
 
   @Test
   void 카테고리가_없으면_전체_음식점을_반환한다() {
-    var result = restaurantService.findAll(null);
+    var result = restaurantService
+        .findAll(null, PageRequest.of(0, 10))
+        .items();
 
     assertEquals(3, result.size());
   }
 
   @Test
   void 한식으로_검색하면_한식_음식점만_반환한다() {
-    var result = restaurantService.findAll("한식");
+    var result = restaurantService
+        .findAll("한식", PageRequest.of(0, 10))
+        .items();
 
     assertEquals(1, result.size());
     assertEquals("봄식당", result.getFirst().name());
@@ -52,7 +61,9 @@ public class RestaurantServiceTests {
 
   @Test
   void 일치하는_카테고리가_없으면_빈_목록을_반환한다() {
-    var result = restaurantService.findAll("양식");
+    var result = restaurantService
+        .findAll("양식", PageRequest.of(0, 10))
+        .items();
 
     assertTrue(result.isEmpty());
   }

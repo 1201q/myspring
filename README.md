@@ -73,4 +73,27 @@ Invoke-RestMethod -Method Post -Uri 'http://localhost:8080/api/restaurants' -Con
 | `src/main/resources/application.properties`                          | 애플리케이션 설정                                    |
 | `src/test/java/com/example/permitmap/PermitMapApplicationTests.java` | 기본 기동 테스트                                     |
 
-실제 데이터 도입 전에는 [기획서](nationwide-permit-map-mvp.md)의 원천 데이터 검증을 진행합니다.
+## 패키지 구조
+
+```text
+src/main/java/com/example/permitmap/
+├── PermitMapApplication.java
+├── restaurant/                 # 음식점 기능
+│   ├── RestaurantController.java
+│   ├── RestaurantService.java
+│   ├── RestaurantRepository.java
+│   ├── Restaurant.java
+│   ├── dto/                    # 등록·수정 요청, 상세·페이지 응답
+│   └── exception/              # 음식점 관련 예외
+├── common/error/               # 공통 에러 응답과 예외 처리
+└── hello/                      # 첫 API 학습 예제
+```
+
+테스트는 `src/test/java/com/example/permitmap/restaurant/`에 같은 기능 기준으로 배치합니다.
+`PermitMapApplication`은 루트 패키지에 두어 하위 패키지의 컴포넌트와 Entity, Repository를 탐색하게 합니다.
+새 기능이 생기면 `restaurant` 옆에 기능별 패키지를 추가합니다.
+
+`docs/`에는 기획 문서, `data/`에는 로컬 DB, `build/`에는 빌드 산출물이 있습니다.
+`data/`와 `build/`는 Git에서 제외합니다.
+
+실제 데이터 도입 전에는 [기획서](docs/nationwide-permit-map-mvp.md)의 원천 데이터 검증을 진행합니다.

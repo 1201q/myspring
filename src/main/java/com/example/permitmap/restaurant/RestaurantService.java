@@ -1,9 +1,14 @@
-package com.example.permitmap;
+package com.example.permitmap.restaurant;
 
-import java.util.List;
+import com.example.permitmap.restaurant.dto.RestaurantCreateRequest;
+import com.example.permitmap.restaurant.exception.RestaurantNotFoundException;
+import com.example.permitmap.restaurant.dto.RestaurantPageResponse;
+import com.example.permitmap.restaurant.dto.RestaurantResponse;
+import com.example.permitmap.restaurant.dto.RestaurantUpdateRequest;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.domain.Pageable;
 
 @Service
 @Transactional(readOnly = true)
@@ -14,12 +19,28 @@ public class RestaurantService {
     this.restaurantRepository = restaurantRepository;
   }
 
-  public List<RestaurantResponse> findAll(String category) {
-    if (category == null || category.isBlank()) {
-      return restaurantRepository.findAll().stream().map(this::toResponse).toList();
-    }
+  // public List<RestaurantResponse> findAll(String category) {
+  // if (category == null || category.isBlank()) {
+  // return
+  // restaurantRepository.findAll().stream().map(this::toResponse).toList();
+  // }
 
-    return restaurantRepository.findByCategory(category).stream().map(this::toResponse).toList();
+  // return
+  // restaurantRepository.findByCategory(category).stream().map(this::toResponse).toList();
+  // }
+
+  public RestaurantPageResponse findAll(String category, Pageable pageable) {
+    var result = category == null || category.isBlank() ? restaurantRepository.findAll(pageable)
+        : restaurantRepository.findByCategory(category, pageable);
+
+    var response = result.map(this::toResponse);
+
+    return new RestaurantPageResponse(
+        response.getContent(),
+        response.getNumber(),
+        response.getSize(),
+        response.getTotalElements(),
+        response.getTotalPages());
   }
 
   public RestaurantResponse findById(Long id) {
