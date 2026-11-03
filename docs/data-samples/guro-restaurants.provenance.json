@@ -1,0 +1,54 @@
+{
+  "retrievedDateKst": "2026-11-03",
+  "datasetTitle": "서울시 구로구 일반음식점 인허가 정보",
+  "datasetUrl": "https://data.seoul.go.kr/dataList/OA-18668/S/1/datasetView.do",
+  "datasetId": "OA-18668",
+  "serviceId": "LOCALDATA_072404_GR",
+  "crs": "EPSG:5174",
+  "samplePath": "guro-restaurants.sample.json",
+  "sha256": "3e548632346910fb6714c46db3978e4aac022e16a291e052d2e694c17ec0d2c3",
+  "sourceRowCount": 1000,
+  "savedSampleRowCount": 50,
+  "selection": "First 20 active + first 20 closed + first 10 missing coordinate + first 10 missing road address; deduplicated by MGTNO. Not random or representative.",
+  "projection": "Only listed service-relevant public fields; source values and empty strings retained. Telephone, personnel, financial and unrelated fields omitted.",
+  "fields": [
+    "OPNSFTEAMCODE",
+    "MGTNO",
+    "BPLCNM",
+    "APVPERMYMD",
+    "DCBYMD",
+    "TRDSTATEGBN",
+    "TRDSTATENM",
+    "DTLSTATEGBN",
+    "DTLSTATENM",
+    "SITEWHLADDR",
+    "RDNWHLADDR",
+    "UPTAENM",
+    "X",
+    "Y",
+    "LASTMODTS",
+    "UPDATEGBN",
+    "UPDATEDT"
+  ],
+  "transport": "Public website Sheet preview, not authenticated production Open API",
+  "request": {
+    "method": "POST",
+    "url": "https://data.seoul.go.kr/dataList/dataView.do",
+    "query": {
+      "onepagerow": "1000",
+      "srvType": "S",
+      "infId": "OA-18668",
+      "serviceKind": "1",
+      "pageNo": "1",
+      "gridTotalCnt": "",
+      "ssUserId": "SAMPLE_VIEW",
+      "strWhere": " AND OPNSFTEAMCODE = 3160000",
+      "strOrderby": ""
+    },
+    "form": {
+      "browser1": "chrome",
+      "version": "130"
+    }
+  },
+  "reuseNote": "Attribute Seoul / Guro-gu and dataset URL. Portal and provider license labels differ; see audit."
+}

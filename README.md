@@ -107,6 +107,8 @@ src/main/java/com/example/permitmap/
 │   ├── dto/                    # 등록·수정 요청, 상세·페이지 응답
 │   └── exception/              # 음식점 관련 예외
 ├── common/error/               # 공통 에러 응답과 예외 처리
+├── ingestion/                  # 원천 샘플 DTO, 파싱과 검증
+├── business/                   # 원천 인허가 사업장 저장
 └── hello/                      # 첫 API 학습 예제
 ```
 
@@ -118,3 +120,20 @@ src/main/java/com/example/permitmap/
 `data/`와 `build/`는 Git에서 제외합니다.
 
 실제 데이터 도입 전에는 [기획서](docs/nationwide-permit-map-mvp.md)의 원천 데이터 검증을 진행합니다.
+일반음식점의 1차 조사와 구로구 실제 샘플은 [원천 데이터 검증 문서](docs/data-source-audit.md)에 정리했습니다.
+
+샘플 파일을 DB 연결 없이 검증하려면 다음 명령을 실행합니다.
+
+```powershell
+.\gradlew.bat auditRestaurantSample
+```
+
+구조와 오류·경고 기준은 [샘플 검증 안내](docs/sample-validation.md)에 정리했습니다.
+
+검증한 샘플을 PostgreSQL의 별도 `permit_businesses` 테이블에 적재하려면 SSH 터널을 켜고 실행합니다.
+
+```powershell
+.\gradlew.bat importRestaurantSample
+```
+
+반복 적재와 오류 처리 기준은 [샘플 적재 안내](docs/sample-import.md)에 정리했습니다.

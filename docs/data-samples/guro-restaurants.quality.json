@@ -1,0 +1,46 @@
+{
+  "scope": "Seoul Guro-gu restaurant public Sheet preview, first response only",
+  "analyzedRowCount": 1000,
+  "providerReportedTotalCount": 19756,
+  "sampleRowCount": 50,
+  "municipalityCodes": [
+    "3160000"
+  ],
+  "duplicateManagementNumberGroups": 0,
+  "missingByField": {
+    "OPNSFTEAMCODE": 0,
+    "MGTNO": 0,
+    "BPLCNM": 0,
+    "APVPERMYMD": 0,
+    "DCBYMD": 159,
+    "TRDSTATEGBN": 0,
+    "TRDSTATENM": 0,
+    "DTLSTATEGBN": 0,
+    "DTLSTATENM": 0,
+    "SITEWHLADDR": 0,
+    "RDNWHLADDR": 552,
+    "UPTAENM": 0,
+    "X": 38,
+    "Y": 38,
+    "LASTMODTS": 0,
+    "UPDATEGBN": 0,
+    "UPDATEDT": 0
+  },
+  "invalidNonBlankDates": {
+    "APVPERMYMD": 0,
+    "DCBYMD": 0
+  },
+  "closedBeforePermitCount": 0,
+  "closedWithoutClosedDateCount": 0,
+  "activeWithClosedDateCount": 0,
+  "statusCounts": [
+    {
+      "combination": "01, 영업/정상, 01, 영업",
+      "count": 159
+    },
+    {
+      "combination": "03, 폐업, 02, 폐업",
+      "count": 841
+    }
+  ]
+}

@@ -34,3 +34,19 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+tasks.register('auditRestaurantSample', JavaExec) {
+	group = 'verification'
+	description = 'Validate the local Seoul restaurant sample without starting Spring or a database.'
+	classpath = sourceSets.main.runtimeClasspath
+	mainClass = 'com.example.permitmap.ingestion.RestaurantSampleAudit'
+	args layout.projectDirectory.file('docs/data-samples/guro-restaurants.sample.json').asFile.absolutePath
+}
+
+tasks.register('importRestaurantSample', JavaExec) {
+	group = 'application'
+	description = 'Import the Guro-gu sample into the configured database without opening an HTTP port.'
+	classpath = sourceSets.main.runtimeClasspath
+	mainClass = 'com.example.permitmap.ingestion.RestaurantSampleImport'
+	args layout.projectDirectory.file('docs/data-samples/guro-restaurants.sample.json').asFile.absolutePath
+}
