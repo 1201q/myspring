@@ -2,6 +2,10 @@ package com.example.permitmap;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.context.WebApplicationContext;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -12,16 +16,24 @@ import org.springframework.http.MediaType;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
+@SpringBootTest
+@Transactional
 public class RestaurantControllerTests {
+
+  @Autowired
+  private WebApplicationContext context;
+
+  @Autowired
+  private RestaurantRepository restaurantRepository;
 
   private MockMvc mockMvc;
 
   @BeforeEach
   void setUp() {
-    var service = new RestaurantService();
-    var controller = new RestaurantController(service);
-
-    mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
+    restaurantRepository.save(new Restaurant("봄식당", "서울특별시 중구", "한식"));
+    restaurantRepository.save(new Restaurant("여름식당", "서울특별시 종로구", "일식"));
+    restaurantRepository.save(new Restaurant("가을식당", "서울특별시 마포구", "중식"));
+    mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
   }
 
   @Test
@@ -42,7 +54,7 @@ public class RestaurantControllerTests {
 
   @Test
   void 없는_음식점을_조회하면_404를_반환한다() throws Exception {
-    mockMvc.perform(get("/api/restaurants/999"))
+    mockMvc.perform(get("/api/restaurants/-1"))
         .andExpect(status().isNotFound());
   }
 
@@ -56,17 +68,17 @@ public class RestaurantControllerTests {
         }
         """;
 
-    mockMvc.perform(post("/api/restaurants")
+    var result = mockMvc.perform(post("/api/restaurants")
         .contentType(MediaType.APPLICATION_JSON)
         .characterEncoding("UTF-8")
         .content(requestBody))
         .andExpect(status().isCreated())
-        .andExpect(header().string(
-            "Location", "/api/restaurants/4"))
-        .andExpect(jsonPath("$.id").value(4))
-        .andExpect(jsonPath("$.name").value("겨울식당"));
+        .andExpect(header().exists("Location"))
+        .andExpect(jsonPath("$.id").isNumber())
+        .andExpect(jsonPath("$.name").value("겨울식당"))
+        .andReturn();
 
-    mockMvc.perform(get("/api/restaurants/4"))
+    mockMvc.perform(get(result.getResponse().getHeader("Location")))
         .andExpect(status().isOk())
         .andExpect(jsonPath("$.name").value("겨울식당"));
   }

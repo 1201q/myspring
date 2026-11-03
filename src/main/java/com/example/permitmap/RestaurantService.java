@@ -1,45 +1,47 @@
 package com.example.permitmap;
 
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 @Service
+@Transactional(readOnly = true)
 public class RestaurantService {
-  private final List<RestaurantResponse> restaurants = new CopyOnWriteArrayList<>(List.of(
-      new RestaurantResponse(1L, "봄식당", "서울특별시 중구", "한식"),
-      new RestaurantResponse(2L, "여름식당", "서울특별시 종로구", "일식"),
-      new RestaurantResponse(3L, "가을식당", "서울특별시 마포구", "중식")));
+  private final RestaurantRepository restaurantRepository;
 
-  private final AtomicLong nextId = new AtomicLong(4);
+  public RestaurantService(RestaurantRepository restaurantRepository) {
+    this.restaurantRepository = restaurantRepository;
+  }
 
   public List<RestaurantResponse> findAll(String category) {
     if (category == null || category.isBlank()) {
-      return List.copyOf(restaurants);
+      return restaurantRepository.findAll().stream().map(this::toResponse).toList();
     }
 
-    return restaurants.stream().filter(restaurant -> restaurant.category().equals(category)).toList();
+    return restaurantRepository.findByCategory(category).stream().map(this::toResponse).toList();
   }
 
   public RestaurantResponse findById(Long id) {
-    return restaurants.stream().filter(restaurant -> restaurant.id().equals(id)).findFirst()
+    return restaurantRepository.findById(id).map(this::toResponse)
         .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "음식점을 찾을 수 없습니다."));
   }
 
+  @Transactional
   public RestaurantResponse create(RestaurantCreateRequest request) {
-    var restaurant = new RestaurantResponse(
-        nextId.getAndIncrement(),
+    var restaurant = new Restaurant(
         request.name(),
         request.address(),
         request.category());
 
-    restaurants.add(restaurant);
+    return toResponse(restaurantRepository.save(restaurant));
+  }
 
-    return restaurant;
+  private RestaurantResponse toResponse(Restaurant restaurant) {
+    return new RestaurantResponse(restaurant.getId(), restaurant.getName(),
+        restaurant.getAddress(), restaurant.getCategory());
   }
 
 }

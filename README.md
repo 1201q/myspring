@@ -1,7 +1,7 @@
 # 인허가 지도 — Spring Boot 학습 프로젝트
 
 지역별 사업장 정보를 조회하는 서비스를 만들며 Spring Boot를 학습합니다.
-현재는 Spring Boot 기본 프로젝트 생성까지 진행했습니다.
+음식점 목록·카테고리 검색·상세 조회·등록 API를 구현했습니다.
 
 ## 개발 환경
 
@@ -10,7 +10,7 @@
 - Gradle Wrapper 9.8.2 (별도 Gradle 설치 불필요)
 - Spring Web MVC, Validation, Spring Boot Test
 
-DB와 프론트엔드는 이후 학습 단계에서 추가합니다.
+Spring Data JPA와 H2 파일 DB를 사용합니다. 프론트엔드는 이후 추가합니다.
 
 ## 실행 (Windows PowerShell)
 
@@ -23,7 +23,8 @@ DB와 프론트엔드는 이후 학습 단계에서 추가합니다.
 첫 실행에는 인터넷 연결이 필요하며 Gradle과 라이브러리를 내려받습니다.
 로그에 `Started PermitMapApplication`이 나오면 실행된 상태입니다.
 기본 주소는 `http://localhost:8080`입니다.
-아직 Controller가 없으므로 브라우저에서 이 주소에 접근하면 404 오류 화면이 나옵니다.
+루트 주소에는 API가 없어 404 오류 화면이 나옵니다.
+`http://localhost:8080/api/restaurants`에서 음식점 목록을 확인할 수 있습니다.
 종료하려면 실행 중인 터미널에서 `Ctrl+C`를 누릅니다.
 
 8080 포트를 사용 중이면 다음처럼 다른 포트로 실행할 수 있습니다.
@@ -40,7 +41,27 @@ DB와 프론트엔드는 이후 학습 단계에서 추가합니다.
 java -jar .\build\libs\permit-map-0.0.1-SNAPSHOT.jar
 ```
 
-기본 테스트는 Spring 애플리케이션이 정상적으로 초기화되는지 확인합니다.
+테스트는 별도 메모리 H2 DB를 사용하므로 로컬 파일 DB를 변경하지 않습니다.
+Service와 Controller 테스트는 매번 샘플 3건을 저장하고, 테스트 종료 시 롤백합니다.
+
+## DB 저장과 API
+
+- 로컬 DB 파일: `data/permit-map.mv.db` (Git 제외)
+- 처음 실행한 DB의 목록은 비어 있습니다. POST로 등록한 데이터는 서버 재시작 후에도 유지됩니다.
+- `GET /api/restaurants`: 전체 목록
+- `GET /api/restaurants?category=한식`: 카테고리 검색
+- `GET /api/restaurants/{id}`: 상세 조회 (없으면 404)
+- `POST /api/restaurants`: 등록 (성공 시 201과 Location 헤더, 잘못된 입력은 400)
+
+등록 예시 (서버 실행 후 다른 PowerShell 터미널):
+
+```powershell
+$body = @{ name = '겨울식당'; address = '서울특별시 성동구'; category = '한식' } | ConvertTo-Json
+Invoke-RestMethod -Method Post -Uri 'http://localhost:8080/api/restaurants' -ContentType 'application/json; charset=utf-8' -Body ([System.Text.Encoding]::UTF8.GetBytes($body))
+```
+
+반환된 ID로 상세 조회하세요. ID는 DB가 생성하며 연속 번호를 보장하지 않습니다.
+로컬 학습에서는 `ddl-auto=update`를 사용하고, 배포 전에는 Flyway로 전환합니다.
 
 ## 주요 파일
 
@@ -52,5 +73,4 @@ java -jar .\build\libs\permit-map-0.0.1-SNAPSHOT.jar
 | `src/main/resources/application.properties`                          | 애플리케이션 설정                                    |
 | `src/test/java/com/example/permitmap/PermitMapApplicationTests.java` | 기본 기동 테스트                                     |
 
-다음 학습 단계는 샘플 데이터로 음식점 목록·상세 API를 만드는 것입니다.
 실제 데이터 도입 전에는 [기획서](nationwide-permit-map-mvp.md)의 원천 데이터 검증을 진행합니다.

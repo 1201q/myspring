@@ -5,12 +5,36 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
+import jakarta.persistence.EntityManager;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
+@SpringBootTest
+@Transactional
 public class RestaurantServiceTests {
 
-  private final RestaurantService restaurantService = new RestaurantService();
+  @Autowired
+  private RestaurantService restaurantService;
+
+  @Autowired
+  private RestaurantRepository restaurantRepository;
+
+  @Autowired
+  private EntityManager entityManager;
+
+  private Long summerRestaurantId;
+
+  @BeforeEach
+  void setUp() {
+    restaurantRepository.save(new Restaurant("봄식당", "서울특별시 중구", "한식"));
+    summerRestaurantId = restaurantRepository.save(
+        new Restaurant("여름식당", "서울특별시 종로구", "일식")).getId();
+    restaurantRepository.save(new Restaurant("가을식당", "서울특별시 마포구", "중식"));
+  }
 
   @Test
   void 카테고리가_없으면_전체_음식점을_반환한다() {
@@ -37,15 +61,29 @@ public class RestaurantServiceTests {
 
   @Test
   void ID로_음식점을_조회한다() {
-    var result = restaurantService.findById(2L);
+    var result = restaurantService.findById(summerRestaurantId);
 
     assertEquals("여름식당", result.name());
   }
 
   @Test
   void 없는_ID를_조회하면_404_예외가_발생한다() {
-    var exception = assertThrows(ResponseStatusException.class, () -> restaurantService.findById(999L));
+    var exception = assertThrows(ResponseStatusException.class, () -> restaurantService.findById(-1L));
 
     assertEquals(HttpStatus.NOT_FOUND, exception.getStatusCode());
+  }
+
+  @Test
+  void 등록한_음식점을_DB에서_다시_조회한다() {
+    var saved = restaurantService.create(
+        new RestaurantCreateRequest("겨울식당", "서울특별시 성동구", "한식"));
+
+    entityManager.flush();
+    entityManager.clear();
+
+    var result = restaurantService.findById(saved.id());
+    assertEquals(saved.id(), result.id());
+    assertEquals("겨울식당", result.name());
+    assertEquals(4, restaurantRepository.count());
   }
 }
