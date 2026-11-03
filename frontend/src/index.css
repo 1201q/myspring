@@ -1,0 +1,31 @@
+:root {
+  font-family: Arial, "Malgun Gothic", sans-serif;
+  color: #243b36;
+  background: #f7f8f4;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+button {
+  font: inherit;
+  cursor: pointer;
+  color: inherit;
+}
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #d99535;
+  outline-offset: 3px;
+}
+a {
+  color: #246d59;
+}
+h1,
+h2,
+p {
+  margin-top: 0;
+}

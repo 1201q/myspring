@@ -1,0 +1,268 @@
+.app {
+  display: grid;
+  grid-template-columns: 370px 1fr;
+  height: 100dvh;
+}
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  border-right: 1px solid #d9e2db;
+  background: #fbfcf9;
+  z-index: 1;
+}
+header {
+  padding: 32px 28px 24px;
+  border-bottom: 1px solid #e4e9e3;
+}
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 2px;
+  font-weight: bold;
+  color: #4d7b6b;
+}
+h1 {
+  font-size: 30px;
+  letter-spacing: -1px;
+  margin: 14px 0 10px;
+}
+header p,
+.summary p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #697a72;
+  margin-bottom: 0;
+}
+.summary {
+  padding: 24px 28px;
+  background: #f0f5ef;
+}
+.tag {
+  display: inline-block;
+  border: 1px solid #c8d9ca;
+  border-radius: 4px;
+  padding: 5px 8px;
+  font-size: 11px;
+  color: #3b6551;
+}
+.summary h2 {
+  font-size: 18px;
+  margin: 14px 0 5px;
+}
+.stats {
+  display: flex;
+  gap: 52px;
+  margin: 22px 0;
+}
+.stats div {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.stats strong {
+  font-size: 32px;
+  font-weight: 500;
+}
+.stats span {
+  font-size: 12px;
+  color: #607568;
+}
+.summary .notice {
+  font-size: 11px;
+}
+.results {
+  overflow: auto;
+  flex: 1;
+  padding: 20px 18px;
+}
+.list-title {
+  font-size: 13px;
+  margin: 0 10px 12px;
+}
+.result {
+  display: block;
+  text-align: left;
+  width: 100%;
+  border: 1px solid transparent;
+  background: transparent;
+  padding: 15px 10px;
+  border-bottom-color: #e5eae4;
+  border-radius: 5px;
+}
+.result:hover,
+.result.active {
+  background: #edf4ed;
+  border-color: #b8d2c0;
+}
+.result-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 7px;
+}
+.result small {
+  font-size: 10px;
+  color: #6c8173;
+  font-weight: normal;
+}
+.result > span:not(.result-name) {
+  display: block;
+  font-size: 12px;
+  color: #738078;
+  line-height: 1.6;
+}
+.result > small {
+  display: block;
+  margin-top: 5px;
+}
+footer {
+  font-size: 10px;
+  color: #7a877f;
+  line-height: 1.8;
+  padding: 16px 28px;
+  border-top: 1px solid #e4e9e3;
+}
+.map-panel {
+  position: relative;
+  min-width: 0;
+}
+.map {
+  width: 100%;
+  height: 100%;
+  background: #e3eae0;
+}
+.map-caption {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  background: #fffffff2;
+  padding: 13px 17px;
+  border-radius: 7px;
+  box-shadow: 0 3px 18px #24433415;
+  font-size: 12px;
+  display: flex;
+  gap: 9px;
+  align-items: center;
+}
+.map-caption > span:last-child {
+  color: #7b877d;
+  border-left: 1px solid #ddd;
+  padding-left: 9px;
+}
+.dot {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  background: #237858;
+}
+.business-marker {
+  width: 19px;
+  height: 19px;
+  border: 3px solid white;
+  border-radius: 50%;
+  background: #237858;
+  box-shadow: 0 2px 6px #183b4566;
+}
+.business-marker:hover,
+.business-marker:focus-visible {
+  background: #c27728;
+  z-index: 2;
+}
+.detail {
+  position: absolute;
+  bottom: 34px;
+  left: 24px;
+  background: white;
+  border-radius: 12px;
+  padding: 27px;
+  max-width: 380px;
+  width: calc(100% - 48px);
+  box-shadow: 0 10px 40px #183b4526;
+}
+.detail h2 {
+  font-size: 23px;
+  margin: 12px 0;
+}
+.detail p {
+  font-size: 13px;
+  color: #6b7971;
+  line-height: 1.7;
+}
+.detail a {
+  font-size: 12px;
+}
+.close {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  border: 0;
+  background: none;
+  font-size: 26px;
+  color: #6b7971;
+}
+dl {
+  border-top: 1px solid #e5eae4;
+  padding-top: 14px;
+}
+dl div {
+  display: flex;
+  gap: 20px;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+dt {
+  color: #738078;
+  min-width: 60px;
+}
+dd {
+  margin: 0;
+}
+.map-error {
+  position: absolute;
+  top: 80px;
+  left: 22px;
+  right: 22px;
+  background: #fff4dc;
+  padding: 13px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+@media (max-width: 760px) {
+  .app {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  .sidebar {
+    border: 0;
+  }
+  header {
+    padding: 20px 24px;
+  }
+  header h1 {
+    font-size: 25px;
+  }
+  .summary {
+    padding: 18px 24px;
+  }
+  .stats {
+    margin: 14px 0;
+  }
+  .results {
+    max-height: 220px;
+  }
+  .map-panel {
+    height: 65dvh;
+    min-height: 400px;
+  }
+  .map-caption > span:last-child {
+    display: none;
+  }
+  footer {
+    padding: 12px 24px;
+  }
+  .detail {
+    bottom: 30px;
+  }
+}

@@ -148,3 +148,17 @@ GET /api/v1/businesses/{id}
 
 날짜 기반 추정 상태와 EPSG:5174 원천 좌표의 의미는 [인허가 조회 API 안내](docs/business-api.md)를 참고하세요.
 API는 지도용 WGS84 longitude/latitude도 제공합니다. 변환 기준과 한계는 [좌표 변환 안내](docs/coordinate-conversion.md)에 정리했습니다.
+
+## 지도 화면 실행
+
+`frontend`에 Vite + React + TypeScript + MapLibre 기반 지도가 있습니다.
+Spring Boot와 DB 터널을 실행한 상태에서 별도 터미널로 실행합니다.
+
+```powershell
+cd frontend
+npm ci
+npm run dev
+```
+
+http://127.0.0.1:5173 에서 음식점 마커와 목록을 확인합니다.
+구체적인 연결 구조와 확인 절차는 [프런트엔드 안내](frontend/README.md)를 참고하세요.
