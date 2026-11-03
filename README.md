@@ -44,13 +44,13 @@ java -jar .\build\libs\permit-map-0.0.1-SNAPSHOT.jar
 
 ## 주요 파일
 
-| 파일 | 역할 |
-| --- | --- |
-| `build.gradle` | Java 버전, 의존성, 빌드 설정 |
-| `gradlew.bat` | 프로젝트에 지정된 Gradle을 실행하는 Windows 스크립트 |
-| `src/main/java/com/example/permitmap/PermitMapApplication.java` | 애플리케이션 시작점 |
-| `src/main/resources/application.properties` | 애플리케이션 설정 |
-| `src/test/java/com/example/permitmap/PermitMapApplicationTests.java` | 기본 기동 테스트 |
+| 파일                                                                 | 역할                                                 |
+| -------------------------------------------------------------------- | ---------------------------------------------------- |
+| `build.gradle`                                                       | Java 버전, 의존성, 빌드 설정                         |
+| `gradlew.bat`                                                        | 프로젝트에 지정된 Gradle을 실행하는 Windows 스크립트 |
+| `src/main/java/com/example/permitmap/PermitMapApplication.java`      | 애플리케이션 시작점                                  |
+| `src/main/resources/application.properties`                          | 애플리케이션 설정                                    |
+| `src/test/java/com/example/permitmap/PermitMapApplicationTests.java` | 기본 기동 테스트                                     |
 
 다음 학습 단계는 샘플 데이터로 음식점 목록·상세 API를 만드는 것입니다.
 실제 데이터 도입 전에는 [기획서](nationwide-permit-map-mvp.md)의 원천 데이터 검증을 진행합니다.
