@@ -2,11 +2,8 @@ package com.example.permitmap;
 
 import java.util.List;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.server.ResponseStatusException;
 
 @Service
 @Transactional(readOnly = true)
@@ -27,7 +24,7 @@ public class RestaurantService {
 
   public RestaurantResponse findById(Long id) {
     return restaurantRepository.findById(id).map(this::toResponse)
-        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "음식점을 찾을 수 없습니다."));
+        .orElseThrow(RestaurantNotFoundException::new);
   }
 
   @Transactional
@@ -43,7 +40,7 @@ public class RestaurantService {
   @Transactional
   public RestaurantResponse update(Long id, RestaurantUpdateRequest request) {
     var restaurant = restaurantRepository.findById(id)
-        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "음식점을 찾을 수 없습니다."));
+        .orElseThrow(RestaurantNotFoundException::new);
 
     // save를 호출하지 않음.
     // 트랙잭션 안에서 jpa가 update sql를 자동실행함.
@@ -55,7 +52,7 @@ public class RestaurantService {
   @Transactional
   public void delete(Long id) {
     var restaurant = restaurantRepository.findById(id)
-        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "음식점을 찾을 수 없습니다."));
+        .orElseThrow(RestaurantNotFoundException::new);
 
     restaurantRepository.delete(restaurant);
   }

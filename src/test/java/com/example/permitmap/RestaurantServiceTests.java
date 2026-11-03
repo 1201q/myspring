@@ -10,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 import jakarta.persistence.EntityManager;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.server.ResponseStatusException;
 
 @SpringBootTest
 @Transactional
@@ -68,9 +66,9 @@ public class RestaurantServiceTests {
 
   @Test
   void 없는_ID를_조회하면_404_예외가_발생한다() {
-    var exception = assertThrows(ResponseStatusException.class, () -> restaurantService.findById(-1L));
+    var exception = assertThrows(RestaurantNotFoundException.class, () -> restaurantService.findById(-1L));
 
-    assertEquals(HttpStatus.NOT_FOUND, exception.getStatusCode());
+    assertEquals("음식점을 찾을 수 없습니다.", exception.getMessage());
   }
 
   @Test
@@ -99,10 +97,8 @@ public class RestaurantServiceTests {
     entityManager.flush();
     entityManager.clear();
 
-    var exception = assertThrows(
-        ResponseStatusException.class,
-        () -> restaurantService.findById(saved.id()));
+    var exception = assertThrows(RestaurantNotFoundException.class, () -> restaurantService.findById(saved.id()));
 
-    assertEquals(HttpStatus.NOT_FOUND, exception.getStatusCode());
+    assertEquals("음식점을 찾을 수 없습니다.", exception.getMessage());
   }
 }
