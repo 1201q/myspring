@@ -137,3 +137,13 @@ src/main/java/com/example/permitmap/
 ```
 
 반복 적재와 오류 처리 기준은 [샘플 적재 안내](docs/sample-import.md)에 정리했습니다.
+
+적재한 인허가 자료는 다음 API로 조회합니다. 기존 학습용 음식점 API와 별개입니다.
+
+```text
+GET /api/v1/businesses?page=0&size=20
+GET /api/v1/businesses?date=2020-01-01
+GET /api/v1/businesses/{id}
+```
+
+날짜 기반 추정 상태와 EPSG:5174 원천 좌표의 의미는 [인허가 조회 API 안내](docs/business-api.md)를 참고하세요.

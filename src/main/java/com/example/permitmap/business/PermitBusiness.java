@@ -113,4 +113,13 @@ public class PermitBusiness {
     public Integer getSourceCrs() { return sourceCrs; }
     public String getSourceJson() { return sourceJson; }
     public String getIssuesJson() { return issuesJson; }
+    public String getSourceDataset() { return sourceDataset; }
+    public String getMunicipalityCode() { return municipalityCode; }
+    public String getLotAddress() { return lotAddress; }
+    public String getRoadAddress() { return roadAddress; }
+    public String getBusinessType() { return businessType; }
+    public LocalDate getPermittedAt() { return permittedAt; }
+    public String getStatusCode() { return statusCode; }
+    public String getDetailStatusCode() { return detailStatusCode; }
+    public OffsetDateTime getLastImportedAt() { return lastImportedAt; }
 }
