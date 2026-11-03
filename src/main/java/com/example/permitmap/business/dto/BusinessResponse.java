@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import java.time.OffsetDateTime;
 
 import com.example.permitmap.business.PermitBusiness;
+import com.example.permitmap.map.KoreanCoordinateConverter.Conversion;
+import com.example.permitmap.map.KoreanCoordinateConverter.Status;
 
 public record BusinessResponse(
     Long id,
@@ -19,13 +21,16 @@ public record BusinessResponse(
     String rawStatusCode,
     String rawDetailStatusCode,
     SourceCoordinates coordinates,
+    Double longitude,
+    Double latitude,
+    Status coordinateStatus,
     String sourceDataset,
     String sourceUrl,
     OffsetDateTime lastImportedAt
 ) {
     public record SourceCoordinates(BigDecimal x, BigDecimal y, Integer epsg) {}
 
-    public static BusinessResponse from(PermitBusiness business) {
+    public static BusinessResponse from(PermitBusiness business, Conversion conversion) {
         var coordinates = business.getSourceX() != null && business.getSourceY() != null
             ? new SourceCoordinates(business.getSourceX(), business.getSourceY(), business.getSourceCrs())
             : null;
@@ -35,6 +40,7 @@ public record BusinessResponse(
             business.getMunicipalityCode(), business.getBusinessType(), business.getLotAddress(),
             business.getRoadAddress(), business.getPermittedAt(), business.getClosedAt(),
             business.getStatusCode(), business.getDetailStatusCode(), coordinates,
+            conversion.longitude(), conversion.latitude(), conversion.status(),
             business.getSourceDataset(), sourceUrl, business.getLastImportedAt());
     }
 }

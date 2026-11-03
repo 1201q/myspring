@@ -45,6 +45,8 @@ class BusinessControllerTests {
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.items.length()").value(2))
             .andExpect(jsonPath("$.items[0].id").value(closedId))
+            .andExpect(jsonPath("$.items[0].coordinateStatus").value("CONVERTED"))
+            .andExpect(jsonPath("$.items[1].coordinateStatus").value("MISSING"))
             .andExpect(jsonPath("$.totalElements").value(3))
             .andExpect(jsonPath("$.totalPages").value(2))
             .andExpect(jsonPath("$.statusBasis").value("SOURCE_SNAPSHOT"));
@@ -88,6 +90,9 @@ class BusinessControllerTests {
             .andExpect(jsonPath("$.closedAt").value("2021-01-01"))
             .andExpect(jsonPath("$.coordinates.epsg").value(5174))
             .andExpect(jsonPath("$.coordinates.x").value(187383))
+            .andExpect(jsonPath("$.longitude").isNumber())
+            .andExpect(jsonPath("$.latitude").isNumber())
+            .andExpect(jsonPath("$.coordinateStatus").value("CONVERTED"))
             .andExpect(jsonPath("$.sourceDataset").value("seoul:OA-18668"))
             .andExpect(jsonPath("$.sourceUrl").value(
                 "https://data.seoul.go.kr/dataList/OA-18668/S/1/datasetView.do"))
@@ -101,7 +106,10 @@ class BusinessControllerTests {
         mockMvc.perform(get("/api/v1/businesses/{id}", activeId))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.name").value("영업식당"))
-            .andExpect(jsonPath("$.coordinates").isEmpty());
+            .andExpect(jsonPath("$.coordinates").isEmpty())
+            .andExpect(jsonPath("$.longitude").isEmpty())
+            .andExpect(jsonPath("$.latitude").isEmpty())
+            .andExpect(jsonPath("$.coordinateStatus").value("MISSING"));
     }
 
     @Test

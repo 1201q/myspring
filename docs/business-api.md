@@ -65,10 +65,13 @@ GET /api/v1/businesses/{id}
 | permittedAt, closedAt | 인허가일, 폐업일 |
 | rawStatusCode, rawDetailStatusCode | 원천 상태코드. 앞자리 0 보존 |
 | coordinates | 원천 좌표 x/y/epsg. 좌표 없으면 null |
+| longitude, latitude | WGS84 경도/위도. 변환 불가이면 둘 다 null |
+| coordinateStatus | CONVERTED / MISSING / UNSUPPORTED_CRS / OUT_OF_RANGE / TRANSFORMATION_FAILED |
 | sourceDataset, sourceUrl | 원천 구분 및 공식 데이터셋 링크 |
 | lastImportedAt | 마지막 저장 시각. 원천 자료 갱신 시각이나 영업 확인 시각이 아님 |
 
 coordinates의 epsg는 현재 5174입니다. x/y를 지도용 경도·위도로 취급하면 안 됩니다.
+지도에는 longitude/latitude를 사용합니다. [변환 방식과 독립 검증](coordinate-conversion.md)을 참고하세요.
 좌표 없는 사업장도 목록과 상세에 포함됩니다. 누락 10건은 현재 샘플의 특성입니다.
 원문 source_json과 내부 issues_json은 API에 노출하지 않습니다.
 

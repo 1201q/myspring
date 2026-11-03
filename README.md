@@ -147,3 +147,4 @@ GET /api/v1/businesses/{id}
 ```
 
 날짜 기반 추정 상태와 EPSG:5174 원천 좌표의 의미는 [인허가 조회 API 안내](docs/business-api.md)를 참고하세요.
+API는 지도용 WGS84 longitude/latitude도 제공합니다. 변환 기준과 한계는 [좌표 변환 안내](docs/coordinate-conversion.md)에 정리했습니다.
