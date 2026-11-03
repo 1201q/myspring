@@ -12,6 +12,9 @@
 
 Spring Data JPA와 H2 파일 DB를 사용합니다. 프론트엔드는 이후 추가합니다.
 
+Oracle Cloud `coin`의 PostgreSQL을 사용하는 선택적 `postgres` 프로필도 준비되어 있습니다.
+SSH 터널과 실행 방법은 [원격 PostgreSQL 안내](docs/remote-postgresql.md)를 참고하세요.
+
 ## 실행 (Windows PowerShell)
 
 프로젝트 폴더에서 다음 명령을 실행합니다.
