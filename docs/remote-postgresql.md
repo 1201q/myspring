@@ -80,5 +80,6 @@ sudo docker exec permit-map-postgres psql -U postgres -d permit_map_dev -c '\dt'
 Spring Boot를 호스트에서 직접 실행한다면 DB 주소는 `127.0.0.1:5432`가 됩니다.
 Spring Boot도 컨테이너로 배포한다면 별도의 Docker 네트워크 연결 설계가 필요합니다.
 배포 환경의 `DB_URL`, `DB_USERNAME`, `DB_PASSWORD`로 접속 대상을 지정합니다.
-배포 전에는 `ddl-auto=update`를 Flyway와 `validate` 방식으로 전환합니다.
+스키마는 Flyway로 관리하고 JPA는 `ddl-auto=validate`로 검증합니다.
+기존 개발 DB에는 기준 버전 1 등록을 완료했습니다. [Flyway 안내](flyway.md)를 참고하세요.
 현재 PostgreSQL에는 PostGIS를 설치하지 않았습니다. 공간 검색 도입 시 별도로 진행합니다.

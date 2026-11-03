@@ -73,9 +73,12 @@ Invoke-RestMethod -Method Post -Uri 'http://localhost:8080/api/restaurants' -Con
 ```
 
 반환된 ID로 상세 조회하세요. ID는 DB가 생성하며 연속 번호를 보장하지 않습니다.
-로컬 학습에서는 `ddl-auto=update`를 사용하고, 배포 전에는 Flyway로 전환합니다.
+Flyway가 SQL 파일로 스키마를 관리하고 JPA는 `ddl-auto=validate`로 매핑을 검증합니다.
+기존 DB baseline과 변경 파일 작성 방법은 [Flyway 안내](docs/flyway.md)를 참고하세요.
 
 H2 파일 DB를 명시적으로 사용하려면 다음처럼 실행합니다.
+
+기존 H2 파일에 테이블이 있고 Flyway 이력이 없다면 위 Flyway 안내에 따라 먼저 구조 확인과 baseline이 필요합니다.
 
 ```powershell
 .\gradlew.bat bootRun --args='--spring.profiles.active=h2'
