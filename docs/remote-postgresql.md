@@ -32,18 +32,19 @@ ssh -N -o ExitOnForwardFailure=yes -o ServerAliveInterval=30 -L 127.0.0.1:15432:
 
 ```powershell
 cd C:\projects\spring
-.\scripts\run-postgres.ps1
+.\gradlew.bat bootRun
 ```
 
-이 스크립트는 `.env.postgres`를 읽어 환경변수로 전달하고 `postgres` 프로필로 실행합니다.
-로그의 활성 프로필 `postgres`와 PostgreSQL 연결을 확인하세요.
+기본 프로필은 `postgres`입니다. 프로젝트 루트의 `.env.postgres`를 properties 형식으로 읽습니다.
+환경변수 `DB_URL`, `DB_USERNAME`, `DB_PASSWORD`로 설정을 덮어쓸 수도 있습니다.
+로그에서 기본 프로필 `postgres`와 PostgreSQL 연결을 확인하세요.
 로컬 8080 포트에서 기존 앱이 실행 중이면 해당 로컬 앱을 종료한 후 실행합니다.
 서버의 기존 Docker 앱과는 별개입니다.
 
-기존 H2 실행 방법도 유지합니다.
+H2는 명시적으로 프로필을 선택할 때 사용합니다.
 
 ```powershell
-.\gradlew.bat bootRun
+.\gradlew.bat bootRun --args='--spring.profiles.active=h2'
 ```
 
 H2 데이터는 PostgreSQL로 자동 복사되지 않습니다. 두 환경의 DB는 별개입니다.
@@ -56,7 +57,9 @@ H2 데이터는 PostgreSQL로 자동 복사되지 않습니다. 두 환경의 DB
 - 서버 관리자 비밀번호: `~/.config/permit-map/admin-password` (소유자만 읽기·쓰기)
 
 비밀번호는 문서나 소스에 넣지 않습니다. 새 PC에서는 `.env.example`을 복사해 `.env.postgres`를 작성합니다.
-Spring Boot는 `.env` 파일을 자동으로 읽지 않으므로 위 스크립트를 사용하거나 환경변수를 직접 설정해야 합니다.
+이 프로젝트는 `spring.config.import`로 `.env.postgres`를 읽도록 설정했습니다.
+일반적인 `.env` 파일 전체를 자동 인식하는 기능이 아닙니다.
+기존 `scripts/run-postgres.ps1`도 환경변수를 전달하는 방식으로 계속 사용할 수 있습니다.
 
 ## 서버에서 상태 확인
 

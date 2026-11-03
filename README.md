@@ -10,20 +10,28 @@
 - Gradle Wrapper 9.8.2 (별도 Gradle 설치 불필요)
 - Spring Web MVC, Validation, Spring Boot Test
 
-Spring Data JPA와 H2 파일 DB를 사용합니다. 프론트엔드는 이후 추가합니다.
-
-Oracle Cloud `coin`의 PostgreSQL을 사용하는 선택적 `postgres` 프로필도 준비되어 있습니다.
+Spring Data JPA와 Oracle Cloud `coin`의 PostgreSQL을 기본으로 사용합니다.
+자동 테스트는 별도 메모리 H2 DB를 사용합니다. 프론트엔드는 이후 추가합니다.
 SSH 터널과 실행 방법은 [원격 PostgreSQL 안내](docs/remote-postgresql.md)를 참고하세요.
 
 ## 실행 (Windows PowerShell)
 
-프로젝트 폴더에서 다음 명령을 실행합니다.
+먼저 별도 로컬 터미널에서 SSH 터널을 실행하고 유지합니다.
+
+```powershell
+ssh -N -o ExitOnForwardFailure=yes -o ServerAliveInterval=30 -L 127.0.0.1:15432:127.0.0.1:5432 coin
+```
+
+이미 15432 포트에 터널이 실행 중이면 추가로 실행하지 않습니다.
+프로젝트 루트의 `.env.postgres`에 DB 접속 정보를 준비한 후 다른 터미널에서 실행합니다.
+이 파일은 Git에서 제외되며 `.env.example`에 필요한 항목이 있습니다.
 
 ```powershell
 .\gradlew.bat bootRun
 ```
 
 첫 실행에는 인터넷 연결이 필요하며 Gradle과 라이브러리를 내려받습니다.
+기본 `postgres` 프로필은 `.env.postgres`를 읽으며 환경변수로도 접속 정보를 지정할 수 있습니다.
 로그에 `Started PermitMapApplication`이 나오면 실행된 상태입니다.
 기본 주소는 `http://localhost:8080`입니다.
 루트 주소에는 API가 없어 404 오류 화면이 나옵니다.
@@ -44,12 +52,13 @@ SSH 터널과 실행 방법은 [원격 PostgreSQL 안내](docs/remote-postgresql
 java -jar .\build\libs\permit-map-0.0.1-SNAPSHOT.jar
 ```
 
-테스트는 별도 메모리 H2 DB를 사용하므로 로컬 파일 DB를 변경하지 않습니다.
+테스트는 별도 메모리 H2 DB를 사용하므로 원격 PostgreSQL과 로컬 파일 DB를 변경하지 않습니다.
 Service와 Controller 테스트는 매번 샘플 3건을 저장하고, 테스트 종료 시 롤백합니다.
 
 ## DB 저장과 API
 
-- 로컬 DB 파일: `data/permit-map.mv.db` (Git 제외)
+- 기본 DB: `coin` 서버의 `permit_map_dev` (SSH 터널 경유)
+- 기존 H2 DB는 `data/permit-map.mv.db`에 유지되며 PostgreSQL과는 별개입니다.
 - 처음 실행한 DB의 목록은 비어 있습니다. POST로 등록한 데이터는 서버 재시작 후에도 유지됩니다.
 - `GET /api/restaurants`: 전체 목록
 - `GET /api/restaurants?category=한식`: 카테고리 검색
@@ -65,6 +74,12 @@ Invoke-RestMethod -Method Post -Uri 'http://localhost:8080/api/restaurants' -Con
 
 반환된 ID로 상세 조회하세요. ID는 DB가 생성하며 연속 번호를 보장하지 않습니다.
 로컬 학습에서는 `ddl-auto=update`를 사용하고, 배포 전에는 Flyway로 전환합니다.
+
+H2 파일 DB를 명시적으로 사용하려면 다음처럼 실행합니다.
+
+```powershell
+.\gradlew.bat bootRun --args='--spring.profiles.active=h2'
+```
 
 ## 주요 파일
 
