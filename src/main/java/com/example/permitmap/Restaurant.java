@@ -30,6 +30,12 @@ public class Restaurant {
     this.category = category;
   }
 
+  public void update(String name, String address, String category) {
+    this.name = name;
+    this.address = address;
+    this.category = category;
+  }
+
   public Long getId() {
     return id;
   }

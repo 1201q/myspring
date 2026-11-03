@@ -86,4 +86,23 @@ public class RestaurantServiceTests {
     assertEquals("겨울식당", result.name());
     assertEquals(4, restaurantRepository.count());
   }
+
+  @Test
+  void 삭제한_음식점은_조회할_수_없다() {
+    var saved = restaurantService.create(
+        new RestaurantCreateRequest(
+            "삭제할식당", "서울특별시 중구", "한식"));
+
+    restaurantService.delete(saved.id());
+
+    // DB에 삭제 SQL을 반영하고, JPA가 관리하던 객체를 비웁니다.
+    entityManager.flush();
+    entityManager.clear();
+
+    var exception = assertThrows(
+        ResponseStatusException.class,
+        () -> restaurantService.findById(saved.id()));
+
+    assertEquals(HttpStatus.NOT_FOUND, exception.getStatusCode());
+  }
 }
