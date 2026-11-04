@@ -190,6 +190,13 @@ public class NationalPermitBatchImporter {
     }
 
     private Result publish(NationalCategory category, String run, LocalDate snapshot) {
+        boolean postgres = Boolean.TRUE.equals(jdbc.execute((org.springframework.jdbc.core.ConnectionCallback<Boolean>)
+                connection -> connection.getMetaData().getDatabaseProductName().equals("PostgreSQL")));
+        // Autovacuum cannot analyze rows inserted by this still-uncommitted publication.
+        // Empty/stale cardinalities otherwise cause quadratic joins on the first large import.
+        refreshStatistics(postgres, "permit_import_stage");
+        refreshStatistics(postgres, "national_permit");
+        refreshStatistics(postgres, "national_permit_version");
         long rows = jdbc.queryForObject("SELECT processed_rows FROM permit_import_run WHERE id=?", Long.class, run);
         long staged = jdbc.queryForObject("SELECT COUNT(*) FROM permit_import_stage WHERE run_id=?", Long.class, run);
         if (staged != rows)
@@ -203,6 +210,7 @@ public class NationalPermitBatchImporter {
                 category.id(), run, run, run, category.id());
         long inserted = jdbc.queryForObject("SELECT COUNT(*) FROM national_permit WHERE created_run_id=?", Long.class,
                 run);
+        refreshStatistics(postgres, "national_permit");
         var selectColumns = java.util.Arrays.stream(COLUMNS.split(",")).map(column -> "s." + column)
                 .collect(java.util.stream.Collectors.joining(","));
         jdbc.update("INSERT INTO national_permit_version(permit_id,run_id,observed_at,source_as_of," + COLUMNS + ") " +
@@ -214,14 +222,15 @@ public class NationalPermitBatchImporter {
                 run, snapshot, category.id(), run);
         long changed = jdbc.queryForObject("SELECT COUNT(*) FROM national_permit_version WHERE run_id=?", Long.class,
                 run);
-        jdbc.update(
-                "UPDATE national_permit SET current_version_id=(SELECT MAX(v.id) FROM national_permit_version v WHERE v.permit_id=national_permit.id AND v.run_id=?) "
-                        +
-                        "WHERE EXISTS(SELECT 1 FROM national_permit_version v WHERE v.permit_id=national_permit.id AND v.run_id=?)",
-                run, run);
-        jdbc.update("UPDATE national_permit SET last_seen_run_id=? WHERE category_id=? AND EXISTS " +
-                "(SELECT 1 FROM permit_import_stage s WHERE s.run_id=? AND s.municipality_code=national_permit.municipality_code AND s.management_number=national_permit.management_number)",
-                run, category.id(), run);
+        refreshStatistics(postgres, "national_permit_version");
+        // Join once instead of executing a correlated MAX subquery per permit.
+        jdbc.update("MERGE INTO national_permit p USING " +
+                "(SELECT permit_id,id FROM national_permit_version WHERE run_id=?) v " +
+                "ON p.id=v.permit_id WHEN MATCHED THEN UPDATE SET current_version_id=v.id", run);
+        jdbc.update("MERGE INTO national_permit p USING " +
+                "(SELECT municipality_code,management_number FROM permit_import_stage WHERE run_id=?) s " +
+                "ON p.category_id=? AND p.municipality_code=s.municipality_code AND p.management_number=s.management_number " +
+                "WHEN MATCHED THEN UPDATE SET last_seen_run_id=?", run, category.id(), run);
         for (var event : Map.of("OPEN", "permitted_on", "CLOSE", "closed_on").entrySet())
             jdbc.update("INSERT INTO permit_event(permit_id,version_id,event_type,event_date,date_basis) " +
                     "SELECT permit_id,id,?," + event.getValue() + ",? FROM national_permit_version WHERE run_id=? AND "
@@ -232,6 +241,10 @@ public class NationalPermitBatchImporter {
                 OffsetDateTime.now(ZoneOffset.UTC), inserted, changed - inserted, rows - changed, run);
         jdbc.update("DELETE FROM permit_import_stage WHERE run_id=?", run);
         return new Result(run, rows, inserted, changed - inserted, rows - changed);
+    }
+
+    private void refreshStatistics(boolean postgres, String table) {
+        if (postgres) jdbc.execute("ANALYZE " + table);
     }
 
     static String fingerprint(Path input) throws IOException {

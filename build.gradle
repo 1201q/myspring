@@ -55,10 +55,35 @@ tasks.register('importRestaurantSample', JavaExec) {
 
 tasks.register('importNationalPermits', JavaExec) {
 	group = 'application'
-	description = 'Import one official nationwide CSV into an isolated local H2 database.'
+	description = 'Import one nationwide CSV; local H2 by default, PostgreSQL requires explicit target/database.'
 	classpath = sourceSets.main.runtimeClasspath
 	mainClass = 'com.example.permitmap.ingestion.national.NationalPermitImport'
-	['category', 'input', 'snapshot', 'resume'].each { key ->
+	['category', 'input', 'snapshot', 'resume', 'target', 'database'].each { key ->
 		if (project.hasProperty(key)) args "--${key}=${project.property(key)}"
+	}
+}
+
+tasks.register('testNationalPostgres', Test) {
+	group = 'verification'
+	description = 'Run national importer integration tests only against an explicitly named disposable PostgreSQL database.'
+	testClassesDirs = sourceSets.test.output.classesDirs
+	classpath = sourceSets.test.runtimeClasspath
+	useJUnitPlatform()
+	filter { includeTestsMatching '*NationalPermitBatchImporterTests' }
+	outputs.upToDateWhen { false }
+	doFirst {
+		def database = project.findProperty('database')?.toString() ?: ''
+		if (!(database ==~ /permit_map_verify_[a-z0-9_]+/)) {
+			throw new GradleException('Tests require an explicit permit_map_verify_... database; live databases are refused.')
+		}
+		def secrets = new Properties()
+		file('.env.postgres').withReader('UTF-8') { secrets.load(it) }
+		if (!secrets.getProperty('DB_PASSWORD')) throw new GradleException('Missing DB_PASSWORD')
+		environment 'DB_PASSWORD', secrets.getProperty('DB_PASSWORD')
+		systemProperty 'spring.profiles.active', 'postgres'
+		systemProperty 'spring.datasource.url', "jdbc:postgresql://127.0.0.1:15432/${database}"
+		systemProperty 'spring.datasource.username', secrets.getProperty('DB_USERNAME', 'permit_map_app')
+		systemProperty 'spring.datasource.driver-class-name', 'org.postgresql.Driver'
+		systemProperty 'spring.datasource.hikari.maximum-pool-size', '3'
 	}
 }

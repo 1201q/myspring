@@ -1,4 +1,5 @@
 {
+  "scope": "Initial local H2 verification before the subsequent server import; see postgres-import-verification.json for PostgreSQL results.",
   "verified_on": "2026-11-04",
   "database": "isolated local H2 2.4.240",
   "database_file": "data/national-import-db.mv.db",

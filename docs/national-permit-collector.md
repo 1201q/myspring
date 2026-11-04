@@ -99,7 +99,7 @@ python scripts/collect-national-permits.py --category 약국 --download --data-d
 - [목재수입유통업 검사](data-samples/national/lumber_import_distribution.quality.json)
 - [공식 총건수 대조 기록](data-samples/national/collector-verification.json)
 
-기존 3종을 포함해 전체 파일 검증 기록은 현재 5종이다. 현재 DB/지도는 50건 샘플이며 이 원본을 DB에 적재한 것은 아니다.
+기존 3종을 포함해 전체 파일 검증 기록은 현재 5종이다. 별도의 Java 적재기로 약국·목재수입유통업 74,214건을 [서버 PostgreSQL에 반영](national-postgres-import.md)했다. 지도/API는 여전히 기존 50건 샘플을 사용한다. Python 수집기 자체가 DB에 적재하는 것은 아니다.
 
 ```powershell
 python -m unittest discover -s scripts/tests -v
@@ -107,4 +107,4 @@ python -m unittest discover -s scripts/tests -v
 
 검사: 기관 간 동일 관리번호, 날짜 오류/미래 날짜, 폐업일 미제공, 중단된 다운로드, HTML 오류 응답, 캐시 변조, 보조 정보 선택 거절, 실패 실행 기록, dry-run 무변경 동작.
 
-다음 단계는 공통 인허가/관측 버전/사건/수집 실행 DB와 청크 적재다. 원천 공개 주기·라이선스·좌표계와 과거 완전성 검증을 함께 유지한다.
+공통 인허가/관측 버전/사건/수집 실행 DB와 청크 적재는 [별도 Java 도구](national-permit-db-import.md)로 구현했다. 원천 공개 주기·라이선스·좌표계와 과거 완전성 검증을 함께 유지한다.

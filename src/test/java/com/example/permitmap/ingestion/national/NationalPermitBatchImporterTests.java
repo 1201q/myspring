@@ -32,6 +32,12 @@ class NationalPermitBatchImporterTests {
 
     @BeforeEach
     void clean() {
+        var url = jdbc.execute((org.springframework.jdbc.core.ConnectionCallback<String>)
+                connection -> connection.getMetaData().getURL());
+        if (!disposableDatabaseUrl(url)) throw new IllegalStateException("Destructive test setup refuses a live database");
+        if (url.startsWith("jdbc:postgresql:") && !jdbc.queryForObject("SELECT current_database()", String.class)
+                .matches("permit_map_verify_[a-z0-9_]+"))
+            throw new IllegalStateException("Actual PostgreSQL database is not disposable");
         jdbc.update("UPDATE permit_import_lock SET owner_run=NULL");
         jdbc.update("DELETE FROM permit_import_stage");
         jdbc.update("DELETE FROM permit_event");
@@ -40,6 +46,11 @@ class NationalPermitBatchImporterTests {
         jdbc.update("DELETE FROM national_permit");
         jdbc.update("DELETE FROM permit_import_run");
         jdbc.update("DELETE FROM permit_category");
+    }
+
+    static boolean disposableDatabaseUrl(String url) {
+        return url != null && (url.startsWith("jdbc:h2:mem:") ||
+                url.matches("jdbc:postgresql://127\\.0\\.0\\.1:15432/permit_map_verify_[a-z0-9_]+"));
     }
 
     @Test

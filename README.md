@@ -155,7 +155,7 @@ API는 지도용 WGS84 longitude/latitude도 제공합니다. 변환 기준과 �
 
 카탈로그에서 업종명/서비스 ID를 선택하는 [공통 수집기](docs/national-permit-collector.md)를 추가했습니다. 예: `python scripts/collect-national-permits.py --category 약국 --download`. 기존 CSV는 재사용하고 실행 기록·품질 보고서를 생성합니다. 현재 전량 검사 기록은 초기 3종에 약국·목재수입유통업을 더한 5종입니다.
 
-Java/Spring 기반 [공통 DB·청크 적재](docs/national-permit-db-import.md)도 추가했습니다. 로컬 전용 H2에 전국 약국·목재수입유통업 74,214건을 적재하고 반복 실행·버전 보존·실패 복구를 확인했습니다. 원격 PostgreSQL 적재와 기존 지도 API 연결은 후속 단계입니다.
+Java/Spring 기반 [공통 DB·청크 적재](docs/national-permit-db-import.md)도 추가했습니다. 로컬 H2에 이어 PostgreSQL 17.11을 검증하고, 서버 `permit_map_dev`에 전국 약국·목재수입유통업 74,214건을 반영했습니다. 반복 실행·버전 보존·실패 복구와 기존 데이터 보존을 확인했습니다. [서버 반영 결과와 실행 방법](docs/national-postgres-import.md)을 참고하세요. 기존 지도 API 연결은 후속 단계입니다.
 
 ## 지도 화면 실행
 

@@ -1,0 +1,100 @@
+{
+  "verified_on": "2026-11-04",
+  "live": {
+    "runs": [
+      {
+        "id": "7f3b42d6-1a6a-471d-8fc4-d856390b6632",
+        "rows": 70770,
+        "status": "COMPLETED",
+        "updated": 0,
+        "category": "pharmacies",
+        "inserted": 70770,
+        "unchanged": 0
+      },
+      {
+        "id": "f26a48e3-d31b-4cec-9d6f-cf44994423b6",
+        "rows": 3444,
+        "status": "COMPLETED",
+        "updated": 0,
+        "category": "lumber_import_distribution",
+        "inserted": 3444,
+        "unchanged": 0
+      },
+      {
+        "id": "91d01601-b092-49da-a1f4-da0ee8b1b410",
+        "rows": 70770,
+        "status": "COMPLETED",
+        "updated": 0,
+        "category": "pharmacies",
+        "inserted": 0,
+        "unchanged": 70770
+      }
+    ],
+    "events": {
+      "OPEN": 74146,
+      "CLOSE": 38916
+    },
+    "flyway": [
+      {
+        "type": "BASELINE",
+        "success": true,
+        "version": "1"
+      },
+      {
+        "type": "SQL",
+        "success": true,
+        "version": "2"
+      },
+      {
+        "type": "SQL",
+        "success": true,
+        "version": "3"
+      }
+    ],
+    "legacy": {
+      "sample_rows": 50,
+      "restaurants_rows": 1,
+      "sample_fingerprint": "b5749818db951081976a5caf17c75b5a",
+      "restaurants_fingerprint": "091c254163263716134789b6e6e7dd07"
+    },
+    "database": "permit_map_dev",
+    "versions": 74214,
+    "categories": {
+      "pharmacies": 70770,
+      "lumber_import_distribution": 3444
+    },
+    "staged_rows": 0,
+    "database_bytes": 173405875,
+    "postgresql_version": "17.11 (Debian 17.11-1.pgdg12+2)"
+  },
+  "backup": {
+    "path": "/home/ubuntu/.config/permit-map/backups/permit_map_dev-before-national-20261104T103411Z.dump",
+    "sha256": "c39d06d5c32955d7286ebff41935a8d8f459566a89516e030bc1839dafc6d5da",
+    "restored_and_verified": true
+  },
+  "scope": "Nationwide pharmacies and lumber import/distribution only; map API still uses earlier 50-row sample",
+  "containers_start_times_and_restart_counts_unchanged": true,
+  "all_existing_containers_running": true,
+  "container_snapshots": [
+    "/chart-api 2026-06-15T09:31:04.544815171Z 0",
+    "/chart-nginx 2026-06-15T09:31:04.480667715Z 0",
+    "/chart-redis 2026-06-15T09:31:04.374777841Z 0",
+    "/permit-map-postgres 2026-11-03T07:56:16.436423957Z 0"
+  ],
+  "nginx_http_status": "301",
+  "tests": {
+    "test": {
+      "failures": 0,
+      "tests": 55
+    },
+    "testNationalPostgres": {
+      "failures": 0,
+      "tests": 9
+    }
+  },
+  "temporary_databases_removed": [
+    "permit_map_verify_20261104_national",
+    "permit_map_verify_20261104_sql",
+    "permit_map_verify_20261104_restore"
+  ]
+}
