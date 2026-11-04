@@ -1,0 +1,27 @@
+{
+  "verified_on": "2026-11-04",
+  "database": "isolated local H2 2.4.240",
+  "database_file": "data/national-import-db.mv.db",
+  "remote_postgresql_modified": false,
+  "java_tests": 52,
+  "java_test_failures": 0,
+  "boot_jar_built": true,
+  "categories": [
+    {"slug": "pharmacies", "permits": 70770},
+    {"slug": "lumber_import_distribution", "permits": 3444}
+  ],
+  "permit_versions": 74214,
+  "events": {"OPEN": 74146, "CLOSE": 38916},
+  "staged_rows_after_completion": 0,
+  "runs": [
+    {"id": "765844af-1dcd-45e4-b225-15f61d486c3d", "slug": "pharmacies", "status": "COMPLETED", "rows": 70770, "inserted": 70770, "updated": 0, "unchanged": 0},
+    {"id": "588c56fb-848b-4444-b3e8-c2d3141ca0ce", "slug": "pharmacies", "status": "COMPLETED", "rows": 70770, "inserted": 0, "updated": 0, "unchanged": 70770},
+    {"id": "0857c0f5-2f75-4d3b-ac1c-f5b639d4a29f", "slug": "lumber_import_distribution", "status": "COMPLETED", "rows": 3444, "inserted": 3444, "updated": 0, "unchanged": 0}
+  ],
+  "limits": [
+    "PostgreSQL engine validation pending.",
+    "Existing business API and map still use the earlier 50-row sample.",
+    "No PostGIS geometry or national coordinate conversion is implemented in this import.",
+    "Events are source-date proxies, not verified actual shop-opening/closing instants."
+  ]
+}

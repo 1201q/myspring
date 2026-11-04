@@ -1,0 +1,20 @@
+[
+  {
+    "slug": "pharmacies",
+    "preview_url": "https://sample.localdata.go.kr/public/call/pharmacies/info?pageNo=1&numOfRows=10",
+    "preview_total_count": 70770,
+    "csv_rows": 70770,
+    "matches": true,
+    "csv_sha256": "c74b5eaebd2292c4102b13c3ce5f2bd54cdbe9b58e0bd1a4f69ec5980b0fca53",
+    "observed_at": "2026-11-04T10:02:41.611666+00:00"
+  },
+  {
+    "slug": "lumber_import_distribution",
+    "preview_url": "https://sample.localdata.go.kr/public/call/lumber_import_distribution/info?pageNo=1&numOfRows=10",
+    "preview_total_count": 3444,
+    "csv_rows": 3444,
+    "matches": true,
+    "csv_sha256": "827ecf26d4d9b41bfce1dd18ec1e849708524baa6076f83ce477d656ef290dcb",
+    "observed_at": "2026-11-04T10:02:41.817267+00:00"
+  }
+]

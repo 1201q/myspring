@@ -26,6 +26,7 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.locationtech.proj4j:proj4j:1.4.3'
+	implementation 'org.apache.commons:commons-csv:1.14.1'
 	implementation 'org.springframework.boot:spring-boot-starter-flyway'
 	runtimeOnly 'org.flywaydb:flyway-database-postgresql'
 	runtimeOnly 'com.h2database:h2'
@@ -50,4 +51,14 @@ tasks.register('importRestaurantSample', JavaExec) {
 	classpath = sourceSets.main.runtimeClasspath
 	mainClass = 'com.example.permitmap.ingestion.RestaurantSampleImport'
 	args layout.projectDirectory.file('docs/data-samples/guro-restaurants.sample.json').asFile.absolutePath
+}
+
+tasks.register('importNationalPermits', JavaExec) {
+	group = 'application'
+	description = 'Import one official nationwide CSV into an isolated local H2 database.'
+	classpath = sourceSets.main.runtimeClasspath
+	mainClass = 'com.example.permitmap.ingestion.national.NationalPermitImport'
+	['category', 'input', 'snapshot', 'resume'].each { key ->
+		if (project.hasProperty(key)) args "--${key}=${project.property(key)}"
+	}
 }

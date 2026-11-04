@@ -43,3 +43,7 @@ out/
 
 
 /data/
+
+### Python data collection helpers ###
+__pycache__/
+*.py[cod]

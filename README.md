@@ -149,6 +149,14 @@ GET /api/v1/businesses/{id}
 날짜 기반 추정 상태와 EPSG:5174 원천 좌표의 의미는 [인허가 조회 API 안내](docs/business-api.md)를 참고하세요.
 API는 지도용 WGS84 longitude/latitude도 제공합니다. 변환 기준과 한계는 [좌표 변환 안내](docs/coordinate-conversion.md)에 정리했습니다.
 
+전국 복수 업종으로 확장하기 위한 일반음식점·미용업·노래연습장업 전체 CSV 확보 및 품질 검사 결과는 [전국 데이터 원천 검증](docs/national-data-source-audit.md)에 정리했습니다. 전체 원본은 Git에서 제외되는 `data/national-audit/`에 있고, 아직 DB에는 적재하지 않았습니다.
+
+공식 현재 메뉴의 **인허가 195종과 기타/보조 정보 13종**은 [전체 업종 카탈로그](docs/national-category-catalog.md)에 정리했습니다. 카탈로그 생성은 메타데이터 조회이며 전체 업종 CSV를 다운로드하거나 DB에 적재하는 작업은 아닙니다.
+
+카탈로그에서 업종명/서비스 ID를 선택하는 [공통 수집기](docs/national-permit-collector.md)를 추가했습니다. 예: `python scripts/collect-national-permits.py --category 약국 --download`. 기존 CSV는 재사용하고 실행 기록·품질 보고서를 생성합니다. 현재 전량 검사 기록은 초기 3종에 약국·목재수입유통업을 더한 5종입니다.
+
+Java/Spring 기반 [공통 DB·청크 적재](docs/national-permit-db-import.md)도 추가했습니다. 로컬 전용 H2에 전국 약국·목재수입유통업 74,214건을 적재하고 반복 실행·버전 보존·실패 복구를 확인했습니다. 원격 PostgreSQL 적재와 기존 지도 API 연결은 후속 단계입니다.
+
 ## 지도 화면 실행
 
 `frontend`에 Vite + React + TypeScript + MapLibre 기반 지도가 있습니다.

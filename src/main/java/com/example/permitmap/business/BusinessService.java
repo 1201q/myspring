@@ -32,17 +32,17 @@ public class BusinessService {
         var pageable = PageRequest.of(page, size, Sort.by("id").ascending());
         var result = date == null ? repository.findAll(pageable) : repository.findActiveAt(date, pageable);
         return new BusinessPageResponse(result.map(this::toResponse).getContent(),
-            result.getNumber(), result.getSize(), result.getTotalElements(), result.getTotalPages(),
-            date, date == null ? "SOURCE_SNAPSHOT" : "DATE_INFERRED");
+                result.getNumber(), result.getSize(), result.getTotalElements(), result.getTotalPages(),
+                date, date == null ? "SOURCE_SNAPSHOT" : "DATE_INFERRED");
     }
 
     public BusinessResponse findById(Long id) {
         return repository.findById(id).map(this::toResponse)
-            .orElseThrow(BusinessNotFoundException::new);
+                .orElseThrow(BusinessNotFoundException::new);
     }
 
     private BusinessResponse toResponse(PermitBusiness business) {
         return BusinessResponse.from(business, coordinateConverter.convert(
-            business.getSourceX(), business.getSourceY(), business.getSourceCrs()));
+                business.getSourceX(), business.getSourceY(), business.getSourceCrs()));
     }
 }
