@@ -79,7 +79,7 @@ public class PermitBusiness {
     public PermitBusiness(String sourceDataset, RowResult row, String sourceJson, String issuesJson) {
         this.sourceDataset = sourceDataset;
         this.managementNumber = row.source().managementNumber().strip();
-        refresh(row, sourceJson, issuesJson);
+        applyRow(row, sourceJson, issuesJson);
     }
 
     public boolean hasSameContent(String sourceJson, String issuesJson) {
@@ -87,6 +87,10 @@ public class PermitBusiness {
     }
 
     public void refresh(RowResult row, String sourceJson, String issuesJson) {
+        applyRow(row, sourceJson, issuesJson);
+    }
+
+    private void applyRow(RowResult row, String sourceJson, String issuesJson) {
         this.municipalityCode = row.source().municipalityCode().strip();
         this.name = row.source().businessName().strip();
         this.lotAddress = row.source().lotAddress();

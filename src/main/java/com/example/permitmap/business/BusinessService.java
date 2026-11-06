@@ -2,6 +2,7 @@ package com.example.permitmap.business;
 
 import java.time.LocalDate;
 
+import org.springframework.data.core.TypedPropertyPath;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,8 @@ public class BusinessService {
         if (page < 0 || size < 1 || size > 100) {
             throw new InvalidBusinessQueryException();
         }
-        var pageable = PageRequest.of(page, size, Sort.by("id").ascending());
+        var pageable = PageRequest.of(page, size,
+                Sort.by(TypedPropertyPath.path(PermitBusiness::getId)).ascending());
         var result = date == null ? repository.findAll(pageable) : repository.findActiveAt(date, pageable);
         return new BusinessPageResponse(result.map(this::toResponse).getContent(),
                 result.getNumber(), result.getSize(), result.getTotalElements(), result.getTotalPages(),

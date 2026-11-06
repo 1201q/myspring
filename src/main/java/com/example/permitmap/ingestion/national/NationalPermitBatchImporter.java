@@ -58,10 +58,10 @@ public class NationalPermitBatchImporter {
                         category.declaredCrs() + "|" + category.closeDateSupported()).getBytes(StandardCharsets.UTF_8));
         var metadata = JsonMapper.builder().build().readTree(input
                 .resolveSibling(input.getFileName().toString().replaceFirst("\\.csv$", ".download.json")).toFile());
-        var expectedSha = metadata.path("sha256").asText("");
+        var expectedSha = metadata.path("sha256").asString("");
         if (expectedSha.isEmpty())
             expectedSha = category.auditedCsvSha256();
-        if (!metadata.path("url").asText()
+        if (!metadata.path("url").asString()
                 .equals("https://file.localdata.go.kr/file/download/" + category.id() + "/info") ||
                 metadata.path("bytes").asLong() != Files.size(input) ||
                 !sha.equals(expectedSha))

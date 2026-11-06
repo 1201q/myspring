@@ -2,7 +2,6 @@ package com.example.permitmap.ingestion.national;
 
 import java.time.Duration;
 import java.time.OffsetDateTime;
-import java.time.ZoneOffset;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.UUID;
@@ -42,7 +41,6 @@ public class NationalCurrentInitialPublisher {
         try {
             tx.executeWithoutResult(status -> initialize(run));
             initialized = true;
-            String category = jdbc.queryForObject("SELECT category_id FROM permit_import_run WHERE id=?",String.class,run);
             long rows = jdbc.queryForObject("SELECT source_rows FROM permit_current_publication WHERE run_id=?",Long.class,run);
             long lower = jdbc.queryForObject("SELECT published_rows FROM permit_current_publication WHERE run_id=?",Long.class,run);
             String selection = Arrays.stream(FIELDS.split(",")).map(c -> "s." + c).collect(Collectors.joining(","));

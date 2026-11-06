@@ -26,10 +26,10 @@ public class MapQueryService {
             var result=new ArrayList<Category>();
             var ids=new HashSet<String>();
             for(var entry:entries) {
-                String id=entry.path("id").asText();
+                String id=entry.path("id").asString();
                 if(entry.path("sourceCrs").asInt()!=5174 || !id.matches("[a-z_]+") || !ids.add(id))
                     throw new IllegalStateException("Invalid verified map category");
-                result.add(new Category(id,entry.path("name").asText()));
+                result.add(new Category(id,entry.path("name").asString()));
             }
             if(result.isEmpty()) throw new IllegalStateException("Map categories are missing");
             return List.copyOf(result);
