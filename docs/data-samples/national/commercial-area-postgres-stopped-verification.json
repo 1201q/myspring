@@ -1,0 +1,30 @@
+{
+  "counts": {
+    "bakeries": 70939,
+    "barber_shops": 65973,
+    "beauty_salons": 461011,
+    "billiard_halls": 58887,
+    "clinics": 126009,
+    "fitness_centers": 28081,
+    "hospitals": 8320,
+    "karaoke_rooms": 64421,
+    "laundries": 67456,
+    "lodgings": 58980,
+    "lumber_import_distribution": 3444,
+    "optical_shops": 18810,
+    "pharmacies": 70770,
+    "public_baths": 17895,
+    "rest_cafes": 652807
+  },
+  "latest_run": {
+    "id": "798a2c62-1f68-4216-926f-ec6385fdaabd",
+    "category_id": "general_restaurants",
+    "status": "FAILED",
+    "processed_rows": 2309440
+  },
+  "stage_endpoints": 2,
+  "held_locks": 0,
+  "status": "PARTIAL_14_OF_15_GENERAL_RESTAURANTS_CANCELED",
+  "target_completed_rows": 1770359,
+  "regression_tests_passed": 55
+}

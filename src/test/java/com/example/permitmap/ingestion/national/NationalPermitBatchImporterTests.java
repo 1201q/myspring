@@ -39,6 +39,11 @@ class NationalPermitBatchImporterTests {
                 .matches("permit_map_verify_[a-z0-9_]+"))
             throw new IllegalStateException("Actual PostgreSQL database is not disposable");
         jdbc.update("UPDATE permit_import_lock SET owner_run=NULL");
+        if (url.startsWith("jdbc:postgresql:")) {
+            // All tables are explicitly listed and the disposable DB was verified above.
+            jdbc.execute("TRUNCATE permit_event,national_permit,national_permit_version,permit_import_stage,permit_import_run,permit_category RESTART IDENTITY");
+            return;
+        }
         jdbc.update("DELETE FROM permit_import_stage");
         jdbc.update("DELETE FROM permit_event");
         jdbc.update("UPDATE national_permit SET current_version_id=NULL");
@@ -58,7 +63,11 @@ class NationalPermitBatchImporterTests {
         var file = csv(pharmacy, List.of(row("A", "3000000", "2020-01-01", "2024-01-01"),
                 row("A", "3010000", "2020-01-01", "")));
         var first = importer.importCsv(pharmacy, file, snapshot, null, 1);
+        assertEquals(2L, jdbc.queryForObject("SELECT COUNT(*) FROM national_permit WHERE last_seen_run_id=?",
+                Long.class, first.runId()));
         var again = importer.importCsv(pharmacy, file, snapshot, null, 1);
+        assertEquals(2L, jdbc.queryForObject("SELECT COUNT(*) FROM national_permit WHERE last_seen_run_id=?",
+                Long.class, again.runId()));
         assertEquals(2, first.inserted());
         assertEquals(2, again.unchanged());
         assertEquals(2, count("national_permit"));
@@ -179,6 +188,61 @@ class NationalPermitBatchImporterTests {
 
     long count(String table) {
         return jdbc.queryForObject("SELECT COUNT(*) FROM " + table, Long.class);
+    }
+
+    @Test
+    void failure_in_second_publication_batch_rolls_back_first_batch_and_preserves_stage() throws Exception {
+        var records = new java.util.ArrayList<Map<String, String>>();
+        for (int i = 0; i < 5001; i++) records.add(row("boundary-" + i, "3000000", "2020-01-01", ""));
+        records.get(5000).put("BPLC_NM", "BLOCK_LATER");
+        var input = csv(pharmacy, records);
+        jdbc.execute("ALTER TABLE national_permit_version ADD CONSTRAINT test_later_batch CHECK(name <> 'BLOCK_LATER')");
+        try {
+            assertThrows(IllegalStateException.class, () -> importer.importCsv(pharmacy, input, snapshot, null, 5000));
+            assertEquals(0, count("national_permit"));
+            assertEquals(0, count("national_permit_version"));
+            assertEquals(0, count("permit_event"));
+            assertEquals(5001, count("permit_import_stage"));
+        } finally {
+            jdbc.execute("ALTER TABLE national_permit_version DROP CONSTRAINT test_later_batch");
+        }
+        var run = jdbc.queryForObject("SELECT id FROM permit_import_run WHERE status='FAILED'", String.class);
+        assertEquals(5001, importer.importCsv(pharmacy, input, snapshot, run, 5000).inserted());
+        assertEquals(5001, importer.importCsv(pharmacy, input, snapshot, null, 5000).unchanged());
+        assertEquals(0, count("permit_import_stage"));
+    }
+
+    @Test
+    @org.junit.jupiter.api.condition.EnabledIfSystemProperty(named = "national.import.performance", matches = "true")
+    @org.junit.jupiter.api.Timeout(180)
+    void postgres_bounded_import_and_repeat_at_measured_scale() throws Exception {
+        assertTrue(jdbc.queryForObject("SELECT current_database()", String.class).startsWith("permit_map_verify_"));
+        int size = Integer.getInteger("national.import.performance.rows", 100000);
+        assertTrue(size > 0 && size <= 100000);
+        var records = new java.util.ArrayList<Map<String, String>>();
+        String name = "성능검증자료".repeat(40);
+        for (int i = 0; i < size; i++) {
+            var record = row("perf-" + i, "3000000", "2020-01-01", "2024-01-01");
+            record.put("BPLC_NM", name);
+            records.add(record);
+        }
+        var input = csv(pharmacy, records);
+        long started = System.nanoTime();
+        var first = importer.importCsv(pharmacy, input, snapshot, null, 5000);
+        long firstMs = (System.nanoTime() - started) / 1_000_000;
+        started = System.nanoTime();
+        var repeat = importer.importCsv(pharmacy, input, snapshot, null, 5000);
+        long repeatMs = (System.nanoTime() - started) / 1_000_000;
+        assertEquals(size, first.inserted());
+        assertEquals(0, repeat.inserted());
+        assertEquals(0, repeat.updated());
+        assertEquals(size, repeat.unchanged());
+        assertEquals(size, count("national_permit"));
+        assertEquals(size, count("national_permit_version"));
+        assertEquals(size * 2L, count("permit_event"));
+        assertEquals(0, count("permit_import_stage"));
+        assertEquals((long) size, jdbc.queryForObject("SELECT COUNT(*) FROM national_permit WHERE last_seen_run_id=?", Long.class, repeat.runId()));
+        System.out.println("NATIONAL_PERFORMANCE rows=" + size + " first_ms=" + firstMs + " repeat_ms=" + repeatMs);
     }
 
     HashMap<String, String> row(String id, String org, String opened, String closed) {

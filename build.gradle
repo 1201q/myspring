@@ -85,5 +85,12 @@ tasks.register('testNationalPostgres', Test) {
 		systemProperty 'spring.datasource.username', secrets.getProperty('DB_USERNAME', 'permit_map_app')
 		systemProperty 'spring.datasource.driver-class-name', 'org.postgresql.Driver'
 		systemProperty 'spring.datasource.hikari.maximum-pool-size', '3'
+		systemProperty 'spring.datasource.hikari.data-source-properties.reWriteBatchedInserts', 'true'
+		if (project.hasProperty('performanceRows')) {
+			def rows = project.property('performanceRows').toString().toInteger()
+			if (rows < 1 || rows > 100000) throw new GradleException('Performance verification rows must be 1..100000')
+			systemProperty 'national.import.performance', 'true'
+			systemProperty 'national.import.performance.rows', rows.toString()
+		}
 	}
 }

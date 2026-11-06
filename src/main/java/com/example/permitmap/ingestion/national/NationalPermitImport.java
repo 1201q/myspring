@@ -28,7 +28,7 @@ public class NationalPermitImport {
         try (var context = app.run(databaseArguments(values))) {
             var result = context.getBean(NationalPermitBatchImporter.class).importCsv(category,
                     Path.of(values.get("input")),
-                    LocalDate.parse(values.get("snapshot")), values.get("resume"), 500);
+                    LocalDate.parse(values.get("snapshot")), values.get("resume"), 5000);
             System.out.println("NATIONAL_IMPORT " + result);
         }
     }
@@ -50,6 +50,8 @@ public class NationalPermitImport {
                 "--spring.datasource.url=jdbc:postgresql://127.0.0.1:15432/" + database,
                 "--spring.datasource.driver-class-name=org.postgresql.Driver",
                 "--spring.datasource.hikari.maximum-pool-size=3", "--spring.datasource.hikari.minimum-idle=1",
+                "--spring.datasource.hikari.data-source-properties.reWriteBatchedInserts=true",
+                "--spring.datasource.hikari.connection-init-sql=SET statement_timeout = '120s'",
                 "--spring.jpa.show-sql=false"};
     }
 }

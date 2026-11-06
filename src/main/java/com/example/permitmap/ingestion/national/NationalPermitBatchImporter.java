@@ -40,6 +40,7 @@ public class NationalPermitBatchImporter {
         this.jdbc = jdbc;
         this.tx = new TransactionTemplate(manager);
         this.tx.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+        this.tx.setTimeout(300);
     }
 
     public record Result(String runId, long rows, long inserted, long updated, long unchanged) {
@@ -110,11 +111,17 @@ public class NationalPermitBatchImporter {
             return 0L;
         }));
         try {
+            long stageStarted = System.nanoTime();
             stage(category, input, snapshot, run, checkpoint, chunkSize);
+            long stageMs = (System.nanoTime() - stageStarted) / 1_000_000;
             if (!fingerprint(input).equals(sha))
                 throw new IllegalStateException("Source file changed during import");
             jdbc.update("UPDATE permit_import_run SET status='PUBLISHING' WHERE id=?", run);
-            return Objects.requireNonNull(tx.execute(status -> publish(category, run, snapshot)));
+            long publishStarted = System.nanoTime();
+            var result = Objects.requireNonNull(tx.execute(status -> publish(category, run, snapshot)));
+            System.out.println("NATIONAL_IMPORT_TIMING run=" + run + " stage_ms=" + stageMs
+                    + " publish_ms=" + (System.nanoTime() - publishStarted) / 1_000_000);
+            return result;
         } catch (IOException | RuntimeException exception) {
             tx.executeWithoutResult(status -> jdbc.update(
                     "UPDATE permit_import_run SET status='FAILED',finished_at=?,error_summary=? WHERE id=?",
@@ -187,64 +194,114 @@ public class NationalPermitBatchImporter {
                     batch);
             jdbc.update("UPDATE permit_import_run SET processed_rows=? WHERE id=?", checkpoint, run);
         });
+        if (checkpoint % 50000 == 0)
+            System.out.println("NATIONAL_IMPORT_STAGE run=" + run + " processed=" + checkpoint);
     }
 
     private Result publish(NationalCategory category, String run, LocalDate snapshot) {
         boolean postgres = Boolean.TRUE.equals(jdbc.execute((org.springframework.jdbc.core.ConnectionCallback<Boolean>)
                 connection -> connection.getMetaData().getDatabaseProductName().equals("PostgreSQL")));
-        // Autovacuum cannot analyze rows inserted by this still-uncommitted publication.
-        // Empty/stale cardinalities otherwise cause quadratic joins on the first large import.
-        refreshStatistics(postgres, "permit_import_stage");
-        refreshStatistics(postgres, "national_permit");
-        refreshStatistics(postgres, "national_permit_version");
+        if (postgres) {
+            jdbc.execute("SET LOCAL statement_timeout='30s'");
+            jdbc.execute("SET LOCAL lock_timeout='5s'");
+            // Each source range is small: use indexed target lookups, not a full target scan per batch.
+            jdbc.execute("SET LOCAL enable_hashjoin=off");
+            jdbc.execute("SET LOCAL enable_mergejoin=off");
+            jdbc.execute("SET LOCAL enable_seqscan=off");
+        }
         long rows = jdbc.queryForObject("SELECT processed_rows FROM permit_import_run WHERE id=?", Long.class, run);
-        long staged = jdbc.queryForObject("SELECT COUNT(*) FROM permit_import_stage WHERE run_id=?", Long.class, run);
-        if (staged != rows)
-            throw new IllegalStateException("Staged row count does not match checkpoint");
-        jdbc.update(
-                "INSERT INTO national_permit(category_id,municipality_code,management_number,created_run_id,last_seen_run_id) "
-                        +
-                        "SELECT ?,s.municipality_code,s.management_number,?,? FROM permit_import_stage s WHERE s.run_id=? AND NOT EXISTS "
-                        +
-                        "(SELECT 1 FROM national_permit p WHERE p.category_id=? AND p.municipality_code=s.municipality_code AND p.management_number=s.management_number)",
-                category.id(), run, run, run, category.id());
-        long inserted = jdbc.queryForObject("SELECT COUNT(*) FROM national_permit WHERE created_run_id=?", Long.class,
-                run);
-        refreshStatistics(postgres, "national_permit");
+        long inserted = 0, changed = 0, seen = 0;
+        long deadline = System.nanoTime() + java.time.Duration.ofMinutes(5).toNanos();
         var selectColumns = java.util.Arrays.stream(COLUMNS.split(",")).map(column -> "s." + column)
                 .collect(java.util.stream.Collectors.joining(","));
-        jdbc.update("INSERT INTO national_permit_version(permit_id,run_id,observed_at,source_as_of," + COLUMNS + ") " +
+        for (long lower = 0; lower < rows; lower += 5000) {
+            if (System.nanoTime() > deadline) throw new IllegalStateException("Publication exceeded five-minute budget");
+            long upper = Math.min(rows, lower + 5000);
+            long batchRows = jdbc.queryForObject("SELECT COUNT(*) FROM permit_import_stage WHERE run_id=? AND row_no>? AND row_no<=?",
+                    Long.class, run, lower, upper);
+            if (batchRows != upper - lower) throw new IllegalStateException("Staged row count does not match checkpoint");
+            seen += batchRows;
+            System.out.println("NATIONAL_IMPORT_PHASE run=" + run + " phase=PERMITS range=" + lower + ".." + upper);
+            long batchInserted = jdbc.update(
+                "INSERT INTO national_permit(category_id,municipality_code,management_number,created_run_id,last_seen_run_id) "
+                        +
+                        "SELECT ?,s.municipality_code,s.management_number,?,? FROM permit_import_stage s WHERE s.run_id=? AND s.row_no>? AND s.row_no<=? AND NOT EXISTS "
+                        +
+                        "(SELECT 1 FROM national_permit p WHERE p.category_id=? AND p.municipality_code=s.municipality_code AND p.management_number=s.management_number)",
+                category.id(), run, run, run, lower, upper, category.id());
+            inserted += batchInserted;
+            long versionFloor = jdbc.queryForObject("SELECT COALESCE(MAX(id),0) FROM national_permit_version", Long.class);
+            System.out.println("NATIONAL_IMPORT_PHASE run=" + run + " phase=VERSIONS range=" + lower + ".." + upper);
+            String permitLookup = postgres
+                    ? "JOIN LATERAL (SELECT lookup.id,lookup.current_version_id FROM national_permit lookup WHERE lookup.category_id=? AND lookup.municipality_code=s.municipality_code AND lookup.management_number=s.management_number OFFSET 0) p ON TRUE "
+                    : "JOIN national_permit p ON p.category_id=? AND p.municipality_code=s.municipality_code AND p.management_number=s.management_number ";
+            changed += jdbc.update("INSERT INTO national_permit_version(permit_id,run_id,observed_at,source_as_of," + COLUMNS + ") " +
                 "SELECT p.id,?,CURRENT_TIMESTAMP,?," + selectColumns
-                + " FROM permit_import_stage s JOIN national_permit p " +
-                "ON p.category_id=? AND p.municipality_code=s.municipality_code AND p.management_number=s.management_number "
-                +
-                "LEFT JOIN national_permit_version v ON v.id=p.current_version_id WHERE s.run_id=? AND (v.id IS NULL OR v.content_hash<>s.content_hash)",
-                run, snapshot, category.id(), run);
-        long changed = jdbc.queryForObject("SELECT COUNT(*) FROM national_permit_version WHERE run_id=?", Long.class,
-                run);
-        refreshStatistics(postgres, "national_permit_version");
-        // Join once instead of executing a correlated MAX subquery per permit.
-        jdbc.update("MERGE INTO national_permit p USING " +
-                "(SELECT permit_id,id FROM national_permit_version WHERE run_id=?) v " +
-                "ON p.id=v.permit_id WHEN MATCHED THEN UPDATE SET current_version_id=v.id", run);
-        jdbc.update("MERGE INTO national_permit p USING " +
-                "(SELECT municipality_code,management_number FROM permit_import_stage WHERE run_id=?) s " +
-                "ON p.category_id=? AND p.municipality_code=s.municipality_code AND p.management_number=s.management_number " +
-                "WHEN MATCHED THEN UPDATE SET last_seen_run_id=?", run, category.id(), run);
-        for (var event : Map.of("OPEN", "permitted_on", "CLOSE", "closed_on").entrySet())
+                + " FROM permit_import_stage s " + permitLookup +
+                "LEFT JOIN national_permit_version v ON v.id=p.current_version_id WHERE s.run_id=? AND s.row_no>? AND s.row_no<=? AND (v.id IS NULL OR v.content_hash<>s.content_hash)",
+                run, snapshot, category.id(), run, lower, upper);
+            long versionCeiling = jdbc.queryForObject("SELECT COALESCE(MAX(id),0) FROM national_permit_version", Long.class);
+            System.out.println("NATIONAL_IMPORT_PHASE run=" + run + " phase=CURRENT_VERSION_LINK range=" + lower + ".." + upper);
+            if (postgres) {
+                jdbc.queryForList("SELECT set_config('permitmap.run',?,true),set_config('permitmap.category',?,true),set_config('permitmap.lower',?,true),set_config('permitmap.upper',?,true),set_config('permitmap.floor',?,true),set_config('permitmap.ceiling',?,true)",
+                        run, category.id(), Long.toString(lower), Long.toString(upper), Long.toString(versionFloor), Long.toString(versionCeiling));
+                jdbc.execute("""
+                    DO $permit_link$
+                    DECLARE item record;
+                    BEGIN
+                      FOR item IN SELECT id,permit_id FROM national_permit_version
+                        WHERE run_id=current_setting('permitmap.run')
+                          AND id>current_setting('permitmap.floor')::bigint
+                          AND id<=current_setting('permitmap.ceiling')::bigint ORDER BY id
+                      LOOP
+                        UPDATE national_permit p SET current_version_id=item.id WHERE p.id=item.permit_id;
+                      END LOOP;
+                    END $permit_link$
+                    """);
+            } else {
+                var links = jdbc.query("SELECT id,permit_id FROM national_permit_version WHERE run_id=? AND id>? AND id<=? ORDER BY id",
+                    (rs, n) -> new Object[]{rs.getLong("id"), rs.getLong("permit_id")}, run, versionFloor, versionCeiling);
+                jdbc.batchUpdate("UPDATE national_permit SET current_version_id=? WHERE id=?", links);
+            }
+        // New permits already have last_seen_run_id from their INSERT above.
+            if (batchRows > batchInserted) {
+                if (postgres) {
+                    jdbc.execute("""
+                        DO $permit_observe$
+                        DECLARE item record;
+                        BEGIN
+                          FOR item IN SELECT municipality_code,management_number FROM permit_import_stage
+                            WHERE run_id=current_setting('permitmap.run')
+                              AND row_no>current_setting('permitmap.lower')::bigint
+                              AND row_no<=current_setting('permitmap.upper')::bigint
+                          LOOP
+                            UPDATE national_permit p SET last_seen_run_id=current_setting('permitmap.run')
+                              WHERE p.category_id=current_setting('permitmap.category')
+                                AND p.municipality_code=item.municipality_code AND p.management_number=item.management_number;
+                          END LOOP;
+                        END $permit_observe$
+                        """);
+                } else {
+                var observed = jdbc.query("SELECT (SELECT p.id FROM national_permit p WHERE p.category_id=? AND p.municipality_code=s.municipality_code AND p.management_number=s.management_number) AS permit_id FROM permit_import_stage s WHERE s.run_id=? AND s.row_no>? AND s.row_no<=?",
+                        (rs, n) -> new Object[]{run, rs.getLong("permit_id")}, category.id(), run, lower, upper);
+                jdbc.batchUpdate("UPDATE national_permit SET last_seen_run_id=? WHERE id=?", observed);
+                }
+            }
+            for (var event : Map.of("OPEN", "permitted_on", "CLOSE", "closed_on").entrySet())
             jdbc.update("INSERT INTO permit_event(permit_id,version_id,event_type,event_date,date_basis) " +
-                    "SELECT permit_id,id,?," + event.getValue() + ",? FROM national_permit_version WHERE run_id=? AND "
+                    "SELECT permit_id,id,?," + event.getValue() + ",? FROM national_permit_version WHERE run_id=? AND id>? AND id<=? AND "
                     + event.getValue() + " IS NOT NULL",
-                    event.getKey(), event.getKey().equals("OPEN") ? "SOURCE_PERMIT_DATE" : "SOURCE_CLOSE_DATE", run);
+                    event.getKey(), event.getKey().equals("OPEN") ? "SOURCE_PERMIT_DATE" : "SOURCE_CLOSE_DATE", run, versionFloor, versionCeiling);
+            jdbc.update("DELETE FROM permit_import_stage WHERE run_id=? AND row_no>? AND row_no<=?", run, lower, upper);
+            System.out.println("NATIONAL_IMPORT_PUBLISHED_BATCH run=" + run + " processed=" + upper + "/" + rows);
+        }
+        if (System.nanoTime() > deadline) throw new IllegalStateException("Publication exceeded five-minute budget");
+        if (seen != rows || jdbc.queryForObject("SELECT COUNT(*) FROM permit_import_stage WHERE run_id=?", Long.class, run) != 0)
+            throw new IllegalStateException("Staged row count does not match checkpoint");
         jdbc.update(
                 "UPDATE permit_import_run SET status='COMPLETED',finished_at=?,inserted_count=?,updated_count=?,unchanged_count=? WHERE id=?",
                 OffsetDateTime.now(ZoneOffset.UTC), inserted, changed - inserted, rows - changed, run);
-        jdbc.update("DELETE FROM permit_import_stage WHERE run_id=?", run);
         return new Result(run, rows, inserted, changed - inserted, rows - changed);
-    }
-
-    private void refreshStatistics(boolean postgres, String table) {
-        if (postgres) jdbc.execute("ANALYZE " + table);
     }
 
     static String fingerprint(Path input) throws IOException {
