@@ -39,6 +39,13 @@ const broad = await tile(6, 54, 25);
 assert.ok(broad.length > 0 && broad.every(f => !f.properties.id));
 const empty = await tile(13, 0, 0);
 assert.equal(empty.length, 0);
+// Nationwide regression: initial checks must cover cold regions outside Seoul.
+for (const [name, lng, lat] of [['Busan', 129.0756, 35.1796], ['Jeju', 126.5312, 33.4996], ['Daejeon', 127.3845, 36.3504]]) {
+  const z = 13, n = 2 ** z;
+  const x = Math.floor((lng + 180) / 360 * n);
+  const y = Math.floor((1 - Math.asinh(Math.tan(lat * Math.PI / 180)) / Math.PI) / 2 * n);
+  assert.ok((await tile(z, x, y)).length > 0, `${name} must have map features`);
+}
 for (const path of ['5/0/0', '17/0/0', '6/64/0']) {
   assert.equal((await fetch(`${base}/tiles/${path}.pbf`)).status, 400);
 }
