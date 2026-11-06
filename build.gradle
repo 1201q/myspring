@@ -94,3 +94,20 @@ tasks.register('testNationalPostgres', Test) {
 		}
 	}
 }
+
+tasks.register('migrateNationalCurrent', JavaExec) {
+    group = 'application'
+    description = 'Copy existing national records into separate current/history tables; retain legacy and staging.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.example.permitmap.ingestion.national.NationalCurrentMigration'
+    if (project.hasProperty('database')) args project.property('database').toString()
+}
+
+tasks.register('publishStagedNationalCurrent', JavaExec) {
+    group = 'application'
+    description = 'Recover a fully staged failed first import into current information without CSV rereading.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.example.permitmap.ingestion.national.NationalCurrentInitialPublisher'
+    if (project.hasProperty('database') && project.hasProperty('run'))
+        args project.property('database').toString(), project.property('run').toString()
+}

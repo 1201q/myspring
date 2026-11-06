@@ -74,6 +74,8 @@ public class NationalPermitBatchImporter {
                     "UPDATE permit_import_lock SET owner_run=? WHERE id=1 AND (owner_run IS NULL OR owner_run=?)", run,
                     run) != 1)
                 throw new IllegalStateException("Another import owns the lock; resume that run first");
+            if (!"PENDING".equals(jdbc.queryForObject("SELECT status FROM national_current_migration WHERE id=1", String.class)))
+                throw new IllegalStateException("Current-table migration has started; legacy importer is disabled");
             var newer = jdbc.queryForObject(
                     "SELECT COUNT(*) FROM permit_import_run WHERE category_id=? AND status='COMPLETED' AND source_as_of>?",
                     Long.class, category.id(), snapshot);

@@ -1,0 +1,36 @@
+﻿{
+    "verified_at":  "2026-11-06T02:43:05.566908+00:00",
+    "run":  {
+                "id":  "798a2c62-1f68-4216-926f-ec6385fdaabd",
+                "category_id":  "general_restaurants",
+                "status":  "COMPLETED",
+                "processed_rows":  2309440,
+                "inserted_count":  2309440,
+                "updated_count":  0,
+                "unchanged_count":  0,
+                "source_sha256":  "06634a6fc9e4cd626642b179441524c3728df5e7ad5a71ebd5e492f8850996b0",
+                "source_as_of":  "2026-11-04"
+            },
+    "publication":  {
+                        "run_id":  "798a2c62-1f68-4216-926f-ec6385fdaabd",
+                        "source_rows":  2309440,
+                        "published_rows":  2309440,
+                        "started_at":  "2026-11-06T02:26:16.162192+00:00",
+                        "completed_at":  "2026-11-06T02:37:21.162207+00:00"
+                    },
+    "publication_seconds":  665.000015,
+    "actual_current_rows":  4083243,
+    "actual_post_migration_rows":  2309440,
+    "history_rows":  0,
+    "stage_first_row":  1,
+    "stage_last_row":  2309440,
+    "samples":  {
+                    "matched":  3,
+                    "all_fields_equal":  true
+                },
+    "held_lock":  null,
+    "restaurants_hash":  "091c254163263716134789b6e6e7dd07",
+    "sample_hash":  "b5749818db951081976a5caf17c75b5a",
+    "database_bytes":  11883550387,
+    "category_recount":  "Not repeated: grouped count exceeded time limit; verified primary-key total and post-migration range instead."
+}

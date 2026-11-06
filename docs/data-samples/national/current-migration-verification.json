@@ -1,0 +1,32 @@
+﻿{
+    "verified_at":  "2026-11-06T02:19:35.739728+00:00",
+    "migration":  {
+                      "id":  1,
+                      "current_checkpoint":  1773803,
+                      "history_checkpoint":  1773803,
+                      "status":  "COMPLETED"
+                  },
+    "categories":  {
+                       "bakeries":  70939,
+                       "barber_shops":  65973,
+                       "beauty_salons":  461011,
+                       "billiard_halls":  58887,
+                       "clinics":  126009,
+                       "fitness_centers":  28081,
+                       "hospitals":  8320,
+                       "karaoke_rooms":  64421,
+                       "laundries":  67456,
+                       "lodgings":  58980,
+                       "lumber_import_distribution":  3444,
+                       "optical_shops":  18810,
+                       "pharmacies":  70770,
+                       "public_baths":  17895,
+                       "rest_cafes":  652807
+                   },
+    "history_rows":  0,
+    "held_lock":  null,
+    "general_restaurant_stage_checkpoint":  2309440,
+    "restaurants_hash":  "091c254163263716134789b6e6e7dd07",
+    "sample_hash":  "b5749818db951081976a5caf17c75b5a",
+    "database_bytes":  9036150451
+}

@@ -24,6 +24,10 @@ class NationalPermitBatchImporterTests {
     NationalPermitBatchImporter importer;
     @Autowired
     JdbcTemplate jdbc;
+    @Autowired
+    NationalCurrentMigration currentMigration;
+    @Autowired
+    NationalCurrentInitialPublisher currentPublisher;
     @TempDir
     Path directory;
     final LocalDate snapshot = LocalDate.of(2025, 6, 1);
@@ -39,9 +43,13 @@ class NationalPermitBatchImporterTests {
                 .matches("permit_map_verify_[a-z0-9_]+"))
             throw new IllegalStateException("Actual PostgreSQL database is not disposable");
         jdbc.update("UPDATE permit_import_lock SET owner_run=NULL");
+        jdbc.update("DELETE FROM permit_current_publication");
+        jdbc.update("DELETE FROM national_permit_history");
+        jdbc.update("DELETE FROM national_permit_current");
+        jdbc.update("UPDATE national_current_migration SET status='PENDING',current_checkpoint=0,history_checkpoint=0");
         if (url.startsWith("jdbc:postgresql:")) {
             // All tables are explicitly listed and the disposable DB was verified above.
-            jdbc.execute("TRUNCATE permit_event,national_permit,national_permit_version,permit_import_stage,permit_import_run,permit_category RESTART IDENTITY");
+            jdbc.execute("TRUNCATE permit_current_publication,permit_event,national_permit,national_permit_version,permit_import_stage,permit_import_run,permit_category RESTART IDENTITY");
             return;
         }
         jdbc.update("DELETE FROM permit_import_stage");
@@ -56,6 +64,71 @@ class NationalPermitBatchImporterTests {
     static boolean disposableDatabaseUrl(String url) {
         return url != null && (url.startsWith("jdbc:h2:mem:") ||
                 url.matches("jdbc:postgresql://127\\.0\\.0\\.1:15432/permit_map_verify_[a-z0-9_]+"));
+    }
+
+    @Test
+    void current_initial_publisher_resumes_failed_batch_without_exposing_partial_category() {
+        currentMigration.migrate(1);
+        String run = stagedFirstLoad();
+        jdbc.execute("ALTER TABLE national_permit_current ADD CONSTRAINT test_current_later CHECK(management_number<>'B')");
+        try {
+            assertThrows(RuntimeException.class,() -> currentPublisher.publish(run,1));
+            assertEquals(1,count("national_permit_current"));
+            assertEquals(0,count("national_permit_published"));
+            assertEquals(0,count("national_permit_current_event"));
+            assertEquals(1L,jdbc.queryForObject("SELECT published_rows FROM permit_current_publication WHERE run_id=?",Long.class,run));
+            assertNull(jdbc.queryForObject("SELECT owner_run FROM permit_import_lock WHERE id=1",String.class));
+        } finally {
+            jdbc.execute("ALTER TABLE national_permit_current DROP CONSTRAINT test_current_later");
+        }
+        var result = currentPublisher.publish(run,1);
+        assertEquals(2,result.rows());
+        assertEquals(2,count("national_permit_published"));
+        assertEquals(3,count("national_permit_current_event"));
+        assertEquals(0,count("national_permit_history"));
+        assertEquals("2024-02-01",jdbc.queryForObject("SELECT closed_on FROM national_permit_current WHERE management_number='B'",String.class));
+        assertEquals("식당 B",jdbc.queryForObject("SELECT name FROM national_permit_current WHERE management_number='B'",String.class));
+        assertEquals(2,currentPublisher.publish(run,1).rows());
+        assertEquals(2,count("national_permit_current"));
+        assertEquals(2,count("permit_import_stage"));
+    }
+
+    @Test
+    void current_initial_publisher_rejects_incomplete_source_and_busy_lock() {
+        currentMigration.migrate(1);
+        String run = stagedFirstLoad();
+        jdbc.update("UPDATE permit_import_lock SET owner_run=? WHERE id=1",run);
+        assertThrows(IllegalStateException.class,() -> currentPublisher.publish(run,1));
+        jdbc.update("UPDATE permit_import_lock SET owner_run=NULL WHERE id=1");
+        jdbc.update("DELETE FROM permit_import_stage WHERE run_id=? AND row_no=2",run);
+        assertThrows(IllegalStateException.class,() -> currentPublisher.publish(run,1));
+        assertEquals(0,count("national_permit_current"));
+        assertEquals(0,count("permit_current_publication"));
+    }
+
+    private String stagedFirstLoad() {
+        String run = java.util.UUID.randomUUID().toString();
+        jdbc.update("INSERT INTO permit_category(service_id,name,close_date_supported) VALUES('first_load','식당',TRUE)");
+        jdbc.update("INSERT INTO permit_import_run(id,category_id,source_sha256,contract_hash,source_file,source_as_of,started_at,status,processed_rows) VALUES(?,'first_load',?,?,'fixture.csv',DATE '2025-06-01',CURRENT_TIMESTAMP,'FAILED',2)",run,"a".repeat(64),"b".repeat(64));
+        for (int i=1;i<=2;i++) jdbc.update("INSERT INTO permit_import_stage(run_id,row_no,municipality_code,management_number,name,permitted_on,closed_on,raw_json,issues_json,content_hash) VALUES(?,?,'3000000',?,?,DATE '2020-01-01',?,'{}','[]',?)",
+                run,i,i==1 ? "A":"B",i==1 ? "식당 A":"식당 B",i==1 ? null : java.sql.Date.valueOf("2024-02-01"),Integer.toString(i).repeat(64));
+        return run;
+    }
+
+    @Test
+    void migration_preserves_current_history_events_and_can_be_repeated() throws Exception {
+        importer.importCsv(pharmacy,csv(pharmacy,List.of(row("A","3000000","2020-01-01","2024-01-01"))),snapshot,null,1);
+        importer.importCsv(pharmacy,csv(pharmacy,List.of(row("A","3000000","2020-01-01","2024-02-01"))),snapshot,null,1);
+        currentMigration.migrate(1);
+        currentMigration.migrate(1);
+        assertEquals(1,count("national_permit_current"));
+        assertEquals(1,count("national_permit_history"));
+        assertEquals(2,count("national_permit_version"));
+        assertEquals("2024-02-01",jdbc.queryForObject("SELECT closed_on FROM national_permit_current",String.class));
+        assertEquals("2024-01-01",jdbc.queryForObject("SELECT closed_on FROM national_permit_history",String.class));
+        assertEquals(2,count("national_permit_current_event"));
+        assertThrows(IllegalStateException.class, () -> importer.importCsv(pharmacy,
+                csv(pharmacy,List.of(row("B","3000000","2020-01-01",""))),snapshot,null,1));
     }
 
     @Test
