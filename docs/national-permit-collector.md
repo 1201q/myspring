@@ -6,6 +6,10 @@ Python 3.11 이상 표준 라이브러리로 실행하는 원천 수집·품질 
 
 ## 실행
 
+상권 분석 1차 대상 15종은 [수집 범위](commercial-area-collection-scope.md)에 정의했다.
+`python scripts/collect-national-permits.py --profile commercial-area-v1 --dry-run`으로 범위를 확인하고,
+`--download`로 원본 확보·검사를 실행한다. 프로필 정의는 `config/collection-profiles.json`이다.
+
 프로젝트 루트 `C:\projects\spring`에서 실행한다.
 
 ```powershell

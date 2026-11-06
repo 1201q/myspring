@@ -26,6 +26,24 @@ CATALOG = json.loads(collector.DEFAULT_CATALOG.read_text(encoding="utf-8"))
 
 
 class CollectorTests(unittest.TestCase):
+    def test_commercial_profile_selects_only_fifteen_permit_categories(self):
+        selected = collector.select_categories(CATALOG["services"],
+                                               collector.profile_slugs("commercial-area-v1"), [])
+        self.assertEqual(len(selected), 15)
+        self.assertNotIn("lumber_import_distribution", {e["slug"] for e in selected})
+        self.assertNotIn("online_sales", {e["slug"] for e in selected})
+        for entry in selected:
+            collector.validate_contract(entry)
+            self.assertTrue(entry["capabilities"]["close_date"])
+
+    def test_invalid_or_mixed_profile_does_not_start_collection(self):
+        with self.assertRaises(ValueError):
+            collector.profile_slugs("unknown")
+        with redirect_stdout(io.StringIO()), redirect_stderr(io.StringIO()):
+            with self.assertRaises(SystemExit) as failure:
+                collector.main(["--profile", "commercial-area-v1", "--slug", "pharmacies", "--dry-run"])
+        self.assertEqual(failure.exception.code, 2)
+
     def setUp(self):
         test_root = (SCRIPTS.parent / "data/collector-tests").resolve()
         test_root.mkdir(parents=True, exist_ok=True)

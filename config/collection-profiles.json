@@ -1,0 +1,11 @@
+{
+  "commercial-area-v1": {
+    "description": "Nationwide offline commercial-area permit categories; historical closures included.",
+    "slugs": [
+      "general_restaurants", "rest_cafes", "bakeries",
+      "beauty_salons", "barber_shops", "laundries", "public_baths",
+      "hospitals", "clinics", "pharmacies", "optical_shops",
+      "karaoke_rooms", "fitness_centers", "billiard_halls", "lodgings"
+    ]
+  }
+}

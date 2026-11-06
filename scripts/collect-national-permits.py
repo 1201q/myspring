@@ -17,6 +17,19 @@ import uuid
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CATALOG = ROOT / "docs/data-samples/national/category-catalog.json"
+PROFILES = ROOT / "config/collection-profiles.json"
+
+
+def profile_slugs(name):
+    profiles = json.loads(PROFILES.read_text(encoding="utf-8-sig"))
+    if name not in profiles:
+        raise ValueError(f"Unknown collection profile: {name}")
+    slugs = profiles[name]["slugs"]
+    if not isinstance(slugs, list) or not slugs or not all(isinstance(s, str) for s in slugs):
+        raise ValueError("Collection profile must contain service IDs")
+    if len(slugs) != len(set(slugs)):
+        raise ValueError("Collection profile contains duplicate service IDs")
+    return slugs
 
 
 def load_auditor():
@@ -68,6 +81,7 @@ def validate_contract(entry):
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--catalog", type=Path, default=DEFAULT_CATALOG)
+    parser.add_argument("--profile", help="Named collection selection from config/collection-profiles.json.")
     parser.add_argument("--slug", action="append", default=[], help="Official service ID; repeat to select multiple categories.")
     parser.add_argument("--category", action="append", default=[], help="Exact Korean category name; repeat if needed.")
     parser.add_argument("--group", help="Filter a list or selection by official group name.")
@@ -79,8 +93,11 @@ def main(argv=None):
     args = parser.parse_args(argv)
     try:
         catalog, services = read_categories(args.catalog)
-        selected = select_categories(services, args.slug, args.category, args.group)
-        if not args.list and not args.slug and not args.category:
+        if args.profile and (args.slug or args.category):
+            raise ValueError("Use --profile separately from --slug/--category to keep its scope explicit")
+        slugs = profile_slugs(args.profile) if args.profile else args.slug
+        selected = select_categories(services, slugs, args.category, args.group)
+        if not args.list and not slugs and not args.category:
             parser.error("Select categories with --slug or --category; use --list to browse all permits.")
         if not selected:
             raise ValueError("No category matches this selection/group")
@@ -105,6 +122,7 @@ def main(argv=None):
                 "catalog_observed_at": catalog["observed_at"],
                 "catalog_path": str(args.catalog.resolve()), "output_dir": str(output.resolve()),
                 "download_requested": args.download, "selected_slugs": [e["slug"] for e in selected],
+                "collection_profile": args.profile,
                 "categories": []}
     auditor.write_json(manifest_path, manifest)
     print(f"Run manifest: {manifest_path}", flush=True)

@@ -1,0 +1,419 @@
+{
+  "run_id": "20261105T085908Z-7c291b05",
+  "profile": "commercial-area-v1",
+  "status": "COMPLETED",
+  "started_at": "2026-11-05T08:59:08.517957+00:00",
+  "finished_at": "2026-11-05T09:00:43.363835+00:00",
+  "category_count": 15,
+  "rows": 4079799,
+  "raw_bytes": 1260230591,
+  "database_modified": false,
+  "scope": "Local CSV acquisition and audit only; mixed download dates; not proof of geographic or historical completeness.",
+  "categories": [
+    {
+      "slug": "hospitals",
+      "name": "병원",
+      "file_action": "DOWNLOADED",
+      "rows": 8320,
+      "raw_bytes": 3480503,
+      "sha256": "cae5f6c116a9710a5fad53127d85e06cf5d762bfdf1a548f966f175ce14fe3af",
+      "source_page": "https://sample.localdata.go.kr/public/hospitals/info",
+      "downloaded_at": "2026-11-05T08:59:09.030021+00:00",
+      "audited_at": "2026-11-05T08:59:09.157350+00:00",
+      "quality_as_of_date": "2026-11-05",
+      "quality_status": "REVIEW_REQUIRED",
+      "counts": {
+        "rows": 8320,
+        "coordinate_missing": 1401,
+        "road_address_missing": 653,
+        "closed_missing": 5183,
+        "coordinate_numeric_pair": 6919,
+        "closed_status_without_valid_date": 140,
+        "permitted_before_1950_review": 17
+      },
+      "date_field_support": {
+        "permitted": true,
+        "closed": true
+      }
+    },
+    {
+      "slug": "optical_shops",
+      "name": "안경업",
+      "file_action": "DOWNLOADED",
+      "rows": 18810,
+      "raw_bytes": 5393534,
+      "sha256": "140cbeb9502b5955ea811de0440eb13a423004796550a3b98855804eb4fe46ef",
+      "source_page": "https://sample.localdata.go.kr/public/optical_shops/info",
+      "downloaded_at": "2026-11-05T08:59:09.690690+00:00",
+      "audited_at": "2026-11-05T08:59:10.010188+00:00",
+      "quality_as_of_date": "2026-11-05",
+      "quality_status": "REVIEW_REQUIRED",
+      "counts": {
+        "rows": 18810,
+        "coordinate_numeric_pair": 15986,
+        "closed_missing": 11895,
+        "coordinate_missing": 2824,
+        "road_address_missing": 1999,
+        "closed_status_without_valid_date": 681,
+        "duplicate_management_number": 1,
+        "permitted_before_1950_review": 27
+      },
+      "date_field_support": {
+        "permitted": true,
+        "closed": true
+      }
+    },
+    {
+      "slug": "pharmacies",
+      "name": "약국",
+      "file_action": "REUSED",
+      "rows": 70770,
+      "raw_bytes": 18774652,
+      "sha256": "c74b5eaebd2292c4102b13c3ce5f2bd54cdbe9b58e0bd1a4f69ec5980b0fca53",
+      "source_page": "https://sample.localdata.go.kr/public/pharmacies/info",
+      "downloaded_at": "2026-11-04T09:59:25.977428+00:00",
+      "audited_at": "2026-11-05T08:59:11.095551+00:00",
+      "quality_as_of_date": "2026-11-05",
+      "quality_status": "REVIEW_REQUIRED",
+      "counts": {
+        "rows": 70770,
+        "coordinate_missing": 17122,
+        "road_address_missing": 15579,
+        "coordinate_numeric_pair": 53648,
+        "closed_missing": 31854,
+        "permitted_before_1950_review": 68,
+        "closed_status_without_valid_date": 5875,
+        "duplicate_management_number": 1
+      },
+      "date_field_support": {
+        "permitted": true,
+        "closed": true
+      }
+    },
+    {
+      "slug": "clinics",
+      "name": "의원",
+      "file_action": "DOWNLOADED",
+      "rows": 126009,
+      "raw_bytes": 46021171,
+      "sha256": "6add749b74b5d7fd981faf5f6c14abb3242a0bb426e37a78c53032b68a310da5",
+      "source_page": "https://sample.localdata.go.kr/public/clinics/info",
+      "downloaded_at": "2026-11-05T08:59:13.525675+00:00",
+      "audited_at": "2026-11-05T08:59:15.452298+00:00",
+      "quality_as_of_date": "2026-11-05",
+      "quality_status": "REVIEW_REQUIRED",
+      "counts": {
+        "rows": 126009,
+        "coordinate_numeric_pair": 107333,
+        "coordinate_missing": 18676,
+        "road_address_missing": 13076,
+        "closed_missing": 78204,
+        "closed_status_without_valid_date": 1069,
+        "permitted_before_1950_review": 235,
+        "closed_future": 5
+      },
+      "date_field_support": {
+        "permitted": true,
+        "closed": true
+      }
+    },
+    {
+      "slug": "karaoke_rooms",
+      "name": "노래연습장업",
+      "file_action": "REUSED",
+      "rows": 64421,
+      "raw_bytes": 21276963,
+      "sha256": "1e3ba7fe3f413c81ad5725aba43f3ad56112014f61cd3ae5cb4eea1b1a1f3834",
+      "source_page": "https://sample.localdata.go.kr/public/karaoke_rooms/info",
+      "downloaded_at": "2026-11-04T09:17:32.422532+00:00",
+      "audited_at": "2026-11-05T08:59:16.583989+00:00",
+      "quality_as_of_date": "2026-11-05",
+      "quality_status": "REVIEW_REQUIRED",
+      "counts": {
+        "rows": 64421,
+        "coordinate_missing": 3656,
+        "road_address_missing": 4348,
+        "coordinate_numeric_pair": 60765,
+        "closed_missing": 28405,
+        "duplicate_management_number": 60917,
+        "closed_status_without_valid_date": 222,
+        "permitted_before_1950_review": 2,
+        "permitted_invalid": 1
+      },
+      "date_field_support": {
+        "permitted": true,
+        "closed": true
+      }
+    },
+    {
+      "slug": "lodgings",
+      "name": "숙박업",
+      "file_action": "DOWNLOADED",
+      "rows": 58980,
+      "raw_bytes": 17515949,
+      "sha256": "59abe034043f4fa5cfd41376748cc9166e32830be726b8e3ef1d1729bee4bfa0",
+      "source_page": "https://sample.localdata.go.kr/public/lodgings/info",
+      "downloaded_at": "2026-11-05T08:59:17.493763+00:00",
+      "audited_at": "2026-11-05T08:59:18.358697+00:00",
+      "quality_as_of_date": "2026-11-05",
+      "quality_status": "REVIEW_REQUIRED",
+      "counts": {
+        "rows": 58980,
+        "coordinate_numeric_pair": 53223,
+        "road_address_missing": 15421,
+        "closed_missing": 31464,
+        "coordinate_missing": 5757,
+        "permitted_before_1950_review": 12,
+        "closed_status_without_valid_date": 88,
+        "closed_before_1950_review": 1,
+        "permitted_invalid": 3
+      },
+      "date_field_support": {
+        "permitted": true,
+        "closed": true
+      }
+    },
+    {
+      "slug": "billiard_halls",
+      "name": "당구장업",
+      "file_action": "DOWNLOADED",
+      "rows": 58887,
+      "raw_bytes": 16463517,
+      "sha256": "9bb54832300132c44e9d5869ebc5d0e8d1013ede6f1e97f57d7e48dc5730db7b",
+      "source_page": "https://sample.localdata.go.kr/public/billiard_halls/info",
+      "downloaded_at": "2026-11-05T08:59:19.251668+00:00",
+      "audited_at": "2026-11-05T08:59:20.068290+00:00",
+      "quality_as_of_date": "2026-11-05",
+      "quality_status": "REVIEW_REQUIRED",
+      "counts": {
+        "rows": 58887,
+        "coordinate_numeric_pair": 54959,
+        "coordinate_missing": 3928,
+        "road_address_missing": 5084,
+        "closed_missing": 15793,
+        "duplicate_management_number": 56126,
+        "closed_status_without_valid_date": 292,
+        "permitted_before_1950_review": 4
+      },
+      "date_field_support": {
+        "permitted": true,
+        "closed": true
+      }
+    },
+    {
+      "slug": "public_baths",
+      "name": "목욕장업",
+      "file_action": "DOWNLOADED",
+      "rows": 17895,
+      "raw_bytes": 5323230,
+      "sha256": "11ca5fbfd4c8d9b58468a818c580b12f785bafe0d91a2f8aac884f33b8096165",
+      "source_page": "https://sample.localdata.go.kr/public/public_baths/info",
+      "downloaded_at": "2026-11-05T08:59:20.454670+00:00",
+      "audited_at": "2026-11-05T08:59:20.751876+00:00",
+      "quality_as_of_date": "2026-11-05",
+      "quality_status": "REVIEW_REQUIRED",
+      "counts": {
+        "rows": 17895,
+        "coordinate_numeric_pair": 16122,
+        "road_address_missing": 7679,
+        "coordinate_missing": 1773,
+        "closed_missing": 5746,
+        "permitted_before_1950_review": 7,
+        "closed_before_1950_review": 1,
+        "closed_status_without_valid_date": 2
+      },
+      "date_field_support": {
+        "permitted": true,
+        "closed": true
+      }
+    },
+    {
+      "slug": "beauty_salons",
+      "name": "미용업",
+      "file_action": "REUSED",
+      "rows": 461011,
+      "raw_bytes": 144481637,
+      "sha256": "5714613078f47b7046659f28f3dc9965f259508b975c6e5ed16dace49d998b3c",
+      "source_page": "https://sample.localdata.go.kr/public/beauty_salons/info",
+      "downloaded_at": "2026-11-04T09:17:07.615476+00:00",
+      "audited_at": "2026-11-05T08:59:28.396506+00:00",
+      "quality_as_of_date": "2026-11-05",
+      "quality_status": "REVIEW_REQUIRED",
+      "counts": {
+        "rows": 461011,
+        "coordinate_numeric_pair": 433488,
+        "road_address_missing": 112155,
+        "closed_missing": 197018,
+        "coordinate_missing": 27523,
+        "permitted_before_1950_review": 14,
+        "closed_status_without_valid_date": 61,
+        "closed_invalid": 4,
+        "permitted_invalid": 1,
+        "closed_future": 1
+      },
+      "date_field_support": {
+        "permitted": true,
+        "closed": true
+      }
+    },
+    {
+      "slug": "laundries",
+      "name": "세탁업",
+      "file_action": "DOWNLOADED",
+      "rows": 67456,
+      "raw_bytes": 20090602,
+      "sha256": "a8fb17ef8a365733f12886d058247f4ab115bb77f3896e32810dba0d8eb681af",
+      "source_page": "https://sample.localdata.go.kr/public/laundries/info",
+      "downloaded_at": "2026-11-05T08:59:32.778458+00:00",
+      "audited_at": "2026-11-05T08:59:33.781765+00:00",
+      "quality_as_of_date": "2026-11-05",
+      "quality_status": "REVIEW_REQUIRED",
+      "counts": {
+        "rows": 67456,
+        "coordinate_numeric_pair": 60935,
+        "closed_missing": 18560,
+        "road_address_missing": 28003,
+        "coordinate_missing": 6521,
+        "permitted_before_1950_review": 6,
+        "closed_status_without_valid_date": 7
+      },
+      "date_field_support": {
+        "permitted": true,
+        "closed": true
+      }
+    },
+    {
+      "slug": "barber_shops",
+      "name": "이용업",
+      "file_action": "DOWNLOADED",
+      "rows": 65973,
+      "raw_bytes": 18938470,
+      "sha256": "94a01a1797b52dc75411ef2491548df88498b8d89f7cb7554cde5af91b916bc0",
+      "source_page": "https://sample.localdata.go.kr/public/barber_shops/info",
+      "downloaded_at": "2026-11-05T08:59:35.019932+00:00",
+      "audited_at": "2026-11-05T08:59:36.128607+00:00",
+      "quality_as_of_date": "2026-11-05",
+      "quality_status": "REVIEW_REQUIRED",
+      "counts": {
+        "rows": 65973,
+        "closed_missing": 14894,
+        "coordinate_numeric_pair": 58752,
+        "road_address_missing": 34082,
+        "coordinate_missing": 7221,
+        "closed_status_without_valid_date": 17,
+        "permitted_before_1950_review": 29
+      },
+      "date_field_support": {
+        "permitted": true,
+        "closed": true
+      }
+    },
+    {
+      "slug": "fitness_centers",
+      "name": "체력단련장업",
+      "file_action": "DOWNLOADED",
+      "rows": 28081,
+      "raw_bytes": 8634842,
+      "sha256": "7034d40edb6b6e42509f14f8436a30b627b94500477c1508ed72527a054d954e",
+      "source_page": "https://sample.localdata.go.kr/public/fitness_centers/info",
+      "downloaded_at": "2026-11-05T08:59:36.803073+00:00",
+      "audited_at": "2026-11-05T08:59:37.292085+00:00",
+      "quality_as_of_date": "2026-11-05",
+      "quality_status": "REVIEW_REQUIRED",
+      "counts": {
+        "rows": 28081,
+        "coordinate_numeric_pair": 26866,
+        "coordinate_missing": 1215,
+        "road_address_missing": 876,
+        "closed_missing": 17093,
+        "duplicate_management_number": 26724,
+        "closed_status_without_valid_date": 66,
+        "permitted_invalid": 1
+      },
+      "date_field_support": {
+        "permitted": true,
+        "closed": true
+      }
+    },
+    {
+      "slug": "general_restaurants",
+      "name": "일반음식점",
+      "file_action": "REUSED",
+      "rows": 2309440,
+      "raw_bytes": 701049980,
+      "sha256": "06634a6fc9e4cd626642b179441524c3728df5e7ad5a71ebd5e492f8850996b0",
+      "source_page": "https://sample.localdata.go.kr/public/general_restaurants/info",
+      "downloaded_at": "2026-11-04T09:18:49.188309+00:00",
+      "audited_at": "2026-11-05T09:00:14.988372+00:00",
+      "quality_as_of_date": "2026-11-05",
+      "quality_status": "REVIEW_REQUIRED",
+      "counts": {
+        "rows": 2309440,
+        "coordinate_numeric_pair": 2148162,
+        "road_address_missing": 842495,
+        "coordinate_missing": 161278,
+        "closed_missing": 674813,
+        "permitted_before_1950_review": 81,
+        "closed_status_without_valid_date": 561,
+        "permitted_invalid": 4,
+        "closed_future": 2
+      },
+      "date_field_support": {
+        "permitted": true,
+        "closed": true
+      }
+    },
+    {
+      "slug": "bakeries",
+      "name": "제과점영업",
+      "file_action": "DOWNLOADED",
+      "rows": 70939,
+      "raw_bytes": 23144579,
+      "sha256": "f0513538a11b77b82f05270b0b8a06b38af7ccc67b2a557381bbcc26353bb2f3",
+      "source_page": "https://sample.localdata.go.kr/public/bakeries/info",
+      "downloaded_at": "2026-11-05T09:00:17.870932+00:00",
+      "audited_at": "2026-11-05T09:00:18.915214+00:00",
+      "quality_as_of_date": "2026-11-05",
+      "quality_status": "REVIEW_REQUIRED",
+      "counts": {
+        "rows": 70939,
+        "closed_missing": 20365,
+        "coordinate_numeric_pair": 66907,
+        "coordinate_missing": 4032,
+        "road_address_missing": 16985,
+        "permitted_before_1950_review": 2
+      },
+      "date_field_support": {
+        "permitted": true,
+        "closed": true
+      }
+    },
+    {
+      "slug": "rest_cafes",
+      "name": "휴게음식점",
+      "file_action": "DOWNLOADED",
+      "rows": 652807,
+      "raw_bytes": 209640962,
+      "sha256": "fe986cf601f4a313350c192c1334e9334db22be2839b8264027df147c6a44c36",
+      "source_page": "https://sample.localdata.go.kr/public/rest_cafes/info",
+      "downloaded_at": "2026-11-05T09:00:33.302573+00:00",
+      "audited_at": "2026-11-05T09:00:43.212340+00:00",
+      "quality_as_of_date": "2026-11-05",
+      "quality_status": "REVIEW_REQUIRED",
+      "counts": {
+        "rows": 652807,
+        "closed_missing": 199042,
+        "coordinate_numeric_pair": 618413,
+        "road_address_missing": 146913,
+        "coordinate_missing": 34394,
+        "closed_status_without_valid_date": 10,
+        "permitted_before_1950_review": 14,
+        "closed_future": 1
+      },
+      "date_field_support": {
+        "permitted": true,
+        "closed": true
+      }
+    }
+  ]
+}
