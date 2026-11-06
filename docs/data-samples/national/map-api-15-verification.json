@@ -1,0 +1,142 @@
+﻿{
+    "verifiedAt":  "2026-11-06T13:36:41.1488565+09:00",
+    "categories":  {
+                       "value":  [
+                                     {
+                                         "id":  "general_restaurants",
+                                         "name":  "ì¼ë°ììì "
+                                     },
+                                     {
+                                         "id":  "rest_cafes",
+                                         "name":  "í´ê²ììì "
+                                     },
+                                     {
+                                         "id":  "bakeries",
+                                         "name":  "ì ê³¼ì ìì\u0085"
+                                     },
+                                     {
+                                         "id":  "beauty_salons",
+                                         "name":  "ë¯¸ì©ì\u0085"
+                                     },
+                                     {
+                                         "id":  "barber_shops",
+                                         "name":  "ì´ì©ì\u0085"
+                                     },
+                                     {
+                                         "id":  "laundries",
+                                         "name":  "ì¸íì\u0085"
+                                     },
+                                     {
+                                         "id":  "public_baths",
+                                         "name":  "ëª©ìì¥ì\u0085"
+                                     },
+                                     {
+                                         "id":  "hospitals",
+                                         "name":  "ë³ì"
+                                     },
+                                     {
+                                         "id":  "clinics",
+                                         "name":  "ìì"
+                                     },
+                                     {
+                                         "id":  "pharmacies",
+                                         "name":  "ì½êµ­"
+                                     },
+                                     {
+                                         "id":  "optical_shops",
+                                         "name":  "ìê²½ì\u0085"
+                                     },
+                                     {
+                                         "id":  "karaoke_rooms",
+                                         "name":  "ë\u0085¸ëì°ìµì¥ì\u0085"
+                                     },
+                                     {
+                                         "id":  "fitness_centers",
+                                         "name":  "ì²´ë ¥ë¨ë ¨ì¥ì\u0085"
+                                     },
+                                     {
+                                         "id":  "billiard_halls",
+                                         "name":  "ë¹êµ¬ì¥ì\u0085"
+                                     },
+                                     {
+                                         "id":  "lodgings",
+                                         "name":  "ìë°ì\u0085"
+                                     }
+                                 ],
+                       "Count":  15
+                   },
+    "newCategoryRequests":  [
+                                {
+                                    "category":  "bakeries",
+                                    "items":  5,
+                                    "elapsedMs":  358
+                                },
+                                {
+                                    "category":  "barber_shops",
+                                    "items":  5,
+                                    "elapsedMs":  242
+                                },
+                                {
+                                    "category":  "billiard_halls",
+                                    "items":  5,
+                                    "elapsedMs":  104
+                                },
+                                {
+                                    "category":  "clinics",
+                                    "items":  5,
+                                    "elapsedMs":  101
+                                },
+                                {
+                                    "category":  "fitness_centers",
+                                    "items":  5,
+                                    "elapsedMs":  752
+                                },
+                                {
+                                    "category":  "hospitals",
+                                    "items":  4,
+                                    "elapsedMs":  607
+                                },
+                                {
+                                    "category":  "laundries",
+                                    "items":  5,
+                                    "elapsedMs":  91
+                                },
+                                {
+                                    "category":  "lodgings",
+                                    "items":  5,
+                                    "elapsedMs":  75
+                                },
+                                {
+                                    "category":  "optical_shops",
+                                    "items":  5,
+                                    "elapsedMs":  148
+                                },
+                                {
+                                    "category":  "pharmacies",
+                                    "items":  1,
+                                    "elapsedMs":  74
+                                },
+                                {
+                                    "category":  "public_baths",
+                                    "items":  5,
+                                    "elapsedMs":  161
+                                },
+                                {
+                                    "category":  "rest_cafes",
+                                    "items":  5,
+                                    "elapsedMs":  22
+                                }
+                            ],
+    "browserUiVerified":  false,
+    "initialView":  {
+                        "items":  500,
+                        "truncated":  true,
+                        "elapsedMs":  170
+                    },
+    "existingCategoryVerified":  true,
+    "newCategoryDateFilter":  {
+                                  "items":  5,
+                                  "elapsedMs":  713,
+                                  "date":  "2020-01-01"
+                              }
+}

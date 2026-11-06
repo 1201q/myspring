@@ -1,0 +1,11 @@
+﻿{
+    "verified_at":  "2026-11-06T03:27:16.483828+00:00",
+    "postgres_version":  "17.11 (Debian 17.11-1.pgdg12+2)",
+    "postgis_version":  "3.7.0",
+    "current_rows":  4083243,
+    "location_rows":  0,
+    "location_owner":  "permit_map_app",
+    "spatial_index":  "CREATE INDEX ix_national_location_geom ON public.national_permit_location USING gist (geom)",
+    "map_point_view":  "national_permit_map_point",
+    "container_starts_and_restarts_unchanged":  true
+}

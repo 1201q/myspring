@@ -1,0 +1,8 @@
+﻿{
+    "postgis_version":  "3.7.0",
+    "reference_points":  41,
+    "max_longitude_error":  1.4210854715202004E-14,
+    "max_latitude_error":  7.1054273576010019E-15,
+    "bbox_matches":  40,
+    "spatial_index_plan_checked":  true
+}

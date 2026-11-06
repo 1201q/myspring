@@ -1,0 +1,51 @@
+﻿{
+    "verifiedAt":  "2026-11-06T12:45:10.8278711+09:00",
+    "frontendStatus":  200,
+    "requests":  [
+                     {
+                         "name":  "guro",
+                         "items":  20,
+                         "truncated":  true,
+                         "elapsedMs":  193
+                     },
+                     {
+                         "name":  "busan",
+                         "items":  20,
+                         "truncated":  true,
+                         "elapsedMs":  92
+                     },
+                     {
+                         "name":  "ulsan",
+                         "items":  20,
+                         "truncated":  true,
+                         "elapsedMs":  113
+                     },
+                     {
+                         "name":  "jeju",
+                         "items":  20,
+                         "truncated":  true,
+                         "elapsedMs":  43
+                     },
+                     {
+                         "name":  "initial_view",
+                         "items":  500,
+                         "truncated":  true,
+                         "elapsedMs":  1485
+                     },
+                     {
+                         "name":  "beauty_filter",
+                         "items":  20,
+                         "truncated":  true,
+                         "elapsedMs":  93
+                     },
+                     {
+                         "name":  "active_2020",
+                         "items":  20,
+                         "truncated":  true,
+                         "elapsedMs":  179
+                     }
+                 ],
+    "worldRequestStatus":  400,
+    "browserUiVerified":  false,
+    "browserLimitation":  "Browser access host and native pipe unavailable"
+}

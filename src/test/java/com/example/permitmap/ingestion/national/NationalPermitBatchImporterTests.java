@@ -28,6 +28,10 @@ class NationalPermitBatchImporterTests {
     NationalCurrentMigration currentMigration;
     @Autowired
     NationalCurrentInitialPublisher currentPublisher;
+    @Autowired
+    NationalLocationBackfill locationBackfill;
+    @Autowired
+    com.example.permitmap.map.MapQueryService mapQueryService;
     @TempDir
     Path directory;
     final LocalDate snapshot = LocalDate.of(2025, 6, 1);
@@ -43,6 +47,14 @@ class NationalPermitBatchImporterTests {
                 .matches("permit_map_verify_[a-z0-9_]+"))
             throw new IllegalStateException("Actual PostgreSQL database is not disposable");
         jdbc.update("UPDATE permit_import_lock SET owner_run=NULL");
+        if(url.startsWith("jdbc:postgresql:")) {
+            if(Boolean.TRUE.equals(jdbc.queryForObject("SELECT to_regclass('public.permit_category_crs') IS NOT NULL",Boolean.class)))
+                jdbc.update("DELETE FROM permit_category_crs WHERE category_id='first_load'");
+            if(Boolean.TRUE.equals(jdbc.queryForObject("SELECT to_regclass('public.national_permit_location') IS NOT NULL",Boolean.class)))
+                jdbc.update("DELETE FROM national_permit_location");
+            if(Boolean.TRUE.equals(jdbc.queryForObject("SELECT to_regclass('public.permit_location_backfill') IS NOT NULL",Boolean.class)))
+                jdbc.update("DELETE FROM permit_location_backfill");
+        }
         jdbc.update("DELETE FROM permit_current_publication");
         jdbc.update("DELETE FROM national_permit_history");
         jdbc.update("DELETE FROM national_permit_current");
@@ -64,6 +76,58 @@ class NationalPermitBatchImporterTests {
     static boolean disposableDatabaseUrl(String url) {
         return url != null && (url.startsWith("jdbc:h2:mem:") ||
                 url.matches("jdbc:postgresql://127\\.0\\.0\\.1:15432/permit_map_verify_[a-z0-9_]+"));
+    }
+
+    @Test
+    @org.junit.jupiter.api.condition.EnabledIfSystemProperty(named="spring.datasource.driver-class-name",matches="org.postgresql.Driver")
+    void catalog_coordinates_resolve_unknown_crs_without_rewriting_original_information() {
+        currentMigration.migrate(1);
+        String run=stagedFirstLoad();
+        currentPublisher.publish(run,1);
+        jdbc.update("UPDATE national_permit_current SET source_x=189505.11152445,source_y=443415.972626677 WHERE management_number='A'");
+        String original=jdbc.queryForObject("SELECT row_to_json(p)::text FROM national_permit_current p WHERE management_number='A'",String.class);
+        locationBackfill.runCatalog(1);
+        assertEquals(0,count("national_permit_location"));
+        jdbc.update("INSERT INTO permit_category_crs(category_id,source_crs,evidence_url,document_text_sha256,catalog_title,verified_at) VALUES('first_load',5174,'https://www.data.go.kr/data/15154822/openapi.do',?,'fixture',CURRENT_TIMESTAMP)","a".repeat(64));
+        jdbc.update("DELETE FROM permit_location_backfill WHERE conversion_key='catalog-5174-v1'");
+        locationBackfill.runCatalog(1);
+        locationBackfill.runCatalog(1);
+        assertEquals(1,count("national_permit_location"));
+        assertEquals(1,count("national_permit_map_point"));
+        assertEquals(original,jdbc.queryForObject("SELECT row_to_json(p)::text FROM national_permit_current p WHERE management_number='A'",String.class));
+        assertNull(jdbc.queryForObject("SELECT source_crs FROM national_permit_current WHERE management_number='A'",Integer.class));
+        assertEquals(1,mapQueryService.find("126.88,37.49,126.89,37.50",null,null,10).items().size());
+        jdbc.update("DELETE FROM permit_category_crs WHERE category_id='first_load'");
+        assertEquals(0,count("national_permit_map_point"));
+        assertEquals(0,mapQueryService.find("126.88,37.49,126.89,37.50",null,null,10).items().size());
+    }
+
+    @Test
+    @org.junit.jupiter.api.condition.EnabledIfSystemProperty(named="spring.datasource.driver-class-name",matches="org.postgresql.Driver")
+    void location_backfill_maps_only_supported_valid_coordinates_and_hides_stale_locations() {
+        currentMigration.migrate(1);
+        String run=stagedFirstLoad();
+        currentPublisher.publish(run,1);
+        jdbc.update("UPDATE national_permit_current SET source_crs=5174,source_x=189505.11152445,source_y=443415.972626677 WHERE management_number='A'");
+        jdbc.update("UPDATE national_permit_current SET source_crs=5174,source_x=200000,source_y=9000000 WHERE management_number='B'");
+        locationBackfill.run(1);
+        locationBackfill.run(1);
+        assertEquals(1,count("national_permit_location"));
+        assertEquals(1,count("national_permit_map_point"));
+        assertEquals(126.88211455336857,jdbc.queryForObject("SELECT longitude FROM national_permit_map_point",Double.class),1e-7);
+        assertEquals(1L,jdbc.queryForObject("SELECT count(*) FROM national_permit_map_point WHERE ST_Intersects(geom,ST_MakeEnvelope(126.88,37.49,126.89,37.50,4326))",Long.class));
+        assertEquals(1,mapQueryService.find("126.88,37.49,126.89,37.50",null,null,1).items().size());
+        assertEquals(0,mapQueryService.find("129,35,129.1,35.1",null,null,1).items().size());
+        assertEquals(0,mapQueryService.find("126.88,37.49,126.89,37.50",null,java.time.LocalDate.of(2019,1,1),1).items().size());
+        assertEquals(1,mapQueryService.find("126.88,37.49,126.89,37.50",null,java.time.LocalDate.of(2021,1,1),1).items().size());
+        jdbc.update("UPDATE national_permit_current SET source_y=443415.972626677,source_x=189505.11152445 WHERE management_number='B'");
+        jdbc.update("DELETE FROM permit_location_backfill");
+        locationBackfill.run(1);
+        assertTrue(mapQueryService.find("126.88,37.49,126.89,37.50",null,null,1).truncated());
+        assertEquals(1,mapQueryService.find("126.88,37.49,126.89,37.50",null,java.time.LocalDate.of(2024,2,1),10).items().size());
+        jdbc.update("UPDATE national_permit_current SET content_hash=? WHERE management_number='A'","c".repeat(64));
+        assertEquals(1,count("national_permit_map_point"));
+        assertEquals(1,mapQueryService.find("126.88,37.49,126.89,37.50",null,null,10).items().size());
     }
 
     @Test

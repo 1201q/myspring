@@ -1,0 +1,14 @@
+BEGIN;
+SET LOCAL lock_timeout='3s';
+SET LOCAL ROLE permit_map_app;
+CREATE TABLE IF NOT EXISTS permit_location_backfill (
+    conversion_key VARCHAR(100) PRIMARY KEY,
+    checkpoint BIGINT NOT NULL DEFAULT 0,
+    source_limit BIGINT NOT NULL,
+    scanned_rows BIGINT NOT NULL DEFAULT 0,
+    supported_rows BIGINT NOT NULL DEFAULT 0,
+    mapped_rows BIGINT NOT NULL DEFAULT 0,
+    started_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+COMMIT;

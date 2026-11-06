@@ -111,3 +111,17 @@ tasks.register('publishStagedNationalCurrent', JavaExec) {
     if (project.hasProperty('database') && project.hasProperty('run'))
         args project.property('database').toString(), project.property('run').toString()
 }
+
+tasks.register('backfillNationalLocations', JavaExec) {
+    group = 'application'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.example.permitmap.ingestion.national.NationalLocationBackfill'
+    if (project.hasProperty('database')) args project.property('database').toString()
+}
+
+tasks.register('backfillCatalogLocations', JavaExec) {
+    group = 'application'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.example.permitmap.ingestion.national.NationalLocationBackfill'
+    if (project.hasProperty('database')) args project.property('database').toString(), 'catalog'
+}

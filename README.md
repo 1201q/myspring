@@ -11,7 +11,7 @@
 - Spring Web MVC, Validation, Spring Boot Test
 
 Spring Data JPA와 Oracle Cloud `coin`의 PostgreSQL을 기본으로 사용합니다.
-자동 테스트는 별도 메모리 H2 DB를 사용합니다. 프론트엔드는 이후 추가합니다.
+자동 테스트는 별도 메모리 H2 DB를 사용합니다. `frontend`에는 Vite + React 지도 화면이 있습니다.
 SSH 터널과 실행 방법은 [원격 PostgreSQL 안내](docs/remote-postgresql.md)를 참고하세요.
 
 ## 실행 (Windows PowerShell)
@@ -149,13 +149,13 @@ GET /api/v1/businesses/{id}
 날짜 기반 추정 상태와 EPSG:5174 원천 좌표의 의미는 [인허가 조회 API 안내](docs/business-api.md)를 참고하세요.
 API는 지도용 WGS84 longitude/latitude도 제공합니다. 변환 기준과 한계는 [좌표 변환 안내](docs/coordinate-conversion.md)에 정리했습니다.
 
-전국 복수 업종으로 확장하기 위한 일반음식점·미용업·노래연습장업 전체 CSV 확보 및 품질 검사 결과는 [전국 데이터 원천 검증](docs/national-data-source-audit.md)에 정리했습니다. 전체 원본은 Git에서 제외되는 `data/national-audit/`에 있고, 아직 DB에는 적재하지 않았습니다.
+전국 데이터의 초기 3종 CSV 확보·품질 검사 기록은 [전국 데이터 원천 검증](docs/national-data-source-audit.md)에 있습니다. 이후 대상 15업종 4,079,799건을 서버의 현재 정보 테이블에 반영했습니다. 별도 목재수입유통업까지 합하면 4,083,243건입니다. 전체 원본은 Git에서 제외되는 `data/national-audit/`에 보관합니다.
 
 공식 현재 메뉴의 **인허가 195종과 기타/보조 정보 13종**은 [전체 업종 카탈로그](docs/national-category-catalog.md)에 정리했습니다. 카탈로그 생성은 메타데이터 조회이며 전체 업종 CSV를 다운로드하거나 DB에 적재하는 작업은 아닙니다.
 
-카탈로그에서 업종명/서비스 ID를 선택하는 [공통 수집기](docs/national-permit-collector.md)를 추가했습니다. 예: `python scripts/collect-national-permits.py --category 약국 --download`. 기존 CSV는 재사용하고 실행 기록·품질 보고서를 생성합니다. 현재 전량 검사 기록은 초기 3종에 약국·목재수입유통업을 더한 5종입니다.
+카탈로그에서 업종명/서비스 ID를 선택하는 [공통 수집기](docs/national-permit-collector.md)가 있습니다. 예: `python scripts/collect-national-permits.py --category 약국 --download`. 기존 CSV는 재사용하고 실행 기록·품질 보고서를 생성합니다. 현재 서비스 대상은 [상권 분석 15업종](docs/commercial-area-collection-scope.md)입니다.
 
-Java/Spring 기반 [공통 DB·청크 적재](docs/national-permit-db-import.md)도 추가했습니다. 로컬 H2에 이어 PostgreSQL 17.11을 검증하고, 서버 `permit_map_dev`에 전국 약국·목재수입유통업 74,214건을 반영했습니다. 반복 실행·버전 보존·실패 복구와 기존 데이터 보존을 확인했습니다. [서버 반영 결과와 실행 방법](docs/national-postgres-import.md)을 참고하세요. 기존 지도 API 연결은 후속 단계입니다.
+초기 [공통 DB·청크 적재](docs/national-permit-db-import.md) 이후 [현재 정보와 변경 이력 분리](docs/current-permit-migration.md) 구조로 이전했습니다. 지도는 PostGIS 공간 인덱스와 [전국 지도 전용 API](docs/national-map-api.md)를 사용합니다. 대상 15개 업종의 유효 위치 3,782,478건을 제공합니다. 업종별 공식 좌표계 근거는 별도 메타데이터로 보관하며 원본 인허가를 다시 적재하지 않습니다. 정기 갱신 경로는 후속 작업입니다.
 
 ## 지도 화면 실행
 
@@ -168,5 +168,5 @@ npm ci
 npm run dev
 ```
 
-http://127.0.0.1:5173 에서 음식점 마커와 목록을 확인합니다.
+http://127.0.0.1:5173 에서 지도를 확대·이동하고 업종·날짜를 선택합니다. 화면 범위마다 최대 500건을 표시하며 전국 데이터를 한 번에 내려받지 않습니다. 지도 기능에는 [PostGIS 설정](docs/postgis-setup.md)이 필요합니다.
 구체적인 연결 구조와 확인 절차는 [프런트엔드 안내](frontend/README.md)를 참고하세요.

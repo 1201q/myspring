@@ -1,0 +1,16 @@
+﻿{
+    "verified_at":  "2026-11-06T03:42:16.771984+00:00",
+    "backfill":  {
+                     "conversion_key":  "declared-5174-v1",
+                     "checkpoint":  4083243,
+                     "source_limit":  4083243,
+                     "scanned_rows":  4083243,
+                     "supported_rows":  2642415,
+                     "mapped_rows":  2642415,
+                     "started_at":  "2026-11-06T03:35:09.091498+00:00",
+                     "updated_at":  "2026-11-06T03:41:26.265216+00:00"
+                 },
+    "actual_locations":  2642415,
+    "current_rows":  4083243,
+    "held_lock":  null
+}
