@@ -22,6 +22,17 @@ public class MapController {
         return service.find(bbox,category,date,limit);
     }
 
+    @GetMapping(value="/tiles/{z}/{x}/{y}.pbf",produces="application/vnd.mapbox-vector-tile")
+    public ResponseEntity<byte[]> tile(@PathVariable("z") int z,@PathVariable("x") int x,@PathVariable("y") int y,
+            @RequestParam(name="category",required=false) String category,
+            @RequestParam(name="date",required=false) @DateTimeFormat(iso=DateTimeFormat.ISO.DATE) LocalDate date) {
+        return ResponseEntity.ok().cacheControl(org.springframework.http.CacheControl.maxAge(java.time.Duration.ofMinutes(5)))
+            .body(service.tile(z,x,y,category,date));
+    }
+
+    @GetMapping("/businesses/{id}")
+    public MapQueryService.Item detail(@PathVariable("id") long id) { return service.detail(id); }
+
     @GetMapping("/categories")
     public List<MapQueryService.Category> categories() { return MapQueryService.CATEGORIES; }
 

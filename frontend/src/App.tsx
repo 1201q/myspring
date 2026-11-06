@@ -32,6 +32,8 @@ const located = (b: Business) =>
 export default function App() {
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<maplibregl.Map | null>(null);
+  const [mapReady, setMapReady] = useState(false);
+  const detailRequest = useRef<AbortController | null>(null);
   const [items, setItems] = useState<Business[]>([]);
   const [selected, setSelected] = useState<Business | null>(null);
   const [loading, setLoading] = useState(true);
@@ -69,7 +71,6 @@ export default function App() {
     async function load() {
       setLoading(true);
       setError("");
-      setItems([]);
       setTruncated(false);
       try {
         const params = new URLSearchParams({ bbox: bounds!.join(","), limit: "500" });
@@ -112,8 +113,10 @@ export default function App() {
         center: [126.887, 37.495],
         maxBounds: [[123, 31], [133, 40]],
         zoom: 13,
+        minZoom: 6,
         style: {
           version: 8,
+          glyphs: "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
           sources: {
             osm: {
               type: "raster",
@@ -128,6 +131,9 @@ export default function App() {
         },
       });
       map.current = instance;
+      instance.on("load", () => {
+        if (!disposed) setMapReady(true);
+      });
       instance.addControl(new maplibregl.NavigationControl(), "top-right");
       instance.on("error", () => {
         if (!disposed)
@@ -160,31 +166,72 @@ export default function App() {
     }
     return () => {
       disposed = true;
+      detailRequest.current?.abort();
       instance.remove();
       map.current = null;
     };
   }, []);
   useEffect(() => {
     const instance = map.current;
-    if (!instance) return;
-    const markers = items.filter(located).map((b) => {
-      const button = document.createElement("button");
-      const referenceDate = date || new Date().toLocaleDateString("en-CA");
-      button.className = `business-marker${b.closedAt && b.closedAt <= referenceDate ? " closed" : ""}`;
-      button.type = "button";
-      button.title = b.name;
-      button.setAttribute("aria-label", `${b.name} 정보 보기`);
-      button.addEventListener("click", () => setSelected(b));
-      return new maplibregl.Marker({ element: button })
-        .setLngLat([b.longitude!, b.latitude!])
-        .addTo(instance);
+    if (!instance || !mapReady) return;
+    const params = new URLSearchParams();
+    params.set("v", "1");
+    if (category) params.set("category", category);
+    if (date) params.set("date", date);
+    params.set("retry", String(attempt));
+    const tiles = [`${window.location.origin}/api/v1/map/tiles/{z}/{x}/{y}.pbf?${params}`];
+    const source = instance.getSource("businesses") as maplibregl.VectorTileSource | undefined;
+    if (source) {
+      detailRequest.current?.abort();
+      source.setTiles(tiles);
+      return;
+    }
+    instance.addSource("businesses", { type: "vector", tiles, minzoom: 6, maxzoom: 16 });
+    instance.addLayer({
+      id: "business-points", type: "circle", source: "businesses", "source-layer": "businesses",
+      paint: {
+        "circle-radius": ["case", ["has", "id"], 6, ["interpolate", ["linear"], ["get", "count"], 1, 8, 100, 12, 1000, 16]],
+        "circle-color": ["case", ["!", ["has", "id"]], "#276b87", ["==", ["get", "closed"], 1], "#7b8580", "#237858"],
+        "circle-stroke-width": 2, "circle-stroke-color": "#ffffff", "circle-opacity": 0.85,
+      },
     });
-    return () => markers.forEach((marker) => marker.remove());
-  }, [items, date]);
+    instance.addLayer({
+      id: "business-counts", type: "symbol", source: "businesses", "source-layer": "businesses",
+      filter: ["!", ["has", "id"]],
+      layout: { "text-field": ["to-string", ["get", "count"]], "text-font": ["Open Sans Regular"], "text-size": 12, "text-allow-overlap": true },
+      paint: { "text-color": "#ffffff" },
+    });
+    instance.on("mouseenter", "business-points", () => { instance.getCanvas().style.cursor = "pointer"; });
+    instance.on("mouseleave", "business-points", () => { instance.getCanvas().style.cursor = ""; });
+    instance.on("click", "business-points", async (event) => {
+      const feature = event.features?.[0];
+      if (!feature) return;
+      if (!feature.properties.id) {
+        instance.flyTo({ center: event.lngLat, zoom: Math.min(16, instance.getZoom() + 2) });
+        return;
+      }
+      detailRequest.current?.abort();
+      const controller = new AbortController();
+      detailRequest.current = controller;
+      try {
+        const response = await fetch(`/api/v1/map/businesses/${encodeURIComponent(feature.properties.id)}`, { signal: controller.signal });
+        if (!response.ok) throw new Error("상세 정보를 불러오지 못했습니다.");
+        const business: Business = await response.json();
+        if (!controller.signal.aborted) setSelected(business);
+      } catch {
+        if (!controller.signal.aborted) setMapError("상세 정보를 불러오지 못했습니다. 점을 다시 선택해 주세요.");
+      }
+    });
+  }, [mapReady, category, date, attempt]);
   function select(b: Business) {
+    detailRequest.current?.abort();
     setSelected(b);
     if (located(b))
       map.current?.flyTo({ center: [b.longitude!, b.latitude!], zoom: 16 });
+  }
+  function retry() {
+    setMapError("");
+    setAttempt((value) => value + 1);
   }
   const count = items.filter(located).length;
   return (
@@ -210,35 +257,35 @@ export default function App() {
             </label>
             {date && <button className="clear-date" onClick={() => setDate("")}>날짜 해제 · 폐업 기록도 보기</button>}
           </div>
-          {categoryError && <p role="alert">{categoryError} <button className="clear-date" onClick={() => setAttempt((value) => value + 1)}>다시 불러오기</button></p>}
+          {categoryError && <p role="alert">{categoryError} <button className="clear-date" onClick={retry}>다시 불러오기</button></p>}
           <p>{date ? "인허가일·폐업일로 추정한 존재 여부" : "날짜 제한 없음 · 폐업 기록 포함"}</p>
           <div className="stats">
             <div>
               <strong>{items.length}</strong>
-              <span>받아온 인허가</span>
+              <span>목록 조회 건수</span>
             </div>
             <div>
               <strong>{count}</strong>
-              <span>지도에 표시</span>
+              <span>목록 내 좌표 보유</span>
             </div>
           </div>
           {!loading && !error && (
             <p className="notice">
-              {truncated ? "표시 한도 500건입니다. 더 자세히 보려면 지도를 확대해 주세요." : "좌표 변환이 완료된 인허가만 표시합니다."}
+              {truncated ? "목록은 가까운 500건입니다. 지도는 별도 타일로 전체 위치를 표시합니다." : "지도는 좌표가 있는 인허가를 타일로 표시합니다."}
               <br />과거 날짜를 선택해도 위치는 최신 원천 좌표 기준입니다.
             </p>
           )}
         </section>
         <div className="results" aria-live="polite">
           {zoomedOut ? (
-            <p>지도를 더 확대해 주세요. 동네 단위에서 인허가를 표시합니다.</p>
+            <p>넓은 범위는 묶음과 건수로 표시합니다. 확대하면 개별 위치와 인허가 목록을 볼 수 있습니다.</p>
           ) : loading ? (
             <p>현재 지도 범위를 조회하는 중…</p>
           ) : error ? (
             <div role="alert">
               <p>{error}</p>
               <p>Spring 서버와 DB 연결을 확인해주세요.</p>
-              <button onClick={() => setAttempt((a) => a + 1)}>
+              <button onClick={retry}>
                 다시 불러오기
               </button>
             </div>
@@ -284,11 +331,12 @@ export default function App() {
         <div ref={container} className="map" />
         <div className="map-caption">
           <span className="dot" /> 인허가 위치 · 회색은 폐업 기록{" "}
-          <span>마커를 눌러 기록을 확인하세요</span>
+          <span>점은 개별 기록 · 숫자는 주변 기록 묶음</span>
         </div>
         {mapError && (
           <p className="map-error" role="alert">
             {mapError}
+            <button onClick={retry}>다시 불러오기</button>
           </p>
         )}
         {selected && (
@@ -296,7 +344,7 @@ export default function App() {
             <button
               className="close"
               aria-label="상세 닫기"
-              onClick={() => setSelected(null)}
+              onClick={() => { detailRequest.current?.abort(); setSelected(null); }}
             >
               ×
             </button>

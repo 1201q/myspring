@@ -54,6 +54,74 @@ public class MapQueryService {
         }
     }
 
+    public byte[] tile(int z,int x,int y,String category,LocalDate date) {
+        if(z<6 || z>16 || x<0 || y<0 || x>=(1<<z) || y>=(1<<z))
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"잘못된 타일 좌표입니다.");
+        if(category!=null && CATEGORIES.stream().noneMatch(c -> c.id().equals(category)))
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"좌표계가 확인된 업종을 선택하세요.");
+        var args=new ArrayList<Object>(List.of(z,x,y));
+        // The compact, indexed serving snapshot is refreshed after data publication.
+        String sql="""
+            WITH bounds AS NOT MATERIALIZED (SELECT ST_TileEnvelope(?,?,?) AS geom), points AS (
+              SELECT p.id,p.closed_on,p.geom
+              FROM national_permit_map_tile_point p CROSS JOIN bounds b
+              WHERE p.geom && ST_Expand(b.geom,(ST_XMax(b.geom)-ST_XMin(b.geom))*
+            """;
+        // Aggregate cells align with tile boundaries; only individual points need a buffer.
+        sql+=(z<15 ? "0" : "64.0/4096")+")";
+        if(z<15) sql+=" AND ST_X(p.geom)>=ST_XMin(b.geom) AND ST_X(p.geom)<ST_XMax(b.geom)"
+            +" AND ST_Y(p.geom)>=ST_YMin(b.geom) AND ST_Y(p.geom)<ST_YMax(b.geom)";
+        if(category!=null) { sql+=" AND p.category_id=?"; args.add(category); }
+        if(date!=null) { sql+=" AND p.permitted_on<=? AND (p.closed_on IS NULL OR p.closed_on>?)"; args.add(date); args.add(date); }
+        if(z<15) {
+            // Globally aligned 32-pixel cells, with no arbitrary row limit.
+            double cell=40075016.68557849/(1<<z)/16;
+            sql+="""
+                ), grouped AS (
+                  SELECT count(*) AS count,ST_SetSRID(ST_MakePoint(avg(ST_X(geom)),avg(ST_Y(geom))),3857) AS geom
+                  FROM points GROUP BY floor(ST_X(geom)/?),floor(ST_Y(geom)/?)
+                ), encoded AS (
+                  SELECT count,ST_AsMVTGeom(g.geom,b.geom,4096,64,true) AS geom
+                  FROM grouped g CROSS JOIN bounds b
+                ) SELECT ST_AsMVT(encoded.*,'businesses',4096,'geom') FROM encoded
+                """;
+            args.add(cell); args.add(cell);
+        } else {
+            args.add(date == null ? LocalDate.now(java.time.ZoneId.of("Asia/Seoul")) : date);
+            sql+="""
+                ), encoded AS (
+                  SELECT p.id::text AS id,1 AS count,
+                    CASE WHEN p.closed_on<=? THEN 1 ELSE 0 END AS closed,
+                    ST_AsMVTGeom(p.geom,b.geom,4096,64,true) AS geom
+                  FROM points p CROSS JOIN bounds b
+                ) SELECT ST_AsMVT(encoded.*,'businesses',4096,'geom') FROM encoded
+                """;
+        }
+        final String statement=sql;
+        return jdbc.query(connection -> {
+            var prepared=connection.prepareStatement(statement);
+            prepared.setQueryTimeout(z<15 ? 30 : 10);
+            for(int i=0;i<args.size();i++) prepared.setObject(i+1,args.get(i));
+            return prepared;
+        }, (org.springframework.jdbc.core.ResultSetExtractor<byte[]>) rs -> rs.next() ? rs.getBytes(1) : new byte[0]);
+    }
+
+    public Item detail(long id) {
+        var items=jdbc.query("""
+            SELECT p.*,ST_X(l.geom) AS longitude,ST_Y(l.geom) AS latitude
+            FROM national_permit_current p
+            JOIN national_permit_location l ON l.permit_id=p.id AND l.content_hash=p.content_hash
+              AND l.source_x=p.source_x AND l.source_y=p.source_y
+            LEFT JOIN permit_category_crs c ON c.category_id=p.category_id
+            JOIN permit_import_run r ON r.id=p.run_id AND r.status='COMPLETED'
+            WHERE p.id=? AND l.source_crs=COALESCE(p.source_crs,c.source_crs)
+            """,(rs,n) -> new Item(rs.getLong("id"),rs.getString("category_id"),rs.getString("name"),rs.getString("business_type"),
+                rs.getString("road_address"),rs.getString("lot_address"),rs.getObject("permitted_on",LocalDate.class),rs.getObject("closed_on",LocalDate.class),
+                rs.getDouble("longitude"),rs.getDouble("latitude"),"CONVERTED","https://sample.localdata.go.kr/public/"+rs.getString("category_id")+"/info"),id);
+        if(items.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,"인허가를 찾을 수 없습니다.");
+        return items.getFirst();
+    }
+
     public Result find(String bbox,String category,LocalDate date,int limit) {
         Bounds bounds=Bounds.parse(bbox);
         if(limit<1||limit>500) throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"limit은 1~500입니다.");

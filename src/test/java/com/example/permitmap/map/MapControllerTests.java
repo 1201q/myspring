@@ -13,6 +13,32 @@ import org.springframework.web.server.ResponseStatusException;
 
 class MapControllerTests {
     @Test
+    void validates_tile_coordinates_and_categories_before_database_access() throws Exception {
+        var jdbc=mock(JdbcTemplate.class);
+        var mvc=MockMvcBuilders.standaloneSetup(new MapController(new MapQueryService(jdbc))).build();
+        for(String path:List.of("5/0/0","17/0/0","6/-1/0","6/64/0","6/0/64"))
+            mvc.perform(get("/api/v1/map/tiles/"+path+".pbf")).andExpect(status().isBadRequest());
+        mvc.perform(get("/api/v1/map/tiles/13/6985/3170.pbf").param("category","unknown"))
+            .andExpect(status().isBadRequest());
+        verifyNoInteractions(jdbc);
+    }
+
+    @Test
+    void returns_binary_tiles_with_cache_headers_and_independent_detail() throws Exception {
+        var service=mock(MapQueryService.class);
+        byte[] tile={26,0};
+        var date=LocalDate.of(2024,1,1);
+        when(service.tile(13,6985,3170,"pharmacies",date)).thenReturn(tile);
+        var mvc=MockMvcBuilders.standaloneSetup(new MapController(service)).build();
+        mvc.perform(get("/api/v1/map/tiles/13/6985/3170.pbf").param("category","pharmacies").param("date","2024-01-01"))
+            .andExpect(status().isOk()).andExpect(content().contentType("application/vnd.mapbox-vector-tile"))
+            .andExpect(header().string("Cache-Control","max-age=300")).andExpect(content().bytes(tile));
+        when(service.detail(10)).thenReturn(new MapQueryService.Item(10,"pharmacies","봄약국",null,null,null,date,null,126.88,37.49,"CONVERTED",null));
+        mvc.perform(get("/api/v1/map/businesses/10")).andExpect(status().isOk())
+            .andExpect(jsonPath("$.id").value(10)).andExpect(jsonPath("$.name").value("봄약국"));
+    }
+
+    @Test
     void rejects_world_requests_non_finite_coordinates_and_unverified_categories_before_database_access() throws Exception {
         var jdbc=mock(JdbcTemplate.class);
         var service=new MapQueryService(jdbc);

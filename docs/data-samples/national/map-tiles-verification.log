@@ -1,0 +1,55 @@
+{"z":15,"x":27933,"y":12697,"query":"","bytes":99153,"features":3229,"ms":347}
+{"z":15,"x":27933,"y":12697,"query":"?category=pharmacies&date=2020-01-01","bytes":579,"features":19,"ms":43}
+{"z":12,"x":3491,"y":1587,"query":"","bytes":4342,"features":229,"ms":292}
+{"z":6,"x":54,"y":25,"query":"","bytes":1867,"features":92,"ms":3996}
+{"z":13,"x":0,"y":0,"query":"","bytes":0,"features":0,"ms":26}
+{
+  "status": "passed",
+  "results": [
+    {
+      "z": 15,
+      "x": 27933,
+      "y": 12697,
+      "query": "",
+      "bytes": 99153,
+      "features": 3229,
+      "ms": 347
+    },
+    {
+      "z": 15,
+      "x": 27933,
+      "y": 12697,
+      "query": "?category=pharmacies&date=2020-01-01",
+      "bytes": 579,
+      "features": 19,
+      "ms": 43
+    },
+    {
+      "z": 12,
+      "x": 3491,
+      "y": 1587,
+      "query": "",
+      "bytes": 4342,
+      "features": 229,
+      "ms": 292
+    },
+    {
+      "z": 6,
+      "x": 54,
+      "y": 25,
+      "query": "",
+      "bytes": 1867,
+      "features": 92,
+      "ms": 3996
+    },
+    {
+      "z": 13,
+      "x": 0,
+      "y": 0,
+      "query": "",
+      "bytes": 0,
+      "features": 0,
+      "ms": 26
+    }
+  ]
+}
