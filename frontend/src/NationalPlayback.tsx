@@ -1,10 +1,14 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { MapboxOverlay } from "@deck.gl/mapbox";
-import { ScatterplotLayer } from "@deck.gl/layers";
+import { GeoJsonLayer, ScatterplotLayer } from "@deck.gl/layers";
+import type { Color } from "@deck.gl/core";
+import type { Feature, MultiPolygon, Polygon } from "geojson";
 import { DataFilterExtension } from "@deck.gl/extensions";
 import type { Map as LibreMap } from "maplibre-gl";
 import { loadRegionDataset, loadRegions } from "./nationalPlaybackData";
 import type { Dataset, LoadProgress, Region } from "./nationalPlaybackData";
+import { loadRegionBoundaries } from "./regionBoundaries";
+import type { RegionBoundaries, RegionProperties } from "./regionBoundaries";
 import "./SeoulPlayback.css";
 import "./NationalPlayback.css";
 
@@ -21,6 +25,10 @@ function progressText(value: LoadProgress, name: string) {
 export default function NationalPlayback({ map, category, categories, categoryError, onCategoryChange, onRetryCategories, onSelectId, onClearSelection }: Props) {
   const [regions, setRegions] = useState<Region[]>([]);
   const [regionId, setRegionId] = useState("seoul");
+  const [boundaries, setBoundaries] = useState<RegionBoundaries | null>(null);
+  const [boundaryError, setBoundaryError] = useState("");
+  const [boundaryAttempt, setBoundaryAttempt] = useState(0);
+  const [hoveredRegionId, setHoveredRegionId] = useState<string | null>(null);
   // Keep only the current region's numeric arrays rather than retaining every visited region.
   const [loaded, setLoaded] = useState<Dataset | null>(null);
   const data = loaded?.manifest.regionId === regionId ? loaded : null;
@@ -34,7 +42,17 @@ export default function NationalPlayback({ map, category, categories, categoryEr
   const overlay = useRef<MapboxOverlay | null>(null);
   const click = useRef(onSelectId);
   const selectedRegion = regions.find(r => r.id === regionId);
+  const hoveredRegion = regions.find(r => r.id === hoveredRegionId);
   const name = selectedRegion?.name ?? "서울";
+  const selectableBoundaries = useMemo(() => boundaries && ({
+    ...boundaries,
+    features: boundaries.features.filter(feature => feature.properties.id !== regionId),
+  }), [boundaries, regionId]);
+  const changeRegion = useCallback((id: string) => {
+    if (id === regionId || !regions.some(region => region.id === id)) return;
+    setPlaying(false); setError(""); setProgress(initialProgress); setLoaded(null);
+    setHoveredRegionId(null); onClearSelection(); setRegionId(id);
+  }, [regionId, regions, onClearSelection]);
   useEffect(() => { click.current = onSelectId; }, [onSelectId]);
   const extensions = useMemo(() => [new DataFilterExtension({ filterSize: 1, categorySize: 1 })], []);
   useEffect(() => {
@@ -43,6 +61,26 @@ export default function NationalPlayback({ map, category, categories, categoryEr
     map.addControl(control); overlay.current = control;
     return () => { map.removeControl(control); overlay.current = null; };
   }, [map]);
+  useEffect(() => {
+    const controller = new AbortController();
+    loadRegionBoundaries(controller.signal).then(result => {
+      if (!controller.signal.aborted) { setBoundaries(result); setBoundaryError(""); }
+    }).catch(reason => {
+      if (!controller.signal.aborted) setBoundaryError(reason instanceof Error ? reason.message : "지역 선택 경계 조회 실패");
+    });
+    return () => controller.abort();
+  }, [boundaryAttempt]);
+  useEffect(() => {
+    if (!map || !boundaries) return;
+    // Draw selection and hit detection from the same polygons, rather than bounding boxes.
+    const layers = ["boundary_province", "boundary_province_halo"].filter(id => map.getLayer(id));
+    const previous = layers.map(id => map.getLayoutProperty(id, "visibility"));
+    layers.forEach(id => map.setLayoutProperty(id, "visibility", "none"));
+    return () => {
+      layers.forEach((id, index) => { if (map.getLayer(id)) map.setLayoutProperty(id, "visibility", previous[index] ?? "visible"); });
+      map.getCanvas().style.cursor = "";
+    };
+  }, [map, boundaries]);
   useEffect(() => {
     if (regions.length) return;
     const controller = new AbortController();
@@ -53,6 +91,8 @@ export default function NationalPlayback({ map, category, categories, categoryEr
   useEffect(() => {
     if (!map || !selectedRegion) return;
     const [west, south, east, north] = selectedRegion.bbox;
+    // A resize and a region click can happen in the same frame on narrow screens.
+    map.resize();
     map.fitBounds([[west, south], [east, north]], { padding: 45, duration: 600, maxZoom: 11 });
   }, [map, selectedRegion]);
   useEffect(() => {
@@ -75,13 +115,33 @@ export default function NationalPlayback({ map, category, categories, categoryEr
   } })), [data]);
   useEffect(() => {
     if (!overlay.current) return;
-    overlay.current.setProps({ layers: data && binaryData ? [data.open, data.close].map((points, kind) => new ScatterplotLayer({
+    const regionLayer = selectableBoundaries ? new GeoJsonLayer<RegionProperties>({
+      id: "playback-region-selection", data: selectableBoundaries, pickable: true, filled: true, stroked: true,
+      getFillColor: feature => feature.properties.id === hoveredRegionId ? [108, 149, 224, 40] : [0, 0, 0, 1],
+      getLineColor: feature => feature.properties.id === hoveredRegionId ? [114, 157, 237, 255] : [0, 0, 0, 0],
+      getLineWidth: feature => feature.properties.id === hoveredRegionId ? 2.5 : 0,
+      lineWidthUnits: "pixels", updateTriggers: { getFillColor: [hoveredRegionId], getLineColor: [hoveredRegionId], getLineWidth: [hoveredRegionId] },
+      onClick: info => { if (info.object) { changeRegion(info.object.properties.id); return true; } return false; },
+    }) : null;
+    overlay.current.setProps({
+      onHover: info => {
+        const id = info.object?.properties?.id;
+        setHoveredRegionId(typeof id === "string" && id !== regionId ? id : null);
+        if (map) map.getCanvas().style.cursor = info.picked ? "pointer" : "";
+      },
+      getTooltip: info => {
+        const feature = info.object as Feature<Polygon | MultiPolygon, RegionProperties> | undefined;
+        if (!feature?.properties?.id || feature.properties.id === regionId) return null;
+        return { text: feature.properties.name + " · 클릭하여 재생 지역 변경",
+          style: { fontSize: "12px", backgroundColor: "#1d2b30", color: "#f0faf6", borderRadius: "8px", padding: "8px 10px" } };
+      },
+      layers: [regionLayer, ...(data && binaryData ? [data.open, data.close].map((points, kind) => new ScatterplotLayer({
       id: `region-events-${regionId}-${kind}`, data: binaryData[kind], extensions, filterRange: [from - 0.5, currentMonth + 0.5], filterCategories: codes,
       pickable: true, filled: kind === 0, stroked: kind === 1, getRadius: 16, radiusMinPixels: 1.5, radiusMaxPixels: 6,
-      getFillColor: [65, 207, 182, 170], getLineColor: [244, 166, 107, 210], lineWidthMinPixels: 1.3,
-      onClick: info => { if (info.index >= 0) { setPlaying(false); click.current(points.ids[info.index]); } },
-    })) : [] });
-  }, [data, binaryData, extensions, from, currentMonth, codes, map, regionId]);
+      getFillColor: [65, 207, 182, 170] as Color, getLineColor: [244, 166, 107, 210] as Color, lineWidthMinPixels: 1.3,
+      onClick: info => { if (info.index >= 0) { setPlaying(false); click.current(points.ids[info.index]); return true; } return false; },
+    })) : [])] });
+  }, [data, binaryData, extensions, from, currentMonth, codes, map, regionId, selectableBoundaries, hoveredRegionId, changeRegion]);
   useEffect(() => { onClearSelection(); }, [currentMonth, unit, category, regionId, onClearSelection]);
   useEffect(() => {
     if (!playing || !data) return;
@@ -109,7 +169,9 @@ export default function NationalPlayback({ map, category, categories, categoryEr
       <small>점은 인허가 · 고리는 폐업 · {name} 전체 집계{unit === 0 ? " · 누적 신고 건수" : ""}</small>
     </aside>}
     <section className="playback national-playback is-active" aria-label="지역별 시간 재생">
-        {!!regions.length && <label>재생 지역<select aria-label="재생 지역" value={regionId} onChange={e => { setPlaying(false); setError(""); setProgress(initialProgress); setLoaded(null); setRegionId(e.target.value); }}>
+        <div className="region-selection-feedback" role="status"><strong>{name} 선택됨</strong><span>{hoveredRegion && hoveredRegion.id !== regionId ? `${hoveredRegion.name} · 클릭하면 이 지역으로 재생 지역을 변경합니다.` : boundaries ? "지도에서 다른 지역을 클릭해 재생 지역을 바꿀 수 있습니다." : "지역 선택 경계를 준비하는 중…"}</span></div>
+        {boundaryError && <div className="playback-status" role="alert"><span>{boundaryError} 아래 지역 목록으로 선택할 수 있습니다.</span><button onClick={() => setBoundaryAttempt(value => value + 1)}>경계 다시 불러오기</button></div>}
+        {!!regions.length && <label>재생 지역<select aria-label="재생 지역" value={regionId} onChange={e => changeRegion(e.target.value)}>
           {regions.map(r => <option value={r.id} key={r.id}>{r.name}</option>)}
         </select></label>}
         <label className="playback-category">업종<select aria-label="업종" disabled={!categories.length} value={category} onChange={event => { setPlaying(false); onCategoryChange(event.target.value); }}>

@@ -75,7 +75,7 @@ export default function App() {
         maxBounds: [[123, 31], [133, 40]],
         zoom: 10,
         minZoom: 6,
-        attributionControl: { customAttribution: '자료: <a href="https://www.localdata.go.kr/" target="_blank" rel="noreferrer">행정안전부 LOCALDATA</a>' },
+        attributionControl: { customAttribution: '자료: <a href="https://www.localdata.go.kr/" target="_blank" rel="noreferrer">행정안전부 LOCALDATA</a> · 경계: <a href="https://sgis.kostat.go.kr/" target="_blank" rel="noreferrer">SGIS</a> / <a href="https://github.com/vuski/admdongkor" target="_blank" rel="noreferrer">vuski</a> (<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a>)' },
         style: "/styles/quiet-" + initialTheme.current + ".json",
       });
       map.current = instance;

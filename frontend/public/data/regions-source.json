@@ -1,0 +1,11 @@
+{
+  "version": "20261001",
+  "commit": "d5d5a821c8de6cc337d47eeca604d7af76271c9b",
+  "regionCount": 16,
+  "source": "https://raw.githubusercontent.com/vuski/admdongkor/d5d5a821c8de6cc337d47eeca604d7af76271c9b/parquet/simplified/sido_20261001_light.parquet",
+  "license": "CC-BY-4.0; upstream SGIS KOGL Type 1 attribution retained",
+  "attribution": "통계청 통계지리정보서비스(SGIS) 행정동 경계 가공: vuski/admdongkor",
+  "modifications": "Map application IDs/names added; WGS84 coordinates rounded to 6 decimal places; source light simplification retained.",
+  "sha256": "0528cd335aa54fa8cae3e68ec1b56f82f8d6f1fc669bb55c197344253de50769",
+  "bytes": 696453
+}
