@@ -24,6 +24,7 @@ type Business = {
 };
 type Page = { items: Business[]; truncated: boolean };
 type Category = { id: string; name: string };
+const PAUSED_QUERY_ZOOM = 10;
 const located = (b: Business) =>
   b.coordinateStatus === "CONVERTED" &&
   b.longitude !== null &&
@@ -39,6 +40,7 @@ export default function App() {
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<maplibregl.Map | null>(null);
   const [mapReady, setMapReady] = useState(false);
+  const [zoom, setZoom] = useState(13);
   const detailRequest = useRef<AbortController | null>(null);
   const [items, setItems] = useState<Business[]>([]);
   const [selected, setSelected] = useState<Business | null>(null);
@@ -72,7 +74,7 @@ export default function App() {
     return () => controller.abort();
   }, [attempt]);
   useEffect(() => {
-    if (!bounds) return;
+    if (!bounds || zoomedOut) return;
     const controller = new AbortController();
     async function load() {
       setLoading(true);
@@ -127,6 +129,31 @@ export default function App() {
         if (!disposed) setMapReady(true);
       });
       instance.addControl(new maplibregl.NavigationControl(), "top-right");
+      let queriesPaused = false;
+      const updateQueryGate = () => {
+        const paused = instance.getZoom() <= PAUSED_QUERY_ZOOM;
+        setZoomedOut(paused);
+        if (paused === queriesPaused) return;
+        queriesPaused = paused;
+        // An unused source stops loading vector tiles; the basemap stays active.
+        for (const id of ["business-points", "business-counts"])
+          if (instance.getLayer(id)) instance.setLayoutProperty(id, "visibility", paused ? "none" : "visible");
+        if (paused) {
+          detailRequest.current?.abort();
+          setBounds(null);
+          setItems([]);
+          setSelected(null);
+          setLoading(false);
+          setTruncated(false);
+          setError("");
+        }
+      };
+      instance.on("zoom", () => {
+        if (!disposed) {
+          setZoom(instance.getZoom());
+          updateQueryGate();
+        }
+      });
       instance.on("error", () => {
         if (!disposed)
           setMapError(
@@ -135,14 +162,12 @@ export default function App() {
       });
       const updateBounds = () => {
         const visible = instance.getBounds();
-        const tooWide = visible.getEast() - visible.getWest() > 1 || visible.getNorth() - visible.getSouth() > 1;
-        setZoomedOut(tooWide);
-        setBounds(tooWide ? null : [visible.getWest(), visible.getSouth(), visible.getEast(), visible.getNorth()]);
-        if (tooWide) {
-          setItems([]);
-          setLoading(false);
-          setTruncated(false);
-        }
+        updateQueryGate();
+        if (instance.getZoom() <= PAUSED_QUERY_ZOOM) return;
+        // Preserve the list API's one-degree limit on very wide viewports.
+        const center = visible.getCenter();
+        setBounds([Math.max(visible.getWest(), center.lng - 0.5), Math.max(visible.getSouth(), center.lat - 0.5),
+          Math.min(visible.getEast(), center.lng + 0.5), Math.min(visible.getNorth(), center.lat + 0.5)]);
       };
       instance.on("moveend", updateBounds);
       updateBounds();
@@ -178,9 +203,11 @@ export default function App() {
       source.setTiles(tiles);
       return;
     }
-    instance.addSource("businesses", { type: "vector", tiles, minzoom: 6, maxzoom: 16 });
+    const visibility = instance.getZoom() <= PAUSED_QUERY_ZOOM ? "none" : "visible";
+    instance.addSource("businesses", { type: "vector", tiles, minzoom: 10, maxzoom: 16 });
     instance.addLayer({
       id: "business-points", type: "circle", source: "businesses", "source-layer": "businesses",
+      layout: { visibility },
       paint: {
         "circle-radius": ["case", ["has", "id"], 3.5, ["interpolate", ["linear"], ["get", "count"], 1, 3, 10, 6, 100, 10, 1000, 14]],
         "circle-color": ["case", ["==", ["get", "closed"], 1], "#87918f", "#247d76"],
@@ -192,7 +219,7 @@ export default function App() {
     instance.addLayer({
       id: "business-counts", type: "symbol", source: "businesses", "source-layer": "businesses",
       filter: ["all", ["!", ["has", "id"]], [">=", ["get", "count"], 10]],
-      layout: { "text-field": ["step", ["get", "count"], ["to-string", ["get", "count"]], 1000, ["concat", ["to-string", ["/", ["round", ["/", ["get", "count"], 100]], 10]], "k"]], "text-font": ["Noto Sans Regular"], "text-size": 10, "text-allow-overlap": false, "text-padding": 5 },
+      layout: { visibility, "text-field": ["step", ["get", "count"], ["to-string", ["get", "count"]], 1000, ["concat", ["to-string", ["/", ["round", ["/", ["get", "count"], 100]], 10]], "k"]], "text-font": ["Noto Sans Regular"], "text-size": 10, "text-allow-overlap": false, "text-padding": 5 },
       paint: { "text-color": "#ffffff" },
     });
     instance.on("mouseenter", "business-points", () => { instance.getCanvas().style.cursor = "pointer"; });
@@ -314,7 +341,7 @@ export default function App() {
               <span>목록 내 좌표 보유</span>
             </div>
           </div>
-          {!loading && !error && (
+          {!zoomedOut && !loading && !error && (
             <p className="notice">
               {truncated ? "목록은 가까운 500건입니다. 지도는 별도 타일로 전체 위치를 표시합니다." : "지도는 좌표가 있는 인허가를 타일로 표시합니다."}
               <br />과거 날짜를 선택해도 위치는 최신 원천 좌표 기준입니다.
@@ -323,7 +350,7 @@ export default function App() {
         </section>
         <div className="results" aria-live="polite">
           {zoomedOut ? (
-            <p>넓은 범위는 묶음과 건수로 표시합니다. 확대하면 개별 위치와 인허가 목록을 볼 수 있습니다.</p>
+            <p>확대하면 표시됩니다. 줌 10 이하에서는 인허가 조회를 잠시 멈춥니다.</p>
           ) : loading ? (
             <p>현재 지도 범위를 조회하는 중…</p>
           ) : error ? (
@@ -374,6 +401,8 @@ export default function App() {
       </aside>
       <section className="map-panel" aria-label="전국 인허가 지도">
         <div ref={container} className="map" />
+        <output className="map-zoom" aria-label="현재 지도 줌 단계">줌 {zoom.toFixed(1)}</output>
+        {zoomedOut && <p className="map-query-notice" role="status">확대하면 표시됩니다 · 줌 10 초과에서 인허가를 조회합니다.</p>}
         <div className="map-caption">
           <span className="dot" /> 인허가 위치 <span className="legend-closed" /> 폐업 기록{" "}
           <span>점은 개별 기록 · 숫자는 주변 기록 묶음</span>
