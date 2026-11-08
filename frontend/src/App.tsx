@@ -1,10 +1,12 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useCallback, useEffect, useRef, useState } from "react";
 import type { FeatureCollection, Point } from "geojson";
 import * as maplibregl from "maplibre-gl";
 import mapWorkerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
 import "maplibre-gl/dist/maplibre-gl.css";
 import "./App.css";
-import SeoulPlayback from "./SeoulPlayback";
+import PlaybackBoundary from "./PlaybackBoundary";
+
+const NationalPlayback = lazy(() => import("./NationalPlayback"));
 
 // Vite가 지도 worker의 의존성도 함께 빌드하도록 명시한다.
 maplibregl.setWorkerUrl(mapWorkerUrl);
@@ -44,6 +46,8 @@ export default function App() {
   const [mapInstance, setMapInstance] = useState<maplibregl.Map | null>(null);
   const [zoom, setZoom] = useState(13);
   const [playback, setPlayback] = useState(false);
+  const [playbackLoaded, setPlaybackLoaded] = useState(false);
+  const [playbackRegion, setPlaybackRegion] = useState("서울");
   const playbackRef = useRef(false);
   useEffect(() => { playbackRef.current = playback; }, [playback]);
   const detailRequest = useRef<AbortController | null>(null);
@@ -329,8 +333,8 @@ export default function App() {
           <p>지도를 움직여 전국의 인허가 기록을 살펴보세요.</p>
         </header>
         <section className="summary">
-          <span className="tag">{playback ? "서울 전체" : "전국"} · {categories.length ? `좌표계 확인 ${categories.length}개 업종` : "업종 확인 중"}</span>
-          <h2>{playback ? "서울의 인허가 변화" : "화면 안의 인허가"}</h2>
+          <span className="tag">{playback ? `${playbackRegion} 전체` : "전국"} · {categories.length ? `좌표계 확인 ${categories.length}개 업종` : "업종 확인 중"}</span>
+          <h2>{playback ? `${playbackRegion}의 인허가 변화` : "화면 안의 인허가"}</h2>
           <div className="map-filters">
             <label>업종
               <select disabled={!categories.length} value={category} onChange={(event) => { setCategory(event.target.value); setSelected(null); }}>
@@ -363,7 +367,7 @@ export default function App() {
           )}
         </section>
         <div className="results" aria-live="polite">
-          {playback ? <p>서울 전체의 신고 기록을 재생합니다. 월·업종 변경과 지도 이동 시에도 받은 데이터를 재사용합니다. 청록색 점은 인허가, 주황색 고리는 폐업 신고입니다.</p> : zoomedOut ? (
+          {playback ? <p>{playbackRegion}의 수집 대상 업종 중 좌표가 있는 신고 기록을 재생합니다. 다른 지역은 아래 재생 지역에서 선택하세요. 청록색 점은 인허가, 주황색 고리는 폐업 신고입니다.</p> : zoomedOut ? (
             <p>확대하면 표시됩니다. 줌 10 이하에서는 인허가 조회를 잠시 멈춥니다.</p>
           ) : loading ? (
             <p>현재 지도 범위를 조회하는 중…</p>
@@ -421,11 +425,8 @@ export default function App() {
           <span className="dot" /> 인허가 위치 <span className="legend-closed" /> 폐업 기록{" "}
           <span>점은 개별 기록 · 숫자는 주변 기록 묶음</span>
         </div>}
-        <SeoulPlayback map={mapInstance} active={playback} onActiveChange={value => {
-          if (value && map.current)
-            map.current.fitBounds([[126.76, 37.42], [127.19, 37.71]], { padding: 45, duration: 600 });
-          setPlayback(value);
-        }} category={category} onClearSelection={clearSelection} onSelectId={async id => {
+        {playbackLoaded ? <PlaybackBoundary onClose={() => { setPlayback(false); setPlaybackLoaded(false); }}><Suspense fallback={<section className="playback" role="status">재생 화면을 불러오는 중… <button onClick={() => setPlayback(false)}>기록 지도로</button></section>}>
+        <NationalPlayback map={mapInstance} active={playback} onActiveChange={setPlayback} onRegionChange={setPlaybackRegion} category={category} onClearSelection={clearSelection} onSelectId={async id => {
           detailRequest.current?.abort();
           const controller = new AbortController();
           detailRequest.current = controller;
@@ -436,6 +437,7 @@ export default function App() {
             if (!controller.signal.aborted) setSelected(business);
           } catch { if (!controller.signal.aborted) setMapError("상세 정보를 불러오지 못했습니다."); }
         }} />
+        </Suspense></PlaybackBoundary> : <section className="playback" aria-label="시간 재생 모드"><div className="playback-mode"><button aria-pressed="true">기록 지도</button><button aria-pressed="false" onClick={() => { setPlaybackLoaded(true); setPlayback(true); }}>지역 재생</button></div></section>}
         {mapError && (
           <p className="map-error" role="alert">
             {mapError}

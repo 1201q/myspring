@@ -1,0 +1,4 @@
+.national-playback input[type="month"] { width:128px; }
+.national-playback select[aria-label="재생 지역"] { min-width:118px; }
+.national-playback progress { width:100%; height:5px; accent-color:#2ba58f; }
+@media(min-width:1101px) and (max-width:1450px) { .national-playback .playback-timeline { flex-basis:100%; order:1; } .national-playback .playback-status { order:2; } }

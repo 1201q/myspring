@@ -1,0 +1,135 @@
+import { useEffect, useMemo, useRef, useState } from "react";
+import { MapboxOverlay } from "@deck.gl/mapbox";
+import { ScatterplotLayer } from "@deck.gl/layers";
+import { DataFilterExtension } from "@deck.gl/extensions";
+import type { Map as LibreMap } from "maplibre-gl";
+import { loadRegionDataset, loadRegions } from "./nationalPlaybackData";
+import type { Dataset, LoadProgress, Region } from "./nationalPlaybackData";
+import "./SeoulPlayback.css";
+import "./NationalPlayback.css";
+
+type Props = { map: LibreMap | null; active: boolean; onActiveChange: (value: boolean) => void; onRegionChange: (name: string) => void; category: string; onSelectId: (id: number) => void; onClearSelection: () => void };
+const format = (m: number) => `${1990 + Math.floor(m / 12)}-${String(m % 12 + 1).padStart(2, "0")}`;
+const parse = (v: string) => (Number(v.slice(0, 4)) - 1990) * 12 + Number(v.slice(5, 7)) - 1;
+const initialProgress: LoadProgress = { stage: "preparing", bytes: 0, total: 0 };
+function progressText(value: LoadProgress, name: string) {
+  if (value.stage === "preparing") return `${name} 재생 데이터를 준비하는 중… 최초 준비는 몇 분 걸릴 수 있습니다.`;
+  if (value.stage === "decoding") return `${name}의 기록을 지도에 배치하는 중…`;
+  const mb = (bytes: number) => (bytes / 1048576).toFixed(1);
+  return `${name} 기록 다운로드 ${value.total ? Math.round(value.bytes / value.total * 100) : 100}% · ${mb(value.bytes)} / ${mb(value.total)} MB`;
+}
+export default function NationalPlayback({ map, active, onActiveChange, onRegionChange, category, onSelectId, onClearSelection }: Props) {
+  const [regions, setRegions] = useState<Region[]>([]);
+  const [regionId, setRegionId] = useState("seoul");
+  // Keep only the current region's numeric arrays rather than retaining every visited region.
+  const [loaded, setLoaded] = useState<Dataset | null>(null);
+  const data = loaded?.manifest.regionId === regionId ? loaded : null;
+  const [error, setError] = useState("");
+  const [attempt, setAttempt] = useState(0);
+  const [progress, setProgress] = useState<LoadProgress>(initialProgress);
+  const [month, setMonth] = useState<number | null>(null);
+  const [unit, setUnit] = useState(1);
+  const [speed, setSpeed] = useState(1);
+  const [playing, setPlaying] = useState(false);
+  const overlay = useRef<MapboxOverlay | null>(null);
+  const click = useRef(onSelectId);
+  const selectedRegion = regions.find(r => r.id === regionId);
+  const name = selectedRegion?.name ?? "서울";
+  useEffect(() => { click.current = onSelectId; }, [onSelectId]);
+  const extensions = useMemo(() => [new DataFilterExtension({ filterSize: 1, categorySize: 1 })], []);
+  useEffect(() => {
+    if (!map) return;
+    const control = new MapboxOverlay({ interleaved: false, layers: [] });
+    map.addControl(control); overlay.current = control;
+    return () => { map.removeControl(control); overlay.current = null; };
+  }, [map]);
+  useEffect(() => {
+    if (!active || regions.length) return;
+    const controller = new AbortController();
+    loadRegions(controller.signal).then(result => { if (!controller.signal.aborted) { setRegions(result); setError(""); } })
+      .catch(reason => { if (!controller.signal.aborted) setError(reason instanceof Error ? reason.message : "재생 지역 목록 조회 실패"); });
+    return () => controller.abort();
+  }, [active, regions.length, attempt]);
+  useEffect(() => { onRegionChange(name); }, [name, onRegionChange]);
+  useEffect(() => {
+    if (!active || !map || !selectedRegion) return;
+    const [west, south, east, north] = selectedRegion.bbox;
+    map.fitBounds([[west, south], [east, north]], { padding: 45, duration: 600, maxZoom: 11 });
+  }, [active, map, selectedRegion]);
+  useEffect(() => {
+    if (!active || !selectedRegion || data) return;
+    const controller = new AbortController();
+    loadRegionDataset(regionId, controller.signal, value => { if (!controller.signal.aborted) setProgress(value); })
+      .then(result => {
+        if (controller.signal.aborted) return;
+        setLoaded(result);
+        setMonth(value => Math.max(result.manifest.minMonth, Math.min(result.manifest.maxMonth, value ?? result.manifest.maxMonth - 1)));
+      }).catch(reason => { if (!controller.signal.aborted) setError(reason instanceof Error ? reason.message : "재생 데이터 조회 실패"); });
+    return () => controller.abort();
+  }, [active, selectedRegion, regionId, attempt, data]);
+  const max = data?.manifest.maxMonth ?? 0, min = data?.manifest.minMonth ?? 0;
+  const currentMonth = Math.max(min, Math.min(max, month ?? min));
+  const from = unit === 0 ? min : Math.max(min, currentMonth - unit + 1);
+  const codes = useMemo(() => data?.manifest.categories.filter(c => !category || c.id === category).map(c => c.code) ?? [], [data, category]);
+  const binaryData = useMemo(() => data && [data.open, data.close].map(points => ({ length: points.length, attributes: {
+    getPosition: { value: points.pos, size: 2 }, getFilterValue: { value: points.month, size: 1 }, getFilterCategory: { value: points.cat, size: 1 },
+  } })), [data]);
+  useEffect(() => {
+    if (!overlay.current) return;
+    overlay.current.setProps({ layers: active && data && binaryData ? [data.open, data.close].map((points, kind) => new ScatterplotLayer({
+      id: `region-events-${regionId}-${kind}`, data: binaryData[kind], extensions, filterRange: [from - 0.5, currentMonth + 0.5], filterCategories: codes,
+      pickable: true, filled: kind === 0, stroked: kind === 1, getRadius: 16, radiusMinPixels: 1.5, radiusMaxPixels: 6,
+      getFillColor: [65, 207, 182, 170], getLineColor: [244, 166, 107, 210], lineWidthMinPixels: 1.3,
+      onClick: info => { if (info.index >= 0) { setPlaying(false); click.current(points.ids[info.index]); } },
+    })) : [] });
+  }, [data, binaryData, extensions, active, from, currentMonth, codes, map, regionId]);
+  useEffect(() => { onClearSelection(); }, [currentMonth, unit, category, regionId, onClearSelection]);
+  useEffect(() => {
+    if (!playing || !active || !data) return;
+    const timer = window.setTimeout(() => {
+      const next = Math.min(max, currentMonth + (unit || 1)); setMonth(next); if (next === max) setPlaying(false);
+    }, 700 / speed);
+    return () => window.clearTimeout(timer);
+  }, [playing, active, data, max, currentMonth, unit, speed]);
+  const rows = useMemo(() => {
+    if (!data) return [];
+    const m = data.manifest, n = m.categories.length;
+    return m.categories.filter(c => codes.includes(c.code)).map(c => {
+      let open = 0, close = 0;
+      for (let t = from; t <= currentMonth; t++) { open += m.monthlyCounts[((t - min) * 2) * n + c.code] ?? 0; close += m.monthlyCounts[((t - min) * 2 + 1) * n + c.code] ?? 0; }
+      return { ...c, open, close };
+    }).sort((a, b) => b.open - a.open);
+  }, [data, codes, from, currentMonth, min]);
+  const opens = rows.reduce((sum, row) => sum + row.open, 0), closes = rows.reduce((sum, row) => sum + row.close, 0);
+  const step = (direction: number) => { setPlaying(false); setMonth(Math.max(min, Math.min(max, currentMonth + direction * (unit || 1)))); };
+  return <>
+    {active && data && <aside className="seoul-ranks" aria-label={`${name} 전체 업종 순위`}>
+      <strong>개업 많은 순 · {name} 전체</strong>
+      <p>이 기간에 인허가 {opens.toLocaleString()} · 폐업 {closes.toLocaleString()}</p>
+      <div className="seoul-rank-scroll">{rows.map(row => <div className="seoul-rank" key={row.code}><span>{row.name}</span><b>{row.open.toLocaleString()}</b><small>{row.close.toLocaleString()}</small></div>)}</div>
+      <small>점은 인허가 · 고리는 폐업 · {name} 전체 집계{unit === 0 ? " · 누적 신고 건수" : ""}</small>
+    </aside>}
+    <section className={`playback national-playback${active ? " is-active" : ""}`} aria-label="지역별 시간 재생">
+      <div className="playback-mode"><button aria-pressed={!active} onClick={() => { setPlaying(false); onActiveChange(false); }}>기록 지도</button><button aria-pressed={active} onClick={() => { if (!active) { setError(""); setProgress(initialProgress); } onActiveChange(true); }}>지역 재생</button></div>
+      {active && <>
+        {!!regions.length && <label>재생 지역<select aria-label="재생 지역" value={regionId} onChange={e => { setPlaying(false); setError(""); setProgress(initialProgress); setLoaded(null); setRegionId(e.target.value); }}>
+          {regions.map(r => <option value={r.id} key={r.id}>{r.name}</option>)}
+        </select></label>}
+        {!data ? <div className="playback-status" role={error ? "alert" : "status"}>
+          <span>{error || (!regions.length ? "재생 지역 목록을 불러오는 중…" : progressText(progress, name))}</span>
+          {error && <button onClick={() => { setError(""); setProgress(initialProgress); setAttempt(value => value + 1); }}>다시 조회</button>}
+          {!error && progress.stage === "downloading" && <progress aria-label="재생 데이터 다운로드" max={progress.total || 1} value={progress.bytes} />}
+        </div> : <>
+          <label>재생 단위<select aria-label="재생 단위" value={unit} onChange={e => { setPlaying(false); setUnit(Number(e.target.value)); }}><option value={1}>1개월</option><option value={3}>3개월</option><option value={12}>12개월</option><option value={0}>누적</option></select></label>
+          <div className="playback-timeline"><input type="range" aria-label="재생 월" min={min} max={max} value={currentMonth} onChange={e => { setPlaying(false); setMonth(Number(e.target.value)); }} /><div className="playback-years"><span>{format(min)}</span><span>2000</span><span>2010</span><span>2020</span><span>{format(max)}</span></div></div>
+          <button className="playback-play" aria-label={playing ? "일시정지" : "재생"} onClick={() => { if (currentMonth >= max) setMonth(min); setPlaying(value => !value); }}>{playing ? "Ⅱ" : "▶"}</button>
+          <select aria-label="재생 속도" value={speed} onChange={e => setSpeed(Number(e.target.value))}><option value={0.5}>0.5×</option><option value={1}>1×</option><option value={2}>2×</option><option value={4}>4×</option></select>
+          <button aria-label="이전 기간" disabled={currentMonth === min} onClick={() => step(-1)}>◀</button>
+          <input type="month" aria-label="선택 월" min={format(min)} max={format(max)} value={format(currentMonth)} onInput={e => { if (e.currentTarget.value) { setPlaying(false); setMonth(Math.max(min, Math.min(max, parse(e.currentTarget.value)))); } }} />
+          <button aria-label="다음 기간" disabled={currentMonth === max} onClick={() => step(1)}>▶</button>
+          <div className="playback-status" role="status"><span>{name} 전체 · {format(from)} ~ {format(currentMonth)} · 인허가 {opens.toLocaleString()} · 폐업 {closes.toLocaleString()}</span><span>{unit === 0 ? "누적은 해당 월까지의 신고 기록입니다." : "선택 기간에 발생한 신고 기록입니다."} 현재 영업 중인 사업장 수와 다를 수 있습니다.</span></div>
+        </>}
+      </>}
+    </section>
+  </>;
+}

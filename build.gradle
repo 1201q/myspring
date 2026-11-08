@@ -45,6 +45,14 @@ tasks.register('exportSeoulPlayback', JavaExec) {
     args '--spring.profiles.active=postgres'
 }
 
+tasks.register('exportNationalPlayback', JavaExec) {
+    group = 'application'
+    description = 'Publish all 16 current regional playback files in one streaming database scan.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.example.permitmap.map.NationalPlaybackExport'
+    args '--spring.profiles.active=postgres'
+}
+
 tasks.register('auditRestaurantSample', JavaExec) {
 	group = 'verification'
 	description = 'Validate the local Seoul restaurant sample without starting Spring or a database.'
