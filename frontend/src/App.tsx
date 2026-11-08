@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import type { FeatureCollection, Point } from "geojson";
 import * as maplibregl from "maplibre-gl";
 import mapWorkerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
 import "maplibre-gl/dist/maplibre-gl.css";
@@ -30,6 +31,11 @@ const located = (b: Business) =>
   Number.isFinite(b.longitude) &&
   Number.isFinite(b.latitude);
 export default function App() {
+  const [theme, setTheme] = useState<"light" | "dark">(() => {
+    try { return localStorage.getItem("permit-map-theme") === "dark" ? "dark" : "light"; }
+    catch { return "light"; }
+  });
+  const initialTheme = useRef(theme);
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<maplibregl.Map | null>(null);
   const [mapReady, setMapReady] = useState(false);
@@ -114,21 +120,7 @@ export default function App() {
         maxBounds: [[123, 31], [133, 40]],
         zoom: 13,
         minZoom: 6,
-        style: {
-          version: 8,
-          glyphs: "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
-          sources: {
-            osm: {
-              type: "raster",
-              tiles: ["https://tile.openstreetmap.org/{z}/{x}/{y}.png"],
-              tileSize: 256,
-              maxzoom: 19,
-              attribution:
-                '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-            },
-          },
-          layers: [{ id: "basemap", type: "raster", source: "osm" }],
-        },
+        style: `/styles/quiet-${initialTheme.current}.json`,
       });
       map.current = instance;
       instance.on("load", () => {
@@ -190,15 +182,17 @@ export default function App() {
     instance.addLayer({
       id: "business-points", type: "circle", source: "businesses", "source-layer": "businesses",
       paint: {
-        "circle-radius": ["case", ["has", "id"], 6, ["interpolate", ["linear"], ["get", "count"], 1, 8, 100, 12, 1000, 16]],
-        "circle-color": ["case", ["!", ["has", "id"]], "#276b87", ["==", ["get", "closed"], 1], "#7b8580", "#237858"],
-        "circle-stroke-width": 2, "circle-stroke-color": "#ffffff", "circle-opacity": 0.85,
+        "circle-radius": ["case", ["has", "id"], 3.5, ["interpolate", ["linear"], ["get", "count"], 1, 3, 10, 6, 100, 10, 1000, 14]],
+        "circle-color": ["case", ["==", ["get", "closed"], 1], "#87918f", "#247d76"],
+        "circle-stroke-width": ["case", ["has", "id"], 0.7, 1],
+        "circle-stroke-color": "#ffffff",
+        "circle-opacity": ["case", ["==", ["get", "closed"], 1], 0.35, ["has", "id"], 0.72, 0.68],
       },
     });
     instance.addLayer({
       id: "business-counts", type: "symbol", source: "businesses", "source-layer": "businesses",
-      filter: ["!", ["has", "id"]],
-      layout: { "text-field": ["to-string", ["get", "count"]], "text-font": ["Open Sans Regular"], "text-size": 12, "text-allow-overlap": true },
+      filter: ["all", ["!", ["has", "id"]], [">=", ["get", "count"], 10]],
+      layout: { "text-field": ["step", ["get", "count"], ["to-string", ["get", "count"]], 1000, ["concat", ["to-string", ["/", ["round", ["/", ["get", "count"], 100]], 10]], "k"]], "text-font": ["Noto Sans Regular"], "text-size": 10, "text-allow-overlap": false, "text-padding": 5 },
       paint: { "text-color": "#ffffff" },
     });
     instance.on("mouseenter", "business-points", () => { instance.getCanvas().style.cursor = "pointer"; });
@@ -223,6 +217,54 @@ export default function App() {
       }
     });
   }, [mapReady, category, date, attempt]);
+  useEffect(() => {
+    const instance = map.current;
+    if (!instance || !mapReady) return;
+    // A separate overlay keeps the selected location visible even between tiles.
+    const data: FeatureCollection<Point> = {
+      type: "FeatureCollection",
+      features: selected && located(selected) ? [{ type: "Feature", properties: {}, geometry: { type: "Point", coordinates: [selected.longitude!, selected.latitude!] } }] : [],
+    };
+    const source = instance.getSource("selected-business") as maplibregl.GeoJSONSource | undefined;
+    if (source) source.setData(data);
+    else {
+      instance.addSource("selected-business", { type: "geojson", data });
+      instance.addLayer({ id: "selected-business-halo", type: "circle", source: "selected-business", paint: { "circle-radius": 13, "circle-color": "#247d76", "circle-opacity": 0.14, "circle-stroke-width": 1, "circle-stroke-color": "#247d76" } });
+      instance.addLayer({ id: "selected-business-core", type: "circle", source: "selected-business", paint: { "circle-radius": 5, "circle-color": "#155e58", "circle-stroke-width": 2, "circle-stroke-color": "#ffffff" } });
+    }
+  }, [mapReady, selected]);
+  useEffect(() => {
+    try { localStorage.setItem("permit-map-theme", theme); } catch { /* Storage may be disabled. */ }
+    const instance = map.current;
+    if (!instance || !mapReady) return;
+    const controller = new AbortController();
+    async function applyTheme() {
+      try {
+        const response = await fetch(`/styles/quiet-${theme}.json`, { signal: controller.signal });
+        if (!response.ok) throw new Error("Theme unavailable");
+        const style: maplibregl.StyleSpecification = await response.json();
+        if (controller.signal.aborted) return;
+        // Repaint existing layers: preserve tiles, filters, camera and selection.
+        for (const layer of style.layers) {
+          if (!instance!.getLayer(layer.id)) continue;
+          for (const [property, value] of Object.entries(layer.paint || {}))
+            instance!.setPaintProperty(layer.id, property as Parameters<maplibregl.Map["setPaintProperty"]>[1], value);
+        }
+        const dark = theme === "dark";
+        const accent = dark ? "#63c6b9" : "#247d76";
+        instance!.setPaintProperty("business-points", "circle-color", ["case", ["==", ["get", "closed"], 1], dark ? "#a3b0b2" : "#87918f", accent]);
+        instance!.setPaintProperty("business-points", "circle-stroke-color", dark ? "#1c292e" : "#ffffff");
+        instance!.setPaintProperty("business-counts", "text-color", dark ? "#102b29" : "#ffffff");
+        instance!.setPaintProperty("selected-business-halo", "circle-color", accent);
+        instance!.setPaintProperty("selected-business-halo", "circle-stroke-color", accent);
+        instance!.setPaintProperty("selected-business-core", "circle-color", dark ? "#94e4d5" : "#155e58");
+      } catch {
+        if (!controller.signal.aborted) setMapError("지도 테마를 불러오지 못했습니다. 다시 전환해 주세요.");
+      }
+    }
+    void applyTheme();
+    return () => controller.abort();
+  }, [theme, mapReady]);
   function select(b: Business) {
     detailRequest.current?.abort();
     setSelected(b);
@@ -235,10 +277,13 @@ export default function App() {
   }
   const count = items.filter(located).length;
   return (
-    <main className="app">
+    <main className="app" data-theme={theme}>
       <aside className="sidebar">
         <header>
           <span className="eyebrow">PERMIT MAP / 01</span>
+          <button className="theme-toggle" aria-pressed={theme === "dark"} onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
+            {theme === "light" ? "다크 모드" : "라이트 모드"}
+          </button>
           <h1>동네의 기록</h1>
           <p>지도를 움직여 전국의 인허가 기록을 살펴보세요.</p>
         </header>
@@ -330,7 +375,7 @@ export default function App() {
       <section className="map-panel" aria-label="전국 인허가 지도">
         <div ref={container} className="map" />
         <div className="map-caption">
-          <span className="dot" /> 인허가 위치 · 회색은 폐업 기록{" "}
+          <span className="dot" /> 인허가 위치 <span className="legend-closed" /> 폐업 기록{" "}
           <span>점은 개별 기록 · 숫자는 주변 기록 묶음</span>
         </div>
         {mapError && (

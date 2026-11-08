@@ -136,7 +136,7 @@ footer {
 .map {
   width: 100%;
   height: 100%;
-  background: #e3eae0;
+  background: #f7f8f6;
 }
 .map-caption {
   position: absolute;
@@ -160,7 +160,15 @@ footer {
   height: 8px;
   width: 8px;
   border-radius: 50%;
-  background: #237858;
+  background: #247d76;
+}
+.legend-closed {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #87918f;
+  opacity: 0.55;
+  margin-left: 6px;
 }
 .business-marker {
   width: 19px;
@@ -271,3 +279,26 @@ dd {
     bottom: 30px;
   }
 }
+header { position: relative; }
+.theme-toggle { position: absolute; top: 23px; right: 24px; border: 1px solid #c8d9ca; border-radius: 20px; padding: 6px 10px; background: #ffffff; color: #45665c; font-size: 11px; }
+.app[data-theme="dark"] { color-scheme: dark; color: #dbe7e3; background: #151e23; }
+.app[data-theme="dark"] .sidebar { background: #19242a; border-color: #33434a; }
+.app[data-theme="dark"] .summary { background: #1d2c30; }
+.app[data-theme="dark"] header,
+.app[data-theme="dark"] footer,
+.app[data-theme="dark"] dl,
+.app[data-theme="dark"] .result { border-color: #344349; }
+.app[data-theme="dark"] :is(header p, .summary p, .stats span, .result small, .result > span:not(.result-name), footer, .detail p, dt, .close) { color: #a0b4ae; }
+.app[data-theme="dark"] :is(.eyebrow, .tag, .map-filters label, .clear-date, a) { color: #88cebc; }
+.app[data-theme="dark"] .tag { border-color: #46645b; }
+.app[data-theme="dark"] :is(.map-filters select, .map-filters input, .theme-toggle) { background: #23343a; border-color: #456057; color: #d6e6df; }
+.app[data-theme="dark"] :is(.result:hover, .result.active) { background: #263d3a; border-color: #51766b; }
+.app[data-theme="dark"] :is(.detail, .map-caption) { background: #1d2b30f5; box-shadow: 0 8px 30px #00000030; }
+.app[data-theme="dark"] .map-caption > span:last-child { color: #9aada7; border-color: #43534d; }
+.app[data-theme="dark"] .dot { background: #63c6b9; }
+.app[data-theme="dark"] .map { background: #151e23; }
+.app[data-theme="dark"] .map-error { background: #443724; color: #f0d7ad; }
+.app[data-theme="dark"] .maplibregl-ctrl-group { background: #24343a; }
+.app[data-theme="dark"] .maplibregl-ctrl-icon { filter: invert(1); }
+.app[data-theme="dark"] .maplibregl-ctrl-attrib { background: #1d2b30dd; color: #a5b8b0; }
+.app[data-theme="dark"] .maplibregl-ctrl-attrib a { color: #bdd2c8; }
