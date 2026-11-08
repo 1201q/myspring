@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { FeatureCollection, Point } from "geojson";
 import * as maplibregl from "maplibre-gl";
 import mapWorkerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
 import "maplibre-gl/dist/maplibre-gl.css";
 import "./App.css";
+import SeoulPlayback from "./SeoulPlayback";
 
 // Vite가 지도 worker의 의존성도 함께 빌드하도록 명시한다.
 maplibregl.setWorkerUrl(mapWorkerUrl);
@@ -40,10 +41,15 @@ export default function App() {
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<maplibregl.Map | null>(null);
   const [mapReady, setMapReady] = useState(false);
+  const [mapInstance, setMapInstance] = useState<maplibregl.Map | null>(null);
   const [zoom, setZoom] = useState(13);
+  const [playback, setPlayback] = useState(false);
+  const playbackRef = useRef(false);
+  useEffect(() => { playbackRef.current = playback; }, [playback]);
   const detailRequest = useRef<AbortController | null>(null);
   const [items, setItems] = useState<Business[]>([]);
   const [selected, setSelected] = useState<Business | null>(null);
+  const clearSelection = useCallback(() => { detailRequest.current?.abort(); setSelected(null); }, []);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [mapError, setMapError] = useState("");
@@ -74,7 +80,7 @@ export default function App() {
     return () => controller.abort();
   }, [attempt]);
   useEffect(() => {
-    if (!bounds || zoomedOut) return;
+    if (!bounds || zoomedOut || playback) return;
     const controller = new AbortController();
     async function load() {
       setLoading(true);
@@ -110,7 +116,7 @@ export default function App() {
       window.clearTimeout(timer);
       controller.abort();
     };
-  }, [attempt, bounds, category, date, zoomedOut]);
+  }, [attempt, bounds, category, date, zoomedOut, playback]);
   useEffect(() => {
     if (!container.current) return;
     let instance: maplibregl.Map;
@@ -126,7 +132,7 @@ export default function App() {
       });
       map.current = instance;
       instance.on("load", () => {
-        if (!disposed) setMapReady(true);
+        if (!disposed) { setMapReady(true); setMapInstance(instance); }
       });
       instance.addControl(new maplibregl.NavigationControl(), "top-right");
       let queriesPaused = false;
@@ -137,7 +143,7 @@ export default function App() {
         queriesPaused = paused;
         // An unused source stops loading vector tiles; the basemap stays active.
         for (const id of ["business-points", "business-counts"])
-          if (instance.getLayer(id)) instance.setLayoutProperty(id, "visibility", paused ? "none" : "visible");
+          if (instance.getLayer(id)) instance.setLayoutProperty(id, "visibility", paused || playbackRef.current ? "none" : "visible");
         if (paused) {
           detailRequest.current?.abort();
           setBounds(null);
@@ -247,6 +253,14 @@ export default function App() {
   useEffect(() => {
     const instance = map.current;
     if (!instance || !mapReady) return;
+    for (const id of ["business-points", "business-counts"])
+      if (instance.getLayer(id)) instance.setLayoutProperty(id, "visibility", playback || zoomedOut ? "none" : "visible");
+    detailRequest.current?.abort();
+    setSelected(null);
+  }, [mapReady, playback, zoomedOut]);
+  useEffect(() => {
+    const instance = map.current;
+    if (!instance || !mapReady) return;
     // A separate overlay keeps the selected location visible even between tiles.
     const data: FeatureCollection<Point> = {
       type: "FeatureCollection",
@@ -304,7 +318,7 @@ export default function App() {
   }
   const count = items.filter(located).length;
   return (
-    <main className="app" data-theme={theme}>
+    <main className="app" data-theme={theme} data-playback={playback}>
       <aside className="sidebar">
         <header>
           <span className="eyebrow">PERMIT MAP / 01</span>
@@ -315,8 +329,8 @@ export default function App() {
           <p>지도를 움직여 전국의 인허가 기록을 살펴보세요.</p>
         </header>
         <section className="summary">
-          <span className="tag">전국 · {categories.length ? `좌표계 확인 ${categories.length}개 업종` : "업종 확인 중"}</span>
-          <h2>화면 안의 인허가</h2>
+          <span className="tag">{playback ? "서울 전체" : "전국"} · {categories.length ? `좌표계 확인 ${categories.length}개 업종` : "업종 확인 중"}</span>
+          <h2>{playback ? "서울의 인허가 변화" : "화면 안의 인허가"}</h2>
           <div className="map-filters">
             <label>업종
               <select disabled={!categories.length} value={category} onChange={(event) => { setCategory(event.target.value); setSelected(null); }}>
@@ -325,13 +339,13 @@ export default function App() {
               </select>
             </label>
             <label>존재 여부를 볼 날짜
-              <input type="date" value={date} onChange={(event) => { setDate(event.target.value); setSelected(null); }} />
+              <input type="date" disabled={playback} value={date} onChange={(event) => { setDate(event.target.value); setSelected(null); }} />
             </label>
             {date && <button className="clear-date" onClick={() => setDate("")}>날짜 해제 · 폐업 기록도 보기</button>}
           </div>
           {categoryError && <p role="alert">{categoryError} <button className="clear-date" onClick={retry}>다시 불러오기</button></p>}
-          <p>{date ? "인허가일·폐업일로 추정한 존재 여부" : "날짜 제한 없음 · 폐업 기록 포함"}</p>
-          <div className="stats">
+          <p>{playback ? "시간 재생 · 선택 기간에 발생한 인허가·폐업 신고만 표시" : date ? "인허가일·폐업일로 추정한 존재 여부" : "날짜 제한 없음 · 폐업 기록 포함"}</p>
+          {!playback && <div className="stats">
             <div>
               <strong>{items.length}</strong>
               <span>목록 조회 건수</span>
@@ -340,8 +354,8 @@ export default function App() {
               <strong>{count}</strong>
               <span>목록 내 좌표 보유</span>
             </div>
-          </div>
-          {!zoomedOut && !loading && !error && (
+          </div>}
+          {!playback && !zoomedOut && !loading && !error && (
             <p className="notice">
               {truncated ? "목록은 가까운 500건입니다. 지도는 별도 타일로 전체 위치를 표시합니다." : "지도는 좌표가 있는 인허가를 타일로 표시합니다."}
               <br />과거 날짜를 선택해도 위치는 최신 원천 좌표 기준입니다.
@@ -349,7 +363,7 @@ export default function App() {
           )}
         </section>
         <div className="results" aria-live="polite">
-          {zoomedOut ? (
+          {playback ? <p>서울 전체의 신고 기록을 재생합니다. 월·업종 변경과 지도 이동 시에도 받은 데이터를 재사용합니다. 청록색 점은 인허가, 주황색 고리는 폐업 신고입니다.</p> : zoomedOut ? (
             <p>확대하면 표시됩니다. 줌 10 이하에서는 인허가 조회를 잠시 멈춥니다.</p>
           ) : loading ? (
             <p>현재 지도 범위를 조회하는 중…</p>
@@ -402,11 +416,26 @@ export default function App() {
       <section className="map-panel" aria-label="전국 인허가 지도">
         <div ref={container} className="map" />
         <output className="map-zoom" aria-label="현재 지도 줌 단계">줌 {zoom.toFixed(1)}</output>
-        {zoomedOut && <p className="map-query-notice" role="status">확대하면 표시됩니다 · 줌 10 초과에서 인허가를 조회합니다.</p>}
-        <div className="map-caption">
+        {!playback && zoomedOut && <p className="map-query-notice" role="status">확대하면 표시됩니다 · 줌 10 초과에서 인허가를 조회합니다.</p>}
+        {!playback && <div className="map-caption">
           <span className="dot" /> 인허가 위치 <span className="legend-closed" /> 폐업 기록{" "}
           <span>점은 개별 기록 · 숫자는 주변 기록 묶음</span>
-        </div>
+        </div>}
+        <SeoulPlayback map={mapInstance} active={playback} onActiveChange={value => {
+          if (value && map.current)
+            map.current.fitBounds([[126.76, 37.42], [127.19, 37.71]], { padding: 45, duration: 600 });
+          setPlayback(value);
+        }} category={category} onClearSelection={clearSelection} onSelectId={async id => {
+          detailRequest.current?.abort();
+          const controller = new AbortController();
+          detailRequest.current = controller;
+          try {
+            const response = await fetch(`/api/v1/map/businesses/${id}`, { signal: controller.signal });
+            if (!response.ok) throw new Error("상세 조회 실패");
+            const business: Business = await response.json();
+            if (!controller.signal.aborted) setSelected(business);
+          } catch { if (!controller.signal.aborted) setMapError("상세 정보를 불러오지 못했습니다."); }
+        }} />
         {mapError && (
           <p className="map-error" role="alert">
             {mapError}

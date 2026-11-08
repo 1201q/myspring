@@ -339,3 +339,28 @@ header { position: relative; }
 .app[data-theme="dark"] .maplibregl-ctrl-icon { filter: invert(1); }
 .app[data-theme="dark"] .maplibregl-ctrl-attrib { background: #1d2b30dd; color: #a5b8b0; }
 .app[data-theme="dark"] .maplibregl-ctrl-attrib a { color: #bdd2c8; }
+.playback { position: absolute; z-index: 2; bottom: 32px; left: 22px; right: 22px; display: flex; align-items: center; flex-wrap: wrap; gap: 12px; padding: 14px 18px; border: 1px solid #d5e1db; border-radius: 18px; background: #fffffff5; box-shadow: 0 6px 26px #152e2720; font-size: 12px; }
+.playback:not(.is-active) { left: auto; width: auto; }
+.playback button, .playback select, .playback input[type="month"] { border: 1px solid #cbdad2; border-radius: 9px; background: transparent; padding: 8px 10px; font: inherit; color: inherit; }
+.playback button:disabled { opacity: 0.35; cursor: default; }
+.playback-mode { display: flex; gap: 4px; }
+.playback-mode button[aria-pressed="true"] { color: #11665b; background: #dff1ea; border-color: #a7cfc0; }
+.playback label { display: grid; gap: 4px; font-size: 10px; }
+.playback label select { font-size: 12px; }
+.playback-timeline { flex: 1; min-width: 180px; }
+.playback input[type="range"] { width: 100%; accent-color: #2ba58f; cursor: pointer; }
+.playback-years { display: flex; justify-content: space-between; color: #84958c; font-size: 10px; }
+.playback .playback-play { border-radius: 50%; width: 42px; height: 42px; font-size: 18px; }
+.playback-month input { width: 132px; font-weight: bold !important; }
+.playback-status { flex-basis: 100%; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; border-top: 1px solid #dae3df; padding-top: 9px; font-size: 11px; color: #72847a; }
+.event-open { color: #248b79; font-weight: normal; }
+.event-close { color: #ba693c; font-weight: normal; }
+.app[data-playback="true"] .detail { bottom: 190px; }
+.app[data-theme="dark"] .playback { background: #19262bf5; border-color: #3a4b50; }
+.app[data-theme="dark"] .playback :is(button,select,input[type="month"]) { border-color: #40585a; }
+.app[data-theme="dark"] .playback-mode button[aria-pressed="true"] { color: #7be0cb; background: #27463f; }
+.app[data-theme="dark"] .playback-status { color: #9badab; border-color: #34474a; }
+.app[data-theme="dark"] .event-open { color: #63d0b9; }
+.app[data-theme="dark"] .event-close { color: #f0a06c; }
+@media (max-width: 1100px) { .playback { gap: 8px; } .playback-timeline { flex-basis: 100%; order: 1; } .playback-status { order: 2; } .app[data-playback="true"] .detail { bottom: 230px; } }
+@media (max-width: 760px) { .playback { left: 8px; right: 8px; padding: 10px; bottom: 28px; gap: 6px; } .playback button, .playback select { padding: 6px; } .playback-status { font-size: 10px; } .playback-month input { width: 118px; } .app[data-playback="true"] .map-panel { min-height: 620px; } }

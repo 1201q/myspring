@@ -1,0 +1,10 @@
+.seoul-ranks { position:absolute; z-index:2; top:60px; right:16px; width:300px; max-height:42vh; padding:15px; border:1px solid #cbdad2; border-radius:14px; background:#fffffff0; font-size:11px; box-shadow:0 5px 25px #182c2520; }
+.seoul-ranks p { margin:8px 0; color:#4d7d6d; }
+.seoul-rank-scroll { max-height:25vh; overflow:auto; }
+.seoul-rank { display:grid; grid-template-columns:1fr 64px 64px; gap:8px; padding:5px 0; border-bottom:1px solid #b9ccc340; }
+.seoul-rank b,.seoul-rank small { text-align:right; font-variant-numeric:tabular-nums; }
+.seoul-ranks > small { display:block; margin-top:8px; color:#789087; font-size:9px; }
+.seoul-playback input[type="month"] { width:128px; }
+.app[data-theme="dark"] .seoul-ranks { background:#19262bf0; border-color:#3a4b50; }
+.app[data-theme="dark"] .seoul-ranks p { color:#9ecbbb; }
+@media(max-width:760px){ .seoul-ranks { top:52px; right:8px; width:260px; max-height:28vh; } .seoul-rank-scroll { max-height:13vh; } }

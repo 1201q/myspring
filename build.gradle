@@ -37,6 +37,14 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
+tasks.register('exportSeoulPlayback', JavaExec) {
+    group = 'application'
+    description = 'Refresh the versioned Seoul playback binary/manifest without starting an HTTP server.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.example.permitmap.map.SeoulPlaybackExport'
+    args '--spring.profiles.active=postgres'
+}
+
 tasks.register('auditRestaurantSample', JavaExec) {
 	group = 'verification'
 	description = 'Validate the local Seoul restaurant sample without starting Spring or a database.'
