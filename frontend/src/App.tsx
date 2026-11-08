@@ -39,7 +39,6 @@ export default function App() {
   const map = useRef<maplibregl.Map | null>(null);
   const [mapInstance, setMapInstance] = useState<maplibregl.Map | null>(null);
   const [zoom, setZoom] = useState(10);
-  const [playbackRegion, setPlaybackRegion] = useState("서울");
   const detailRequest = useRef<AbortController | null>(null);
   const [selected, setSelected] = useState<Business | null>(null);
   const clearSelection = useCallback(() => { detailRequest.current?.abort(); setSelected(null); }, []);
@@ -76,6 +75,7 @@ export default function App() {
         maxBounds: [[123, 31], [133, 40]],
         zoom: 10,
         minZoom: 6,
+        attributionControl: { customAttribution: '자료: <a href="https://www.localdata.go.kr/" target="_blank" rel="noreferrer">행정안전부 LOCALDATA</a>' },
         style: "/styles/quiet-" + initialTheme.current + ".json",
       });
       map.current = instance;
@@ -159,35 +159,18 @@ export default function App() {
 
   return (
     <main className="app" data-theme={theme} data-playback="true">
-      <aside className="sidebar">
-        <header>
-          <span className="eyebrow">PERMIT MAP / 01</span>
+      <section className="map-panel" aria-label="전국 인허가 지도">
+        <div ref={container} className="map" />
+        <div className="map-toolbar">
+          <h1>동네의 기록</h1>
           <button className="theme-toggle" aria-pressed={theme === "dark"} onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
             {theme === "light" ? "다크 모드" : "라이트 모드"}
           </button>
-          <h1>동네의 기록</h1>
-          <p>지역과 기간을 선택해 인허가의 변화를 살펴보세요.</p>
-        </header>
-        <section className="summary">
-          <span className="tag">{playbackRegion} 전체 · {categories.length ? categories.length + "개 업종" : "업종 확인 중"}</span>
-          <h2>{playbackRegion}의 인허가 변화</h2>
-          <p>선택 기간에 발생한 인허가·폐업 신고를 표시합니다.</p>
-        </section>
-        <div className="results">
-          <p>{playbackRegion}의 수집 대상 업종 중 좌표가 있는 신고 기록입니다. 아래에서 지역·업종·기간을 선택하세요. 청록색 점은 인허가, 주황색 고리는 폐업 신고입니다.</p>
-          <p>재생을 멈추고 지도를 움직이거나 점을 눌러 사업장 상세 정보를 확인할 수 있습니다.</p>
         </div>
-        <footer>
-          자료: <a href="https://www.localdata.go.kr/" target="_blank" rel="noreferrer">행정안전부 LOCALDATA</a>
-          <br />수집 대상 {categories.length || 15}개 업종 중 변환 가능한 좌표를 제공합니다.
-        </footer>
-      </aside>
-      <section className="map-panel" aria-label="전국 인허가 지도">
-        <div ref={container} className="map" />
         <output className="map-zoom" aria-label="현재 지도 줌 단계">줌 {zoom.toFixed(1)}</output>
         <PlaybackBoundary>
           <Suspense fallback={<section className="playback is-active" role="status">지역과 시간 재생을 준비하는 중…</section>}>
-            <NationalPlayback map={mapInstance} onRegionChange={setPlaybackRegion} category={category} categories={categories} categoryError={categoryError} onCategoryChange={value => { clearSelection(); setCategory(value); }} onRetryCategories={() => setAttempt(value => value + 1)} onClearSelection={clearSelection} onSelectId={selectId} />
+            <NationalPlayback map={mapInstance} category={category} categories={categories} categoryError={categoryError} onCategoryChange={value => { clearSelection(); setCategory(value); }} onRetryCategories={() => setAttempt(value => value + 1)} onClearSelection={clearSelection} onSelectId={selectId} />
           </Suspense>
         </PlaybackBoundary>
         {mapError && <p className="map-error" role="alert">{mapError}<button onClick={() => window.location.reload()}>새로고침</button></p>}

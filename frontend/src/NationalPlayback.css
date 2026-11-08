@@ -3,4 +3,5 @@
 .national-playback .playback-category { width:140px; min-width:0; }
 .national-playback .playback-category select { width:100%; }
 .national-playback progress { width:100%; height:5px; accent-color:#2ba58f; }
+@media(max-width:760px) { .seoul-ranks { top:68px; } }
 @media(min-width:1101px) and (max-width:1450px) { .national-playback .playback-timeline { flex-basis:100%; order:1; } .national-playback .playback-status { order:2; } }

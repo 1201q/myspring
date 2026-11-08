@@ -8,7 +8,7 @@ import type { Dataset, LoadProgress, Region } from "./nationalPlaybackData";
 import "./SeoulPlayback.css";
 import "./NationalPlayback.css";
 
-type Props = { map: LibreMap | null; onRegionChange: (name: string) => void; category: string; categories: { id: string; name: string }[]; categoryError: string; onCategoryChange: (value: string) => void; onRetryCategories: () => void; onSelectId: (id: number) => void; onClearSelection: () => void };
+type Props = { map: LibreMap | null; category: string; categories: { id: string; name: string }[]; categoryError: string; onCategoryChange: (value: string) => void; onRetryCategories: () => void; onSelectId: (id: number) => void; onClearSelection: () => void };
 const format = (m: number) => `${1990 + Math.floor(m / 12)}-${String(m % 12 + 1).padStart(2, "0")}`;
 const parse = (v: string) => (Number(v.slice(0, 4)) - 1990) * 12 + Number(v.slice(5, 7)) - 1;
 const initialProgress: LoadProgress = { stage: "preparing", bytes: 0, total: 0 };
@@ -18,7 +18,7 @@ function progressText(value: LoadProgress, name: string) {
   const mb = (bytes: number) => (bytes / 1048576).toFixed(1);
   return `${name} 기록 다운로드 ${value.total ? Math.round(value.bytes / value.total * 100) : 100}% · ${mb(value.bytes)} / ${mb(value.total)} MB`;
 }
-export default function NationalPlayback({ map, onRegionChange, category, categories, categoryError, onCategoryChange, onRetryCategories, onSelectId, onClearSelection }: Props) {
+export default function NationalPlayback({ map, category, categories, categoryError, onCategoryChange, onRetryCategories, onSelectId, onClearSelection }: Props) {
   const [regions, setRegions] = useState<Region[]>([]);
   const [regionId, setRegionId] = useState("seoul");
   // Keep only the current region's numeric arrays rather than retaining every visited region.
@@ -50,7 +50,6 @@ export default function NationalPlayback({ map, onRegionChange, category, catego
       .catch(reason => { if (!controller.signal.aborted) setError(reason instanceof Error ? reason.message : "재생 지역 목록 조회 실패"); });
     return () => controller.abort();
   }, [regions.length, attempt]);
-  useEffect(() => { onRegionChange(name); }, [name, onRegionChange]);
   useEffect(() => {
     if (!map || !selectedRegion) return;
     const [west, south, east, north] = selectedRegion.bbox;
