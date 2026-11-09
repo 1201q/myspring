@@ -25,6 +25,11 @@ test("streamed regional data preserves split event attributes and uint32 IDs", a
   const { manifest, bytes } = fixture(); serve(manifest, bytes);
   const progress = [];
   const data = await loadRegionDataset("busan", new AbortController().signal, value => progress.push(value));
+  // Float64 attributes let deck.gl compute the low coordinate bits for high-zoom projection.
+  assert.ok(data.open.pos instanceof Float64Array);
+  assert.ok(data.close.pos instanceof Float64Array);
+  assert.deepEqual(data.open.pos, data.close.pos);
+  assert.equal(data.open.pos[0], Math.fround(129.07));
   assert.equal(data.open.length, 1); assert.equal(data.close.length, 1);
   assert.equal(data.open.ids[0], 4294967295); assert.equal(data.close.month[0], 121);
   assert.equal(data.open.cat[0], 0); assert.ok(Math.abs(data.open.pos[0] - 129.07) < 0.00002);

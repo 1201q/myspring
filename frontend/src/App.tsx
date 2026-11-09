@@ -4,12 +4,14 @@ import * as maplibregl from "maplibre-gl";
 import mapWorkerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
 import "maplibre-gl/dist/maplibre-gl.css";
 import "./App.css";
+import type { LocationGroup } from "./locationGroups";
+import LocationRecords from "./LocationRecords";
 import PlaybackBoundary from "./PlaybackBoundary";
 
 const NationalPlayback = lazy(() => import("./NationalPlayback"));
 maplibregl.setWorkerUrl(mapWorkerUrl);
 
-type Business = {
+export type Business = {
   id: number;
   categoryId: string;
   name: string;
@@ -39,9 +41,15 @@ export default function App() {
   const map = useRef<maplibregl.Map | null>(null);
   const [mapInstance, setMapInstance] = useState<maplibregl.Map | null>(null);
   const [zoom, setZoom] = useState(10);
+  const pinned = useRef(false);
+  const [isPinned, setIsPinned] = useState(false);
+  const hoveredGroup = useRef<LocationGroup | null>(null);
+  const [hoverPoint, setHoverPoint] = useState<{ x: number; y: number } | null>(null);
   const detailRequest = useRef<AbortController | null>(null);
   const [selected, setSelected] = useState<Business | null>(null);
-  const clearSelection = useCallback(() => { detailRequest.current?.abort(); setSelected(null); }, []);
+  const [selectedPosition, setSelectedPosition] = useState<[number, number] | null>(null);
+  const [locationIds, setLocationIds] = useState<number[]>([]);
+  const clearSelection = useCallback(() => { pinned.current = false; setIsPinned(false); hoveredGroup.current = null; setHoverPoint(null); detailRequest.current?.abort(); setSelected(null); setLocationIds([]); setSelectedPosition(null); }, []);
   const [mapError, setMapError] = useState("");
   const [attempt, setAttempt] = useState(0);
   const [category, setCategory] = useState("");
@@ -105,7 +113,7 @@ export default function App() {
     if (!mapInstance) return;
     const data: FeatureCollection<Point> = {
       type: "FeatureCollection",
-      features: selected && located(selected) ? [{ type: "Feature", properties: {}, geometry: { type: "Point", coordinates: [selected.longitude!, selected.latitude!] } }] : [],
+      features: selected && located(selected) ? [{ type: "Feature", properties: {}, geometry: { type: "Point", coordinates: selectedPosition ?? [selected.longitude!, selected.latitude!] } }] : [],
     };
     const source = mapInstance.getSource("selected-business") as maplibregl.GeoJSONSource | undefined;
     if (source) source.setData(data);
@@ -114,7 +122,7 @@ export default function App() {
       mapInstance.addLayer({ id: "selected-business-halo", type: "circle", source: "selected-business", paint: { "circle-radius": 13, "circle-color": "#247d76", "circle-opacity": 0.14, "circle-stroke-width": 1, "circle-stroke-color": "#247d76" } });
       mapInstance.addLayer({ id: "selected-business-core", type: "circle", source: "selected-business", paint: { "circle-radius": 5, "circle-color": "#155e58", "circle-stroke-width": 2, "circle-stroke-color": "#ffffff" } });
     }
-  }, [mapInstance, selected]);
+  }, [mapInstance, selected, selectedPosition]);
 
   useEffect(() => {
     try { localStorage.setItem("permit-map-theme", theme); } catch { /* Storage may be disabled. */ }
@@ -157,10 +165,35 @@ export default function App() {
     }
   }, []);
 
+  const hoverLocation = useCallback((group: LocationGroup | null, x: number, y: number) => {
+    if (pinned.current) return;
+    if (!group) { clearSelection(); return; }
+    setHoverPoint({ x, y });
+    if (hoveredGroup.current === group) return;
+    hoveredGroup.current = group;
+    detailRequest.current?.abort();
+    setSelected(null);
+    setLocationIds(group.ids.length > 1 ? group.ids : []);
+    setSelectedPosition(group.position);
+    if (group.ids.length === 1) void selectId(group.ids[0]);
+  }, [clearSelection, selectId]);
+  const pinLocation = useCallback((ids: number[], position?: [number, number], point?: { x: number; y: number }) => {
+    pinned.current = true;
+    setIsPinned(true);
+    hoveredGroup.current = null;
+    setHoverPoint(point ?? null);
+    detailRequest.current?.abort();
+    setSelected(null);
+    setLocationIds(ids);
+    setSelectedPosition(position ?? null);
+  }, []);
+  const popupWidth = Math.min(380, Math.max(0, (mapInstance?.getContainer().clientWidth ?? 400) - 16));
+  const popupHeight = mapInstance?.getContainer().clientHeight ?? 600;
+
   return (
     <main className="app" data-theme={theme} data-playback="true">
       <section className="map-panel" aria-label="전국 인허가 지도">
-        <div ref={container} className="map" />
+        <div ref={container} className="map" onPointerLeave={() => hoverLocation(null, 0, 0)} />
         <div className="map-toolbar">
           <h1>동네의 기록</h1>
           <button className="theme-toggle" aria-pressed={theme === "dark"} onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
@@ -170,19 +203,28 @@ export default function App() {
         <output className="map-zoom" aria-label="현재 지도 줌 단계">줌 {zoom.toFixed(1)}</output>
         <PlaybackBoundary>
           <Suspense fallback={<section className="playback is-active" role="status">지역과 시간 재생을 준비하는 중…</section>}>
-            <NationalPlayback map={mapInstance} category={category} categories={categories} categoryError={categoryError} onCategoryChange={value => { clearSelection(); setCategory(value); }} onRetryCategories={() => setAttempt(value => value + 1)} onClearSelection={clearSelection} onSelectId={selectId} />
+            <NationalPlayback map={mapInstance} showLocationCounts={zoom >= 15} category={category} categories={categories} categoryError={categoryError} onCategoryChange={value => { clearSelection(); setCategory(value); }} onRetryCategories={() => setAttempt(value => value + 1)} onClearSelection={clearSelection} onSelectId={selectId} onSelectLocation={pinLocation} onHoverLocation={hoverLocation} />
           </Suspense>
         </PlaybackBoundary>
         {mapError && <p className="map-error" role="alert">{mapError}<button onClick={() => window.location.reload()}>새로고침</button></p>}
+        <div className={`selection-popup${hoverPoint ? " is-positioned" : ""}${isPinned ? " is-pinned" : " is-hover"}`} style={hoverPoint ? {
+          left: Math.max(8, Math.min(hoverPoint.x + 14, (mapInstance?.getContainer().clientWidth ?? 400) - popupWidth - 8)),
+          top: hoverPoint.y > popupHeight / 2 ? Math.max(8, hoverPoint.y - 14) : hoverPoint.y + 14,
+          width: popupWidth,
+          maxHeight: Math.max(0, Math.min(420, hoverPoint.y > popupHeight / 2 ? hoverPoint.y - 22 : popupHeight - hoverPoint.y - 22)),
+          transform: hoverPoint.y > popupHeight / 2 ? "translateY(-100%)" : undefined,
+        } : undefined}>
+        {locationIds.length > 1 && !selected && <LocationRecords key={locationIds.join(",")} ids={locationIds} onSelect={selectId} onClose={clearSelection} />}
         {selected && (
           <article className="detail" aria-label="인허가 상세">
             <button
               className="close"
               aria-label="상세 닫기"
-              onClick={() => { detailRequest.current?.abort(); setSelected(null); }}
+              onClick={clearSelection}
             >
               ×
             </button>
+            {locationIds.length > 1 && <button className="location-back" onClick={() => { detailRequest.current?.abort(); setSelected(null); }}>← 같은 위치의 기록 {locationIds.length}건</button>}
             <span className="eyebrow">인허가 기록</span>
             <h2>{selected.name}</h2>
             <p>
@@ -212,6 +254,7 @@ export default function App() {
             )}
           </article>
         )}
+        </div>
       </section>
     </main>
   );

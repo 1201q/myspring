@@ -368,3 +368,21 @@ header { position: relative; }
 .app[data-theme="dark"] .event-close { color: #f0a06c; }
 @media (max-width: 1100px) { .playback { gap: 8px; } .playback-timeline { flex-basis: 100%; order: 1; } .playback-status { order: 2; } .app[data-playback="true"] .detail { bottom: 230px; } }
 @media (max-width: 760px) { .playback { left: 8px; right: 8px; padding: 10px; bottom: 28px; gap: 6px; } .playback button, .playback select { padding: 6px; } .playback-status { font-size: 10px; } .playback-month input { width: 118px; } .map-toolbar { top:12px; left:12px; gap:10px; padding:8px 10px; } .map-toolbar h1 { font-size:14px; } }
+.location-record-list { list-style:none; margin:0; padding:0; }
+.location-records { overflow:auto; }
+.location-records .result { cursor:pointer; color:inherit; font:inherit; }
+.location-pages { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:16px; }
+.location-pages button, .location-back, .location-records > button:not(.close) { border:1px solid #a7cfc0; border-radius:8px; padding:8px 10px; background:transparent; color:inherit; cursor:pointer; }
+.location-pages button:disabled { opacity:.4; cursor:default; }
+.location-back { display:block; margin:0 20px 16px 0; }
+.app[data-playback="true"] .detail { top:84px; right:60px; left:auto; bottom:auto; max-height:calc(100dvh - 330px); overflow:auto; z-index:3; }
+@media (max-width:760px) {
+  .app[data-playback="true"] .detail { top:auto; right:8px; left:8px; bottom:260px; width:auto; max-width:none; max-height:calc(100dvh - 340px); padding:20px; }
+  .detail h2 { font-size:19px; }
+}
+.selection-popup:not(.is-positioned) { display:contents; }
+.selection-popup.is-positioned { position:absolute; z-index:5; max-height:min(420px, calc(100% - 32px)); overflow:auto; }
+.app[data-playback="true"] .selection-popup.is-positioned .detail { position:static; width:100%; max-width:none; max-height:none; margin:0; box-sizing:border-box; padding:20px; }
+.selection-popup.is-hover :is(.close, .location-back, .location-pages) { display:none; }
+
+.selection-popup.is-hover { pointer-events:none; }

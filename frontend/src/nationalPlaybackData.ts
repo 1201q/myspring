@@ -5,7 +5,7 @@ export type Manifest = {
   categories: { code: number; id: string; name: string }[]; monthlyCounts: number[];
   opens: number; closes: number;
 };
-export type Points = { length: number; pos: Float32Array; month: Float32Array; cat: Float32Array; ids: Uint32Array };
+export type Points = { length: number; pos: Float64Array; month: Float32Array; cat: Float32Array; ids: Uint32Array };
 export type Dataset = { manifest: Manifest; open: Points; close: Points };
 export type LoadProgress = { stage: "preparing" | "downloading" | "decoding"; bytes: number; total: number };
 const base = "/api/v1/map/playback/national";
@@ -85,7 +85,7 @@ export async function loadRegionDataset(regionId: string, signal: AbortSignal, p
     if (kind > 1 || view.getUint8(p + 11) >= manifest.categories.length) throw new Error("이벤트 파일 내용이 올바르지 않습니다.");
     counts[kind]++;
   }
-  const make = (length: number): Points => ({ length, pos: new Float32Array(length * 2), month: new Float32Array(length), cat: new Float32Array(length), ids: new Uint32Array(length) });
+  const make = (length: number): Points => ({ length, pos: new Float64Array(length * 2), month: new Float32Array(length), cat: new Float32Array(length), ids: new Uint32Array(length) });
   const points = [make(counts[0]), make(counts[1])], offsets = [0, 0];
   for (let p = 0; p < total; p += 16) {
     const kind = view.getUint8(p + 10), target = points[kind], i = offsets[kind]++;

@@ -6,7 +6,7 @@ import type { Map as LibreMap } from "maplibre-gl";
 import "./SeoulPlayback.css";
 
 type Manifest = { version: string; binaryUrl: string; count: number; minMonth: number; maxMonth: number; currentMonth: number; recordBytes: number; monthBase: number; categories: { code: number; id: string; name: string }[]; monthlyCounts: number[]; opens: number; closes: number };
-type Points = { length: number; pos: Float32Array; month: Float32Array; cat: Float32Array; ids: Uint32Array };
+type Points = { length: number; pos: Float64Array; month: Float32Array; cat: Float32Array; ids: Uint32Array };
 type Dataset = { manifest: Manifest; open: Points; close: Points };
 type Props = { map: LibreMap | null; active: boolean; onActiveChange: (value: boolean) => void; category: string; onSelectId: (id: number) => void; onClearSelection: () => void };
 let datasetPromise: Promise<Dataset> | undefined;
@@ -25,7 +25,7 @@ async function loadDataset(): Promise<Dataset> {
     if (buffer.byteLength !== manifest.count * 16) throw new Error("이벤트 파일 크기가 일치하지 않습니다. 다시 조회해 주세요.");
     const view = new DataView(buffer); const counts = [0, 0];
     for (let i = 0; i < manifest.count; i++) counts[view.getUint8(i * 16 + 10)]++;
-    const make = (length: number): Points => ({ length, pos: new Float32Array(length * 2), month: new Float32Array(length), cat: new Float32Array(length), ids: new Uint32Array(length) });
+    const make = (length: number): Points => ({ length, pos: new Float64Array(length * 2), month: new Float32Array(length), cat: new Float32Array(length), ids: new Uint32Array(length) });
     const points = [make(counts[0]), make(counts[1])]; const offsets = [0, 0];
     for (let i = 0; i < manifest.count; i++) {
       const p = i * 16, kind = view.getUint8(p + 10), target = points[kind], j = offsets[kind]++;
@@ -54,7 +54,7 @@ export default function SeoulPlayback({ map, active, onActiveChange, category, o
   const extensions = useMemo(() => [new DataFilterExtension({ filterSize: 1, categorySize: 1 })], []);
   useEffect(() => {
     if (!map) return;
-    const control = new MapboxOverlay({ interleaved: false, layers: [] });
+    const control = new MapboxOverlay({ interleaved: false, pickingRadius: 3, layers: [] });
     map.addControl(control); overlay.current = control;
     return () => { map.removeControl(control); overlay.current = null; };
   }, [map]);
@@ -79,8 +79,8 @@ export default function SeoulPlayback({ map, active, onActiveChange, category, o
     if (!overlay.current || !data || !binaryData) return;
     overlay.current.setProps({ layers: active ? [data.open, data.close].map((points, kind) => new ScatterplotLayer({
       id: `seoul-events-${kind}`, data: binaryData[kind], extensions, filterRange: [from - 0.5, month + 0.5], filterCategories: codes,
-      pickable: true, filled: kind === 0, stroked: kind === 1, getRadius: 16, radiusMinPixels: 1.5, radiusMaxPixels: 6,
-      getFillColor: [65, 207, 182, 170], getLineColor: [244, 166, 107, 210], lineWidthMinPixels: 1.3,
+      pickable: true, filled: true, stroked: kind === 1, getRadius: 16, radiusMinPixels: 1.5, radiusMaxPixels: 6,
+      getFillColor: kind === 0 ? [65, 207, 182, 170] : [0, 0, 0, 0], getLineColor: [244, 166, 107, 210], lineWidthUnits: "pixels", getLineWidth: 1.3, lineWidthMinPixels: 1.3, lineWidthMaxPixels: 1.3,
       onClick: info => { if (info.index >= 0) { setPlaying(false); click.current(points.ids[info.index]); } },
     })) : [] });
   }, [data, binaryData, extensions, active, from, month, codes, map]);

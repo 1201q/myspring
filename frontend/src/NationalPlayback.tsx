@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { MapboxOverlay } from "@deck.gl/mapbox";
-import { GeoJsonLayer, ScatterplotLayer } from "@deck.gl/layers";
+import { GeoJsonLayer, ScatterplotLayer, TextLayer } from "@deck.gl/layers";
 import type { Color } from "@deck.gl/core";
 import type { Feature, MultiPolygon, Polygon } from "geojson";
 import { DataFilterExtension } from "@deck.gl/extensions";
@@ -9,10 +9,12 @@ import { loadRegionDataset, loadRegions } from "./nationalPlaybackData";
 import type { Dataset, LoadProgress, Region } from "./nationalPlaybackData";
 import { loadRegionBoundaries } from "./regionBoundaries";
 import type { RegionBoundaries, RegionProperties } from "./regionBoundaries";
+import { groupLocations, locationKey } from "./locationGroups";
+import type { LocationGroup } from "./locationGroups";
 import "./SeoulPlayback.css";
 import "./NationalPlayback.css";
 
-type Props = { map: LibreMap | null; category: string; categories: { id: string; name: string }[]; categoryError: string; onCategoryChange: (value: string) => void; onRetryCategories: () => void; onSelectId: (id: number) => void; onClearSelection: () => void };
+type Props = { onHoverLocation: (group: LocationGroup | null, x: number, y: number) => void; map: LibreMap | null; showLocationCounts: boolean; category: string; categories: { id: string; name: string }[]; categoryError: string; onCategoryChange: (value: string) => void; onRetryCategories: () => void; onSelectLocation: (ids: number[], position?: [number, number], point?: { x: number; y: number }) => void; onSelectId: (id: number) => void; onClearSelection: () => void };
 const format = (m: number) => `${1990 + Math.floor(m / 12)}-${String(m % 12 + 1).padStart(2, "0")}`;
 const parse = (v: string) => (Number(v.slice(0, 4)) - 1990) * 12 + Number(v.slice(5, 7)) - 1;
 const initialProgress: LoadProgress = { stage: "preparing", bytes: 0, total: 0 };
@@ -22,7 +24,7 @@ function progressText(value: LoadProgress, name: string) {
   const mb = (bytes: number) => (bytes / 1048576).toFixed(1);
   return `${name} 기록 다운로드 ${value.total ? Math.round(value.bytes / value.total * 100) : 100}% · ${mb(value.bytes)} / ${mb(value.total)} MB`;
 }
-export default function NationalPlayback({ map, category, categories, categoryError, onCategoryChange, onRetryCategories, onSelectId, onClearSelection }: Props) {
+export default function NationalPlayback({ map, showLocationCounts, category, categories, categoryError, onCategoryChange, onRetryCategories, onSelectId, onSelectLocation, onClearSelection, onHoverLocation }: Props) {
   const [regions, setRegions] = useState<Region[]>([]);
   const [regionId, setRegionId] = useState("seoul");
   const [boundaries, setBoundaries] = useState<RegionBoundaries | null>(null);
@@ -41,6 +43,10 @@ export default function NationalPlayback({ map, category, categories, categoryEr
   const [playing, setPlaying] = useState(false);
   const overlay = useRef<MapboxOverlay | null>(null);
   const click = useRef(onSelectId);
+  const locationClick = useRef(onSelectLocation);
+  const hover = useRef(onHoverLocation);
+  useEffect(() => { hover.current = onHoverLocation; }, [onHoverLocation]);
+  useEffect(() => { locationClick.current = onSelectLocation; }, [onSelectLocation]);
   const selectedRegion = regions.find(r => r.id === regionId);
   const hoveredRegion = regions.find(r => r.id === hoveredRegionId);
   const name = selectedRegion?.name ?? "서울";
@@ -57,7 +63,7 @@ export default function NationalPlayback({ map, category, categories, categoryEr
   const extensions = useMemo(() => [new DataFilterExtension({ filterSize: 1, categorySize: 1 })], []);
   useEffect(() => {
     if (!map) return;
-    const control = new MapboxOverlay({ interleaved: false, layers: [] });
+    const control = new MapboxOverlay({ interleaved: false, pickingRadius: 3, layers: [] });
     map.addControl(control); overlay.current = control;
     return () => { map.removeControl(control); overlay.current = null; };
   }, [map]);
@@ -110,6 +116,8 @@ export default function NationalPlayback({ map, category, categories, categoryEr
   const currentMonth = Math.max(min, Math.min(max, month ?? min));
   const from = unit === 0 ? min : Math.max(min, currentMonth - unit + 1);
   const codes = useMemo(() => data?.manifest.categories.filter(c => !category || c.id === category).map(c => c.code) ?? [], [data, category]);
+  const locations = useMemo(() => data ? groupLocations([data.open, data.close], from, currentMonth, codes) : new Map<string, LocationGroup>(), [data, from, currentMonth, codes]);
+  const overlappingLocations = useMemo(() => [...locations.values()].filter(group => group.ids.length > 1), [locations]);
   const binaryData = useMemo(() => data && [data.open, data.close].map(points => ({ length: points.length, attributes: {
     getPosition: { value: points.pos, size: 2 }, getFilterValue: { value: points.month, size: 1 }, getFilterCategory: { value: points.cat, size: 1 },
   } })), [data]);
@@ -125,6 +133,19 @@ export default function NationalPlayback({ map, category, categories, categoryEr
     }) : null;
     overlay.current.setProps({
       onHover: info => {
+        let group: LocationGroup | undefined;
+        if (info.picked && info.layer?.id === "same-location-counts") {
+          group = info.object as LocationGroup;
+        } else if (info.picked && data && info.index >= 0) {
+          const kind = info.layer?.id === `region-events-${regionId}-0` ? 0
+            : info.layer?.id === `region-events-${regionId}-1` ? 1 : null;
+          if (kind !== null) {
+            const points = kind === 0 ? data.open : data.close;
+            group = locations.get(locationKey(points.pos[info.index * 2], points.pos[info.index * 2 + 1]));
+          }
+        }
+        if (group) setPlaying(false);
+        hover.current(group ?? null, info.x, info.y);
         const id = info.object?.properties?.id;
         setHoveredRegionId(typeof id === "string" && id !== regionId ? id : null);
         if (map) map.getCanvas().style.cursor = info.picked ? "pointer" : "";
@@ -137,11 +158,18 @@ export default function NationalPlayback({ map, category, categories, categoryEr
       },
       layers: [regionLayer, ...(data && binaryData ? [data.open, data.close].map((points, kind) => new ScatterplotLayer({
       id: `region-events-${regionId}-${kind}`, data: binaryData[kind], extensions, filterRange: [from - 0.5, currentMonth + 0.5], filterCategories: codes,
-      pickable: true, filled: kind === 0, stroked: kind === 1, getRadius: 16, radiusMinPixels: 1.5, radiusMaxPixels: 6,
-      getFillColor: [65, 207, 182, 170] as Color, getLineColor: [244, 166, 107, 210] as Color, lineWidthMinPixels: 1.3,
-      onClick: info => { if (info.index >= 0) { setPlaying(false); click.current(points.ids[info.index]); return true; } return false; },
-    })) : [])] });
-  }, [data, binaryData, extensions, from, currentMonth, codes, map, regionId, selectableBoundaries, hoveredRegionId, changeRegion]);
+      pickable: true, filled: true, stroked: kind === 1, getRadius: 16, radiusMinPixels: 1.5, radiusMaxPixels: 6,
+      getFillColor: (kind === 0 ? [65, 207, 182, 170] : [0, 0, 0, 0]) as Color, getLineColor: [244, 166, 107, 210] as Color, lineWidthUnits: "pixels", getLineWidth: 1.3, lineWidthMinPixels: 1.3, lineWidthMaxPixels: 1.3,
+      onClick: info => { if (info.index >= 0) { setPlaying(false); const group = locations.get(locationKey(points.pos[info.index * 2], points.pos[info.index * 2 + 1])); if (group && group.ids.length > 1) locationClick.current(group.ids, group.position, { x: info.x, y: info.y }); else { locationClick.current([], group?.position, { x: info.x, y: info.y }); click.current(points.ids[info.index]); } return true; } return false; },
+    })) : []), new TextLayer<LocationGroup>({
+      id: "same-location-counts", data: overlappingLocations, visible: showLocationCounts, pickable: true,
+      getPosition: group => group.position, getText: group => String(group.ids.length),
+      getSize: 13, getColor: [255, 255, 255, 255], background: true,
+      getBackgroundColor: [28, 91, 83, 245], backgroundPadding: [6, 4],
+      fontFamily: "sans-serif", fontWeight: "bold",
+      onClick: info => { if (!info.object) return false; setPlaying(false); locationClick.current(info.object.ids, info.object.position, { x: info.x, y: info.y }); return true; },
+    })] });
+  }, [data, binaryData, extensions, from, currentMonth, codes, map, regionId, selectableBoundaries, hoveredRegionId, changeRegion, locations, overlappingLocations, showLocationCounts]);
   useEffect(() => { onClearSelection(); }, [currentMonth, unit, category, regionId, onClearSelection]);
   useEffect(() => {
     if (!playing || !data) return;
