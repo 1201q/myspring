@@ -19,6 +19,7 @@
       "name": "1호선",
       "color": "#004A85",
       "ref": "1",
+      "region": "seoul",
       "relationCount": 95,
       "wayCount": 911,
       "stationCount": 103
@@ -28,6 +29,7 @@
       "name": "2호선",
       "color": "#00A23F",
       "ref": "2",
+      "region": "seoul",
       "relationCount": 6,
       "wayCount": 66,
       "stationCount": 51
@@ -37,6 +39,7 @@
       "name": "3호선",
       "color": "#ED6C00",
       "ref": "3",
+      "region": "seoul",
       "relationCount": 2,
       "wayCount": 62,
       "stationCount": 44
@@ -46,6 +49,7 @@
       "name": "4호선",
       "color": "#009BCE",
       "ref": "4",
+      "region": "seoul",
       "relationCount": 27,
       "wayCount": 164,
       "stationCount": 51
@@ -55,6 +59,7 @@
       "name": "5호선",
       "color": "#794698",
       "ref": "5",
+      "region": "seoul",
       "relationCount": 8,
       "wayCount": 43,
       "stationCount": 56
@@ -64,6 +69,7 @@
       "name": "6호선",
       "color": "#7C4932",
       "ref": "6",
+      "region": "seoul",
       "relationCount": 4,
       "wayCount": 33,
       "stationCount": 39
@@ -73,6 +79,7 @@
       "name": "7호선",
       "color": "#6E7E31",
       "ref": "7",
+      "region": "seoul",
       "relationCount": 8,
       "wayCount": 42,
       "stationCount": 53
@@ -82,6 +89,7 @@
       "name": "8호선",
       "color": "#D11D70",
       "ref": "8",
+      "region": "seoul",
       "relationCount": 6,
       "wayCount": 24,
       "stationCount": 24
@@ -91,6 +99,7 @@
       "name": "9호선",
       "color": "#A49D87",
       "ref": "9",
+      "region": "seoul",
       "relationCount": 4,
       "wayCount": 64,
       "stationCount": 38
@@ -100,6 +109,7 @@
       "name": "인천 1호선",
       "color": "#B4C7E7",
       "ref": "인천1",
+      "region": "seoul",
       "relationCount": 2,
       "wayCount": 22,
       "stationCount": 33
@@ -109,6 +119,7 @@
       "name": "인천 2호선",
       "color": "#F4A462",
       "ref": "I2",
+      "region": "seoul",
       "relationCount": 2,
       "wayCount": 19,
       "stationCount": 27
@@ -118,6 +129,7 @@
       "name": "경의중앙선",
       "color": "#6AC2B3",
       "ref": "경의·중앙",
+      "region": "seoul",
       "relationCount": 10,
       "wayCount": 638,
       "stationCount": 58
@@ -127,6 +139,7 @@
       "name": "경춘선",
       "color": "#007A62",
       "ref": "경춘",
+      "region": "seoul",
       "relationCount": 6,
       "wayCount": 365,
       "stationCount": 25
@@ -136,6 +149,7 @@
       "name": "수인분당선",
       "color": "#ECA300",
       "ref": "수인·분당",
+      "region": "seoul",
       "relationCount": 24,
       "wayCount": 312,
       "stationCount": 63
@@ -145,6 +159,7 @@
       "name": "신분당선",
       "color": "#B81B30",
       "ref": "신분당",
+      "region": "seoul",
       "relationCount": 2,
       "wayCount": 19,
       "stationCount": 16
@@ -154,6 +169,7 @@
       "name": "공항철도",
       "color": "#0079AC",
       "ref": "공항철도",
+      "region": "seoul",
       "relationCount": 2,
       "wayCount": 161,
       "stationCount": 13
@@ -163,6 +179,7 @@
       "name": "경강선",
       "color": "#0B318F",
       "ref": "경강",
+      "region": "seoul",
       "relationCount": 4,
       "wayCount": 143,
       "stationCount": 12
@@ -172,6 +189,7 @@
       "name": "서해선",
       "color": "#5EAC41",
       "ref": "서해",
+      "region": "seoul",
       "relationCount": 4,
       "wayCount": 58,
       "stationCount": 22
@@ -181,6 +199,7 @@
       "name": "우이신설선",
       "color": "#BACC50",
       "ref": "W",
+      "region": "seoul",
       "relationCount": 2,
       "wayCount": 8,
       "stationCount": 13
@@ -190,6 +209,7 @@
       "name": "신림선",
       "color": "#6789CA",
       "ref": "Silim",
+      "region": "seoul",
       "relationCount": 2,
       "wayCount": 2,
       "stationCount": 11
@@ -199,6 +219,7 @@
       "name": "의정부경전철",
       "color": "#F0831E",
       "ref": "U",
+      "region": "seoul",
       "relationCount": 4,
       "wayCount": 29,
       "stationCount": 16
@@ -208,6 +229,7 @@
       "name": "용인에버라인",
       "color": "#44A436",
       "ref": "용인",
+      "region": "seoul",
       "relationCount": 2,
       "wayCount": 7,
       "stationCount": 15
@@ -217,6 +239,7 @@
       "name": "김포골드라인",
       "color": "#957326",
       "ref": "김포 골드라인",
+      "region": "seoul",
       "relationCount": 2,
       "wayCount": 4,
       "stationCount": 10
@@ -226,6 +249,7 @@
       "name": "GTX-A",
       "color": "#AB087D",
       "ref": "GTX-A",
+      "region": "seoul",
       "relationCount": 4,
       "wayCount": 20,
       "stationCount": 8

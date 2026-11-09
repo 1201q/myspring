@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "regionalChecks": [
+    {
+      "region": "busan",
+      "lineCount": 6,
+      "filterReset": true
+    },
+    {
+      "region": "ulsan",
+      "lineCount": 6,
+      "filterReset": true
+    },
+    {
+      "region": "daegu",
+      "lineCount": 4,
+      "filterReset": true
+    },
+    {
+      "region": "jeonnamgwangju",
+      "lineCount": 1,
+      "filterReset": true
+    },
+    {
+      "region": "daejeon",
+      "lineCount": 1,
+      "filterReset": true
+    }
+  ],
+  "errors": []
+}

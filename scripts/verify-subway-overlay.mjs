@@ -21,6 +21,17 @@ const gtx = routes.features.filter(f => f.properties.routeId === 'metro-24');
 assert.ok(gtx.length);
 assert.ok(gtx.every(f => f.geometry.coordinates.every(p => p[1] >= 37.55) || f.geometry.coordinates.every(p => p[1] <= 37.50)));
 console.log(`Data checks passed: ${manifest.lines.length} lines, ${routes.features.length} track features, ${report.officialComparison.total} official stations.`);
+const regionalManifest = JSON.parse(await readFile(root + 'frontend/public/data/subway/regional-manifest.json', 'utf8'));
+const regionalReport = JSON.parse(await readFile(root + 'docs/data-samples/subway-regional/verification.json', 'utf8'));
+assert.equal(regionalManifest.lines.length, 12);
+assert.equal(regionalReport.relationCount, 24);
+assert.deepEqual(regionalReport.missingMembers, []);
+assert.deepEqual(regionalReport.anchorChecks.filter(a => a.missing.length), []);
+assert.deepEqual(regionalReport.officialComparison.lines.flatMap(l => l.missingNames), []);
+assert.deepEqual(regionalReport.officialComparison.lines.flatMap(l => l.extraNames), []);
+assert.equal(regionalReport.officialComparison.lines.reduce((s, l) => s + l.expectedCount, 0), 302);
+assert.deepEqual(regionalReport.stationTrackCheck.flagged, []);
+console.log(`Regional checks passed: 12 lines, ${regionalReport.stationCount} station markers matched to KRIC; maximum track distance ${regionalReport.stationTrackCheck.maxDistanceM}m.`);
 
 if (!process.argv.includes('--browser')) process.exit(0);
 const { chromium } = await import(pathToFileURL(process.env.PLAYWRIGHT_MODULE || root + 'data/subway-browser/node_modules/playwright/index.mjs').href);
@@ -35,7 +46,7 @@ page.on('requestfailed', r => failures.push({ url: r.url(), failure: r.failure()
 const checks = [];
 try {
   await page.goto(process.env.MAP_URL || 'http://127.0.0.1:5173', { waitUntil: 'domcontentloaded' });
-  const control = page.getByRole('region', { name: '수도권 지하철 노선' });
+  const control = page.getByRole('region', { name: '지하철 노선', exact: true });
   await control.getByRole('checkbox', { name: '지하철 노선' }).waitFor();
   await page.getByRole('button', { name: '노선 선택' }).click();
   const select = page.getByLabel('표시할 노선');
@@ -79,12 +90,33 @@ try {
   await page.waitForTimeout(1500);
   await page.screenshot({ path: directory + 'map-stations.jpg', quality: 80 });
   checks.push('Zoom to station and station-label levels');
+  const regionalChecks = [];
+  for (const [id, caption, expectedLines] of [['busan', '부산·울산권', 6], ['ulsan', '부산·울산권', 6], ['daegu', '대구권', 4], ['jeonnamgwangju', '광주', 1], ['daejeon', '대전', 1]]) {
+    await page.getByLabel('재생 지역', { exact: true }).selectOption(id);
+    await page.waitForFunction(text => document.querySelector('.subway-caption')?.textContent.startsWith(text), caption, { timeout: 30000 });
+    if (!(await page.getByRole('button', { name: '노선 선택' }).getAttribute('aria-expanded') === 'true')) await page.getByRole('button', { name: '노선 선택' }).click();
+    assert.equal(await select.locator('option').count(), expectedLines + 1);
+    assert.equal(await select.inputValue(), '');
+    await page.getByRole('button', { name: '노선 범위 보기', exact: true }).click();
+    await page.waitForTimeout(1200);
+    assert.equal(await page.locator('.map-error').count(), 0);
+    await page.screenshot({ path: root + `docs/data-samples/subway-regional/map-${id}.jpg`, quality: 80 });
+    regionalChecks.push({ region: id, lineCount: expectedLines, filterReset: true });
+    // A line selected in one city must not hide the next city's routes.
+    await select.selectOption({ index: 1 });
+  }
+  await page.getByLabel('재생 지역', { exact: true }).selectOption('seoul');
+  await page.waitForFunction(() => document.querySelector('.subway-caption')?.textContent.startsWith('수도권'));
+  assert.equal(await select.inputValue(), '');
+  await page.getByRole('button', { name: '노선 선택' }).click();
+  await writeFile(root + 'docs/data-samples/subway-regional/browser-verification.json', JSON.stringify({ status: 'passed', regionalChecks, errors }, null, 2) + '\n');
+  checks.push('Region playback selection updates transit legend for Busan, Ulsan, Daegu, Gwangju and Daejeon; stale line filter resets');
   await page.setViewportSize({ width: 390, height: 844 });
   await page.getByRole('button', { name: '노선 선택' }).click();
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
   await page.screenshot({ path: directory + 'map-mobile.jpg', quality: 80 });
   checks.push('390px mobile viewport has no horizontal overflow');
-  assert.equal(requests.length, 3, 'Toggle, filter, zoom and theme changes must reuse the loaded dataset');
+  assert.equal(requests.length, 6, 'Toggle, filter, region, zoom and theme changes must reuse the loaded dataset');
   assert.deepEqual(errors, []);
   assert.equal(await page.locator('.map-error').count(), 0);
   await writeFile(directory + 'browser-verification.json', JSON.stringify({ status: 'passed', checks, requests, errors, failures }, null, 2) + '\n');

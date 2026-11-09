@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "source": "OpenStreetMap",
+  "license": "ODbL-1.0",
+  "sourceUrl": "https://www.openstreetmap.org/copyright",
+  "osmBaseTimestamp": "2026-11-09T09:32:20Z",
+  "sourceSha256": "3e2387ee6ae938cb128b2d12df722618ea8c2dc76736ba4d1d320e038a31c4f0",
+  "temporalScope": "current-snapshot",
+  "coverageStatus": "experimental",
+  "routeFile": "regional-routes.geojson",
+  "stationFile": "regional-stations.geojson",
+  "bytes": {
+    "routes": 349333,
+    "stations": 65665
+  },
+  "lines": [
+    {
+      "id": "busan-1",
+      "name": "부산 1호선",
+      "color": "#F06A00",
+      "region": "busan",
+      "relationCount": 2,
+      "wayCount": 27,
+      "stationCount": 40
+    },
+    {
+      "id": "busan-2",
+      "name": "부산 2호선",
+      "color": "#81BF48",
+      "region": "busan",
+      "relationCount": 2,
+      "wayCount": 12,
+      "stationCount": 43
+    },
+    {
+      "id": "busan-3",
+      "name": "부산 3호선",
+      "color": "#BB8C00",
+      "region": "busan",
+      "relationCount": 2,
+      "wayCount": 12,
+      "stationCount": 17
+    },
+    {
+      "id": "busan-4",
+      "name": "부산 4호선",
+      "color": "#217DCB",
+      "region": "busan",
+      "relationCount": 2,
+      "wayCount": 5,
+      "stationCount": 14
+    },
+    {
+      "id": "busan-gimhae",
+      "name": "부산김해경전철",
+      "color": "#8652A1",
+      "region": "busan",
+      "relationCount": 2,
+      "wayCount": 6,
+      "stationCount": 21
+    },
+    {
+      "id": "donghae",
+      "name": "동해선",
+      "color": "#0054A6",
+      "region": "busan",
+      "relationCount": 2,
+      "wayCount": 275,
+      "stationCount": 23
+    },
+    {
+      "id": "daegu-1",
+      "name": "대구 1호선",
+      "color": "#D93F5C",
+      "region": "daegu",
+      "relationCount": 2,
+      "wayCount": 36,
+      "stationCount": 35
+    },
+    {
+      "id": "daegu-2",
+      "name": "대구 2호선",
+      "color": "#00AA80",
+      "region": "daegu",
+      "relationCount": 2,
+      "wayCount": 12,
+      "stationCount": 29
+    },
+    {
+      "id": "daegu-3",
+      "name": "대구 3호선",
+      "color": "#FFB100",
+      "region": "daegu",
+      "relationCount": 2,
+      "wayCount": 5,
+      "stationCount": 30
+    },
+    {
+      "id": "daegyeong",
+      "name": "대경선",
+      "color": "#0054A6",
+      "region": "daegu",
+      "relationCount": 2,
+      "wayCount": 252,
+      "stationCount": 8
+    },
+    {
+      "id": "gwangju-1",
+      "name": "광주 1호선",
+      "color": "#009088",
+      "region": "gwangju",
+      "relationCount": 2,
+      "wayCount": 16,
+      "stationCount": 20
+    },
+    {
+      "id": "daejeon-1",
+      "name": "대전 1호선",
+      "color": "#007448",
+      "region": "daejeon",
+      "relationCount": 2,
+      "wayCount": 3,
+      "stationCount": 22
+    }
+  ]
+}

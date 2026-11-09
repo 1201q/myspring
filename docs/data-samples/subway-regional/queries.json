@@ -1,0 +1,5 @@
+{
+  "endpoint": "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
+  "inventoryQuery": "[out:json][timeout:60];rel[\"type\"=\"route\"][\"name\"~\"부산|대구|광주|대전|대경선|동해선\"];out tags;",
+  "geometryQuery": "[out:json][timeout:90];rel(id:2194999,2195014,2201600,2204611,2205952,6708903,7237829,7685464,7685727,7685783,7705729,7792527,7845964,7845968,7845970,8247016,8255697,8258657,8258701,8272971,13463724,13463725,18418132,18505697)->.routes;.routes out body;way(r.routes);out geom;node(r.routes);out body;"
+}

@@ -1,0 +1,44 @@
+{
+  "sourceUrl": "https://api.openstreetmap.org/api/0.6/map.json?bbox=129.105,35.185,129.12,35.20",
+  "retrievedAt": "2026-11-09T09:35:32.264Z",
+  "elements": [
+    {
+      "type": "node",
+      "id": 7461024100,
+      "lat": 35.1936252,
+      "lon": 129.1141622,
+      "tags": {
+        "addr:city": "부산광역시",
+        "addr:district": "동래구",
+        "addr:housenumber": "52-2",
+        "internet_access": "wlan",
+        "name": "부산원동",
+        "name:en": "Busanwondong",
+        "name:ja": "釜山院洞",
+        "name:ja-Hira": "プサンウォンドン",
+        "name:ko": "부산원동",
+        "name:ko-Hani": "釜山院洞",
+        "name:zh": "釜山院洞",
+        "name:zh-Hans": "釜山院洞",
+        "name:zh-Hant": "釜山院洞",
+        "operator": "한국철도공사",
+        "operator:en": "Korea Railroad Corporation",
+        "operator:ko": "한국철도공사",
+        "operator:short": "KORAIL",
+        "operator:type": "public",
+        "operator:wikidata": "Q18169",
+        "operator:wikipedia": "en:Korail",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "부산원",
+        "ref": "K116",
+        "ref:KROIS": "750120",
+        "ref:XROIS": "3901088",
+        "station": "train",
+        "train": "yes",
+        "wheelchair": "yes",
+        "wikidata": "Q39073397"
+      }
+    }
+  ]
+}

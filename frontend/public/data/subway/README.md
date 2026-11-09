@@ -1,5 +1,7 @@
 # 수도권 도시·광역철도 지도 데이터
 
+후속 확장: 부산·울산권·대구권·광주·대전의 12개 노선을 `regional-manifest.json`, `regional-routes.geojson`, `regional-stations.geojson`으로 추가했다. 수도권을 포함해 36개 선정 노선이다. [지역별 확보·검증 보고서](../../../../docs/subway-regional-overlay-verification.md)를 참고한다. 아래 수도권 수치와 기준 시각은 기존 스냅샷의 기록이다.
+
 OSM 기준 시각: **2026-11-09 05:53:46 UTC** (한국시간 14:53:46).
 운행 현황을 보증하는 공식 자료가 아닌 시험용 스냅샷이다. 과거 월을 재생해도 노선은 바뀌지 않는다.
 
@@ -26,6 +28,7 @@ OSM 기준 시각: **2026-11-09 05:53:46 UTC** (한국시간 14:53:46).
 
 ```powershell
 node scripts/build-subway-overlay.mjs
+node scripts/build-subway-overlay.mjs --regional
 node scripts/verify-subway-overlay.mjs
 ```
 

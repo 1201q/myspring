@@ -1,0 +1,1983 @@
+{
+  "osmBaseTimestamp": "2026-11-09T09:32:20Z",
+  "sourceSha256": "3e2387ee6ae938cb128b2d12df722618ea8c2dc76736ba4d1d320e038a31c4f0",
+  "scope": "12 passenger lines in Busan/Ulsan, Daegu, Gwangju and Daejeon; excludes intercity and planned lines",
+  "completenessClaim": "All official KRIC station names in the 12-line snapshot are compared; geometry and current operation are not independently certified.",
+  "relationCount": 24,
+  "lineCount": 12,
+  "featureCount": 661,
+  "stationCount": 302,
+  "uniqueWays": 661,
+  "sharedWays": 0,
+  "missingMembers": [],
+  "excludedWays": [],
+  "bytes": {
+    "routes": 349333,
+    "stations": 65665
+  },
+  "stationCorrections": [
+    {
+      "nodeId": 11865742366,
+      "expectedName": "영신대",
+      "name": "영산대",
+      "reason": "OSM Korean name typo; KRIC official Busan line 4 station list uses 영산대.",
+      "sourceUrl": "https://station.kric.go.kr/v2/statistics/index.do"
+    },
+    {
+      "nodeId": 14321490932,
+      "expectedName": "영신대",
+      "name": "영산대",
+      "reason": "Opposite-direction stop has the same Korean name typo.",
+      "sourceUrl": "https://station.kric.go.kr/v2/statistics/index.do"
+    },
+    {
+      "nodeId": 7461024100,
+      "expectedName": "부산원동",
+      "name": "부산원동",
+      "routeId": "donghae",
+      "addStop": true,
+      "reason": "Station is in KRIC's official Donghae list and OSM station data but missing from both route relations. Add the existing OSM station center without inventing coordinates or connecting new track.",
+      "sourceUrl": "https://station.kric.go.kr/v2/statistics/index.do"
+    }
+  ],
+  "inactiveStops": [],
+  "topology": [
+    {
+      "line": "부산 1호선",
+      "connectedComponents": 1,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    },
+    {
+      "line": "부산 2호선",
+      "connectedComponents": 2,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    },
+    {
+      "line": "부산 3호선",
+      "connectedComponents": 2,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    },
+    {
+      "line": "부산 4호선",
+      "connectedComponents": 1,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    },
+    {
+      "line": "부산김해경전철",
+      "connectedComponents": 2,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    },
+    {
+      "line": "동해선",
+      "connectedComponents": 2,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    },
+    {
+      "line": "대구 1호선",
+      "connectedComponents": 2,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    },
+    {
+      "line": "대구 2호선",
+      "connectedComponents": 2,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    },
+    {
+      "line": "대구 3호선",
+      "connectedComponents": 2,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    },
+    {
+      "line": "대경선",
+      "connectedComponents": 1,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    },
+    {
+      "line": "광주 1호선",
+      "connectedComponents": 1,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    },
+    {
+      "line": "대전 1호선",
+      "connectedComponents": 2,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    }
+  ],
+  "officialComparison": {
+    "sourceUrl": "https://station.kric.go.kr/v2/statistics/index.do",
+    "retrievedAt": "2026-11-09T09:31:21.435Z",
+    "lines": [
+      {
+        "id": "busan-1",
+        "name": "부산 1호선",
+        "expectedCount": 40,
+        "foundCount": 40,
+        "missingNames": [],
+        "extraNames": []
+      },
+      {
+        "id": "busan-2",
+        "name": "부산 2호선",
+        "expectedCount": 43,
+        "foundCount": 43,
+        "missingNames": [],
+        "extraNames": []
+      },
+      {
+        "id": "busan-3",
+        "name": "부산 3호선",
+        "expectedCount": 17,
+        "foundCount": 17,
+        "missingNames": [],
+        "extraNames": []
+      },
+      {
+        "id": "busan-4",
+        "name": "부산 4호선",
+        "expectedCount": 14,
+        "foundCount": 14,
+        "missingNames": [],
+        "extraNames": []
+      },
+      {
+        "id": "busan-gimhae",
+        "name": "부산김해경전철",
+        "expectedCount": 21,
+        "foundCount": 21,
+        "missingNames": [],
+        "extraNames": []
+      },
+      {
+        "id": "donghae",
+        "name": "동해선",
+        "expectedCount": 23,
+        "foundCount": 23,
+        "missingNames": [],
+        "extraNames": []
+      },
+      {
+        "id": "daegu-1",
+        "name": "대구 1호선",
+        "expectedCount": 35,
+        "foundCount": 35,
+        "missingNames": [],
+        "extraNames": []
+      },
+      {
+        "id": "daegu-2",
+        "name": "대구 2호선",
+        "expectedCount": 29,
+        "foundCount": 29,
+        "missingNames": [],
+        "extraNames": []
+      },
+      {
+        "id": "daegu-3",
+        "name": "대구 3호선",
+        "expectedCount": 30,
+        "foundCount": 30,
+        "missingNames": [],
+        "extraNames": []
+      },
+      {
+        "id": "daegyeong",
+        "name": "대경선",
+        "expectedCount": 8,
+        "foundCount": 8,
+        "missingNames": [],
+        "extraNames": []
+      },
+      {
+        "id": "gwangju-1",
+        "name": "광주 1호선",
+        "expectedCount": 20,
+        "foundCount": 20,
+        "missingNames": [],
+        "extraNames": []
+      },
+      {
+        "id": "daejeon-1",
+        "name": "대전 1호선",
+        "expectedCount": 22,
+        "foundCount": 22,
+        "missingNames": [],
+        "extraNames": []
+      }
+    ]
+  },
+  "anchorChecks": [
+    {
+      "line": "부산 1호선",
+      "checked": [
+        "다대포해수욕장",
+        "노포"
+      ],
+      "missing": []
+    },
+    {
+      "line": "부산 2호선",
+      "checked": [
+        "장산",
+        "양산"
+      ],
+      "missing": []
+    },
+    {
+      "line": "부산 3호선",
+      "checked": [
+        "수영",
+        "대저"
+      ],
+      "missing": []
+    },
+    {
+      "line": "부산 4호선",
+      "checked": [
+        "미남",
+        "안평"
+      ],
+      "missing": []
+    },
+    {
+      "line": "부산김해경전철",
+      "checked": [
+        "사상",
+        "가야대"
+      ],
+      "missing": []
+    },
+    {
+      "line": "동해선",
+      "checked": [
+        "부전",
+        "태화강"
+      ],
+      "missing": []
+    },
+    {
+      "line": "대구 1호선",
+      "checked": [
+        "설화명곡",
+        "하양"
+      ],
+      "missing": []
+    },
+    {
+      "line": "대구 2호선",
+      "checked": [
+        "문양",
+        "영남대"
+      ],
+      "missing": []
+    },
+    {
+      "line": "대구 3호선",
+      "checked": [
+        "칠곡경대병원",
+        "용지"
+      ],
+      "missing": []
+    },
+    {
+      "line": "대경선",
+      "checked": [
+        "구미",
+        "북삼",
+        "경산"
+      ],
+      "missing": []
+    },
+    {
+      "line": "광주 1호선",
+      "checked": [
+        "평동",
+        "녹동"
+      ],
+      "missing": []
+    },
+    {
+      "line": "대전 1호선",
+      "checked": [
+        "판암",
+        "반석"
+      ],
+      "missing": []
+    }
+  ],
+  "relationInventory": [
+    {
+      "line": "부산 1호선",
+      "relations": [
+        {
+          "id": 2201600,
+          "name": "부산 도시철도 1호선: 노포 → 다대포해수욕장"
+        },
+        {
+          "id": 8255697,
+          "name": "부산 도시철도 1호선: 다대포해수욕장 → 노포"
+        }
+      ]
+    },
+    {
+      "line": "부산 2호선",
+      "relations": [
+        {
+          "id": 2194999,
+          "name": "부산 도시철도 2호선"
+        },
+        {
+          "id": 8258657,
+          "name": "부산 도시철도 2호선"
+        }
+      ]
+    },
+    {
+      "line": "부산 3호선",
+      "relations": [
+        {
+          "id": 2195014,
+          "name": "부산 도시철도 3호선 (대저방향)"
+        },
+        {
+          "id": 8247016,
+          "name": "부산 도시철도 3호선 (수영방향)"
+        }
+      ]
+    },
+    {
+      "line": "부산 4호선",
+      "relations": [
+        {
+          "id": 2205952,
+          "name": "부산 도시철도 4호선 (안평방향)"
+        },
+        {
+          "id": 8258701,
+          "name": "부산 도시철도 4호선 (미남방향)"
+        }
+      ]
+    },
+    {
+      "line": "부산김해경전철",
+      "relations": [
+        {
+          "id": 2204611,
+          "name": "부산김해경전철: 사상 → 가야대"
+        },
+        {
+          "id": 7705729,
+          "name": "부산김해경전철: 가야대 → 사상"
+        }
+      ]
+    },
+    {
+      "line": "동해선",
+      "relations": [
+        {
+          "id": 6708903,
+          "name": "동해선 광역전철: 부전 → 태화강"
+        },
+        {
+          "id": 8272971,
+          "name": "동해선 광역전철: 태화강 → 부전"
+        }
+      ]
+    },
+    {
+      "line": "대구 1호선",
+      "relations": [
+        {
+          "id": 7685464,
+          "name": "대구 도시철도 1호선"
+        },
+        {
+          "id": 7845970,
+          "name": "대구 도시철도 1호선"
+        }
+      ]
+    },
+    {
+      "line": "대구 2호선",
+      "relations": [
+        {
+          "id": 7685783,
+          "name": "대구 도시철도 2호선"
+        },
+        {
+          "id": 7845968,
+          "name": "대구 도시철도 2호선"
+        }
+      ]
+    },
+    {
+      "line": "대구 3호선",
+      "relations": [
+        {
+          "id": 7685727,
+          "name": "대구 도시철도 3호선"
+        },
+        {
+          "id": 7845964,
+          "name": "대구 도시철도 3호선"
+        }
+      ]
+    },
+    {
+      "line": "대경선",
+      "relations": [
+        {
+          "id": 18418132,
+          "name": "대경선: 구미 → 경산"
+        },
+        {
+          "id": 18505697,
+          "name": "대경선: 경산 → 구미"
+        }
+      ]
+    },
+    {
+      "line": "광주 1호선",
+      "relations": [
+        {
+          "id": 13463724,
+          "name": "광주 도시철도 1호선: 평동 → 녹동"
+        },
+        {
+          "id": 13463725,
+          "name": "광주 도시철도 1호선: 녹동 → 평동"
+        }
+      ]
+    },
+    {
+      "line": "대전 1호선",
+      "relations": [
+        {
+          "id": 7237829,
+          "name": "대전 도시철도 1호선: 반석 → 판암"
+        },
+        {
+          "id": 7792527,
+          "name": "대전 도시철도 1호선: 판암 → 반석"
+        }
+      ]
+    }
+  ],
+  "stationTrackCheck": {
+    "thresholdM": 200,
+    "count": 302,
+    "maxDistanceM": 54,
+    "flagged": [],
+    "stations": [
+      {
+        "line": "부산 1호선",
+        "name": "연산",
+        "distanceM": 3
+      },
+      {
+        "line": "부산 1호선",
+        "name": "부산대",
+        "distanceM": 3
+      },
+      {
+        "line": "부산 1호선",
+        "name": "하단",
+        "distanceM": 3
+      },
+      {
+        "line": "부산 1호선",
+        "name": "사하",
+        "distanceM": 5
+      },
+      {
+        "line": "부산 1호선",
+        "name": "괴정",
+        "distanceM": 8
+      },
+      {
+        "line": "부산 1호선",
+        "name": "대티",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 1호선",
+        "name": "서대신",
+        "distanceM": 1
+      },
+      {
+        "line": "부산 1호선",
+        "name": "남포",
+        "distanceM": 3
+      },
+      {
+        "line": "부산 1호선",
+        "name": "부산",
+        "distanceM": 4
+      },
+      {
+        "line": "부산 1호선",
+        "name": "범내골",
+        "distanceM": 4
+      },
+      {
+        "line": "부산 1호선",
+        "name": "동대신",
+        "distanceM": 3
+      },
+      {
+        "line": "부산 1호선",
+        "name": "범어사",
+        "distanceM": 5
+      },
+      {
+        "line": "부산 1호선",
+        "name": "남산",
+        "distanceM": 5
+      },
+      {
+        "line": "부산 1호선",
+        "name": "장전",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 1호선",
+        "name": "부산진",
+        "distanceM": 7
+      },
+      {
+        "line": "부산 1호선",
+        "name": "다대포해수욕장",
+        "distanceM": 3
+      },
+      {
+        "line": "부산 1호선",
+        "name": "시청",
+        "distanceM": 5
+      },
+      {
+        "line": "부산 1호선",
+        "name": "신평",
+        "distanceM": 1
+      },
+      {
+        "line": "부산 1호선",
+        "name": "두실",
+        "distanceM": 1
+      },
+      {
+        "line": "부산 1호선",
+        "name": "범일",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 1호선",
+        "name": "동래",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 1호선",
+        "name": "명륜",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 1호선",
+        "name": "온천장",
+        "distanceM": 3
+      },
+      {
+        "line": "부산 1호선",
+        "name": "구서",
+        "distanceM": 1
+      },
+      {
+        "line": "부산 1호선",
+        "name": "노포",
+        "distanceM": 4
+      },
+      {
+        "line": "부산 1호선",
+        "name": "서면",
+        "distanceM": 4
+      },
+      {
+        "line": "부산 1호선",
+        "name": "부전",
+        "distanceM": 6
+      },
+      {
+        "line": "부산 1호선",
+        "name": "교대",
+        "distanceM": 4
+      },
+      {
+        "line": "부산 1호선",
+        "name": "장림",
+        "distanceM": 5
+      },
+      {
+        "line": "부산 1호선",
+        "name": "동매",
+        "distanceM": 6
+      },
+      {
+        "line": "부산 1호선",
+        "name": "당리",
+        "distanceM": 4
+      },
+      {
+        "line": "부산 1호선",
+        "name": "토성",
+        "distanceM": 4
+      },
+      {
+        "line": "부산 1호선",
+        "name": "자갈치",
+        "distanceM": 6
+      },
+      {
+        "line": "부산 1호선",
+        "name": "중앙",
+        "distanceM": 4
+      },
+      {
+        "line": "부산 1호선",
+        "name": "초량",
+        "distanceM": 6
+      },
+      {
+        "line": "부산 1호선",
+        "name": "좌천",
+        "distanceM": 5
+      },
+      {
+        "line": "부산 1호선",
+        "name": "양정",
+        "distanceM": 6
+      },
+      {
+        "line": "부산 1호선",
+        "name": "다대포항",
+        "distanceM": 4
+      },
+      {
+        "line": "부산 1호선",
+        "name": "낫개",
+        "distanceM": 5
+      },
+      {
+        "line": "부산 1호선",
+        "name": "신장림",
+        "distanceM": 3
+      },
+      {
+        "line": "부산 2호선",
+        "name": "서면",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "장산",
+        "distanceM": 3
+      },
+      {
+        "line": "부산 2호선",
+        "name": "동백",
+        "distanceM": 3
+      },
+      {
+        "line": "부산 2호선",
+        "name": "해운대",
+        "distanceM": 3
+      },
+      {
+        "line": "부산 2호선",
+        "name": "중동",
+        "distanceM": 3
+      },
+      {
+        "line": "부산 2호선",
+        "name": "광안",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "경성대·부경대",
+        "distanceM": 1
+      },
+      {
+        "line": "부산 2호선",
+        "name": "대연",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "금련산",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "문현",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "국제금융센터·부산은행",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "못골",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "지게골",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "가야",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "동의대",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "전포",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "부암",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "주례",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "감전",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "냉정",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "구남",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "민락",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "남천",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "사상",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "개금",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "양산",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "부산대양산캠퍼스",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "호포",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "수영",
+        "distanceM": 1
+      },
+      {
+        "line": "부산 2호선",
+        "name": "센텀시티",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "덕천",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "구명",
+        "distanceM": 1
+      },
+      {
+        "line": "부산 2호선",
+        "name": "벡스코",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "덕포",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "모덕",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "모라",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "수정",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "율리",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "동원",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "금곡",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "화명",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "남양산",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 2호선",
+        "name": "증산",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 3호선",
+        "name": "숙등",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 3호선",
+        "name": "남산정",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 3호선",
+        "name": "체육공원",
+        "distanceM": 3
+      },
+      {
+        "line": "부산 3호선",
+        "name": "미남",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 3호선",
+        "name": "사직",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 3호선",
+        "name": "거제",
+        "distanceM": 3
+      },
+      {
+        "line": "부산 3호선",
+        "name": "강서구청",
+        "distanceM": 1
+      },
+      {
+        "line": "부산 3호선",
+        "name": "연산",
+        "distanceM": 3
+      },
+      {
+        "line": "부산 3호선",
+        "name": "만덕",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 3호선",
+        "name": "종합운동장",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 3호선",
+        "name": "대저",
+        "distanceM": 5
+      },
+      {
+        "line": "부산 3호선",
+        "name": "망미",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 3호선",
+        "name": "물만골",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 3호선",
+        "name": "배산",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 3호선",
+        "name": "덕천",
+        "distanceM": 2
+      },
+      {
+        "line": "부산 3호선",
+        "name": "구포",
+        "distanceM": 3
+      },
+      {
+        "line": "부산 3호선",
+        "name": "수영",
+        "distanceM": 3
+      },
+      {
+        "line": "부산 4호선",
+        "name": "반여농산물시장",
+        "distanceM": 0
+      },
+      {
+        "line": "부산 4호선",
+        "name": "윗반송",
+        "distanceM": 6
+      },
+      {
+        "line": "부산 4호선",
+        "name": "안평",
+        "distanceM": 5
+      },
+      {
+        "line": "부산 4호선",
+        "name": "낙민",
+        "distanceM": 0
+      },
+      {
+        "line": "부산 4호선",
+        "name": "명장",
+        "distanceM": 0
+      },
+      {
+        "line": "부산 4호선",
+        "name": "석대",
+        "distanceM": 6
+      },
+      {
+        "line": "부산 4호선",
+        "name": "미남",
+        "distanceM": 0
+      },
+      {
+        "line": "부산 4호선",
+        "name": "동래",
+        "distanceM": 0
+      },
+      {
+        "line": "부산 4호선",
+        "name": "영산대",
+        "distanceM": 6
+      },
+      {
+        "line": "부산 4호선",
+        "name": "고촌",
+        "distanceM": 7
+      },
+      {
+        "line": "부산 4호선",
+        "name": "금사",
+        "distanceM": 0
+      },
+      {
+        "line": "부산 4호선",
+        "name": "서동",
+        "distanceM": 0
+      },
+      {
+        "line": "부산 4호선",
+        "name": "수안",
+        "distanceM": 0
+      },
+      {
+        "line": "부산 4호선",
+        "name": "충렬사",
+        "distanceM": 0
+      },
+      {
+        "line": "부산김해경전철",
+        "name": "박물관",
+        "distanceM": 2
+      },
+      {
+        "line": "부산김해경전철",
+        "name": "가야대",
+        "distanceM": 3
+      },
+      {
+        "line": "부산김해경전철",
+        "name": "장신대",
+        "distanceM": 2
+      },
+      {
+        "line": "부산김해경전철",
+        "name": "연지공원",
+        "distanceM": 1
+      },
+      {
+        "line": "부산김해경전철",
+        "name": "부원",
+        "distanceM": 2
+      },
+      {
+        "line": "부산김해경전철",
+        "name": "김해시청",
+        "distanceM": 2
+      },
+      {
+        "line": "부산김해경전철",
+        "name": "봉황",
+        "distanceM": 3
+      },
+      {
+        "line": "부산김해경전철",
+        "name": "수로왕릉",
+        "distanceM": 2
+      },
+      {
+        "line": "부산김해경전철",
+        "name": "대사",
+        "distanceM": 2
+      },
+      {
+        "line": "부산김해경전철",
+        "name": "불암",
+        "distanceM": 2
+      },
+      {
+        "line": "부산김해경전철",
+        "name": "지내",
+        "distanceM": 2
+      },
+      {
+        "line": "부산김해경전철",
+        "name": "김해대학",
+        "distanceM": 2
+      },
+      {
+        "line": "부산김해경전철",
+        "name": "대저",
+        "distanceM": 2
+      },
+      {
+        "line": "부산김해경전철",
+        "name": "덕두",
+        "distanceM": 2
+      },
+      {
+        "line": "부산김해경전철",
+        "name": "등구",
+        "distanceM": 2
+      },
+      {
+        "line": "부산김해경전철",
+        "name": "괘법르네시떼",
+        "distanceM": 2
+      },
+      {
+        "line": "부산김해경전철",
+        "name": "사상",
+        "distanceM": 2
+      },
+      {
+        "line": "부산김해경전철",
+        "name": "서부산유통지구",
+        "distanceM": 2
+      },
+      {
+        "line": "부산김해경전철",
+        "name": "평강",
+        "distanceM": 1
+      },
+      {
+        "line": "부산김해경전철",
+        "name": "인제대",
+        "distanceM": 2
+      },
+      {
+        "line": "부산김해경전철",
+        "name": "공항",
+        "distanceM": 2
+      },
+      {
+        "line": "동해선",
+        "name": "부전",
+        "distanceM": 2
+      },
+      {
+        "line": "동해선",
+        "name": "오시리아",
+        "distanceM": 2
+      },
+      {
+        "line": "동해선",
+        "name": "동래",
+        "distanceM": 2
+      },
+      {
+        "line": "동해선",
+        "name": "교대",
+        "distanceM": 1
+      },
+      {
+        "line": "동해선",
+        "name": "일광",
+        "distanceM": 2
+      },
+      {
+        "line": "동해선",
+        "name": "벡스코",
+        "distanceM": 2
+      },
+      {
+        "line": "동해선",
+        "name": "거제",
+        "distanceM": 2
+      },
+      {
+        "line": "동해선",
+        "name": "재송",
+        "distanceM": 1
+      },
+      {
+        "line": "동해선",
+        "name": "신해운대",
+        "distanceM": 3
+      },
+      {
+        "line": "동해선",
+        "name": "송정",
+        "distanceM": 2
+      },
+      {
+        "line": "동해선",
+        "name": "센텀",
+        "distanceM": 2
+      },
+      {
+        "line": "동해선",
+        "name": "안락",
+        "distanceM": 2
+      },
+      {
+        "line": "동해선",
+        "name": "기장",
+        "distanceM": 2
+      },
+      {
+        "line": "동해선",
+        "name": "부산원동",
+        "distanceM": 2
+      },
+      {
+        "line": "동해선",
+        "name": "좌천",
+        "distanceM": 1
+      },
+      {
+        "line": "동해선",
+        "name": "월내",
+        "distanceM": 2
+      },
+      {
+        "line": "동해선",
+        "name": "서생",
+        "distanceM": 1
+      },
+      {
+        "line": "동해선",
+        "name": "남창",
+        "distanceM": 1
+      },
+      {
+        "line": "동해선",
+        "name": "망양",
+        "distanceM": 0
+      },
+      {
+        "line": "동해선",
+        "name": "덕하",
+        "distanceM": 2
+      },
+      {
+        "line": "동해선",
+        "name": "개운포",
+        "distanceM": 1
+      },
+      {
+        "line": "동해선",
+        "name": "태화강",
+        "distanceM": 14
+      },
+      {
+        "line": "동해선",
+        "name": "거제해맞이",
+        "distanceM": 2
+      },
+      {
+        "line": "대구 1호선",
+        "name": "대곡",
+        "distanceM": 4
+      },
+      {
+        "line": "대구 1호선",
+        "name": "월배",
+        "distanceM": 5
+      },
+      {
+        "line": "대구 1호선",
+        "name": "안심",
+        "distanceM": 6
+      },
+      {
+        "line": "대구 1호선",
+        "name": "방촌",
+        "distanceM": 5
+      },
+      {
+        "line": "대구 1호선",
+        "name": "해안",
+        "distanceM": 4
+      },
+      {
+        "line": "대구 1호선",
+        "name": "동촌",
+        "distanceM": 2
+      },
+      {
+        "line": "대구 1호선",
+        "name": "각산",
+        "distanceM": 4
+      },
+      {
+        "line": "대구 1호선",
+        "name": "반야월",
+        "distanceM": 6
+      },
+      {
+        "line": "대구 1호선",
+        "name": "동구청",
+        "distanceM": 4
+      },
+      {
+        "line": "대구 1호선",
+        "name": "동대구역",
+        "distanceM": 3
+      },
+      {
+        "line": "대구 1호선",
+        "name": "대명",
+        "distanceM": 4
+      },
+      {
+        "line": "대구 1호선",
+        "name": "안지랑",
+        "distanceM": 4
+      },
+      {
+        "line": "대구 1호선",
+        "name": "송현",
+        "distanceM": 5
+      },
+      {
+        "line": "대구 1호선",
+        "name": "서부정류장",
+        "distanceM": 5
+      },
+      {
+        "line": "대구 1호선",
+        "name": "교대",
+        "distanceM": 5
+      },
+      {
+        "line": "대구 1호선",
+        "name": "현충로",
+        "distanceM": 6
+      },
+      {
+        "line": "대구 1호선",
+        "name": "영대병원",
+        "distanceM": 4
+      },
+      {
+        "line": "대구 1호선",
+        "name": "대구역",
+        "distanceM": 4
+      },
+      {
+        "line": "대구 1호선",
+        "name": "칠성시장",
+        "distanceM": 4
+      },
+      {
+        "line": "대구 1호선",
+        "name": "신천",
+        "distanceM": 4
+      },
+      {
+        "line": "대구 1호선",
+        "name": "상인",
+        "distanceM": 3
+      },
+      {
+        "line": "대구 1호선",
+        "name": "월촌",
+        "distanceM": 7
+      },
+      {
+        "line": "대구 1호선",
+        "name": "화원",
+        "distanceM": 4
+      },
+      {
+        "line": "대구 1호선",
+        "name": "설화명곡",
+        "distanceM": 4
+      },
+      {
+        "line": "대구 1호선",
+        "name": "중앙로",
+        "distanceM": 6
+      },
+      {
+        "line": "대구 1호선",
+        "name": "진천",
+        "distanceM": 5
+      },
+      {
+        "line": "대구 1호선",
+        "name": "아양교",
+        "distanceM": 6
+      },
+      {
+        "line": "대구 1호선",
+        "name": "용계",
+        "distanceM": 5
+      },
+      {
+        "line": "대구 1호선",
+        "name": "반월당",
+        "distanceM": 5
+      },
+      {
+        "line": "대구 1호선",
+        "name": "명덕",
+        "distanceM": 5
+      },
+      {
+        "line": "대구 1호선",
+        "name": "대구한의대병원",
+        "distanceM": 2
+      },
+      {
+        "line": "대구 1호선",
+        "name": "하양",
+        "distanceM": 2
+      },
+      {
+        "line": "대구 1호선",
+        "name": "부호",
+        "distanceM": 2
+      },
+      {
+        "line": "대구 1호선",
+        "name": "신기",
+        "distanceM": 6
+      },
+      {
+        "line": "대구 1호선",
+        "name": "율하",
+        "distanceM": 5
+      },
+      {
+        "line": "대구 2호선",
+        "name": "다사",
+        "distanceM": 6
+      },
+      {
+        "line": "대구 2호선",
+        "name": "대실",
+        "distanceM": 6
+      },
+      {
+        "line": "대구 2호선",
+        "name": "문양",
+        "distanceM": 5
+      },
+      {
+        "line": "대구 2호선",
+        "name": "감삼",
+        "distanceM": 7
+      },
+      {
+        "line": "대구 2호선",
+        "name": "두류",
+        "distanceM": 9
+      },
+      {
+        "line": "대구 2호선",
+        "name": "용산",
+        "distanceM": 8
+      },
+      {
+        "line": "대구 2호선",
+        "name": "죽전",
+        "distanceM": 7
+      },
+      {
+        "line": "대구 2호선",
+        "name": "이곡",
+        "distanceM": 9
+      },
+      {
+        "line": "대구 2호선",
+        "name": "강창",
+        "distanceM": 5
+      },
+      {
+        "line": "대구 2호선",
+        "name": "계명대",
+        "distanceM": 5
+      },
+      {
+        "line": "대구 2호선",
+        "name": "만촌",
+        "distanceM": 6
+      },
+      {
+        "line": "대구 2호선",
+        "name": "수성구청",
+        "distanceM": 7
+      },
+      {
+        "line": "대구 2호선",
+        "name": "범어",
+        "distanceM": 8
+      },
+      {
+        "line": "대구 2호선",
+        "name": "대구은행",
+        "distanceM": 6
+      },
+      {
+        "line": "대구 2호선",
+        "name": "경대병원",
+        "distanceM": 6
+      },
+      {
+        "line": "대구 2호선",
+        "name": "반고개",
+        "distanceM": 7
+      },
+      {
+        "line": "대구 2호선",
+        "name": "사월",
+        "distanceM": 9
+      },
+      {
+        "line": "대구 2호선",
+        "name": "신매",
+        "distanceM": 8
+      },
+      {
+        "line": "대구 2호선",
+        "name": "고산",
+        "distanceM": 10
+      },
+      {
+        "line": "대구 2호선",
+        "name": "수성알파시티",
+        "distanceM": 10
+      },
+      {
+        "line": "대구 2호선",
+        "name": "연호",
+        "distanceM": 9
+      },
+      {
+        "line": "대구 2호선",
+        "name": "담티",
+        "distanceM": 6
+      },
+      {
+        "line": "대구 2호선",
+        "name": "반월당",
+        "distanceM": 6
+      },
+      {
+        "line": "대구 2호선",
+        "name": "성서산업단지",
+        "distanceM": 5
+      },
+      {
+        "line": "대구 2호선",
+        "name": "내당",
+        "distanceM": 9
+      },
+      {
+        "line": "대구 2호선",
+        "name": "임당",
+        "distanceM": 7
+      },
+      {
+        "line": "대구 2호선",
+        "name": "영남대",
+        "distanceM": 5
+      },
+      {
+        "line": "대구 2호선",
+        "name": "정평",
+        "distanceM": 5
+      },
+      {
+        "line": "대구 2호선",
+        "name": "청라언덕",
+        "distanceM": 7
+      },
+      {
+        "line": "대구 3호선",
+        "name": "청라언덕",
+        "distanceM": 1
+      },
+      {
+        "line": "대구 3호선",
+        "name": "명덕",
+        "distanceM": 1
+      },
+      {
+        "line": "대구 3호선",
+        "name": "황금",
+        "distanceM": 1
+      },
+      {
+        "line": "대구 3호선",
+        "name": "어린이세상",
+        "distanceM": 1
+      },
+      {
+        "line": "대구 3호선",
+        "name": "동천",
+        "distanceM": 2
+      },
+      {
+        "line": "대구 3호선",
+        "name": "팔달",
+        "distanceM": 2
+      },
+      {
+        "line": "대구 3호선",
+        "name": "달성공원",
+        "distanceM": 2
+      },
+      {
+        "line": "대구 3호선",
+        "name": "매천시장",
+        "distanceM": 1
+      },
+      {
+        "line": "대구 3호선",
+        "name": "공단",
+        "distanceM": 1
+      },
+      {
+        "line": "대구 3호선",
+        "name": "학정",
+        "distanceM": 2
+      },
+      {
+        "line": "대구 3호선",
+        "name": "수성시장",
+        "distanceM": 2
+      },
+      {
+        "line": "대구 3호선",
+        "name": "서문시장",
+        "distanceM": 2
+      },
+      {
+        "line": "대구 3호선",
+        "name": "매천",
+        "distanceM": 2
+      },
+      {
+        "line": "대구 3호선",
+        "name": "수성못",
+        "distanceM": 1
+      },
+      {
+        "line": "대구 3호선",
+        "name": "수성구민운동장",
+        "distanceM": 2
+      },
+      {
+        "line": "대구 3호선",
+        "name": "남산",
+        "distanceM": 1
+      },
+      {
+        "line": "대구 3호선",
+        "name": "북구청",
+        "distanceM": 2
+      },
+      {
+        "line": "대구 3호선",
+        "name": "범물",
+        "distanceM": 1
+      },
+      {
+        "line": "대구 3호선",
+        "name": "칠곡운암",
+        "distanceM": 2
+      },
+      {
+        "line": "대구 3호선",
+        "name": "구암",
+        "distanceM": 1
+      },
+      {
+        "line": "대구 3호선",
+        "name": "건들바위",
+        "distanceM": 2
+      },
+      {
+        "line": "대구 3호선",
+        "name": "대봉교",
+        "distanceM": 2
+      },
+      {
+        "line": "대구 3호선",
+        "name": "팔달시장",
+        "distanceM": 2
+      },
+      {
+        "line": "대구 3호선",
+        "name": "지산",
+        "distanceM": 2
+      },
+      {
+        "line": "대구 3호선",
+        "name": "용지",
+        "distanceM": 1
+      },
+      {
+        "line": "대구 3호선",
+        "name": "만평",
+        "distanceM": 3
+      },
+      {
+        "line": "대구 3호선",
+        "name": "팔거",
+        "distanceM": 2
+      },
+      {
+        "line": "대구 3호선",
+        "name": "원대",
+        "distanceM": 2
+      },
+      {
+        "line": "대구 3호선",
+        "name": "태전",
+        "distanceM": 1
+      },
+      {
+        "line": "대구 3호선",
+        "name": "칠곡경대병원",
+        "distanceM": 1
+      },
+      {
+        "line": "대경선",
+        "name": "경산",
+        "distanceM": 0
+      },
+      {
+        "line": "대경선",
+        "name": "왜관",
+        "distanceM": 2
+      },
+      {
+        "line": "대경선",
+        "name": "구미",
+        "distanceM": 15
+      },
+      {
+        "line": "대경선",
+        "name": "사곡",
+        "distanceM": 5
+      },
+      {
+        "line": "대경선",
+        "name": "서대구",
+        "distanceM": 15
+      },
+      {
+        "line": "대경선",
+        "name": "대구",
+        "distanceM": 19
+      },
+      {
+        "line": "대경선",
+        "name": "동대구",
+        "distanceM": 54
+      },
+      {
+        "line": "대경선",
+        "name": "북삼",
+        "distanceM": 2
+      },
+      {
+        "line": "광주 1호선",
+        "name": "광주송정",
+        "distanceM": 5
+      },
+      {
+        "line": "광주 1호선",
+        "name": "김대중컨벤션센터(마륵)",
+        "distanceM": 3
+      },
+      {
+        "line": "광주 1호선",
+        "name": "송정공원",
+        "distanceM": 3
+      },
+      {
+        "line": "광주 1호선",
+        "name": "공항",
+        "distanceM": 5
+      },
+      {
+        "line": "광주 1호선",
+        "name": "문화전당",
+        "distanceM": 4
+      },
+      {
+        "line": "광주 1호선",
+        "name": "쌍촌",
+        "distanceM": 6
+      },
+      {
+        "line": "광주 1호선",
+        "name": "운천",
+        "distanceM": 4
+      },
+      {
+        "line": "광주 1호선",
+        "name": "농성",
+        "distanceM": 4
+      },
+      {
+        "line": "광주 1호선",
+        "name": "화정",
+        "distanceM": 4
+      },
+      {
+        "line": "광주 1호선",
+        "name": "양동시장",
+        "distanceM": 7
+      },
+      {
+        "line": "광주 1호선",
+        "name": "돌고개",
+        "distanceM": 5
+      },
+      {
+        "line": "광주 1호선",
+        "name": "금남로4가",
+        "distanceM": 5
+      },
+      {
+        "line": "광주 1호선",
+        "name": "금남로5가",
+        "distanceM": 3
+      },
+      {
+        "line": "광주 1호선",
+        "name": "도산",
+        "distanceM": 4
+      },
+      {
+        "line": "광주 1호선",
+        "name": "평동",
+        "distanceM": 3
+      },
+      {
+        "line": "광주 1호선",
+        "name": "소태",
+        "distanceM": 5
+      },
+      {
+        "line": "광주 1호선",
+        "name": "학동·증심사입구",
+        "distanceM": 3
+      },
+      {
+        "line": "광주 1호선",
+        "name": "녹동",
+        "distanceM": 0
+      },
+      {
+        "line": "광주 1호선",
+        "name": "상무",
+        "distanceM": 3
+      },
+      {
+        "line": "광주 1호선",
+        "name": "남광주",
+        "distanceM": 3
+      },
+      {
+        "line": "대전 1호선",
+        "name": "서대전네거리",
+        "distanceM": 2
+      },
+      {
+        "line": "대전 1호선",
+        "name": "중구청",
+        "distanceM": 4
+      },
+      {
+        "line": "대전 1호선",
+        "name": "용문",
+        "distanceM": 6
+      },
+      {
+        "line": "대전 1호선",
+        "name": "오룡",
+        "distanceM": 4
+      },
+      {
+        "line": "대전 1호선",
+        "name": "대동",
+        "distanceM": 4
+      },
+      {
+        "line": "대전 1호선",
+        "name": "중앙로",
+        "distanceM": 3
+      },
+      {
+        "line": "대전 1호선",
+        "name": "월평",
+        "distanceM": 4
+      },
+      {
+        "line": "대전 1호선",
+        "name": "갑천",
+        "distanceM": 6
+      },
+      {
+        "line": "대전 1호선",
+        "name": "유성온천",
+        "distanceM": 3
+      },
+      {
+        "line": "대전 1호선",
+        "name": "구암",
+        "distanceM": 4
+      },
+      {
+        "line": "대전 1호선",
+        "name": "탄방",
+        "distanceM": 5
+      },
+      {
+        "line": "대전 1호선",
+        "name": "시청",
+        "distanceM": 3
+      },
+      {
+        "line": "대전 1호선",
+        "name": "정부청사",
+        "distanceM": 3
+      },
+      {
+        "line": "대전 1호선",
+        "name": "갈마",
+        "distanceM": 5
+      },
+      {
+        "line": "대전 1호선",
+        "name": "반석",
+        "distanceM": 5
+      },
+      {
+        "line": "대전 1호선",
+        "name": "현충원",
+        "distanceM": 4
+      },
+      {
+        "line": "대전 1호선",
+        "name": "월드컵경기장",
+        "distanceM": 4
+      },
+      {
+        "line": "대전 1호선",
+        "name": "노은",
+        "distanceM": 6
+      },
+      {
+        "line": "대전 1호선",
+        "name": "지족",
+        "distanceM": 4
+      },
+      {
+        "line": "대전 1호선",
+        "name": "신흥",
+        "distanceM": 5
+      },
+      {
+        "line": "대전 1호선",
+        "name": "판암",
+        "distanceM": 13
+      },
+      {
+        "line": "대전 1호선",
+        "name": "대전역",
+        "distanceM": 4
+      }
+    ]
+  }
+}

@@ -1,0 +1,2120 @@
+{
+  "sourceUrl": "https://station.kric.go.kr/v2/statistics/index.do",
+  "retrievedAt": "2026-11-09T09:31:21.435Z",
+  "stations": [
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0846",
+      "stin-name": "다대포해수욕장"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0845",
+      "stin-name": "다대포항"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0842",
+      "stin-name": "낫개"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0854",
+      "stin-name": "신장림"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0858",
+      "stin-name": "장림"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0849",
+      "stin-name": "동매"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0710",
+      "stin-name": "신평"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0743",
+      "stin-name": "하단"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0647",
+      "stin-name": "당리"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0695",
+      "stin-name": "사하"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0625",
+      "stin-name": "괴정"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0651",
+      "stin-name": "대티"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0696",
+      "stin-name": "서대신"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0655",
+      "stin-name": "동대신"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0741",
+      "stin-name": "토성"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0724",
+      "stin-name": "자갈치"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0644",
+      "stin-name": "남포"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0734",
+      "stin-name": "중앙"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0684",
+      "stin-name": "부산"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0739",
+      "stin-name": "초량"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0687",
+      "stin-name": "부산진"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0731",
+      "stin-name": "좌천"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0680",
+      "stin-name": "범일"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0678",
+      "stin-name": "범내골"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0698",
+      "stin-name": "서면"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0691",
+      "stin-name": "부전"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0715",
+      "stin-name": "양정"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0709",
+      "stin-name": "시청"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0716",
+      "stin-name": "연산"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0626",
+      "stin-name": "교대"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0657",
+      "stin-name": "동래"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0666",
+      "stin-name": "명륜"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0720",
+      "stin-name": "온천장"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0685",
+      "stin-name": "부산대"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0727",
+      "stin-name": "장전"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0630",
+      "stin-name": "구서"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0662",
+      "stin-name": "두실"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0640",
+      "stin-name": "남산"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0679",
+      "stin-name": "범어사"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0646",
+      "stin-name": "노포"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0725",
+      "stin-name": "장산"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0733",
+      "stin-name": "중동"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0744",
+      "stin-name": "해운대"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0658",
+      "stin-name": "동백"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0681",
+      "stin-name": "벡스코"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0702",
+      "stin-name": "센텀시티"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0674",
+      "stin-name": "민락"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0706",
+      "stin-name": "수영"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0623",
+      "stin-name": "광안"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0634",
+      "stin-name": "금련산"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0643",
+      "stin-name": "남천"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0620",
+      "stin-name": "경성대.부경대"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0649",
+      "stin-name": "대연"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0670",
+      "stin-name": "못골"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0736",
+      "stin-name": "지게골"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0671",
+      "stin-name": "문현"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0632",
+      "stin-name": "국제금융센터.부산은행"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0729",
+      "stin-name": "전포"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0698",
+      "stin-name": "서면"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0688",
+      "stin-name": "부암"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0612",
+      "stin-name": "가야"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0661",
+      "stin-name": "동의대"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0616",
+      "stin-name": "개금"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0645",
+      "stin-name": "냉정"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0732",
+      "stin-name": "주례"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0614",
+      "stin-name": "감전"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0693",
+      "stin-name": "사상"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0654",
+      "stin-name": "덕포"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0668",
+      "stin-name": "모덕"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0669",
+      "stin-name": "모라"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0628",
+      "stin-name": "구남"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0629",
+      "stin-name": "구명"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0653",
+      "stin-name": "덕천"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0707",
+      "stin-name": "수정"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0746",
+      "stin-name": "화명"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0721",
+      "stin-name": "율리"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0660",
+      "stin-name": "동원"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0633",
+      "stin-name": "금곡"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0745",
+      "stin-name": "호포"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0735",
+      "stin-name": "증산"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0686",
+      "stin-name": "부산대양산캠퍼스"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0642",
+      "stin-name": "남양산"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0714",
+      "stin-name": "양산"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0706",
+      "stin-name": "수영"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0665",
+      "stin-name": "망미"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0677",
+      "stin-name": "배산"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0672",
+      "stin-name": "물만골"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0716",
+      "stin-name": "연산"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0617",
+      "stin-name": "거제"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0730",
+      "stin-name": "종합운동장"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0694",
+      "stin-name": "사직"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0673",
+      "stin-name": "미남"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0664",
+      "stin-name": "만덕"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0641",
+      "stin-name": "남산정"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0708",
+      "stin-name": "숙등"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0653",
+      "stin-name": "덕천"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0631",
+      "stin-name": "구포"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0615",
+      "stin-name": "강서구청"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0738",
+      "stin-name": "체육공원"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0650",
+      "stin-name": "대저"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "4",
+      "prpr-stin-cd": "0673",
+      "stin-name": "미남"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "4",
+      "prpr-stin-cd": "0657",
+      "stin-name": "동래"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "4",
+      "prpr-stin-cd": "0705",
+      "stin-name": "수안"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "4",
+      "prpr-stin-cd": "0639",
+      "stin-name": "낙민"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "4",
+      "prpr-stin-cd": "0740",
+      "stin-name": "충렬사"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "4",
+      "prpr-stin-cd": "0667",
+      "stin-name": "명장"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "4",
+      "prpr-stin-cd": "0697",
+      "stin-name": "서동"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "4",
+      "prpr-stin-cd": "0635",
+      "stin-name": "금사"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "4",
+      "prpr-stin-cd": "0676",
+      "stin-name": "반여농산물시장"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "4",
+      "prpr-stin-cd": "0700",
+      "stin-name": "석대"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "4",
+      "prpr-stin-cd": "0718",
+      "stin-name": "영산대"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "4",
+      "prpr-stin-cd": "0659",
+      "stin-name": "윗반송"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "4",
+      "prpr-stin-cd": "0621",
+      "stin-name": "고촌"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BS",
+      "ln-cd": "4",
+      "prpr-stin-cd": "0713",
+      "stin-name": "안평"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BG",
+      "ln-cd": "B1",
+      "prpr-stin-cd": "0693",
+      "stin-name": "사상"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BG",
+      "ln-cd": "B1",
+      "prpr-stin-cd": "0624",
+      "stin-name": "괘법르네시떼"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BG",
+      "ln-cd": "B1",
+      "prpr-stin-cd": "0699",
+      "stin-name": "서부산유통지구"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BG",
+      "ln-cd": "B1",
+      "prpr-stin-cd": "0622",
+      "stin-name": "공항"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BG",
+      "ln-cd": "B1",
+      "prpr-stin-cd": "0652",
+      "stin-name": "덕두"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BG",
+      "ln-cd": "B1",
+      "prpr-stin-cd": "0663",
+      "stin-name": "등구"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BG",
+      "ln-cd": "B1",
+      "prpr-stin-cd": "0650",
+      "stin-name": "대저"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BG",
+      "ln-cd": "B1",
+      "prpr-stin-cd": "0742",
+      "stin-name": "평강"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BG",
+      "ln-cd": "B1",
+      "prpr-stin-cd": "0648",
+      "stin-name": "대사"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BG",
+      "ln-cd": "B1",
+      "prpr-stin-cd": "0692",
+      "stin-name": "불암"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BG",
+      "ln-cd": "B1",
+      "prpr-stin-cd": "0737",
+      "stin-name": "지내"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BG",
+      "ln-cd": "B1",
+      "prpr-stin-cd": "0637",
+      "stin-name": "김해대학"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BG",
+      "ln-cd": "B1",
+      "prpr-stin-cd": "0722",
+      "stin-name": "인제대"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BG",
+      "ln-cd": "B1",
+      "prpr-stin-cd": "0638",
+      "stin-name": "김해시청"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BG",
+      "ln-cd": "B1",
+      "prpr-stin-cd": "0689",
+      "stin-name": "부원"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BG",
+      "ln-cd": "B1",
+      "prpr-stin-cd": "0683",
+      "stin-name": "봉황"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BG",
+      "ln-cd": "B1",
+      "prpr-stin-cd": "0704",
+      "stin-name": "수로왕릉"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BG",
+      "ln-cd": "B1",
+      "prpr-stin-cd": "0675",
+      "stin-name": "박물관"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BG",
+      "ln-cd": "B1",
+      "prpr-stin-cd": "0717",
+      "stin-name": "연지공원"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BG",
+      "ln-cd": "B1",
+      "prpr-stin-cd": "0726",
+      "stin-name": "장신대"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "BG",
+      "ln-cd": "B1",
+      "prpr-stin-cd": "0613",
+      "stin-name": "가야대"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "KR",
+      "ln-cd": "K6",
+      "prpr-stin-cd": "0690",
+      "stin-name": "부전"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "KR",
+      "ln-cd": "K6",
+      "prpr-stin-cd": "0619",
+      "stin-name": "거제해맞이"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "KR",
+      "ln-cd": "K6",
+      "prpr-stin-cd": "0617",
+      "stin-name": "거제"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "KR",
+      "ln-cd": "K6",
+      "prpr-stin-cd": "0626",
+      "stin-name": "교대"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "KR",
+      "ln-cd": "K6",
+      "prpr-stin-cd": "0656",
+      "stin-name": "동래"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "KR",
+      "ln-cd": "K6",
+      "prpr-stin-cd": "0712",
+      "stin-name": "안락"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "KR",
+      "ln-cd": "K6",
+      "prpr-stin-cd": "1168",
+      "stin-name": "부산원동"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "KR",
+      "ln-cd": "K6",
+      "prpr-stin-cd": "0728",
+      "stin-name": "재송"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "KR",
+      "ln-cd": "K6",
+      "prpr-stin-cd": "0701",
+      "stin-name": "센텀"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "KR",
+      "ln-cd": "K6",
+      "prpr-stin-cd": "0681",
+      "stin-name": "벡스코"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "KR",
+      "ln-cd": "K6",
+      "prpr-stin-cd": "0711",
+      "stin-name": "신해운대"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "KR",
+      "ln-cd": "K6",
+      "prpr-stin-cd": "0703",
+      "stin-name": "송정"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "KR",
+      "ln-cd": "K6",
+      "prpr-stin-cd": "0719",
+      "stin-name": "오시리아"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "KR",
+      "ln-cd": "K6",
+      "prpr-stin-cd": "0636",
+      "stin-name": "기장"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "KR",
+      "ln-cd": "K6",
+      "prpr-stin-cd": "0723",
+      "stin-name": "일광"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "KR",
+      "ln-cd": "K6",
+      "prpr-stin-cd": "1043",
+      "stin-name": "좌천"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "KR",
+      "ln-cd": "K6",
+      "prpr-stin-cd": "1019",
+      "stin-name": "월내"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "KR",
+      "ln-cd": "K6",
+      "prpr-stin-cd": "1203",
+      "stin-name": "서생"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "KR",
+      "ln-cd": "K6",
+      "prpr-stin-cd": "0911",
+      "stin-name": "남창"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "KR",
+      "ln-cd": "K6",
+      "prpr-stin-cd": "1364",
+      "stin-name": "망양"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "KR",
+      "ln-cd": "K6",
+      "prpr-stin-cd": "0920",
+      "stin-name": "덕하"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "KR",
+      "ln-cd": "K6",
+      "prpr-stin-cd": "1365",
+      "stin-name": "개운포"
+    },
+    {
+      "are-cd": "02",
+      "rail-opr-istt-cd": "KR",
+      "ln-cd": "K6",
+      "prpr-stin-cd": "1070",
+      "stin-name": "태화강"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0790",
+      "stin-name": "설화명곡"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0834",
+      "stin-name": "화원"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0762",
+      "stin-name": "대곡"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0822",
+      "stin-name": "진천"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0813",
+      "stin-name": "월배"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0788",
+      "stin-name": "상인"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0814",
+      "stin-name": "월촌"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0793",
+      "stin-name": "송현"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0791",
+      "stin-name": "서부정류장"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0766",
+      "stin-name": "대명"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0804",
+      "stin-name": "안지랑"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0833",
+      "stin-name": "현충로"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0808",
+      "stin-name": "영대병원"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0755",
+      "stin-name": "교대"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0777",
+      "stin-name": "명덕"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0782",
+      "stin-name": "반월당"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0820",
+      "stin-name": "중앙로"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0764",
+      "stin-name": "대구역"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0825",
+      "stin-name": "칠성시장"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0801",
+      "stin-name": "신천"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0769",
+      "stin-name": "동대구역"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0826",
+      "stin-name": "동구청"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0802",
+      "stin-name": "아양교"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0771",
+      "stin-name": "동촌"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0832",
+      "stin-name": "해안"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0783",
+      "stin-name": "방촌"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0809",
+      "stin-name": "용계"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0815",
+      "stin-name": "율하"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0798",
+      "stin-name": "신기"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0781",
+      "stin-name": "반야월"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0747",
+      "stin-name": "각산"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0803",
+      "stin-name": "안심"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "1377",
+      "stin-name": "대구한의대병원"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "1378",
+      "stin-name": "부호"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "1",
+      "prpr-stin-cd": "1379",
+      "stin-name": "하양"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0779",
+      "stin-name": "문양"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0759",
+      "stin-name": "다사"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0768",
+      "stin-name": "대실"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0749",
+      "stin-name": "강창"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0752",
+      "stin-name": "계명대"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0792",
+      "stin-name": "성서산업단지"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0816",
+      "stin-name": "이곡"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0810",
+      "stin-name": "용산"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0819",
+      "stin-name": "죽전"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0748",
+      "stin-name": "감삼"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0772",
+      "stin-name": "두류"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0758",
+      "stin-name": "내당"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0780",
+      "stin-name": "반고개"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0799",
+      "stin-name": "청라언덕"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0782",
+      "stin-name": "반월당"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0751",
+      "stin-name": "경대병원"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0765",
+      "stin-name": "대구은행"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0785",
+      "stin-name": "범어"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0795",
+      "stin-name": "수성구청"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0773",
+      "stin-name": "만촌"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0761",
+      "stin-name": "담티"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0806",
+      "stin-name": "연호"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0763",
+      "stin-name": "수성알파시티"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0753",
+      "stin-name": "고산"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0800",
+      "stin-name": "신매"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0787",
+      "stin-name": "사월"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0818",
+      "stin-name": "정평"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0817",
+      "stin-name": "임당"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "2",
+      "prpr-stin-cd": "0807",
+      "stin-name": "영남대"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0823",
+      "stin-name": "칠곡경대병원"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0831",
+      "stin-name": "학정"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0828",
+      "stin-name": "팔거"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0770",
+      "stin-name": "동천"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0824",
+      "stin-name": "칠곡운암"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0756",
+      "stin-name": "구암"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0827",
+      "stin-name": "태전"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0775",
+      "stin-name": "매천"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0776",
+      "stin-name": "매천시장"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0829",
+      "stin-name": "팔달"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0754",
+      "stin-name": "공단"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0774",
+      "stin-name": "만평"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0830",
+      "stin-name": "팔달시장"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0812",
+      "stin-name": "원대"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0786",
+      "stin-name": "북구청"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0760",
+      "stin-name": "달성공원"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0789",
+      "stin-name": "서문시장"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0799",
+      "stin-name": "청라언덕"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0757",
+      "stin-name": "남산"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0777",
+      "stin-name": "명덕"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0750",
+      "stin-name": "건들바위"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0767",
+      "stin-name": "대봉교"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0797",
+      "stin-name": "수성시장"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0794",
+      "stin-name": "수성구민운동장"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0805",
+      "stin-name": "어린이세상"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0835",
+      "stin-name": "황금"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0796",
+      "stin-name": "수성못"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0821",
+      "stin-name": "지산"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0784",
+      "stin-name": "범물"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "DG",
+      "ln-cd": "3",
+      "prpr-stin-cd": "0811",
+      "stin-name": "용지"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "KR",
+      "ln-cd": "K7",
+      "prpr-stin-cd": "0889",
+      "stin-name": "경산"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "KR",
+      "ln-cd": "K7",
+      "prpr-stin-cd": "0769",
+      "stin-name": "동대구역"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "KR",
+      "ln-cd": "K7",
+      "prpr-stin-cd": "0764",
+      "stin-name": "대구역"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "KR",
+      "ln-cd": "K7",
+      "prpr-stin-cd": "1380",
+      "stin-name": "서대구역"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "KR",
+      "ln-cd": "K7",
+      "prpr-stin-cd": "1013",
+      "stin-name": "왜관"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "KR",
+      "ln-cd": "K7",
+      "prpr-stin-cd": "1386",
+      "stin-name": "북삼"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "KR",
+      "ln-cd": "K7",
+      "prpr-stin-cd": "0958",
+      "stin-name": "사곡"
+    },
+    {
+      "are-cd": "03",
+      "rail-opr-istt-cd": "KR",
+      "ln-cd": "K7",
+      "prpr-stin-cd": "0900",
+      "stin-name": "구미"
+    },
+    {
+      "are-cd": "04",
+      "rail-opr-istt-cd": "GJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0843",
+      "stin-name": "녹동"
+    },
+    {
+      "are-cd": "04",
+      "rail-opr-istt-cd": "GJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0852",
+      "stin-name": "소태"
+    },
+    {
+      "are-cd": "04",
+      "rail-opr-istt-cd": "GJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0860",
+      "stin-name": "학동증심사입구"
+    },
+    {
+      "are-cd": "04",
+      "rail-opr-istt-cd": "GJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0841",
+      "stin-name": "남광주"
+    },
+    {
+      "are-cd": "04",
+      "rail-opr-istt-cd": "GJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0850",
+      "stin-name": "문화전당"
+    },
+    {
+      "are-cd": "04",
+      "rail-opr-istt-cd": "GJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0838",
+      "stin-name": "금남로4가"
+    },
+    {
+      "are-cd": "04",
+      "rail-opr-istt-cd": "GJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0839",
+      "stin-name": "금남로5가"
+    },
+    {
+      "are-cd": "04",
+      "rail-opr-istt-cd": "GJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0856",
+      "stin-name": "양동시장"
+    },
+    {
+      "are-cd": "04",
+      "rail-opr-istt-cd": "GJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0848",
+      "stin-name": "돌고개"
+    },
+    {
+      "are-cd": "04",
+      "rail-opr-istt-cd": "GJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0844",
+      "stin-name": "농성"
+    },
+    {
+      "are-cd": "04",
+      "rail-opr-istt-cd": "GJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0861",
+      "stin-name": "화정"
+    },
+    {
+      "are-cd": "04",
+      "rail-opr-istt-cd": "GJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0855",
+      "stin-name": "쌍촌"
+    },
+    {
+      "are-cd": "04",
+      "rail-opr-istt-cd": "GJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0857",
+      "stin-name": "운천"
+    },
+    {
+      "are-cd": "04",
+      "rail-opr-istt-cd": "GJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0851",
+      "stin-name": "상무"
+    },
+    {
+      "are-cd": "04",
+      "rail-opr-istt-cd": "GJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0840",
+      "stin-name": "김대중컨벤션센터"
+    },
+    {
+      "are-cd": "04",
+      "rail-opr-istt-cd": "GJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0836",
+      "stin-name": "공항"
+    },
+    {
+      "are-cd": "04",
+      "rail-opr-istt-cd": "GJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0853",
+      "stin-name": "송정공원"
+    },
+    {
+      "are-cd": "04",
+      "rail-opr-istt-cd": "GJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0837",
+      "stin-name": "광주송정역"
+    },
+    {
+      "are-cd": "04",
+      "rail-opr-istt-cd": "GJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0847",
+      "stin-name": "도산"
+    },
+    {
+      "are-cd": "04",
+      "rail-opr-istt-cd": "GJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0859",
+      "stin-name": "평동"
+    },
+    {
+      "are-cd": "05",
+      "rail-opr-istt-cd": "DJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0882",
+      "stin-name": "판암"
+    },
+    {
+      "are-cd": "05",
+      "rail-opr-istt-cd": "DJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0871",
+      "stin-name": "신흥"
+    },
+    {
+      "are-cd": "05",
+      "rail-opr-istt-cd": "DJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0866",
+      "stin-name": "대동"
+    },
+    {
+      "are-cd": "05",
+      "rail-opr-istt-cd": "DJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0867",
+      "stin-name": "대전"
+    },
+    {
+      "are-cd": "05",
+      "rail-opr-istt-cd": "DJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0879",
+      "stin-name": "중앙로"
+    },
+    {
+      "are-cd": "05",
+      "rail-opr-istt-cd": "DJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0878",
+      "stin-name": "중구청"
+    },
+    {
+      "are-cd": "05",
+      "rail-opr-istt-cd": "DJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0869",
+      "stin-name": "서대전네거리"
+    },
+    {
+      "are-cd": "05",
+      "rail-opr-istt-cd": "DJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0872",
+      "stin-name": "오룡"
+    },
+    {
+      "are-cd": "05",
+      "rail-opr-istt-cd": "DJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0873",
+      "stin-name": "용문"
+    },
+    {
+      "are-cd": "05",
+      "rail-opr-istt-cd": "DJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0881",
+      "stin-name": "탄방"
+    },
+    {
+      "are-cd": "05",
+      "rail-opr-istt-cd": "DJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0870",
+      "stin-name": "시청"
+    },
+    {
+      "are-cd": "05",
+      "rail-opr-istt-cd": "DJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0877",
+      "stin-name": "정부청사"
+    },
+    {
+      "are-cd": "05",
+      "rail-opr-istt-cd": "DJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0862",
+      "stin-name": "갈마"
+    },
+    {
+      "are-cd": "05",
+      "rail-opr-istt-cd": "DJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0875",
+      "stin-name": "월평"
+    },
+    {
+      "are-cd": "05",
+      "rail-opr-istt-cd": "DJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0863",
+      "stin-name": "갑천"
+    },
+    {
+      "are-cd": "05",
+      "rail-opr-istt-cd": "DJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0876",
+      "stin-name": "유성온천"
+    },
+    {
+      "are-cd": "05",
+      "rail-opr-istt-cd": "DJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0864",
+      "stin-name": "구암"
+    },
+    {
+      "are-cd": "05",
+      "rail-opr-istt-cd": "DJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0883",
+      "stin-name": "현충원"
+    },
+    {
+      "are-cd": "05",
+      "rail-opr-istt-cd": "DJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0874",
+      "stin-name": "월드컵경기장"
+    },
+    {
+      "are-cd": "05",
+      "rail-opr-istt-cd": "DJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0865",
+      "stin-name": "노은"
+    },
+    {
+      "are-cd": "05",
+      "rail-opr-istt-cd": "DJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0880",
+      "stin-name": "지족"
+    },
+    {
+      "are-cd": "05",
+      "rail-opr-istt-cd": "DJ",
+      "ln-cd": "1",
+      "prpr-stin-cd": "0868",
+      "stin-name": "반석"
+    }
+  ]
+}

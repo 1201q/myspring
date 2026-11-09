@@ -1,0 +1,5 @@
+[
+  {"nodeId":11865742366,"expectedName":"영신대","name":"영산대","reason":"OSM Korean name typo; KRIC official Busan line 4 station list uses 영산대.","sourceUrl":"https://station.kric.go.kr/v2/statistics/index.do"},
+  {"nodeId":14321490932,"expectedName":"영신대","name":"영산대","reason":"Opposite-direction stop has the same Korean name typo.","sourceUrl":"https://station.kric.go.kr/v2/statistics/index.do"},
+  {"nodeId":7461024100,"expectedName":"부산원동","name":"부산원동","routeId":"donghae","addStop":true,"reason":"Station is in KRIC's official Donghae list and OSM station data but missing from both route relations. Add the existing OSM station center without inventing coordinates or connecting new track.","sourceUrl":"https://station.kric.go.kr/v2/statistics/index.do"}
+]

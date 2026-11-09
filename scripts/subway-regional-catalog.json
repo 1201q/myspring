@@ -1,0 +1,14 @@
+[
+  {"id":"busan-1","name":"부산 1호선","region":"busan","officialArea":"02","officialLine":"1","pattern":"부산.*1호선","anchors":["다대포해수욕장","노포"]},
+  {"id":"busan-2","name":"부산 2호선","region":"busan","officialArea":"02","officialLine":"2","pattern":"부산.*2호선","anchors":["장산","양산"]},
+  {"id":"busan-3","name":"부산 3호선","region":"busan","officialArea":"02","officialLine":"3","pattern":"부산.*3호선","anchors":["수영","대저"]},
+  {"id":"busan-4","name":"부산 4호선","region":"busan","officialArea":"02","officialLine":"4","pattern":"부산.*4호선","anchors":["미남","안평"]},
+  {"id":"busan-gimhae","name":"부산김해경전철","region":"busan","officialArea":"02","officialLine":"B1","pattern":"부산.?김해.*경전철","anchors":["사상","가야대"]},
+  {"id":"donghae","name":"동해선","region":"busan","officialArea":"02","officialLine":"K6","pattern":"동해선.*(부전|태화강)","anchors":["부전","태화강"]},
+  {"id":"daegu-1","name":"대구 1호선","region":"daegu","officialArea":"03","officialLine":"1","pattern":"대구.*1호선","anchors":["설화명곡","하양"]},
+  {"id":"daegu-2","name":"대구 2호선","region":"daegu","officialArea":"03","officialLine":"2","pattern":"대구.*2호선","anchors":["문양","영남대"]},
+  {"id":"daegu-3","name":"대구 3호선","region":"daegu","officialArea":"03","officialLine":"3","pattern":"대구.*3호선","anchors":["칠곡경대병원","용지"]},
+  {"id":"daegyeong","name":"대경선","region":"daegu","officialArea":"03","officialLine":"K7","pattern":"대경선","anchors":["구미","북삼","경산"]},
+  {"id":"gwangju-1","name":"광주 1호선","region":"gwangju","officialArea":"04","officialLine":"1","pattern":"광주.*1호선","anchors":["평동","녹동"]},
+  {"id":"daejeon-1","name":"대전 1호선","region":"daejeon","officialArea":"05","officialLine":"1","pattern":"대전.*1호선","anchors":["판암","반석"]}
+]

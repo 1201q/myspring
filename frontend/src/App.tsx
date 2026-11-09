@@ -42,6 +42,9 @@ export default function App() {
   const map = useRef<maplibregl.Map | null>(null);
   const [mapInstance, setMapInstance] = useState<maplibregl.Map | null>(null);
   const [zoom, setZoom] = useState(10);
+  const [playbackRegionVersion, setPlaybackRegionVersion] = useState(0);
+  const [playbackRegionId, setPlaybackRegionId] = useState("seoul");
+  const onPlaybackRegionChange = useCallback((id: string) => { setPlaybackRegionId(id); setPlaybackRegionVersion(v => v + 1); }, []);
   const pinned = useRef(false);
   const [isPinned, setIsPinned] = useState(false);
   const hoveredGroup = useRef<LocationGroup | null>(null);
@@ -202,10 +205,10 @@ export default function App() {
           </button>
         </div>
         <output className="map-zoom" aria-label="현재 지도 줌 단계">줌 {zoom.toFixed(1)}</output>
-        <SubwayOverlay map={mapInstance} />
+        <SubwayOverlay map={mapInstance} playbackRegionId={playbackRegionId} playbackRegionVersion={playbackRegionVersion} />
         <PlaybackBoundary>
           <Suspense fallback={<section className="playback is-active" role="status">지역과 시간 재생을 준비하는 중…</section>}>
-            <NationalPlayback map={mapInstance} showLocationCounts={zoom >= 15} category={category} categories={categories} categoryError={categoryError} onCategoryChange={value => { clearSelection(); setCategory(value); }} onRetryCategories={() => setAttempt(value => value + 1)} onClearSelection={clearSelection} onSelectId={selectId} onSelectLocation={pinLocation} onHoverLocation={hoverLocation} />
+            <NationalPlayback map={mapInstance} onRegionChange={onPlaybackRegionChange} showLocationCounts={zoom >= 15} category={category} categories={categories} categoryError={categoryError} onCategoryChange={value => { clearSelection(); setCategory(value); }} onRetryCategories={() => setAttempt(value => value + 1)} onClearSelection={clearSelection} onSelectId={selectId} onSelectLocation={pinLocation} onHoverLocation={hoverLocation} />
           </Suspense>
         </PlaybackBoundary>
         {mapError && <p className="map-error" role="alert">{mapError}<button onClick={() => window.location.reload()}>새로고침</button></p>}
