@@ -1,0 +1,234 @@
+{
+  "schemaVersion": 1,
+  "source": "OpenStreetMap",
+  "license": "ODbL-1.0",
+  "sourceUrl": "https://www.openstreetmap.org/copyright",
+  "osmBaseTimestamp": "2026-11-09T05:53:46Z",
+  "sourceSha256": "5763d9b154900ed141c38023c1099bb28faa4c9226912fea72842f2e7a749f52",
+  "temporalScope": "current-snapshot",
+  "coverageStatus": "experimental",
+  "routeFile": "seoul-metropolitan-routes.geojson",
+  "stationFile": "seoul-metropolitan-stations.geojson",
+  "bytes": {
+    "routes": 1313081,
+    "stations": 171991
+  },
+  "lines": [
+    {
+      "id": "metro-1",
+      "name": "1호선",
+      "color": "#004A85",
+      "ref": "1",
+      "relationCount": 95,
+      "wayCount": 911,
+      "stationCount": 103
+    },
+    {
+      "id": "metro-2",
+      "name": "2호선",
+      "color": "#00A23F",
+      "ref": "2",
+      "relationCount": 6,
+      "wayCount": 66,
+      "stationCount": 51
+    },
+    {
+      "id": "metro-3",
+      "name": "3호선",
+      "color": "#ED6C00",
+      "ref": "3",
+      "relationCount": 2,
+      "wayCount": 62,
+      "stationCount": 44
+    },
+    {
+      "id": "metro-4",
+      "name": "4호선",
+      "color": "#009BCE",
+      "ref": "4",
+      "relationCount": 27,
+      "wayCount": 164,
+      "stationCount": 51
+    },
+    {
+      "id": "metro-5",
+      "name": "5호선",
+      "color": "#794698",
+      "ref": "5",
+      "relationCount": 8,
+      "wayCount": 43,
+      "stationCount": 56
+    },
+    {
+      "id": "metro-6",
+      "name": "6호선",
+      "color": "#7C4932",
+      "ref": "6",
+      "relationCount": 4,
+      "wayCount": 33,
+      "stationCount": 39
+    },
+    {
+      "id": "metro-7",
+      "name": "7호선",
+      "color": "#6E7E31",
+      "ref": "7",
+      "relationCount": 8,
+      "wayCount": 42,
+      "stationCount": 53
+    },
+    {
+      "id": "metro-8",
+      "name": "8호선",
+      "color": "#D11D70",
+      "ref": "8",
+      "relationCount": 6,
+      "wayCount": 24,
+      "stationCount": 24
+    },
+    {
+      "id": "metro-9",
+      "name": "9호선",
+      "color": "#A49D87",
+      "ref": "9",
+      "relationCount": 4,
+      "wayCount": 64,
+      "stationCount": 38
+    },
+    {
+      "id": "metro-10",
+      "name": "인천 1호선",
+      "color": "#B4C7E7",
+      "ref": "인천1",
+      "relationCount": 2,
+      "wayCount": 22,
+      "stationCount": 33
+    },
+    {
+      "id": "metro-11",
+      "name": "인천 2호선",
+      "color": "#F4A462",
+      "ref": "I2",
+      "relationCount": 2,
+      "wayCount": 19,
+      "stationCount": 27
+    },
+    {
+      "id": "metro-12",
+      "name": "경의중앙선",
+      "color": "#6AC2B3",
+      "ref": "경의·중앙",
+      "relationCount": 10,
+      "wayCount": 638,
+      "stationCount": 58
+    },
+    {
+      "id": "metro-13",
+      "name": "경춘선",
+      "color": "#007A62",
+      "ref": "경춘",
+      "relationCount": 6,
+      "wayCount": 365,
+      "stationCount": 25
+    },
+    {
+      "id": "metro-14",
+      "name": "수인분당선",
+      "color": "#ECA300",
+      "ref": "수인·분당",
+      "relationCount": 24,
+      "wayCount": 312,
+      "stationCount": 63
+    },
+    {
+      "id": "metro-15",
+      "name": "신분당선",
+      "color": "#B81B30",
+      "ref": "신분당",
+      "relationCount": 2,
+      "wayCount": 19,
+      "stationCount": 16
+    },
+    {
+      "id": "metro-16",
+      "name": "공항철도",
+      "color": "#0079AC",
+      "ref": "공항철도",
+      "relationCount": 2,
+      "wayCount": 161,
+      "stationCount": 13
+    },
+    {
+      "id": "metro-17",
+      "name": "경강선",
+      "color": "#0B318F",
+      "ref": "경강",
+      "relationCount": 4,
+      "wayCount": 143,
+      "stationCount": 12
+    },
+    {
+      "id": "metro-18",
+      "name": "서해선",
+      "color": "#5EAC41",
+      "ref": "서해",
+      "relationCount": 4,
+      "wayCount": 58,
+      "stationCount": 22
+    },
+    {
+      "id": "metro-19",
+      "name": "우이신설선",
+      "color": "#BACC50",
+      "ref": "W",
+      "relationCount": 2,
+      "wayCount": 8,
+      "stationCount": 13
+    },
+    {
+      "id": "metro-20",
+      "name": "신림선",
+      "color": "#6789CA",
+      "ref": "Silim",
+      "relationCount": 2,
+      "wayCount": 2,
+      "stationCount": 11
+    },
+    {
+      "id": "metro-21",
+      "name": "의정부경전철",
+      "color": "#F0831E",
+      "ref": "U",
+      "relationCount": 4,
+      "wayCount": 29,
+      "stationCount": 16
+    },
+    {
+      "id": "metro-22",
+      "name": "용인에버라인",
+      "color": "#44A436",
+      "ref": "용인",
+      "relationCount": 2,
+      "wayCount": 7,
+      "stationCount": 15
+    },
+    {
+      "id": "metro-23",
+      "name": "김포골드라인",
+      "color": "#957326",
+      "ref": "김포 골드라인",
+      "relationCount": 2,
+      "wayCount": 4,
+      "stationCount": 10
+    },
+    {
+      "id": "metro-24",
+      "name": "GTX-A",
+      "color": "#AB087D",
+      "ref": "GTX-A",
+      "relationCount": 4,
+      "wayCount": 20,
+      "stationCount": 8
+    }
+  ]
+}

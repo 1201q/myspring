@@ -7,6 +7,7 @@ import "./App.css";
 import type { LocationGroup } from "./locationGroups";
 import LocationRecords from "./LocationRecords";
 import PlaybackBoundary from "./PlaybackBoundary";
+import SubwayOverlay from "./SubwayOverlay";
 
 const NationalPlayback = lazy(() => import("./NationalPlayback"));
 maplibregl.setWorkerUrl(mapWorkerUrl);
@@ -201,6 +202,7 @@ export default function App() {
           </button>
         </div>
         <output className="map-zoom" aria-label="현재 지도 줌 단계">줌 {zoom.toFixed(1)}</output>
+        <SubwayOverlay map={mapInstance} />
         <PlaybackBoundary>
           <Suspense fallback={<section className="playback is-active" role="status">지역과 시간 재생을 준비하는 중…</section>}>
             <NationalPlayback map={mapInstance} showLocationCounts={zoom >= 15} category={category} categories={categories} categoryError={categoryError} onCategoryChange={value => { clearSelection(); setCategory(value); }} onRetryCategories={() => setAttempt(value => value + 1)} onClearSelection={clearSelection} onSelectId={selectId} onSelectLocation={pinLocation} onHoverLocation={hoverLocation} />

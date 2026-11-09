@@ -1,0 +1,98 @@
+import assert from 'node:assert/strict';
+import { readFile, mkdir, writeFile } from 'node:fs/promises';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+
+const root = fileURLToPath(new URL('../', import.meta.url));
+const directory = root + 'docs/data-samples/subway/';
+const manifest = JSON.parse(await readFile(root + 'frontend/public/data/subway/manifest.json', 'utf8'));
+const routes = JSON.parse(await readFile(root + 'frontend/public/data/subway/' + manifest.routeFile, 'utf8'));
+const stations = JSON.parse(await readFile(root + 'frontend/public/data/subway/' + manifest.stationFile, 'utf8'));
+const report = JSON.parse(await readFile(directory + 'verification.json', 'utf8'));
+assert.equal(manifest.lines.length, 24);
+assert.equal(new Set(routes.features.map(f => f.properties.routeId)).size, 24);
+assert.equal(new Set(routes.features.map(f => `${f.properties.routeId}:${f.properties.wayId}`)).size, routes.features.length);
+assert.deepEqual(report.missingMembers, []);
+assert.equal(report.officialComparison.total, 276);
+assert.equal(report.officialComparison.within500m, 276);
+assert.deepEqual(report.anchorChecks.filter(a => a.missing.length), []);
+assert.equal(stations.features.filter(f => f.properties.routeId === 'metro-19' && f.properties.name === '삼양').length, 1);
+// GTX-A's two separate service sections must not be joined with an invented straight line.
+const gtx = routes.features.filter(f => f.properties.routeId === 'metro-24');
+assert.ok(gtx.length);
+assert.ok(gtx.every(f => f.geometry.coordinates.every(p => p[1] >= 37.55) || f.geometry.coordinates.every(p => p[1] <= 37.50)));
+console.log(`Data checks passed: ${manifest.lines.length} lines, ${routes.features.length} track features, ${report.officialComparison.total} official stations.`);
+
+if (!process.argv.includes('--browser')) process.exit(0);
+const { chromium } = await import(pathToFileURL(process.env.PLAYWRIGHT_MODULE || root + 'data/subway-browser/node_modules/playwright/index.mjs').href);
+await mkdir(directory, { recursive: true });
+const browser = await chromium.launch({ channel: 'msedge', headless: true });
+const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, deviceScaleFactor: 1 });
+const page = await context.newPage();
+const errors = [], requests = [], failures = [];
+page.on('pageerror', e => errors.push(e.message));
+page.on('request', r => { if (r.url().includes('/data/subway/')) requests.push(r.url()); });
+page.on('requestfailed', r => failures.push({ url: r.url(), failure: r.failure()?.errorText }));
+const checks = [];
+try {
+  await page.goto(process.env.MAP_URL || 'http://127.0.0.1:5173', { waitUntil: 'domcontentloaded' });
+  const control = page.getByRole('region', { name: '수도권 지하철 노선' });
+  await control.getByRole('checkbox', { name: '지하철 노선' }).waitFor();
+  await page.getByRole('button', { name: '노선 선택' }).click();
+  const select = page.getByLabel('표시할 노선');
+  await select.waitFor();
+  await page.waitForFunction(() => document.querySelector('.subway-select-label select')?.options.length === 25, { timeout: 60000 });
+  await page.waitForFunction(() => !document.querySelector('.subway-control [role="status"]'));
+  assert.equal(await page.locator('.subway-legend li').count(), 24);
+  assert.equal(await page.locator('.map-error').count(), 0);
+  checks.push('24-line legend and real GeoJSON loaded without map errors');
+  await page.waitForTimeout(3000);
+  await page.screenshot({ path: directory + 'map-all-lines.jpg', quality: 80 });
+  await select.selectOption('metro-2');
+  assert.equal(await page.locator('.subway-legend li').count(), 1);
+  assert.match(await page.locator('.subway-legend li').innerText(), /2호선/);
+  await page.waitForTimeout(500);
+  await page.screenshot({ path: directory + 'map-line2.jpg', quality: 80 });
+  const withLine = await page.screenshot({ clip: { x: 400, y: 400, width: 400, height: 300 } });
+  checks.push('Select line 2 and keep branch geometry in source');
+  const toggle = page.getByRole('checkbox', { name: '지하철 노선' });
+  await toggle.uncheck(); assert.equal(await toggle.isChecked(), false);
+  await page.waitForTimeout(500);
+  const withoutLine = await page.screenshot({ clip: { x: 400, y: 400, width: 400, height: 300 } });
+  assert.notDeepEqual(withLine, withoutLine, 'The map pixels must change when the line is hidden');
+  await page.screenshot({ path: directory + 'map-disabled.jpg', quality: 80 });
+  await toggle.check();
+  await select.selectOption('');
+  await page.getByRole('button', { name: '노선 선택' }).click();
+  await page.getByRole('button', { name: '다크 모드', exact: true }).click();
+  await page.waitForFunction(() => document.querySelector('main')?.dataset.theme === 'dark');
+  await page.waitForTimeout(1000);
+  await page.screenshot({ path: directory + 'map-dark.jpg', quality: 80 });
+  checks.push('Toggle visibility, restore all lines, switch dark theme');
+  for (let i = 0; i < 5; i++) {
+    const zoom = Number((await page.getByLabel('현재 지도 줌 단계').innerText()).replace('줌 ', ''));
+    if (zoom >= 13) break;
+    await page.getByRole('button', { name: /Zoom in|확대/ }).click();
+    await page.waitForFunction(previous => Number(document.querySelector('.map-zoom')?.textContent.replace('줌 ', '')) >= previous + 0.8, zoom);
+    await page.waitForTimeout(300);
+  }
+  assert.ok(Number((await page.getByLabel('현재 지도 줌 단계').innerText()).replace('줌 ', '')) >= 13);
+  await page.waitForTimeout(1500);
+  await page.screenshot({ path: directory + 'map-stations.jpg', quality: 80 });
+  checks.push('Zoom to station and station-label levels');
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.getByRole('button', { name: '노선 선택' }).click();
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+  await page.screenshot({ path: directory + 'map-mobile.jpg', quality: 80 });
+  checks.push('390px mobile viewport has no horizontal overflow');
+  assert.equal(requests.length, 3, 'Toggle, filter, zoom and theme changes must reuse the loaded dataset');
+  assert.deepEqual(errors, []);
+  assert.equal(await page.locator('.map-error').count(), 0);
+  await writeFile(directory + 'browser-verification.json', JSON.stringify({ status: 'passed', checks, requests, errors, failures }, null, 2) + '\n');
+  console.log(JSON.stringify({ status: 'passed', checks, requests, errors, failures }, null, 2));
+} catch (error) {
+  await page.screenshot({ path: directory + 'map-failure.jpg', quality: 80 }).catch(() => {});
+  await writeFile(directory + 'browser-verification.json', JSON.stringify({ status: 'failed', checks, error: error.message, errors, failures, requests }, null, 2) + '\n');
+  throw error;
+} finally {
+  await browser.close();
+}

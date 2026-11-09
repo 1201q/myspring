@@ -7,5 +7,5 @@
 .region-selection-feedback strong { padding:4px 9px; border:1px solid #58ad9a; border-radius:20px; color:#176c5c; background:#e5f5ef; }
 .app[data-theme="dark"] .region-selection-feedback { color:#a1bdb4; }
 .app[data-theme="dark"] .region-selection-feedback strong { color:#91e4d1; background:#23463d; border-color:#408b7b; }
-@media(max-width:760px) { .seoul-ranks { top:68px; } }
+@media(max-width:760px) { .seoul-ranks { top:152px; } }
 @media(min-width:1101px) and (max-width:1450px) { .national-playback .playback-timeline { flex-basis:100%; order:1; } .national-playback .playback-status { order:2; } }

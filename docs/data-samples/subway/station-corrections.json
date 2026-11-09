@@ -1,0 +1,17 @@
+[
+  {
+    "nodeId": 9459739637,
+    "expectedName": "삼양",
+    "name": "삼양사거리",
+    "reason": "OSM node duplicates 삼양 name/ref at 삼양사거리 location. Official operator coordinates for 삼양사거리 are 37.62144,127.02049, about 32m away.",
+    "sourceUrl": "https://www.ui-line.com/filedown.php?fname=%2Fboard%2Fdata%2Finfo06%2F16140469138854.pdf&ori=%EC%9A%B0%EC%9D%B4%EC%8B%A0%EC%84%A4_%EC%97%AD%EC%82%AC%EC%A0%95%EB%B3%B4_20210223.pdf"
+  },
+  {
+    "nodeId": 9221654398,
+    "expectedName": "차량기지임시승강장",
+    "name": "차량기지임시승강장",
+    "includeInactive": true,
+    "reason": "OSM relations mark this stop inactive, but Uijeongbu city's 2026-10-08 press release describes passengers boarding a train at the temporary depot platform. Include the existing source point and geometry without inventing coordinates.",
+    "sourceUrl": "https://www.ui4u.go.kr/portal/bbs/view.do?bIdx=368890&mId=0301020000&ptIdx=1709"
+  }
+]

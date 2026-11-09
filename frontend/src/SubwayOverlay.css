@@ -1,0 +1,20 @@
+.subway-control { position:absolute; z-index:2; top:82px; left:16px; width:252px; max-width:calc(100% - 90px); padding:10px 12px; border:1px solid #d5e1db; border-radius:12px; background:#fffffff0; box-shadow:0 3px 18px #24433415; color:#29463e; font-size:12px; }
+.subway-control-row { display:flex; align-items:center; justify-content:space-between; gap:8px; }
+.subway-control-row label { display:flex; gap:7px; align-items:center; font-weight:600; }
+.subway-control input { accent-color:#247d76; margin:0; }
+.subway-control button { border:0; background:transparent; color:inherit; cursor:pointer; font:inherit; padding:4px; }
+.subway-control p { margin:7px 0 0; font-size:11px; line-height:1.5; }
+.subway-caption { color:#61766e; }
+.subway-legend { max-height:min(42dvh, 350px); overflow:auto; margin-top:10px; border-top:1px solid #d5e1db; padding-top:10px; }
+.subway-select-label { display:grid; gap:5px; }
+.subway-select-label select { width:100%; border:1px solid #c6d5ce; border-radius:5px; padding:6px; color:inherit; background:#fff; font:inherit; }
+.subway-legend ul { list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:12px 0; padding:0; }
+.subway-legend li { display:flex; align-items:center; gap:6px; font-size:11px; }
+.subway-swatch { display:inline-block; width:17px; height:4px; border-radius:3px; box-shadow:0 0 0 1px #0002; flex-shrink:0; }
+.app[data-theme="dark"] .subway-control { background:#19262bf0; border-color:#3a4b50; color:#dce9e3; }
+.app[data-theme="dark"] .subway-caption { color:#a5b8b0; }
+.app[data-theme="dark"] .subway-select-label select { background:#24343a; border-color:#51635d; }
+.app[data-theme="dark"] .subway-legend { border-color:#3a4b50; }
+@media(max-width:760px) {
+  .subway-control { top:72px; left:12px; z-index:3; }
+}

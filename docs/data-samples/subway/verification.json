@@ -1,0 +1,3702 @@
+{
+  "osmBaseTimestamp": "2026-11-09T05:53:46Z",
+  "sourceSha256": "5763d9b154900ed141c38023c1099bb28faa4c9226912fea72842f2e7a749f52",
+  "scope": "24 selected metropolitan passenger lines; excludes intercity trains, airport express, tourist rail and airport shuttle",
+  "completenessClaim": "Not certified complete: line presence and sample endpoints are checked; exhaustive operator station/segment comparison remains incomplete.",
+  "relationCount": 232,
+  "lineCount": 24,
+  "featureCount": 3216,
+  "stationCount": 801,
+  "uniqueWays": 3100,
+  "sharedWays": 116,
+  "missingMembers": [],
+  "excludedWays": [],
+  "bytes": {
+    "routes": 1313081,
+    "stations": 171991
+  },
+  "stationCorrections": [
+    {
+      "nodeId": 9459739637,
+      "expectedName": "삼양",
+      "name": "삼양사거리",
+      "reason": "OSM node duplicates 삼양 name/ref at 삼양사거리 location. Official operator coordinates for 삼양사거리 are 37.62144,127.02049, about 32m away.",
+      "sourceUrl": "https://www.ui-line.com/filedown.php?fname=%2Fboard%2Fdata%2Finfo06%2F16140469138854.pdf&ori=%EC%9A%B0%EC%9D%B4%EC%8B%A0%EC%84%A4_%EC%97%AD%EC%82%AC%EC%A0%95%EB%B3%B4_20210223.pdf"
+    },
+    {
+      "nodeId": 9221654398,
+      "expectedName": "차량기지임시승강장",
+      "name": "차량기지임시승강장",
+      "includeInactive": true,
+      "reason": "OSM relations mark this stop inactive, but Uijeongbu city's 2026-10-08 press release describes passengers boarding a train at the temporary depot platform. Include the existing source point and geometry without inventing coordinates.",
+      "sourceUrl": "https://www.ui4u.go.kr/portal/bbs/view.do?bIdx=368890&mId=0301020000&ptIdx=1709"
+    }
+  ],
+  "inactiveStops": [
+    {
+      "relationId": 13738410,
+      "nodeId": 9221654398,
+      "name": "차량기지임시승강장"
+    },
+    {
+      "relationId": 13738411,
+      "nodeId": 9221654398,
+      "name": "차량기지임시승강장"
+    }
+  ],
+  "topology": [
+    {
+      "line": "1호선",
+      "connectedComponents": 1,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    },
+    {
+      "line": "2호선",
+      "connectedComponents": 5,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    },
+    {
+      "line": "3호선",
+      "connectedComponents": 2,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    },
+    {
+      "line": "4호선",
+      "connectedComponents": 2,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    },
+    {
+      "line": "5호선",
+      "connectedComponents": 2,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    },
+    {
+      "line": "6호선",
+      "connectedComponents": 1,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    },
+    {
+      "line": "7호선",
+      "connectedComponents": 1,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    },
+    {
+      "line": "8호선",
+      "connectedComponents": 2,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    },
+    {
+      "line": "9호선",
+      "connectedComponents": 2,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    },
+    {
+      "line": "인천 1호선",
+      "connectedComponents": 2,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    },
+    {
+      "line": "인천 2호선",
+      "connectedComponents": 2,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    },
+    {
+      "line": "경의중앙선",
+      "connectedComponents": 1,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    },
+    {
+      "line": "경춘선",
+      "connectedComponents": 1,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    },
+    {
+      "line": "수인분당선",
+      "connectedComponents": 1,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    },
+    {
+      "line": "신분당선",
+      "connectedComponents": 2,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    },
+    {
+      "line": "공항철도",
+      "connectedComponents": 1,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    },
+    {
+      "line": "경강선",
+      "connectedComponents": 2,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    },
+    {
+      "line": "서해선",
+      "connectedComponents": 2,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    },
+    {
+      "line": "우이신설선",
+      "connectedComponents": 2,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    },
+    {
+      "line": "신림선",
+      "connectedComponents": 2,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    },
+    {
+      "line": "의정부경전철",
+      "connectedComponents": 1,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    },
+    {
+      "line": "용인에버라인",
+      "connectedComponents": 2,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    },
+    {
+      "line": "김포골드라인",
+      "connectedComponents": 2,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    },
+    {
+      "line": "GTX-A",
+      "connectedComponents": 4,
+      "note": "Separate tracks, branches and GTX-A split service can form separate components. This count is diagnostic, not proof of a gap."
+    }
+  ],
+  "officialComparison": {
+    "sourceUrl": "https://data.seoul.go.kr/dataList/OA-22534/L/1/datasetView.do",
+    "sourceFile": "서울교통공사_1-8호선 역사 좌표(위경도) 정보_20250814.csv",
+    "thresholdM": 500,
+    "total": 276,
+    "within500m": 276,
+    "nameMatched": 273,
+    "flagged": [
+      {
+        "line": "2호선",
+        "code": "217",
+        "name": "잠실새내",
+        "distanceToTrackM": 3,
+        "nameMatched": true,
+        "nearestSameNameStopM": 1905
+      },
+      {
+        "line": "2호선",
+        "code": "245",
+        "name": "신답",
+        "distanceToTrackM": 425,
+        "nameMatched": true,
+        "nearestSameNameStopM": 1232
+      },
+      {
+        "line": "2호선",
+        "code": "244",
+        "name": "용답",
+        "distanceToTrackM": 66,
+        "nameMatched": true,
+        "nearestSameNameStopM": 6458
+      },
+      {
+        "line": "4호선",
+        "code": "409",
+        "name": "당고개",
+        "distanceToTrackM": 2,
+        "nameMatched": false,
+        "nearestSameNameStopM": null
+      },
+      {
+        "line": "5호선",
+        "code": "2516",
+        "name": "발산",
+        "distanceToTrackM": 233,
+        "nameMatched": true,
+        "nearestSameNameStopM": 1020
+      },
+      {
+        "line": "7호선",
+        "code": "2730",
+        "name": "뚝섬유원지",
+        "distanceToTrackM": 1,
+        "nameMatched": false,
+        "nearestSameNameStopM": null
+      },
+      {
+        "line": "7호선",
+        "code": "2738",
+        "name": "총신대입구",
+        "distanceToTrackM": 1,
+        "nameMatched": false,
+        "nearestSameNameStopM": null
+      }
+    ],
+    "comparisons": [
+      {
+        "line": "1호선",
+        "code": "150",
+        "name": "서울",
+        "distanceToTrackM": 44,
+        "nameMatched": true,
+        "nearestSameNameStopM": 107
+      },
+      {
+        "line": "1호선",
+        "code": "151",
+        "name": "시청",
+        "distanceToTrackM": 107,
+        "nameMatched": true,
+        "nearestSameNameStopM": 266
+      },
+      {
+        "line": "1호선",
+        "code": "152",
+        "name": "종각",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 7
+      },
+      {
+        "line": "1호선",
+        "code": "153",
+        "name": "종로3가",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 2
+      },
+      {
+        "line": "1호선",
+        "code": "154",
+        "name": "종로5가",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 20
+      },
+      {
+        "line": "1호선",
+        "code": "155",
+        "name": "동대문",
+        "distanceToTrackM": 3,
+        "nameMatched": true,
+        "nearestSameNameStopM": 29
+      },
+      {
+        "line": "1호선",
+        "code": "159",
+        "name": "동묘앞",
+        "distanceToTrackM": 0,
+        "nameMatched": true,
+        "nearestSameNameStopM": 63
+      },
+      {
+        "line": "1호선",
+        "code": "156",
+        "name": "신설동",
+        "distanceToTrackM": 3,
+        "nameMatched": true,
+        "nearestSameNameStopM": 23
+      },
+      {
+        "line": "1호선",
+        "code": "157",
+        "name": "제기동",
+        "distanceToTrackM": 24,
+        "nameMatched": true,
+        "nearestSameNameStopM": 24
+      },
+      {
+        "line": "1호선",
+        "code": "158",
+        "name": "청량리",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 16
+      },
+      {
+        "line": "2호선",
+        "code": "202",
+        "name": "을지로입구",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 6
+      },
+      {
+        "line": "2호선",
+        "code": "203",
+        "name": "을지로3가",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 51
+      },
+      {
+        "line": "2호선",
+        "code": "204",
+        "name": "을지로4가",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 11
+      },
+      {
+        "line": "2호선",
+        "code": "205",
+        "name": "동대문역사문화공원",
+        "distanceToTrackM": 0,
+        "nameMatched": true,
+        "nearestSameNameStopM": 90
+      },
+      {
+        "line": "2호선",
+        "code": "206",
+        "name": "신당",
+        "distanceToTrackM": 5,
+        "nameMatched": true,
+        "nearestSameNameStopM": 29
+      },
+      {
+        "line": "2호선",
+        "code": "207",
+        "name": "상왕십리",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 31
+      },
+      {
+        "line": "2호선",
+        "code": "208",
+        "name": "왕십리",
+        "distanceToTrackM": 12,
+        "nameMatched": true,
+        "nearestSameNameStopM": 144
+      },
+      {
+        "line": "2호선",
+        "code": "209",
+        "name": "한양대",
+        "distanceToTrackM": 0,
+        "nameMatched": true,
+        "nearestSameNameStopM": 96
+      },
+      {
+        "line": "2호선",
+        "code": "210",
+        "name": "뚝섬",
+        "distanceToTrackM": 3,
+        "nameMatched": true,
+        "nearestSameNameStopM": 6
+      },
+      {
+        "line": "2호선",
+        "code": "211",
+        "name": "성수",
+        "distanceToTrackM": 0,
+        "nameMatched": true,
+        "nearestSameNameStopM": 12
+      },
+      {
+        "line": "2호선",
+        "code": "212",
+        "name": "건대입구",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 2
+      },
+      {
+        "line": "2호선",
+        "code": "213",
+        "name": "구의",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 107
+      },
+      {
+        "line": "2호선",
+        "code": "214",
+        "name": "강변",
+        "distanceToTrackM": 0,
+        "nameMatched": true,
+        "nearestSameNameStopM": 4
+      },
+      {
+        "line": "2호선",
+        "code": "215",
+        "name": "잠실나루",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 2
+      },
+      {
+        "line": "2호선",
+        "code": "216",
+        "name": "잠실",
+        "distanceToTrackM": 6,
+        "nameMatched": true,
+        "nearestSameNameStopM": 14
+      },
+      {
+        "line": "2호선",
+        "code": "217",
+        "name": "잠실새내",
+        "distanceToTrackM": 3,
+        "nameMatched": true,
+        "nearestSameNameStopM": 1905
+      },
+      {
+        "line": "2호선",
+        "code": "218",
+        "name": "종합운동장",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 25
+      },
+      {
+        "line": "2호선",
+        "code": "219",
+        "name": "삼성",
+        "distanceToTrackM": 3,
+        "nameMatched": true,
+        "nearestSameNameStopM": 5
+      },
+      {
+        "line": "2호선",
+        "code": "220",
+        "name": "선릉",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 69
+      },
+      {
+        "line": "2호선",
+        "code": "221",
+        "name": "역삼",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 45
+      },
+      {
+        "line": "2호선",
+        "code": "222",
+        "name": "강남",
+        "distanceToTrackM": 3,
+        "nameMatched": true,
+        "nearestSameNameStopM": 7
+      },
+      {
+        "line": "2호선",
+        "code": "223",
+        "name": "교대",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 3
+      },
+      {
+        "line": "2호선",
+        "code": "224",
+        "name": "서초",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 29
+      },
+      {
+        "line": "2호선",
+        "code": "225",
+        "name": "방배",
+        "distanceToTrackM": 0,
+        "nameMatched": true,
+        "nearestSameNameStopM": 4
+      },
+      {
+        "line": "2호선",
+        "code": "226",
+        "name": "사당",
+        "distanceToTrackM": 0,
+        "nameMatched": true,
+        "nearestSameNameStopM": 25
+      },
+      {
+        "line": "2호선",
+        "code": "227",
+        "name": "낙성대",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 24
+      },
+      {
+        "line": "2호선",
+        "code": "228",
+        "name": "서울대입구",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 3
+      },
+      {
+        "line": "2호선",
+        "code": "229",
+        "name": "봉천",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 10
+      },
+      {
+        "line": "2호선",
+        "code": "230",
+        "name": "신림",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 11
+      },
+      {
+        "line": "2호선",
+        "code": "231",
+        "name": "신대방",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 15
+      },
+      {
+        "line": "2호선",
+        "code": "232",
+        "name": "구로디지털단지",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 92
+      },
+      {
+        "line": "2호선",
+        "code": "233",
+        "name": "대림",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 100
+      },
+      {
+        "line": "2호선",
+        "code": "234",
+        "name": "신도림",
+        "distanceToTrackM": 4,
+        "nameMatched": true,
+        "nearestSameNameStopM": 17
+      },
+      {
+        "line": "2호선",
+        "code": "235",
+        "name": "문래",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 47
+      },
+      {
+        "line": "2호선",
+        "code": "236",
+        "name": "영등포구청",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 51
+      },
+      {
+        "line": "2호선",
+        "code": "237",
+        "name": "당산",
+        "distanceToTrackM": 6,
+        "nameMatched": true,
+        "nearestSameNameStopM": 126
+      },
+      {
+        "line": "2호선",
+        "code": "238",
+        "name": "합정",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 10
+      },
+      {
+        "line": "2호선",
+        "code": "239",
+        "name": "홍대입구",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 17
+      },
+      {
+        "line": "2호선",
+        "code": "240",
+        "name": "신촌",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 2
+      },
+      {
+        "line": "2호선",
+        "code": "241",
+        "name": "이대",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 6
+      },
+      {
+        "line": "2호선",
+        "code": "242",
+        "name": "아현",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 5
+      },
+      {
+        "line": "2호선",
+        "code": "243",
+        "name": "충정로",
+        "distanceToTrackM": 4,
+        "nameMatched": true,
+        "nearestSameNameStopM": 81
+      },
+      {
+        "line": "2호선",
+        "code": "201",
+        "name": "시청",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 14
+      },
+      {
+        "line": "2호선",
+        "code": "246",
+        "name": "신설동",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 23
+      },
+      {
+        "line": "2호선",
+        "code": "250",
+        "name": "용두",
+        "distanceToTrackM": 3,
+        "nameMatched": true,
+        "nearestSameNameStopM": 8
+      },
+      {
+        "line": "2호선",
+        "code": "245",
+        "name": "신답",
+        "distanceToTrackM": 425,
+        "nameMatched": true,
+        "nearestSameNameStopM": 1232
+      },
+      {
+        "line": "2호선",
+        "code": "244",
+        "name": "용답",
+        "distanceToTrackM": 66,
+        "nameMatched": true,
+        "nearestSameNameStopM": 6458
+      },
+      {
+        "line": "2호선",
+        "code": "247",
+        "name": "도림천",
+        "distanceToTrackM": 22,
+        "nameMatched": true,
+        "nearestSameNameStopM": 31
+      },
+      {
+        "line": "2호선",
+        "code": "248",
+        "name": "양천구청",
+        "distanceToTrackM": 13,
+        "nameMatched": true,
+        "nearestSameNameStopM": 65
+      },
+      {
+        "line": "2호선",
+        "code": "249",
+        "name": "신정네거리",
+        "distanceToTrackM": 5,
+        "nameMatched": true,
+        "nearestSameNameStopM": 27
+      },
+      {
+        "line": "2호선",
+        "code": "200",
+        "name": "까치산",
+        "distanceToTrackM": 49,
+        "nameMatched": true,
+        "nearestSameNameStopM": 49
+      },
+      {
+        "line": "3호선",
+        "code": "309",
+        "name": "지축",
+        "distanceToTrackM": 3,
+        "nameMatched": true,
+        "nearestSameNameStopM": 106
+      },
+      {
+        "line": "3호선",
+        "code": "310",
+        "name": "구파발",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 27
+      },
+      {
+        "line": "3호선",
+        "code": "311",
+        "name": "연신내",
+        "distanceToTrackM": 36,
+        "nameMatched": true,
+        "nearestSameNameStopM": 68
+      },
+      {
+        "line": "3호선",
+        "code": "312",
+        "name": "불광",
+        "distanceToTrackM": 3,
+        "nameMatched": true,
+        "nearestSameNameStopM": 90
+      },
+      {
+        "line": "3호선",
+        "code": "313",
+        "name": "녹번",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 8
+      },
+      {
+        "line": "3호선",
+        "code": "314",
+        "name": "홍제",
+        "distanceToTrackM": 0,
+        "nameMatched": true,
+        "nearestSameNameStopM": 20
+      },
+      {
+        "line": "3호선",
+        "code": "315",
+        "name": "무악재",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 41
+      },
+      {
+        "line": "3호선",
+        "code": "316",
+        "name": "독립문",
+        "distanceToTrackM": 0,
+        "nameMatched": true,
+        "nearestSameNameStopM": 5
+      },
+      {
+        "line": "3호선",
+        "code": "317",
+        "name": "경복궁",
+        "distanceToTrackM": 3,
+        "nameMatched": true,
+        "nearestSameNameStopM": 6
+      },
+      {
+        "line": "3호선",
+        "code": "318",
+        "name": "안국",
+        "distanceToTrackM": 3,
+        "nameMatched": true,
+        "nearestSameNameStopM": 73
+      },
+      {
+        "line": "3호선",
+        "code": "319",
+        "name": "종로3가",
+        "distanceToTrackM": 52,
+        "nameMatched": true,
+        "nearestSameNameStopM": 70
+      },
+      {
+        "line": "3호선",
+        "code": "320",
+        "name": "을지로3가",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 8
+      },
+      {
+        "line": "3호선",
+        "code": "321",
+        "name": "충무로",
+        "distanceToTrackM": 78,
+        "nameMatched": true,
+        "nearestSameNameStopM": 114
+      },
+      {
+        "line": "3호선",
+        "code": "322",
+        "name": "동대입구",
+        "distanceToTrackM": 96,
+        "nameMatched": true,
+        "nearestSameNameStopM": 108
+      },
+      {
+        "line": "3호선",
+        "code": "323",
+        "name": "약수",
+        "distanceToTrackM": 4,
+        "nameMatched": true,
+        "nearestSameNameStopM": 21
+      },
+      {
+        "line": "3호선",
+        "code": "324",
+        "name": "금호",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 29
+      },
+      {
+        "line": "3호선",
+        "code": "325",
+        "name": "옥수",
+        "distanceToTrackM": 4,
+        "nameMatched": true,
+        "nearestSameNameStopM": 13
+      },
+      {
+        "line": "3호선",
+        "code": "326",
+        "name": "압구정",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 4
+      },
+      {
+        "line": "3호선",
+        "code": "327",
+        "name": "신사",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 62
+      },
+      {
+        "line": "3호선",
+        "code": "328",
+        "name": "잠원",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 54
+      },
+      {
+        "line": "3호선",
+        "code": "329",
+        "name": "고속터미널",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 10
+      },
+      {
+        "line": "3호선",
+        "code": "330",
+        "name": "교대",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 20
+      },
+      {
+        "line": "3호선",
+        "code": "331",
+        "name": "남부터미널",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 5
+      },
+      {
+        "line": "3호선",
+        "code": "332",
+        "name": "양재",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 73
+      },
+      {
+        "line": "3호선",
+        "code": "333",
+        "name": "매봉",
+        "distanceToTrackM": 5,
+        "nameMatched": true,
+        "nearestSameNameStopM": 8
+      },
+      {
+        "line": "3호선",
+        "code": "334",
+        "name": "도곡",
+        "distanceToTrackM": 8,
+        "nameMatched": true,
+        "nearestSameNameStopM": 32
+      },
+      {
+        "line": "3호선",
+        "code": "335",
+        "name": "대치",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 26
+      },
+      {
+        "line": "3호선",
+        "code": "336",
+        "name": "학여울",
+        "distanceToTrackM": 9,
+        "nameMatched": true,
+        "nearestSameNameStopM": 63
+      },
+      {
+        "line": "3호선",
+        "code": "337",
+        "name": "대청",
+        "distanceToTrackM": 0,
+        "nameMatched": true,
+        "nearestSameNameStopM": 6
+      },
+      {
+        "line": "3호선",
+        "code": "338",
+        "name": "일원",
+        "distanceToTrackM": 3,
+        "nameMatched": true,
+        "nearestSameNameStopM": 12
+      },
+      {
+        "line": "3호선",
+        "code": "339",
+        "name": "수서",
+        "distanceToTrackM": 20,
+        "nameMatched": true,
+        "nearestSameNameStopM": 57
+      },
+      {
+        "line": "3호선",
+        "code": "340",
+        "name": "가락시장",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 39
+      },
+      {
+        "line": "3호선",
+        "code": "341",
+        "name": "경찰병원",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 58
+      },
+      {
+        "line": "3호선",
+        "code": "342",
+        "name": "오금",
+        "distanceToTrackM": 13,
+        "nameMatched": true,
+        "nearestSameNameStopM": 14
+      },
+      {
+        "line": "4호선",
+        "code": "409",
+        "name": "당고개",
+        "distanceToTrackM": 2,
+        "nameMatched": false,
+        "nearestSameNameStopM": null
+      },
+      {
+        "line": "4호선",
+        "code": "410",
+        "name": "상계",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 24
+      },
+      {
+        "line": "4호선",
+        "code": "411",
+        "name": "노원",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 25
+      },
+      {
+        "line": "4호선",
+        "code": "412",
+        "name": "창동",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 91
+      },
+      {
+        "line": "4호선",
+        "code": "413",
+        "name": "쌍문",
+        "distanceToTrackM": 6,
+        "nameMatched": true,
+        "nearestSameNameStopM": 23
+      },
+      {
+        "line": "4호선",
+        "code": "414",
+        "name": "수유",
+        "distanceToTrackM": 0,
+        "nameMatched": true,
+        "nearestSameNameStopM": 128
+      },
+      {
+        "line": "4호선",
+        "code": "415",
+        "name": "미아",
+        "distanceToTrackM": 4,
+        "nameMatched": true,
+        "nearestSameNameStopM": 12
+      },
+      {
+        "line": "4호선",
+        "code": "416",
+        "name": "미아사거리",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 12
+      },
+      {
+        "line": "4호선",
+        "code": "417",
+        "name": "길음",
+        "distanceToTrackM": 4,
+        "nameMatched": true,
+        "nearestSameNameStopM": 94
+      },
+      {
+        "line": "4호선",
+        "code": "418",
+        "name": "성신여대입구",
+        "distanceToTrackM": 27,
+        "nameMatched": true,
+        "nearestSameNameStopM": 83
+      },
+      {
+        "line": "4호선",
+        "code": "419",
+        "name": "한성대입구",
+        "distanceToTrackM": 29,
+        "nameMatched": true,
+        "nearestSameNameStopM": 42
+      },
+      {
+        "line": "4호선",
+        "code": "420",
+        "name": "혜화",
+        "distanceToTrackM": 15,
+        "nameMatched": true,
+        "nearestSameNameStopM": 18
+      },
+      {
+        "line": "4호선",
+        "code": "421",
+        "name": "동대문",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 8
+      },
+      {
+        "line": "4호선",
+        "code": "422",
+        "name": "동대문역사문화공원",
+        "distanceToTrackM": 22,
+        "nameMatched": true,
+        "nearestSameNameStopM": 39
+      },
+      {
+        "line": "4호선",
+        "code": "423",
+        "name": "충무로",
+        "distanceToTrackM": 23,
+        "nameMatched": true,
+        "nearestSameNameStopM": 112
+      },
+      {
+        "line": "4호선",
+        "code": "424",
+        "name": "명동",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 176
+      },
+      {
+        "line": "4호선",
+        "code": "425",
+        "name": "회현",
+        "distanceToTrackM": 34,
+        "nameMatched": true,
+        "nearestSameNameStopM": 144
+      },
+      {
+        "line": "4호선",
+        "code": "426",
+        "name": "서울",
+        "distanceToTrackM": 9,
+        "nameMatched": true,
+        "nearestSameNameStopM": 19
+      },
+      {
+        "line": "4호선",
+        "code": "427",
+        "name": "숙대입구",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 2
+      },
+      {
+        "line": "4호선",
+        "code": "428",
+        "name": "삼각지",
+        "distanceToTrackM": 6,
+        "nameMatched": true,
+        "nearestSameNameStopM": 78
+      },
+      {
+        "line": "4호선",
+        "code": "429",
+        "name": "신용산",
+        "distanceToTrackM": 47,
+        "nameMatched": true,
+        "nearestSameNameStopM": 66
+      },
+      {
+        "line": "4호선",
+        "code": "430",
+        "name": "이촌",
+        "distanceToTrackM": 18,
+        "nameMatched": true,
+        "nearestSameNameStopM": 27
+      },
+      {
+        "line": "4호선",
+        "code": "431",
+        "name": "동작",
+        "distanceToTrackM": 4,
+        "nameMatched": true,
+        "nearestSameNameStopM": 74
+      },
+      {
+        "line": "4호선",
+        "code": "432",
+        "name": "총신대입구",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 56
+      },
+      {
+        "line": "4호선",
+        "code": "433",
+        "name": "사당",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 86
+      },
+      {
+        "line": "4호선",
+        "code": "434",
+        "name": "남태령",
+        "distanceToTrackM": 10,
+        "nameMatched": true,
+        "nearestSameNameStopM": 93
+      },
+      {
+        "line": "5호선",
+        "code": "2511",
+        "name": "방화",
+        "distanceToTrackM": 32,
+        "nameMatched": true,
+        "nearestSameNameStopM": 32
+      },
+      {
+        "line": "5호선",
+        "code": "2512",
+        "name": "개화산",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 125
+      },
+      {
+        "line": "5호선",
+        "code": "2513",
+        "name": "김포공항",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 7
+      },
+      {
+        "line": "5호선",
+        "code": "2514",
+        "name": "송정",
+        "distanceToTrackM": 14,
+        "nameMatched": true,
+        "nearestSameNameStopM": 16
+      },
+      {
+        "line": "5호선",
+        "code": "2515",
+        "name": "마곡",
+        "distanceToTrackM": 233,
+        "nameMatched": true,
+        "nearestSameNameStopM": 289
+      },
+      {
+        "line": "5호선",
+        "code": "2516",
+        "name": "발산",
+        "distanceToTrackM": 233,
+        "nameMatched": true,
+        "nearestSameNameStopM": 1020
+      },
+      {
+        "line": "5호선",
+        "code": "2517",
+        "name": "우장산",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 1
+      },
+      {
+        "line": "5호선",
+        "code": "2518",
+        "name": "화곡",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 14
+      },
+      {
+        "line": "5호선",
+        "code": "2519",
+        "name": "까치산",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 36
+      },
+      {
+        "line": "5호선",
+        "code": "2520",
+        "name": "신정",
+        "distanceToTrackM": 6,
+        "nameMatched": true,
+        "nearestSameNameStopM": 21
+      },
+      {
+        "line": "5호선",
+        "code": "2521",
+        "name": "목동",
+        "distanceToTrackM": 4,
+        "nameMatched": true,
+        "nearestSameNameStopM": 19
+      },
+      {
+        "line": "5호선",
+        "code": "2522",
+        "name": "오목교",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 9
+      },
+      {
+        "line": "5호선",
+        "code": "2523",
+        "name": "양평",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 6
+      },
+      {
+        "line": "5호선",
+        "code": "2524",
+        "name": "영등포구청",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 124
+      },
+      {
+        "line": "5호선",
+        "code": "2525",
+        "name": "영등포시장",
+        "distanceToTrackM": 5,
+        "nameMatched": true,
+        "nearestSameNameStopM": 7
+      },
+      {
+        "line": "5호선",
+        "code": "2526",
+        "name": "신길",
+        "distanceToTrackM": 0,
+        "nameMatched": true,
+        "nearestSameNameStopM": 152
+      },
+      {
+        "line": "5호선",
+        "code": "2527",
+        "name": "여의도",
+        "distanceToTrackM": 6,
+        "nameMatched": true,
+        "nearestSameNameStopM": 14
+      },
+      {
+        "line": "5호선",
+        "code": "2528",
+        "name": "여의나루",
+        "distanceToTrackM": 7,
+        "nameMatched": true,
+        "nearestSameNameStopM": 41
+      },
+      {
+        "line": "5호선",
+        "code": "2529",
+        "name": "마포",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 12
+      },
+      {
+        "line": "5호선",
+        "code": "2530",
+        "name": "공덕",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 45
+      },
+      {
+        "line": "5호선",
+        "code": "2531",
+        "name": "애오개",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 17
+      },
+      {
+        "line": "5호선",
+        "code": "2532",
+        "name": "충정로",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 86
+      },
+      {
+        "line": "5호선",
+        "code": "2533",
+        "name": "서대문",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 2
+      },
+      {
+        "line": "5호선",
+        "code": "2534",
+        "name": "광화문",
+        "distanceToTrackM": 117,
+        "nameMatched": true,
+        "nearestSameNameStopM": 123
+      },
+      {
+        "line": "5호선",
+        "code": "2535",
+        "name": "종로3가",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 32
+      },
+      {
+        "line": "5호선",
+        "code": "2536",
+        "name": "을지로4가",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 39
+      },
+      {
+        "line": "5호선",
+        "code": "2537",
+        "name": "동대문역사문화공원",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 179
+      },
+      {
+        "line": "5호선",
+        "code": "2538",
+        "name": "청구",
+        "distanceToTrackM": 3,
+        "nameMatched": true,
+        "nearestSameNameStopM": 9
+      },
+      {
+        "line": "5호선",
+        "code": "2539",
+        "name": "신금호",
+        "distanceToTrackM": 8,
+        "nameMatched": true,
+        "nearestSameNameStopM": 15
+      },
+      {
+        "line": "5호선",
+        "code": "2540",
+        "name": "행당",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 53
+      },
+      {
+        "line": "5호선",
+        "code": "2541",
+        "name": "왕십리",
+        "distanceToTrackM": 6,
+        "nameMatched": true,
+        "nearestSameNameStopM": 33
+      },
+      {
+        "line": "5호선",
+        "code": "2542",
+        "name": "마장",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 4
+      },
+      {
+        "line": "5호선",
+        "code": "2543",
+        "name": "답십리",
+        "distanceToTrackM": 4,
+        "nameMatched": true,
+        "nearestSameNameStopM": 2
+      },
+      {
+        "line": "5호선",
+        "code": "2544",
+        "name": "장한평",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 5
+      },
+      {
+        "line": "5호선",
+        "code": "2545",
+        "name": "군자",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 5
+      },
+      {
+        "line": "5호선",
+        "code": "2546",
+        "name": "아차산",
+        "distanceToTrackM": 0,
+        "nameMatched": true,
+        "nearestSameNameStopM": 39
+      },
+      {
+        "line": "5호선",
+        "code": "2547",
+        "name": "광나루",
+        "distanceToTrackM": 3,
+        "nameMatched": true,
+        "nearestSameNameStopM": 3
+      },
+      {
+        "line": "5호선",
+        "code": "2548",
+        "name": "천호",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 11
+      },
+      {
+        "line": "5호선",
+        "code": "2549",
+        "name": "강동",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 11
+      },
+      {
+        "line": "5호선",
+        "code": "2550",
+        "name": "길동",
+        "distanceToTrackM": 3,
+        "nameMatched": true,
+        "nearestSameNameStopM": 37
+      },
+      {
+        "line": "5호선",
+        "code": "2551",
+        "name": "굽은다리",
+        "distanceToTrackM": 0,
+        "nameMatched": true,
+        "nearestSameNameStopM": 26
+      },
+      {
+        "line": "5호선",
+        "code": "2552",
+        "name": "명일",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 68
+      },
+      {
+        "line": "5호선",
+        "code": "2553",
+        "name": "고덕",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 37
+      },
+      {
+        "line": "5호선",
+        "code": "2554",
+        "name": "상일동",
+        "distanceToTrackM": 3,
+        "nameMatched": true,
+        "nearestSameNameStopM": 16
+      },
+      {
+        "line": "5호선",
+        "code": "2555",
+        "name": "둔촌동",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 3
+      },
+      {
+        "line": "5호선",
+        "code": "2556",
+        "name": "올림픽공원",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 8
+      },
+      {
+        "line": "5호선",
+        "code": "2557",
+        "name": "방이",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 13
+      },
+      {
+        "line": "5호선",
+        "code": "2558",
+        "name": "오금",
+        "distanceToTrackM": 3,
+        "nameMatched": true,
+        "nearestSameNameStopM": 11
+      },
+      {
+        "line": "5호선",
+        "code": "2559",
+        "name": "개롱",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 3
+      },
+      {
+        "line": "5호선",
+        "code": "2560",
+        "name": "거여",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 26
+      },
+      {
+        "line": "5호선",
+        "code": "2561",
+        "name": "마천",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 1
+      },
+      {
+        "line": "5호선",
+        "code": "2562",
+        "name": "강일",
+        "distanceToTrackM": 5,
+        "nameMatched": true,
+        "nearestSameNameStopM": 9
+      },
+      {
+        "line": "5호선",
+        "code": "2563",
+        "name": "미사",
+        "distanceToTrackM": 20,
+        "nameMatched": true,
+        "nearestSameNameStopM": 35
+      },
+      {
+        "line": "5호선",
+        "code": "2564",
+        "name": "하남풍산",
+        "distanceToTrackM": 3,
+        "nameMatched": true,
+        "nearestSameNameStopM": 77
+      },
+      {
+        "line": "5호선",
+        "code": "2565",
+        "name": "하남시청",
+        "distanceToTrackM": 3,
+        "nameMatched": true,
+        "nearestSameNameStopM": 12
+      },
+      {
+        "line": "5호선",
+        "code": "2566",
+        "name": "하남검단산",
+        "distanceToTrackM": 4,
+        "nameMatched": true,
+        "nearestSameNameStopM": 24
+      },
+      {
+        "line": "6호선",
+        "code": "2611",
+        "name": "응암",
+        "distanceToTrackM": 5,
+        "nameMatched": true,
+        "nearestSameNameStopM": 2
+      },
+      {
+        "line": "6호선",
+        "code": "2612",
+        "name": "역촌",
+        "distanceToTrackM": 3,
+        "nameMatched": true,
+        "nearestSameNameStopM": 3
+      },
+      {
+        "line": "6호선",
+        "code": "2613",
+        "name": "불광",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 32
+      },
+      {
+        "line": "6호선",
+        "code": "2614",
+        "name": "독바위",
+        "distanceToTrackM": 3,
+        "nameMatched": true,
+        "nearestSameNameStopM": 5
+      },
+      {
+        "line": "6호선",
+        "code": "2616",
+        "name": "연신내",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 4
+      },
+      {
+        "line": "6호선",
+        "code": "2617",
+        "name": "구산",
+        "distanceToTrackM": 8,
+        "nameMatched": true,
+        "nearestSameNameStopM": 24
+      },
+      {
+        "line": "6호선",
+        "code": "2618",
+        "name": "새절",
+        "distanceToTrackM": 10,
+        "nameMatched": true,
+        "nearestSameNameStopM": 59
+      },
+      {
+        "line": "6호선",
+        "code": "2619",
+        "name": "증산",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 16
+      },
+      {
+        "line": "6호선",
+        "code": "2620",
+        "name": "디지털미디어시티",
+        "distanceToTrackM": 246,
+        "nameMatched": true,
+        "nearestSameNameStopM": 264
+      },
+      {
+        "line": "6호선",
+        "code": "2621",
+        "name": "월드컵경기장",
+        "distanceToTrackM": 22,
+        "nameMatched": true,
+        "nearestSameNameStopM": 82
+      },
+      {
+        "line": "6호선",
+        "code": "2622",
+        "name": "마포구청",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 6
+      },
+      {
+        "line": "6호선",
+        "code": "2623",
+        "name": "망원",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 5
+      },
+      {
+        "line": "6호선",
+        "code": "2624",
+        "name": "합정",
+        "distanceToTrackM": 5,
+        "nameMatched": true,
+        "nearestSameNameStopM": 17
+      },
+      {
+        "line": "6호선",
+        "code": "2625",
+        "name": "상수",
+        "distanceToTrackM": 4,
+        "nameMatched": true,
+        "nearestSameNameStopM": 6
+      },
+      {
+        "line": "6호선",
+        "code": "2626",
+        "name": "광흥창",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 2
+      },
+      {
+        "line": "6호선",
+        "code": "2627",
+        "name": "대흥",
+        "distanceToTrackM": 0,
+        "nameMatched": true,
+        "nearestSameNameStopM": 11
+      },
+      {
+        "line": "6호선",
+        "code": "2628",
+        "name": "공덕",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 14
+      },
+      {
+        "line": "6호선",
+        "code": "2629",
+        "name": "효창공원앞",
+        "distanceToTrackM": 4,
+        "nameMatched": true,
+        "nearestSameNameStopM": 6
+      },
+      {
+        "line": "6호선",
+        "code": "2630",
+        "name": "삼각지",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 8
+      },
+      {
+        "line": "6호선",
+        "code": "2631",
+        "name": "녹사평",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 14
+      },
+      {
+        "line": "6호선",
+        "code": "2632",
+        "name": "이태원",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 2
+      },
+      {
+        "line": "6호선",
+        "code": "2633",
+        "name": "한강진",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 29
+      },
+      {
+        "line": "6호선",
+        "code": "2634",
+        "name": "버티고개",
+        "distanceToTrackM": 40,
+        "nameMatched": true,
+        "nearestSameNameStopM": 46
+      },
+      {
+        "line": "6호선",
+        "code": "2635",
+        "name": "약수",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 14
+      },
+      {
+        "line": "6호선",
+        "code": "2636",
+        "name": "청구",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 10
+      },
+      {
+        "line": "6호선",
+        "code": "2637",
+        "name": "신당",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 26
+      },
+      {
+        "line": "6호선",
+        "code": "2638",
+        "name": "동묘앞",
+        "distanceToTrackM": 3,
+        "nameMatched": true,
+        "nearestSameNameStopM": 13
+      },
+      {
+        "line": "6호선",
+        "code": "2639",
+        "name": "창신",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 1
+      },
+      {
+        "line": "6호선",
+        "code": "2640",
+        "name": "보문",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 5
+      },
+      {
+        "line": "6호선",
+        "code": "2641",
+        "name": "안암",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 27
+      },
+      {
+        "line": "6호선",
+        "code": "2642",
+        "name": "고려대",
+        "distanceToTrackM": 19,
+        "nameMatched": true,
+        "nearestSameNameStopM": 23
+      },
+      {
+        "line": "6호선",
+        "code": "2643",
+        "name": "월곡",
+        "distanceToTrackM": 0,
+        "nameMatched": true,
+        "nearestSameNameStopM": 3
+      },
+      {
+        "line": "6호선",
+        "code": "2644",
+        "name": "상월곡",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 30
+      },
+      {
+        "line": "6호선",
+        "code": "2645",
+        "name": "돌곶이",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 6
+      },
+      {
+        "line": "6호선",
+        "code": "2646",
+        "name": "석계",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 15
+      },
+      {
+        "line": "6호선",
+        "code": "2647",
+        "name": "태릉입구",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 21
+      },
+      {
+        "line": "6호선",
+        "code": "2648",
+        "name": "화랑대",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 36
+      },
+      {
+        "line": "6호선",
+        "code": "2615",
+        "name": "봉화산",
+        "distanceToTrackM": 3,
+        "nameMatched": true,
+        "nearestSameNameStopM": 29
+      },
+      {
+        "line": "6호선",
+        "code": "2649",
+        "name": "신내",
+        "distanceToTrackM": 7,
+        "nameMatched": true,
+        "nearestSameNameStopM": 34
+      },
+      {
+        "line": "7호선",
+        "code": "2711",
+        "name": "장암",
+        "distanceToTrackM": 6,
+        "nameMatched": true,
+        "nearestSameNameStopM": 6
+      },
+      {
+        "line": "7호선",
+        "code": "2712",
+        "name": "도봉산",
+        "distanceToTrackM": 3,
+        "nameMatched": true,
+        "nearestSameNameStopM": 41
+      },
+      {
+        "line": "7호선",
+        "code": "2713",
+        "name": "수락산",
+        "distanceToTrackM": 3,
+        "nameMatched": true,
+        "nearestSameNameStopM": 7
+      },
+      {
+        "line": "7호선",
+        "code": "2714",
+        "name": "마들",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 60
+      },
+      {
+        "line": "7호선",
+        "code": "2715",
+        "name": "노원",
+        "distanceToTrackM": 3,
+        "nameMatched": true,
+        "nearestSameNameStopM": 8
+      },
+      {
+        "line": "7호선",
+        "code": "2716",
+        "name": "중계",
+        "distanceToTrackM": 0,
+        "nameMatched": true,
+        "nearestSameNameStopM": 56
+      },
+      {
+        "line": "7호선",
+        "code": "2717",
+        "name": "하계",
+        "distanceToTrackM": 3,
+        "nameMatched": true,
+        "nearestSameNameStopM": 47
+      },
+      {
+        "line": "7호선",
+        "code": "2718",
+        "name": "공릉",
+        "distanceToTrackM": 0,
+        "nameMatched": true,
+        "nearestSameNameStopM": 5
+      },
+      {
+        "line": "7호선",
+        "code": "2719",
+        "name": "태릉입구",
+        "distanceToTrackM": 84,
+        "nameMatched": true,
+        "nearestSameNameStopM": 149
+      },
+      {
+        "line": "7호선",
+        "code": "2720",
+        "name": "먹골",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 90
+      },
+      {
+        "line": "7호선",
+        "code": "2721",
+        "name": "중화",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 110
+      },
+      {
+        "line": "7호선",
+        "code": "2722",
+        "name": "상봉",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 19
+      },
+      {
+        "line": "7호선",
+        "code": "2723",
+        "name": "면목",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 33
+      },
+      {
+        "line": "7호선",
+        "code": "2724",
+        "name": "사가정",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 23
+      },
+      {
+        "line": "7호선",
+        "code": "2725",
+        "name": "용마산",
+        "distanceToTrackM": 27,
+        "nameMatched": true,
+        "nearestSameNameStopM": 30
+      },
+      {
+        "line": "7호선",
+        "code": "2726",
+        "name": "중곡",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 50
+      },
+      {
+        "line": "7호선",
+        "code": "2727",
+        "name": "군자",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 9
+      },
+      {
+        "line": "7호선",
+        "code": "2728",
+        "name": "어린이대공원",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 44
+      },
+      {
+        "line": "7호선",
+        "code": "2729",
+        "name": "건대입구",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 13
+      },
+      {
+        "line": "7호선",
+        "code": "2730",
+        "name": "뚝섬유원지",
+        "distanceToTrackM": 1,
+        "nameMatched": false,
+        "nearestSameNameStopM": null
+      },
+      {
+        "line": "7호선",
+        "code": "2731",
+        "name": "청담",
+        "distanceToTrackM": 4,
+        "nameMatched": true,
+        "nearestSameNameStopM": 61
+      },
+      {
+        "line": "7호선",
+        "code": "2732",
+        "name": "강남구청",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 8
+      },
+      {
+        "line": "7호선",
+        "code": "2733",
+        "name": "학동",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 95
+      },
+      {
+        "line": "7호선",
+        "code": "2734",
+        "name": "논현",
+        "distanceToTrackM": 0,
+        "nameMatched": true,
+        "nearestSameNameStopM": 9
+      },
+      {
+        "line": "7호선",
+        "code": "2735",
+        "name": "반포",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 8
+      },
+      {
+        "line": "7호선",
+        "code": "2736",
+        "name": "고속터미널",
+        "distanceToTrackM": 30,
+        "nameMatched": true,
+        "nearestSameNameStopM": 52
+      },
+      {
+        "line": "7호선",
+        "code": "2737",
+        "name": "내방",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 33
+      },
+      {
+        "line": "7호선",
+        "code": "2738",
+        "name": "총신대입구",
+        "distanceToTrackM": 1,
+        "nameMatched": false,
+        "nearestSameNameStopM": null
+      },
+      {
+        "line": "7호선",
+        "code": "2739",
+        "name": "남성",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 76
+      },
+      {
+        "line": "7호선",
+        "code": "2740",
+        "name": "숭실대입구",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 80
+      },
+      {
+        "line": "7호선",
+        "code": "2741",
+        "name": "상도",
+        "distanceToTrackM": 3,
+        "nameMatched": true,
+        "nearestSameNameStopM": 52
+      },
+      {
+        "line": "7호선",
+        "code": "2742",
+        "name": "장승배기",
+        "distanceToTrackM": 0,
+        "nameMatched": true,
+        "nearestSameNameStopM": 22
+      },
+      {
+        "line": "7호선",
+        "code": "2743",
+        "name": "신대방삼거리",
+        "distanceToTrackM": 0,
+        "nameMatched": true,
+        "nearestSameNameStopM": 2
+      },
+      {
+        "line": "7호선",
+        "code": "2744",
+        "name": "보라매",
+        "distanceToTrackM": 5,
+        "nameMatched": true,
+        "nearestSameNameStopM": 16
+      },
+      {
+        "line": "7호선",
+        "code": "2745",
+        "name": "신풍",
+        "distanceToTrackM": 3,
+        "nameMatched": true,
+        "nearestSameNameStopM": 77
+      },
+      {
+        "line": "7호선",
+        "code": "2746",
+        "name": "대림",
+        "distanceToTrackM": 0,
+        "nameMatched": true,
+        "nearestSameNameStopM": 84
+      },
+      {
+        "line": "7호선",
+        "code": "2747",
+        "name": "남구로",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 106
+      },
+      {
+        "line": "7호선",
+        "code": "2748",
+        "name": "가산디지털단지",
+        "distanceToTrackM": 0,
+        "nameMatched": true,
+        "nearestSameNameStopM": 7
+      },
+      {
+        "line": "7호선",
+        "code": "2749",
+        "name": "철산",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 42
+      },
+      {
+        "line": "7호선",
+        "code": "2750",
+        "name": "광명사거리",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 52
+      },
+      {
+        "line": "7호선",
+        "code": "2751",
+        "name": "천왕",
+        "distanceToTrackM": 0,
+        "nameMatched": true,
+        "nearestSameNameStopM": 45
+      },
+      {
+        "line": "7호선",
+        "code": "2752",
+        "name": "온수",
+        "distanceToTrackM": 3,
+        "nameMatched": true,
+        "nearestSameNameStopM": 16
+      },
+      {
+        "line": "8호선",
+        "code": "2811",
+        "name": "암사",
+        "distanceToTrackM": 3,
+        "nameMatched": true,
+        "nearestSameNameStopM": 33
+      },
+      {
+        "line": "8호선",
+        "code": "2812",
+        "name": "천호",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 17
+      },
+      {
+        "line": "8호선",
+        "code": "2813",
+        "name": "강동구청",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 39
+      },
+      {
+        "line": "8호선",
+        "code": "2814",
+        "name": "몽촌토성",
+        "distanceToTrackM": 6,
+        "nameMatched": true,
+        "nearestSameNameStopM": 21
+      },
+      {
+        "line": "8호선",
+        "code": "2815",
+        "name": "잠실",
+        "distanceToTrackM": 4,
+        "nameMatched": true,
+        "nearestSameNameStopM": 77
+      },
+      {
+        "line": "8호선",
+        "code": "2816",
+        "name": "석촌",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 14
+      },
+      {
+        "line": "8호선",
+        "code": "2817",
+        "name": "송파",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 21
+      },
+      {
+        "line": "8호선",
+        "code": "2818",
+        "name": "가락시장",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 24
+      },
+      {
+        "line": "8호선",
+        "code": "2819",
+        "name": "문정",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 9
+      },
+      {
+        "line": "8호선",
+        "code": "2820",
+        "name": "장지",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 36
+      },
+      {
+        "line": "8호선",
+        "code": "2821",
+        "name": "복정",
+        "distanceToTrackM": 5,
+        "nameMatched": true,
+        "nearestSameNameStopM": 13
+      },
+      {
+        "line": "8호선",
+        "code": "2828",
+        "name": "남위례",
+        "distanceToTrackM": 0,
+        "nameMatched": true,
+        "nearestSameNameStopM": 18
+      },
+      {
+        "line": "8호선",
+        "code": "2822",
+        "name": "산성",
+        "distanceToTrackM": 0,
+        "nameMatched": true,
+        "nearestSameNameStopM": 3
+      },
+      {
+        "line": "8호선",
+        "code": "2823",
+        "name": "남한산성입구",
+        "distanceToTrackM": 0,
+        "nameMatched": true,
+        "nearestSameNameStopM": 2
+      },
+      {
+        "line": "8호선",
+        "code": "2824",
+        "name": "단대오거리",
+        "distanceToTrackM": 2,
+        "nameMatched": true,
+        "nearestSameNameStopM": 5
+      },
+      {
+        "line": "8호선",
+        "code": "2825",
+        "name": "신흥",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 6
+      },
+      {
+        "line": "8호선",
+        "code": "2826",
+        "name": "수진",
+        "distanceToTrackM": 1,
+        "nameMatched": true,
+        "nearestSameNameStopM": 27
+      },
+      {
+        "line": "8호선",
+        "code": "2827",
+        "name": "모란",
+        "distanceToTrackM": 38,
+        "nameMatched": true,
+        "nearestSameNameStopM": 38
+      }
+    ]
+  },
+  "anchorChecks": [
+    {
+      "line": "1호선",
+      "checked": [
+        "연천",
+        "인천",
+        "신창",
+        "광명",
+        "서동탄"
+      ],
+      "missing": []
+    },
+    {
+      "line": "2호선",
+      "checked": [
+        "시청",
+        "성수",
+        "신설동",
+        "신도림",
+        "까치산"
+      ],
+      "missing": []
+    },
+    {
+      "line": "3호선",
+      "checked": [
+        "대화",
+        "오금"
+      ],
+      "missing": []
+    },
+    {
+      "line": "4호선",
+      "checked": [
+        "진접",
+        "오이도"
+      ],
+      "missing": []
+    },
+    {
+      "line": "5호선",
+      "checked": [
+        "방화",
+        "하남검단산",
+        "마천"
+      ],
+      "missing": []
+    },
+    {
+      "line": "6호선",
+      "checked": [
+        "응암",
+        "신내"
+      ],
+      "missing": []
+    },
+    {
+      "line": "7호선",
+      "checked": [
+        "장암",
+        "석남"
+      ],
+      "missing": []
+    },
+    {
+      "line": "8호선",
+      "checked": [
+        "별내",
+        "모란"
+      ],
+      "missing": []
+    },
+    {
+      "line": "9호선",
+      "checked": [
+        "개화",
+        "중앙보훈병원"
+      ],
+      "missing": []
+    },
+    {
+      "line": "인천 1호선",
+      "checked": [
+        "검단호수공원",
+        "송도달빛축제공원"
+      ],
+      "missing": []
+    },
+    {
+      "line": "인천 2호선",
+      "checked": [
+        "검단오류",
+        "운연"
+      ],
+      "missing": []
+    },
+    {
+      "line": "경의중앙선",
+      "checked": [
+        "문산",
+        "임진강",
+        "서울역",
+        "지평"
+      ],
+      "missing": []
+    },
+    {
+      "line": "경춘선",
+      "checked": [
+        "청량리",
+        "춘천",
+        "광운대"
+      ],
+      "missing": []
+    },
+    {
+      "line": "수인분당선",
+      "checked": [
+        "청량리",
+        "인천"
+      ],
+      "missing": []
+    },
+    {
+      "line": "신분당선",
+      "checked": [
+        "신사",
+        "광교"
+      ],
+      "missing": []
+    },
+    {
+      "line": "공항철도",
+      "checked": [
+        "서울역",
+        "인천공항2터미널"
+      ],
+      "missing": []
+    },
+    {
+      "line": "경강선",
+      "checked": [
+        "판교",
+        "여주"
+      ],
+      "missing": []
+    },
+    {
+      "line": "서해선",
+      "checked": [
+        "일산",
+        "원시"
+      ],
+      "missing": []
+    },
+    {
+      "line": "우이신설선",
+      "checked": [
+        "북한산우이",
+        "신설동"
+      ],
+      "missing": []
+    },
+    {
+      "line": "신림선",
+      "checked": [
+        "샛강",
+        "관악산"
+      ],
+      "missing": []
+    },
+    {
+      "line": "의정부경전철",
+      "checked": [
+        "발곡",
+        "탑석",
+        "차량기지임시승강장"
+      ],
+      "missing": []
+    },
+    {
+      "line": "용인에버라인",
+      "checked": [
+        "기흥",
+        "전대·에버랜드"
+      ],
+      "missing": []
+    },
+    {
+      "line": "김포골드라인",
+      "checked": [
+        "양촌",
+        "김포공항"
+      ],
+      "missing": []
+    },
+    {
+      "line": "GTX-A",
+      "checked": [
+        "운정중앙",
+        "서울역",
+        "수서",
+        "동탄"
+      ],
+      "missing": []
+    }
+  ],
+  "relationInventory": [
+    {
+      "line": "1호선",
+      "relations": [
+        {
+          "id": 4748705,
+          "name": "수도권 전철 1호선: 광명 → 영등포"
+        },
+        {
+          "id": 8691809,
+          "name": "수도권 전철 1호선: 소요산 → 인천"
+        },
+        {
+          "id": 8691898,
+          "name": "수도권 전철 1호선: 인천 → 소요산"
+        },
+        {
+          "id": 8692707,
+          "name": "수도권 전철 1호선: 광운대 → 신창"
+        },
+        {
+          "id": 8692830,
+          "name": "수도권 전철 1호선: 신창 → 광운대"
+        },
+        {
+          "id": 8692927,
+          "name": "수도권 전철 1호선: 서동탄 → 광운대"
+        },
+        {
+          "id": 8692928,
+          "name": "수도권 전철 1호선: 광운대 → 서동탄"
+        },
+        {
+          "id": 8820537,
+          "name": "수도권 전철 1호선: 동인천 → 용산 급행"
+        },
+        {
+          "id": 8820538,
+          "name": "수도권 전철 1호선: 용산 → 동인천 급행"
+        },
+        {
+          "id": 9849062,
+          "name": "수도권 전철 1호선 경인·경원 계통: 의정부 → 인천"
+        },
+        {
+          "id": 9849094,
+          "name": "수도권 전철 1호선 경인·경원 계통: 양주 → 인천"
+        },
+        {
+          "id": 10565519,
+          "name": "수도권 전철 1호선: 청량리 → 천안 급행"
+        },
+        {
+          "id": 10565521,
+          "name": "수도권 전철 1호선: 천안 → 청량리 급행"
+        },
+        {
+          "id": 10685370,
+          "name": "수도권 전철 1호선: 청량리 → 신창 급행"
+        },
+        {
+          "id": 10685371,
+          "name": "수도권 전철 1호선: 신창 → 청량리 급행"
+        },
+        {
+          "id": 10685419,
+          "name": "수도권 전철 1호선: 서울역 → 천안 급행"
+        },
+        {
+          "id": 10685420,
+          "name": "수도권 전철 1호선: 천안 → 서울역 급행"
+        },
+        {
+          "id": 10700967,
+          "name": "수도권 전철 1호선: 양주 → 구로"
+        },
+        {
+          "id": 10700968,
+          "name": "수도권 전철 1호선: 동두천 → 인천 급행"
+        },
+        {
+          "id": 10700978,
+          "name": "수도권 전철 1호선 경인·경원 계통: 인천 → 양주"
+        },
+        {
+          "id": 10700979,
+          "name": "수도권 전철 1호선 경인·경원 계통: 인천 → 의정부"
+        },
+        {
+          "id": 10713827,
+          "name": "수도권 전철 1호선: 천안 → 구로 급행"
+        },
+        {
+          "id": 10713876,
+          "name": "수도권 전철 1호선 급행: 인천 → 동두천 급행"
+        },
+        {
+          "id": 10776760,
+          "name": "수도권 전철 1호선: 인천 → 동두천"
+        },
+        {
+          "id": 10776761,
+          "name": "수도권 전철 1호선: 인천 → 동묘앞"
+        },
+        {
+          "id": 10776791,
+          "name": "수도권 전철 1호선: 동두천 → 광운대"
+        },
+        {
+          "id": 10776869,
+          "name": "수도권 전철 1호선: 양주 → 광운대"
+        },
+        {
+          "id": 10869816,
+          "name": "수도권 전철 1호선: 동두천 → 인천"
+        },
+        {
+          "id": 10881612,
+          "name": "수도권 전철 1호선: 영등포 → 광명"
+        },
+        {
+          "id": 11073605,
+          "name": "수도권 전철 1호선: 광운대 → 양주"
+        },
+        {
+          "id": 11073606,
+          "name": "수도권 전철 1호선: 광운대 → 동두천"
+        },
+        {
+          "id": 11079448,
+          "name": "수도권 전철 1호선: 청량리 → 천안"
+        },
+        {
+          "id": 12640223,
+          "name": "수도권 전철 1호선: 동묘앞 → 인천"
+        },
+        {
+          "id": 12640266,
+          "name": "수도권 전철 1호선: 구로 → 양주"
+        },
+        {
+          "id": 13528564,
+          "name": "수도권 전철 1호선: 동두천 → 부평"
+        },
+        {
+          "id": 13528565,
+          "name": "수도권 전철 1호선: 양주 → 부평"
+        },
+        {
+          "id": 13695367,
+          "name": "수도권 전철 1호선: 용산 → 동인천 특급"
+        },
+        {
+          "id": 13695368,
+          "name": "수도권 전철 1호선: 동인천 → 용산 특급"
+        },
+        {
+          "id": 14138328,
+          "name": "수도권 전철 1호선: 병점 → 천안"
+        },
+        {
+          "id": 14138329,
+          "name": "수도권 전철 1호선: 병점 → 신창"
+        },
+        {
+          "id": 14138330,
+          "name": "수도권 전철 1호선: 신창 → 병점"
+        },
+        {
+          "id": 14138331,
+          "name": "수도권 전철 1호선: 신창 → 구로"
+        },
+        {
+          "id": 14181831,
+          "name": "수도권 전철 1호선: 구로 → 천안"
+        },
+        {
+          "id": 14181832,
+          "name": "수도권 전철 1호선: 구로 → 신창"
+        },
+        {
+          "id": 15044496,
+          "name": "수도권 전철 1호선: 의정부 → 광운대"
+        },
+        {
+          "id": 15044497,
+          "name": "수도권 전철 1호선: 광운대 → 의정부"
+        },
+        {
+          "id": 15044498,
+          "name": "수도권 전철 1호선: 광운대 → 소요산"
+        },
+        {
+          "id": 15044499,
+          "name": "수도권 전철 1호선: 광운대 → 동두천 급행"
+        },
+        {
+          "id": 15044580,
+          "name": "수도권 전철 1호선: 동두천 → 광운대 급행"
+        },
+        {
+          "id": 15055925,
+          "name": "수도권 전철 1호선: 광운대 → 천안"
+        },
+        {
+          "id": 15055926,
+          "name": "수도권 전철 1호선: 천안 → 광운대"
+        },
+        {
+          "id": 15055927,
+          "name": "수도권 전철 1호선: 천안 → 청량리"
+        },
+        {
+          "id": 15802274,
+          "name": "수도권 전철 1호선: 양주 → 서울역"
+        },
+        {
+          "id": 15802275,
+          "name": "수도권 전철 1호선: 서울역 → 양주"
+        },
+        {
+          "id": 15833199,
+          "name": "수도권 전철 1호선: 소요산 → 광운대"
+        },
+        {
+          "id": 15833652,
+          "name": "수도권 전철 1호선: 동묘앞 → 서동탄"
+        },
+        {
+          "id": 15833653,
+          "name": "수도권 전철 1호선: 청량리 → 서동탄"
+        },
+        {
+          "id": 15833654,
+          "name": "수도권 전철 1호선: 청량리 → 구로"
+        },
+        {
+          "id": 15833655,
+          "name": "수도권 전철 1호선: 구로 → 청량리"
+        },
+        {
+          "id": 15833656,
+          "name": "수도권 전철 1호선: 서동탄 → 동묘앞"
+        },
+        {
+          "id": 15833657,
+          "name": "수도권 전철 1호선: 서동탄 → 청량리"
+        },
+        {
+          "id": 15833658,
+          "name": "수도권 전철 1호선: 서동탄 → 구로"
+        },
+        {
+          "id": 15833659,
+          "name": "수도권 전철 1호선: 구로 → 서동탄"
+        },
+        {
+          "id": 15885692,
+          "name": "수도권 전철 1호선: 천안 → 구로"
+        },
+        {
+          "id": 15885693,
+          "name": "수도권 전철 1호선: 천안 → 병점"
+        },
+        {
+          "id": 15885884,
+          "name": "수도권 전철 1호선: 구로 → 인천"
+        },
+        {
+          "id": 15885937,
+          "name": "수도권 전철 1호선: 인천 → 구로"
+        },
+        {
+          "id": 16107776,
+          "name": "수도권 전철 1호선: 의정부 → 서동탄"
+        },
+        {
+          "id": 16534608,
+          "name": "수도권 전철 1호선: 영등포 → 인천"
+        },
+        {
+          "id": 16534787,
+          "name": "수도권 전철 1호선: 용산 → 구로"
+        },
+        {
+          "id": 16534788,
+          "name": "수도권 전철 1호선: 구로 → 용산"
+        },
+        {
+          "id": 16665710,
+          "name": "수도권 전철 1호선: 부천 → 용산 급행"
+        },
+        {
+          "id": 16665711,
+          "name": "수도권 전철 1호선: 동인천 → 부천 급행"
+        },
+        {
+          "id": 16665712,
+          "name": "수도권 전철 1호선: 동인천 → 구로 급행"
+        },
+        {
+          "id": 16665713,
+          "name": "수도권 전철 1호선: 부평 → 용산 급행"
+        },
+        {
+          "id": 16665714,
+          "name": "수도권 전철 1호선: 부평 → 구로 급행"
+        },
+        {
+          "id": 16665759,
+          "name": "수도권 전철 1호선: 용산 → 부평 급행"
+        },
+        {
+          "id": 16665760,
+          "name": "수도권 전철 1호선: 구로 → 부평 급행"
+        },
+        {
+          "id": 16665761,
+          "name": "수도권 전철 1호선: 구로 → 동인천 급행"
+        },
+        {
+          "id": 16712689,
+          "name": "수도권 전철 1호선: 광운대 → 구로"
+        },
+        {
+          "id": 16712690,
+          "name": "수도권 전철 1호선: 광운대 → 인천"
+        },
+        {
+          "id": 16712691,
+          "name": "수도권 전철 1호선: 광운대 → 병점"
+        },
+        {
+          "id": 16712692,
+          "name": "수도권 전철 1호선: 서울역 → 서동탄"
+        },
+        {
+          "id": 16712693,
+          "name": "수도권 전철 1호선: 서울역 → 광운대"
+        },
+        {
+          "id": 16712694,
+          "name": "수도권 전철 1호선: 서울역 → 의정부"
+        },
+        {
+          "id": 16712695,
+          "name": "수도권 전철 1호선: 청량리 → 서울역"
+        },
+        {
+          "id": 16712696,
+          "name": "수도권 전철 1호선: 서울역 → 동묘앞"
+        },
+        {
+          "id": 16712697,
+          "name": "수도권 전철 1호선: 서동탄 → 서울역"
+        },
+        {
+          "id": 16850861,
+          "name": "수도권 전철 1호선: 연천 → 인천"
+        },
+        {
+          "id": 16850862,
+          "name": "수도권 전철 1호선: 연천 → 구로"
+        },
+        {
+          "id": 16850863,
+          "name": "수도권 전철 1호선: 연천 → 광운대"
+        },
+        {
+          "id": 16850864,
+          "name": "수도권 전철 1호선: 연천 → 부평"
+        },
+        {
+          "id": 16851102,
+          "name": "수도권 전철 1호선: 광운대 → 연천"
+        },
+        {
+          "id": 16851103,
+          "name": "수도권 전철 1호선: 구로 → 연천"
+        },
+        {
+          "id": 16851104,
+          "name": "수도권 전철 1호선: 인천 → 연천"
+        }
+      ]
+    },
+    {
+      "line": "2호선",
+      "relations": [
+        {
+          "id": 2404374,
+          "name": "서울 지하철 2호선: 외선순환"
+        },
+        {
+          "id": 4729405,
+          "name": "서울 지하철 2호선 성수지선: 신설동 → 성수"
+        },
+        {
+          "id": 4729406,
+          "name": "서울 지하철 2호선 성수지선: 성수 → 신설동"
+        },
+        {
+          "id": 4729407,
+          "name": "서울 지하철 2호선 신정지선: 신도림 → 까치산"
+        },
+        {
+          "id": 4729408,
+          "name": "서울 지하철 2호선 신정지선: 까치산 → 신도림"
+        },
+        {
+          "id": 4729409,
+          "name": "서울 지하철 2호선: 내선순환"
+        }
+      ]
+    },
+    {
+      "line": "3호선",
+      "relations": [
+        {
+          "id": 443803,
+          "name": "수도권 전철 3호선: 대화 → 오금"
+        },
+        {
+          "id": 4729445,
+          "name": "수도권 전철 3호선: 오금 → 대화"
+        }
+      ]
+    },
+    {
+      "line": "4호선",
+      "relations": [
+        {
+          "id": 2718884,
+          "name": "수도권 전철 4호선: 불암산 → 오이도"
+        },
+        {
+          "id": 4744311,
+          "name": "수도권 전철 4호선: 오이도 → 불암산"
+        },
+        {
+          "id": 10727605,
+          "name": "수도권 전철 4호선: 불암산 → 사당"
+        },
+        {
+          "id": 10727606,
+          "name": "수도권 전철 4호선: 불암산 → 안산"
+        },
+        {
+          "id": 10727607,
+          "name": "수도권 전철 4호선: 불암산 → 오이도 급행"
+        },
+        {
+          "id": 10727608,
+          "name": "수도권 전철 4호선: 오이도 → 불암산 급행"
+        },
+        {
+          "id": 10746635,
+          "name": "수도권 전철 4호선: 사당 → 불암산"
+        },
+        {
+          "id": 10947038,
+          "name": "수도권 전철 4호선: 안산 → 불암산"
+        },
+        {
+          "id": 13675921,
+          "name": "수도권 전철 4호선: 사당 → 진접"
+        },
+        {
+          "id": 13675922,
+          "name": "수도권 전철 4호선: 남태령 → 진접"
+        },
+        {
+          "id": 13938877,
+          "name": "수도권 전철 4호선: 진접 → 사당"
+        },
+        {
+          "id": 13938878,
+          "name": "수도권 전철 4호선: 진접 → 남태령"
+        },
+        {
+          "id": 15801808,
+          "name": "수도권 전철 4호선: 불암산 → 산본"
+        },
+        {
+          "id": 15801809,
+          "name": "수도권 전철 4호선: 산본 → 불암산"
+        },
+        {
+          "id": 15870296,
+          "name": "수도권 전철 4호선: 한성대입구 → 오이도"
+        },
+        {
+          "id": 15870297,
+          "name": "수도권 전철 4호선: 오이도 → 한성대입구"
+        },
+        {
+          "id": 16665960,
+          "name": "수도권 전철 4호선: 불암산 → 금정"
+        },
+        {
+          "id": 16665961,
+          "name": "수도권 전철 4호선: 금정 → 오이도"
+        },
+        {
+          "id": 16665962,
+          "name": "수도권 전철 4호선: 오이도 → 금정"
+        },
+        {
+          "id": 16665963,
+          "name": "수도권 전철 4호선: 불암산 → 진접"
+        },
+        {
+          "id": 16665964,
+          "name": "수도권 전철 4호선: 진접 → 당고개"
+        },
+        {
+          "id": 16665965,
+          "name": "수도권 전철 4호선: 진접 → 서울역"
+        },
+        {
+          "id": 16665966,
+          "name": "수도권 전철 4호선: 서울역 → 진접"
+        },
+        {
+          "id": 16665967,
+          "name": "수도권 전철 4호선: 창동 → 사당"
+        },
+        {
+          "id": 16665968,
+          "name": "수도권 전철 4호선: 창동 → 오이도"
+        },
+        {
+          "id": 16665969,
+          "name": "수도권 전철 4호선: 노원 → 사당"
+        },
+        {
+          "id": 16665970,
+          "name": "수도권 전철 4호선: 오이도 → 노원"
+        }
+      ]
+    },
+    {
+      "line": "5호선",
+      "relations": [
+        {
+          "id": 4744337,
+          "name": "서울 지하철 5호선: 마천 → 강동"
+        },
+        {
+          "id": 4744338,
+          "name": "서울 지하철 5호선: 강동 → 마천"
+        },
+        {
+          "id": 4744339,
+          "name": "서울 지하철 5호선: 상일동 → 방화"
+        },
+        {
+          "id": 4744340,
+          "name": "서울 지하철 5호선: 방화 → 상일동"
+        },
+        {
+          "id": 12497485,
+          "name": "서울 지하철 5호선: 하남검단산 → 방화"
+        },
+        {
+          "id": 12497486,
+          "name": "서울 지하철 5호선: 방화 → 하남검단산"
+        },
+        {
+          "id": 19427674,
+          "name": "서울 지하철 5호선: 마천 → 방화"
+        },
+        {
+          "id": 19427675,
+          "name": "서울 지하철 5호선: 방화 → 마천"
+        }
+      ]
+    },
+    {
+      "line": "6호선",
+      "relations": [
+        {
+          "id": 4727111,
+          "name": "서울 지하철 6호선: 응암순환 → 봉화산"
+        },
+        {
+          "id": 7919153,
+          "name": "서울 지하철 6호선: 봉화산 → 응암순환"
+        },
+        {
+          "id": 11509732,
+          "name": "서울 지하철 6호선: 신내 → 응암순환"
+        },
+        {
+          "id": 12080315,
+          "name": "서울 지하철 6호선: 응암순환 → 신내"
+        }
+      ]
+    },
+    {
+      "line": "7호선",
+      "relations": [
+        {
+          "id": 10727492,
+          "name": "서울 지하철 7호선: 도봉산 → 온수"
+        },
+        {
+          "id": 10727493,
+          "name": "서울 지하철 7호선: 장암 → 온수"
+        },
+        {
+          "id": 10828181,
+          "name": "서울 지하철 7호선: 온수 → 장암"
+        },
+        {
+          "id": 10828182,
+          "name": "서울 지하철 7호선: 온수 → 도봉산"
+        },
+        {
+          "id": 12746493,
+          "name": "서울 지하철 7호선: 장암 → 석남"
+        },
+        {
+          "id": 12746494,
+          "name": "서울 지하철 7호선: 도봉산 → 석남"
+        },
+        {
+          "id": 12746498,
+          "name": "서울 지하철 7호선: 석남 → 장암"
+        },
+        {
+          "id": 12746499,
+          "name": "서울 지하철 7호선: 석남 → 도봉산"
+        }
+      ]
+    },
+    {
+      "line": "8호선",
+      "relations": [
+        {
+          "id": 2718901,
+          "name": "서울 지하철 8호선: 별내 → 모란"
+        },
+        {
+          "id": 7919018,
+          "name": "서울 지하철 8호선: 모란 → 별내"
+        },
+        {
+          "id": 17953733,
+          "name": "서울 지하철 8호선: 암사 → 모란"
+        },
+        {
+          "id": 17953734,
+          "name": "서울 지하철 8호선: 모란 → 암사"
+        },
+        {
+          "id": 17953804,
+          "name": "서울 지하철 8호선: 암사 → 별내"
+        },
+        {
+          "id": 17953805,
+          "name": "서울 지하철 8호선: 별내 → 암사"
+        }
+      ]
+    },
+    {
+      "line": "9호선",
+      "relations": [
+        {
+          "id": 2718888,
+          "name": "서울 지하철 9호선: 개화 → 중앙보훈병원"
+        },
+        {
+          "id": 4784126,
+          "name": "서울 지하철 9호선 급행: 중앙보훈병원 → 김포공항"
+        },
+        {
+          "id": 7883314,
+          "name": "서울 지하철 9호선: 중앙보훈병원 → 개화"
+        },
+        {
+          "id": 9079536,
+          "name": "서울 지하철 9호선 급행: 김포공항 → 중앙보훈병원"
+        }
+      ]
+    },
+    {
+      "line": "인천 1호선",
+      "relations": [
+        {
+          "id": 19425645,
+          "name": "인천 도시철도 1호선: 검단호수공원 → 송도달빛축제공원"
+        },
+        {
+          "id": 19425646,
+          "name": "인천 도시철도 1호선: 송도달빛축제공원 → 검단호수공원"
+        }
+      ]
+    },
+    {
+      "line": "인천 2호선",
+      "relations": [
+        {
+          "id": 7527496,
+          "name": "인천 도시철도 2호선: 검단오류 → 운연"
+        },
+        {
+          "id": 7527497,
+          "name": "인천 도시철도 2호선: 운연 → 검단오류"
+        }
+      ]
+    },
+    {
+      "line": "경의중앙선",
+      "relations": [
+        {
+          "id": 5993211,
+          "name": "경의·중앙선: 용문 → 문산"
+        },
+        {
+          "id": 5993212,
+          "name": "경의·중앙선: 문산 → 용문"
+        },
+        {
+          "id": 8667955,
+          "name": "경의·중앙선: 문산 → 서울역"
+        },
+        {
+          "id": 8667956,
+          "name": "경의·중앙선: 서울역 → 문산"
+        },
+        {
+          "id": 10922025,
+          "name": "경의·중앙선: 문산 → 임진강"
+        },
+        {
+          "id": 10922027,
+          "name": "경의·중앙선: 임진강 → 문산"
+        },
+        {
+          "id": 12623856,
+          "name": "경의·중앙선: 지평 → 문산"
+        },
+        {
+          "id": 12623857,
+          "name": "경의·중앙선: 문산 → 지평"
+        },
+        {
+          "id": 13487300,
+          "name": "경의·중앙선 셔틀: 임진강 → 도라산"
+        },
+        {
+          "id": 13487302,
+          "name": "경의·중앙선 셔틀: 도라산 → 임진강"
+        }
+      ]
+    },
+    {
+      "line": "경춘선",
+      "relations": [
+        {
+          "id": 8656357,
+          "name": "수도권 전철 경춘선: 청량리 → 춘천"
+        },
+        {
+          "id": 8656358,
+          "name": "수도권 전철 경춘선: 춘천 → 청량리"
+        },
+        {
+          "id": 8656359,
+          "name": "수도권 전철 경춘선: 춘천 → 광운대"
+        },
+        {
+          "id": 8656362,
+          "name": "수도권 전철 경춘선: 춘천 → 상봉"
+        },
+        {
+          "id": 8656363,
+          "name": "수도권 전철 경춘선: 상봉 → 춘천"
+        },
+        {
+          "id": 8656364,
+          "name": "수도권 전철 경춘선: 광운대 → 춘천"
+        }
+      ]
+    },
+    {
+      "line": "수인분당선",
+      "relations": [
+        {
+          "id": 2718887,
+          "name": "수인·분당선: 고색 → 왕십리"
+        },
+        {
+          "id": 3012654,
+          "name": "수인·분당선: 오이도 → 인천"
+        },
+        {
+          "id": 6064104,
+          "name": "수인·분당선: 왕십리 → 고색"
+        },
+        {
+          "id": 6064114,
+          "name": "수인·분당선 급행: 왕십리 → 고색"
+        },
+        {
+          "id": 6064115,
+          "name": "수인·분당선 급행: 고색 → 왕십리"
+        },
+        {
+          "id": 8016134,
+          "name": "수인·분당선: 인천 → 오이도"
+        },
+        {
+          "id": 10791318,
+          "name": "수인·분당선: 청량리 → 고색"
+        },
+        {
+          "id": 10791319,
+          "name": "수인·분당선: 고색 → 청량리"
+        },
+        {
+          "id": 10791320,
+          "name": "수인·분당선: 죽전 → 청량리"
+        },
+        {
+          "id": 10791329,
+          "name": "수인·분당선: 청량리 → 죽전"
+        },
+        {
+          "id": 10799694,
+          "name": "수인·분당선: 왕십리 → 죽전"
+        },
+        {
+          "id": 10799695,
+          "name": "수인·분당선: 죽전 → 왕십리"
+        },
+        {
+          "id": 11625555,
+          "name": "수인·분당선: 왕십리 → 인천"
+        },
+        {
+          "id": 11625556,
+          "name": "수인·분당선: 청량리 → 인천"
+        },
+        {
+          "id": 11634611,
+          "name": "수인·분당선: 인천 → 왕십리"
+        },
+        {
+          "id": 11634612,
+          "name": "수인·분당선: 인천 → 청량리"
+        },
+        {
+          "id": 11634613,
+          "name": "수인·분당선: 인천 → 죽전"
+        },
+        {
+          "id": 11634614,
+          "name": "수인·분당선: 인천 → 고색"
+        },
+        {
+          "id": 11636212,
+          "name": "수인·분당선: 죽전 → 인천"
+        },
+        {
+          "id": 11636213,
+          "name": "수인·분당선: 고색 → 인천"
+        },
+        {
+          "id": 11651118,
+          "name": "수인·분당선 급행: 오이도 → 인천"
+        },
+        {
+          "id": 11651119,
+          "name": "수인·분당선 급행: 인천 → 오이도"
+        },
+        {
+          "id": 15870343,
+          "name": "수인·분당선: 죽전 → 고색"
+        },
+        {
+          "id": 15870344,
+          "name": "수인·분당선: 고색 → 죽전"
+        }
+      ]
+    },
+    {
+      "line": "신분당선",
+      "relations": [
+        {
+          "id": 6060963,
+          "name": "신분당선: 신사 → 광교"
+        },
+        {
+          "id": 12814871,
+          "name": "신분당선: 광교 → 신사"
+        }
+      ]
+    },
+    {
+      "line": "공항철도",
+      "relations": [
+        {
+          "id": 2911378,
+          "name": "인천국제공항철도 일반열차: 인천공항2터미널 → 서울역"
+        },
+        {
+          "id": 7919000,
+          "name": "인천국제공항철도 일반열차: 서울역 → 인천공항2터미널"
+        }
+      ]
+    },
+    {
+      "line": "경강선",
+      "relations": [
+        {
+          "id": 6462562,
+          "name": "수도권 전철 경강선: 판교 → 여주"
+        },
+        {
+          "id": 6462563,
+          "name": "수도권 전철 경강선: 여주 → 판교"
+        },
+        {
+          "id": 12144933,
+          "name": "수도권 전철 경강선: 판교 → 부발"
+        },
+        {
+          "id": 12144934,
+          "name": "수도권 전철 경강선: 부발 → 판교"
+        }
+      ]
+    },
+    {
+      "line": "서해선",
+      "relations": [
+        {
+          "id": 8725314,
+          "name": "수도권 전철 서해선: 대곡 → 원시"
+        },
+        {
+          "id": 8725315,
+          "name": "수도권 전철 서해선: 원시 → 대곡"
+        },
+        {
+          "id": 16244687,
+          "name": "수도권 전철 서해선: 원시 → 일산"
+        },
+        {
+          "id": 16244688,
+          "name": "수도권 전철 서해선: 일산 → 원시"
+        }
+      ]
+    },
+    {
+      "line": "우이신설선",
+      "relations": [
+        {
+          "id": 7533582,
+          "name": "우이신설선: 북한산우이 → 신설동"
+        },
+        {
+          "id": 7533583,
+          "name": "우이신설선: 신설동 → 북한산우이"
+        }
+      ]
+    },
+    {
+      "line": "신림선",
+      "relations": [
+        {
+          "id": 14191876,
+          "name": "서울 경전철 신림선: 관악산 → 샛강"
+        },
+        {
+          "id": 14191877,
+          "name": "서울 경전철 신림선: 샛강 → 관악산"
+        }
+      ]
+    },
+    {
+      "line": "의정부경전철",
+      "relations": [
+        {
+          "id": 7530880,
+          "name": "의정부경전철: 발곡 → 탑석"
+        },
+        {
+          "id": 7530881,
+          "name": "의정부경전철: 탑석 → 발곡"
+        },
+        {
+          "id": 13738410,
+          "name": "의정부경전철: 발곡 → 차량기지임시승강장"
+        },
+        {
+          "id": 13738411,
+          "name": "의정부경전철: 차량기지임시승강장 → 탑석"
+        }
+      ]
+    },
+    {
+      "line": "용인에버라인",
+      "relations": [
+        {
+          "id": 3573517,
+          "name": "용인 경전철: 전대·에버랜드 → 기흥"
+        },
+        {
+          "id": 6064093,
+          "name": "용인 경전철: 기흥 → 전대·에버랜드"
+        }
+      ]
+    },
+    {
+      "line": "김포골드라인",
+      "relations": [
+        {
+          "id": 10092719,
+          "name": "김포 골드라인: 김포공항 → 양촌"
+        },
+        {
+          "id": 10092720,
+          "name": "김포 골드라인: 양촌 → 김포공항"
+        }
+      ]
+    },
+    {
+      "line": "GTX-A",
+      "relations": [
+        {
+          "id": 17413294,
+          "name": "수도권 광역급행철도 A선: 수서 → 동탄"
+        },
+        {
+          "id": 17413296,
+          "name": "수도권 광역급행철도 A선: 동탄 → 수서"
+        },
+        {
+          "id": 18828088,
+          "name": "수도권 광역급행철도 A선: 서울역 → 운정중앙"
+        },
+        {
+          "id": 18828089,
+          "name": "수도권 광역급행철도 A선: 운정중앙 → 서울역"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "status": "passed",
+  "checks": [
+    "24-line legend and real GeoJSON loaded without map errors",
+    "Select line 2 and keep branch geometry in source",
+    "Toggle visibility, restore all lines, switch dark theme",
+    "Zoom to station and station-label levels",
+    "390px mobile viewport has no horizontal overflow"
+  ],
+  "requests": [
+    "http://127.0.0.1:5173/data/subway/manifest.json",
+    "http://127.0.0.1:5173/data/subway/seoul-metropolitan-routes.geojson",
+    "http://127.0.0.1:5173/data/subway/seoul-metropolitan-stations.geojson"
+  ],
+  "errors": [],
+  "failures": [
+    {
+      "url": "http://127.0.0.1:5173/api/v1/map/categories",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/regions-20261001.geojson",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:5173/api/v1/map/playback/national/regions",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://tiles.openfreemap.org/planet/20261101_080013_pt/12/3492/1587.pbf",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://tiles.openfreemap.org/planet/20261101_080013_pt/12/3493/1587.pbf",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://tiles.openfreemap.org/planet/20261101_080013_pt/13/6985/3173.pbf",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://tiles.openfreemap.org/planet/20261101_080013_pt/13/6986/3173.pbf",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://tiles.openfreemap.org/planet/20261101_080013_pt/13/6984/3173.pbf",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://tiles.openfreemap.org/planet/20261101_080013_pt/13/6987/3173.pbf",
+      "failure": "net::ERR_ABORTED"
+    }
+  ]
+}
