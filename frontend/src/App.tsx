@@ -199,7 +199,7 @@ export default function App() {
       <section className="map-panel" aria-label="전국 인허가 지도">
         <div ref={container} className="map" onPointerLeave={() => hoverLocation(null, 0, 0)} />
         <div className="map-toolbar">
-          <h1>동네의 기록</h1>
+          <h1 className="visually-hidden">동네의 기록</h1>
           <button className="theme-toggle" aria-pressed={theme === "dark"} onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
             {theme === "light" ? "다크 모드" : "라이트 모드"}
           </button>

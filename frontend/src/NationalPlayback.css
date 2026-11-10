@@ -1,23 +1,189 @@
-.national-playback input[type="month"] { width:128px; }
-.national-playback select[aria-label="재생 지역"] { min-width:118px; }
-.national-playback .playback-category { width:140px; min-width:0; }
-.national-playback .playback-category select { width:100%; }
-.national-playback progress { width:100%; height:5px; accent-color:#2ba58f; }
-.dong-toggle[aria-pressed="true"] { background:#196e60; color:#fff; border-color:#3ccbb0; }
-.dong-legend { flex-basis:100%; display:flex; flex-wrap:wrap; gap:6px 14px; font-size:12px; }
-.dong-legend span { display:flex; align-items:center; gap:5px; }
-.dong-legend small { flex-basis:100%; }
-.dong-legend details, .dong-selection { flex-basis:100%; }
-.dong-legend details small { display:block; margin-top:4px; }
-.dong-legend summary { cursor:pointer; }
-.dong-legend i { display:inline-block; width:14px; height:12px; border:1px solid #8c9d9c; border-radius:2px; }
-.dong-positive { background:#19b59f; }
-.dong-negative { background:#777d8b; }
-.dong-balanced { background:#9da8aa; }
-.dong-empty { background:transparent; }
-.region-selection-feedback { flex-basis:100%; display:flex; flex-wrap:wrap; align-items:center; gap:6px 12px; font-size:11px; color:#607b71; }
-.region-selection-feedback strong { padding:4px 9px; border:1px solid #58ad9a; border-radius:20px; color:#176c5c; background:#e5f5ef; }
-.app[data-theme="dark"] .region-selection-feedback { color:#a1bdb4; }
-.app[data-theme="dark"] .region-selection-feedback strong { color:#91e4d1; background:#23463d; border-color:#408b7b; }
-@media(max-width:760px) { .seoul-ranks { top:152px; } }
-@media(min-width:1101px) and (max-width:1450px) { .national-playback .playback-timeline { flex-basis:100%; order:1; } .national-playback .playback-status { order:2; } }
+.national-playback input[type="month"] {
+  width: 128px;
+}
+.national-playback select[aria-label="재생 지역"] {
+  min-width: 118px;
+}
+.national-playback .playback-category {
+  width: 140px;
+  min-width: 0;
+}
+.national-playback .playback-category select {
+  width: 100%;
+}
+.national-playback progress {
+  width: 100%;
+  height: 5px;
+  accent-color: #2ba58f;
+}
+.dong-toggle[aria-pressed="true"] {
+  background: #196e60;
+  color: #fff;
+  border-color: #3ccbb0;
+}
+.dong-legend {
+  flex-basis: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  font-size: 12px;
+}
+.dong-legend span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.dong-legend small {
+  flex-basis: 100%;
+}
+.dong-legend details,
+.dong-selection {
+  flex-basis: 100%;
+}
+.dong-legend details small {
+  display: block;
+  margin-top: 4px;
+}
+.dong-legend summary {
+  cursor: pointer;
+}
+.dong-legend i {
+  display: inline-block;
+  width: 14px;
+  height: 12px;
+  border: 1px solid #8c9d9c;
+  border-radius: 2px;
+}
+.dong-positive {
+  background: #19b59f;
+}
+.dong-negative {
+  background: #777d8b;
+}
+.dong-balanced {
+  background: #9da8aa;
+}
+.dong-empty {
+  background: transparent;
+}
+.region-selection-feedback {
+  flex-basis: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 12px;
+  font-size: 11px;
+  color: #607b71;
+}
+.region-selection-feedback strong {
+  padding: 4px 9px;
+  border: 1px solid #58ad9a;
+  border-radius: 20px;
+  color: #176c5c;
+  background: #e5f5ef;
+}
+.app[data-theme="dark"] .region-selection-feedback {
+  color: #a1bdb4;
+}
+.app[data-theme="dark"] .region-selection-feedback strong {
+  color: #91e4d1;
+  background: #23463d;
+  border-color: #408b7b;
+}
+@media (max-width: 760px) {
+  .seoul-ranks {
+    top: 152px;
+  }
+}
+@media (min-width: 1101px) and (max-width: 1450px) {
+  .national-playback .playback-timeline {
+    flex-basis: 100%;
+    order: 1;
+  }
+  .national-playback .playback-status {
+    order: 2;
+  }
+}
+
+.map-primary-filters {
+  position: absolute;
+  z-index: 3;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  width: max-content;
+  max-width: calc(100% - 76px);
+}
+.map-primary-filters label {
+  display: block;
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+}
+.map-primary-filters select {
+  width: auto;
+  max-width: 100%;
+  min-width: 0;
+  height: 36px;
+  border: 1px solid #d5e1db;
+  border-radius: 999px;
+  background: #ffffffb8;
+  box-shadow: 0 3px 18px #24433415;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0 10px;
+  font: inherit;
+  font-size: 12px;
+  color: inherit;
+  cursor: pointer;
+}
+.map-primary-filters select:focus-visible {
+  outline: 3px solid #d99535;
+  outline-offset: 3px;
+}
+.map-primary-filters select:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+.map-filter-error {
+  flex-basis: 100%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: #fffffff5;
+  font-size: 11px;
+}
+.map-filter-error button {
+  margin-left: 6px;
+  font: inherit;
+  color: inherit;
+}
+.app[data-theme="dark"] .map-primary-filters select,
+.app[data-theme="dark"] .map-filter-error {
+  background: #19262bb8;
+  border-color: #40585a;
+  color-scheme: dark;
+}
+@media (max-width: 760px) {
+  .map-primary-filters {
+    top: 10px;
+    left: 10px;
+  }
+  .map-primary-filters select {
+    height: 34px;
+    padding: 0 8px;
+    font-size: 11px;
+  }
+}
+
+.map-primary-filters select[aria-label="재생 지역"] { width: calc(4em + 40px); }
+
+/* Keep dropdown arrows inset consistently across browsers. */
+.map-primary-filters label { position: relative; }
+.map-primary-filters label::after { content: ""; position: absolute; right: 13px; top: 50%; width: 5px; height: 5px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: translateY(-70%) rotate(45deg); pointer-events: none; opacity: 0.65; }
+.map-primary-filters select { appearance: none; padding-right: 32px; }
+.map-primary-filters select[aria-label="재생 지역"] { width: calc(4em + 44px); }
+
+
