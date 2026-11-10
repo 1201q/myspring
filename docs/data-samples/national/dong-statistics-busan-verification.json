@@ -1,0 +1,246 @@
+{
+  "region": "busan",
+  "version": "9f90cac95e6ac57a",
+  "boundaryVersion": "20261001",
+  "dongs": 206,
+  "events": 369240,
+  "indexMs": 354,
+  "checks": [
+    {
+      "unit": 1,
+      "codes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "from": 441,
+      "to": 441,
+      "open": 778,
+      "close": 922,
+      "unassigned": {
+        "open": 9,
+        "close": 0
+      },
+      "queryMs": 0.66
+    },
+    {
+      "unit": 1,
+      "codes": [
+        0
+      ],
+      "from": 441,
+      "to": 441,
+      "open": 377,
+      "close": 501,
+      "unassigned": {
+        "open": 8,
+        "close": 0
+      },
+      "queryMs": 0.08
+    },
+    {
+      "unit": 1,
+      "codes": [
+        9
+      ],
+      "from": 441,
+      "to": 441,
+      "open": 9,
+      "close": 7,
+      "unassigned": {
+        "open": 0,
+        "close": 0
+      },
+      "queryMs": 0.03
+    },
+    {
+      "unit": 3,
+      "codes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "from": 439,
+      "to": 441,
+      "open": 1926,
+      "close": 2143,
+      "unassigned": {
+        "open": 9,
+        "close": 2
+      },
+      "queryMs": 0.11
+    },
+    {
+      "unit": 3,
+      "codes": [
+        0
+      ],
+      "from": 439,
+      "to": 441,
+      "open": 909,
+      "close": 1148,
+      "unassigned": {
+        "open": 8,
+        "close": 1
+      },
+      "queryMs": 0.02
+    },
+    {
+      "unit": 3,
+      "codes": [
+        9
+      ],
+      "from": 439,
+      "to": 441,
+      "open": 21,
+      "close": 15,
+      "unassigned": {
+        "open": 0,
+        "close": 0
+      },
+      "queryMs": 0.03
+    },
+    {
+      "unit": 12,
+      "codes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "from": 430,
+      "to": 441,
+      "open": 7179,
+      "close": 8326,
+      "unassigned": {
+        "open": 24,
+        "close": 10
+      },
+      "queryMs": 0.12
+    },
+    {
+      "unit": 12,
+      "codes": [
+        0
+      ],
+      "from": 430,
+      "to": 441,
+      "open": 3225,
+      "close": 4341,
+      "unassigned": {
+        "open": 21,
+        "close": 8
+      },
+      "queryMs": 0.06
+    },
+    {
+      "unit": 12,
+      "codes": [
+        9
+      ],
+      "from": 430,
+      "to": 441,
+      "open": 89,
+      "close": 61,
+      "unassigned": {
+        "open": 0,
+        "close": 0
+      },
+      "queryMs": 0.06
+    },
+    {
+      "unit": 0,
+      "codes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "from": 0,
+      "to": 441,
+      "open": 217220,
+      "close": 151889,
+      "unassigned": {
+        "open": 176,
+        "close": 97
+      },
+      "queryMs": 0.33
+    },
+    {
+      "unit": 0,
+      "codes": [
+        0
+      ],
+      "from": 0,
+      "to": 441,
+      "open": 116798,
+      "close": 82908,
+      "unassigned": {
+        "open": 125,
+        "close": 73
+      },
+      "queryMs": 0.04
+    },
+    {
+      "unit": 0,
+      "codes": [
+        9
+      ],
+      "from": 0,
+      "to": 441,
+      "open": 3885,
+      "close": 2528,
+      "unassigned": {
+        "open": 0,
+        "close": 0
+      },
+      "queryMs": 0.03
+    }
+  ]
+}

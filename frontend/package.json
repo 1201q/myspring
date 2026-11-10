@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build:regions": "node scripts/build-region-boundaries.mjs",
+    "build:dongs": "node scripts/build-dong-boundaries.mjs",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",

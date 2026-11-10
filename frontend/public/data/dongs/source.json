@@ -1,0 +1,122 @@
+{
+  "version": "20261001",
+  "commit": "d5d5a821c8de6cc337d47eeca604d7af76271c9b",
+  "source": "https://raw.githubusercontent.com/vuski/admdongkor/d5d5a821c8de6cc337d47eeca604d7af76271c9b/parquet/simplified/emd_20261001_light.parquet",
+  "license": "CC-BY-4.0; upstream SGIS KOGL Type 1 attribution retained",
+  "attribution": "통계청 통계지리정보서비스(SGIS) 행정동 경계 가공: vuski/admdongkor",
+  "modifications": "Split by current province; add administrative dong code, full name and boundary version; retain upstream WGS84 light geometry.",
+  "assets": [
+    {
+      "regionId": "seoul",
+      "filename": "seoul-20261001.geojson",
+      "count": 427,
+      "bytes": 286784,
+      "sha256": "5cf4a9d8cc29864bea1404fdfdfa62a2cc7d813b83aec08f7b0c4b39dae1e87a"
+    },
+    {
+      "regionId": "jeonnamgwangju",
+      "filename": "jeonnamgwangju-20261001.geojson",
+      "count": 393,
+      "bytes": 1078555,
+      "sha256": "85fd28b10fe02313787e9c8b16df8049a26cfed37a16ad7f77299875ca41b525"
+    },
+    {
+      "regionId": "busan",
+      "filename": "busan-20261001.geojson",
+      "count": 206,
+      "bytes": 181158,
+      "sha256": "dca2fd650ea15ff974a26a300aca081f334f0510f07c5ac8f1ad756d5b7e05ff"
+    },
+    {
+      "regionId": "daegu",
+      "filename": "daegu-20261001.geojson",
+      "count": 150,
+      "bytes": 156711,
+      "sha256": "68ad592a4f41f44d81a9b1e0a955f770f0914d49eb9c53e2d70d36e07066bfd4"
+    },
+    {
+      "regionId": "incheon",
+      "filename": "incheon-20261001.geojson",
+      "count": 158,
+      "bytes": 183221,
+      "sha256": "9352fa4db3fa38c982df38cc15b7b00155a3b11db87cd8888311a42616ba2ae0"
+    },
+    {
+      "regionId": "daejeon",
+      "filename": "daejeon-20261001.geojson",
+      "count": 82,
+      "bytes": 83122,
+      "sha256": "19d0be029e052b9c9640a2e6ea7c288d3405abea37902921dabfd4751408a48d"
+    },
+    {
+      "regionId": "ulsan",
+      "filename": "ulsan-20261001.geojson",
+      "count": 55,
+      "bytes": 89075,
+      "sha256": "7fede98c956bec4094b2a6f00a6f046b7cd9a7aafc73e8cf480c0de08d4e514f"
+    },
+    {
+      "regionId": "sejong",
+      "filename": "sejong-20261001.geojson",
+      "count": 25,
+      "bytes": 43906,
+      "sha256": "efafd0671a8b883d175f92d0547d45fa54b1d6efddaddf8db766b260617cf9d4"
+    },
+    {
+      "regionId": "gyeonggi",
+      "filename": "gyeonggi-20261001.geojson",
+      "count": 602,
+      "bytes": 899291,
+      "sha256": "f5fc01d7d96097d2bf44400143c93b42a32cc860c370636bb3d4f15428bb33eb"
+    },
+    {
+      "regionId": "chungbuk",
+      "filename": "chungbuk-20261001.geojson",
+      "count": 153,
+      "bytes": 423796,
+      "sha256": "8b595059a97c04b878ba7b8cbe2eb4bd98289b64aa103988d1436ecca2ebbdf9"
+    },
+    {
+      "regionId": "chungnam",
+      "filename": "chungnam-20261001.geojson",
+      "count": 208,
+      "bytes": 555659,
+      "sha256": "39b42cf49594b7d1cdff845f7d66a2f2d1bce0ca4f3dc98b33ed2b126c80062c"
+    },
+    {
+      "regionId": "gyeongbuk",
+      "filename": "gyeongbuk-20261001.geojson",
+      "count": 321,
+      "bytes": 970764,
+      "sha256": "7f67a9524f8a8c656ad360cead2af2dce13a1960185e3e1cf9f3221ecf657ae3"
+    },
+    {
+      "regionId": "gyeongnam",
+      "filename": "gyeongnam-20261001.geojson",
+      "count": 305,
+      "bytes": 767556,
+      "sha256": "41fd1624d27a047df17013a4fdfe1ba8e5bd8e96cbdb2ed67f9bea6f04113577"
+    },
+    {
+      "regionId": "jeju",
+      "filename": "jeju-20261001.geojson",
+      "count": 43,
+      "bytes": 106160,
+      "sha256": "65e97a003c2c3c63c273ed3d1ee743b01ba341371a1edcbcf3d4980e1963b67c"
+    },
+    {
+      "regionId": "gangwon",
+      "filename": "gangwon-20261001.geojson",
+      "count": 188,
+      "bytes": 635891,
+      "sha256": "9db093d28a72d0d16b172869bc268360084be53311c51fcf564e8f45715c0136"
+    },
+    {
+      "regionId": "jeonbuk",
+      "filename": "jeonbuk-20261001.geojson",
+      "count": 243,
+      "bytes": 554973,
+      "sha256": "d0e7c67700260ea863bebb5103df32983bba4bb276cf62175981cbd2948a85e5"
+    }
+  ]
+}

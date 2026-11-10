@@ -11,6 +11,9 @@ import { loadRegionBoundaries } from "./regionBoundaries";
 import type { RegionBoundaries, RegionProperties } from "./regionBoundaries";
 import { groupLocations, locationKey } from "./locationGroups";
 import type { LocationGroup } from "./locationGroups";
+import { useDongStatistics } from "./useDongStatistics";
+import { dongColor } from "./dongStatistics";
+import type { DongProperties } from "./dongStatistics";
 import "./SeoulPlayback.css";
 import "./NationalPlayback.css";
 
@@ -41,6 +44,8 @@ export default function NationalPlayback({ map, onRegionChange, showLocationCoun
   const [unit, setUnit] = useState(1);
   const [speed, setSpeed] = useState(1);
   const [playing, setPlaying] = useState(false);
+  const [showDongs, setShowDongs] = useState(false);
+  const [selectedDong, setSelectedDong] = useState<{ code: string; regionId: string } | null>(null);
   const overlay = useRef<MapboxOverlay | null>(null);
   const click = useRef(onSelectId);
   const locationClick = useRef(onSelectLocation);
@@ -116,6 +121,12 @@ export default function NationalPlayback({ map, onRegionChange, showLocationCoun
   const currentMonth = Math.max(min, Math.min(max, month ?? min));
   const from = unit === 0 ? min : Math.max(min, currentMonth - unit + 1);
   const codes = useMemo(() => data?.manifest.categories.filter(c => !category || c.id === category).map(c => c.code) ?? [], [data, category]);
+  const dong = useDongStatistics(showDongs, data, from, currentMonth, codes);
+  const dongFeatures = useMemo(() => dong.boundaries && dong.result ? ({ ...dong.boundaries,
+    features: dong.boundaries.features.map((feature, index) => ({ ...feature,
+      properties: { ...feature.properties, ...dong.result!.counts[index] } })) }) : null, [dong.boundaries, dong.result]);
+  const dongScale = useMemo(() => dong.result ? Math.max(1, ...dong.result.counts.map(c => Math.abs(c.open - c.close))) : 1, [dong.result]);
+  const dongSelection = selectedDong?.regionId === regionId ? dongFeatures?.features.find(f => f.properties.code === selectedDong.code)?.properties : null;
   const locations = useMemo(() => data ? groupLocations([data.open, data.close], from, currentMonth, codes) : new Map<string, LocationGroup>(), [data, from, currentMonth, codes]);
   const overlappingLocations = useMemo(() => [...locations.values()].filter(group => group.ids.length > 1), [locations]);
   const binaryData = useMemo(() => data && [data.open, data.close].map(points => ({ length: points.length, attributes: {
@@ -130,6 +141,13 @@ export default function NationalPlayback({ map, onRegionChange, showLocationCoun
       getLineWidth: feature => feature.properties.id === hoveredRegionId ? 2.5 : 0,
       lineWidthUnits: "pixels", updateTriggers: { getFillColor: [hoveredRegionId], getLineColor: [hoveredRegionId], getLineWidth: [hoveredRegionId] },
       onClick: info => { if (info.object) { changeRegion(info.object.properties.id); return true; } return false; },
+    }) : null;
+    const dongLayer = dongFeatures ? new GeoJsonLayer<DongProperties & { open: number; close: number }>({
+      id: "dong-net-change", data: dongFeatures, pickable: true, filled: true, stroked: true,
+      getFillColor: feature => dongColor(feature.properties, dongScale),
+      getLineColor: [146, 165, 174, 130], getLineWidth: 0.7, lineWidthUnits: "pixels",
+      updateTriggers: { getFillColor: [dongScale] },
+      onClick: info => { if (!info.object) return false; setPlaying(false); setSelectedDong({ code: info.object.properties.code, regionId }); return true; },
     }) : null;
     overlay.current.setProps({
       onHover: info => {
@@ -151,12 +169,18 @@ export default function NationalPlayback({ map, onRegionChange, showLocationCoun
         if (map) map.getCanvas().style.cursor = info.picked ? "pointer" : "";
       },
       getTooltip: info => {
+        if (info.layer?.id === "dong-net-change" && info.object) {
+          const p = info.object.properties;
+          const delta = p.open - p.close;
+          return { text: `${p.fullName}\n${format(from)} ~ ${format(currentMonth)}\n개업 ${p.open.toLocaleString()}건 · 폐업 ${p.close.toLocaleString()}건\n증감 ${delta > 0 ? "+" : ""}${delta.toLocaleString()}건${p.open + p.close === 0 ? " · 기간 내 기록 없음" : ""}`,
+            style: { fontSize: "13px", backgroundColor: "#1d2b30", color: "#f0faf6", borderRadius: "8px", padding: "10px 12px" } };
+        }
         const feature = info.object as Feature<Polygon | MultiPolygon, RegionProperties> | undefined;
         if (!feature?.properties?.id || feature.properties.id === regionId) return null;
         return { text: feature.properties.name + " · 클릭하여 재생 지역 변경",
           style: { fontSize: "12px", backgroundColor: "#1d2b30", color: "#f0faf6", borderRadius: "8px", padding: "8px 10px" } };
       },
-      layers: [regionLayer, ...(data && binaryData ? [data.open, data.close].map((points, kind) => new ScatterplotLayer({
+      layers: [regionLayer, dongLayer, ...(data && binaryData ? [data.open, data.close].map((points, kind) => new ScatterplotLayer({
       id: `region-events-${regionId}-${kind}`, data: binaryData[kind], extensions, filterRange: [from - 0.5, currentMonth + 0.5], filterCategories: codes,
       pickable: true, filled: true, stroked: kind === 1, getRadius: 16, radiusMinPixels: 1.5, radiusMaxPixels: 6,
       getFillColor: (kind === 0 ? [65, 207, 182, 170] : [0, 0, 0, 0]) as Color, getLineColor: [244, 166, 107, 210] as Color, lineWidthUnits: "pixels", getLineWidth: 1.3, lineWidthMinPixels: 1.3, lineWidthMaxPixels: 1.3,
@@ -169,7 +193,7 @@ export default function NationalPlayback({ map, onRegionChange, showLocationCoun
       fontFamily: "sans-serif", fontWeight: "bold",
       onClick: info => { if (!info.object) return false; setPlaying(false); locationClick.current(info.object.ids, info.object.position, { x: info.x, y: info.y }); return true; },
     })] });
-  }, [data, binaryData, extensions, from, currentMonth, codes, map, regionId, selectableBoundaries, hoveredRegionId, changeRegion, locations, overlappingLocations, showLocationCounts]);
+  }, [data, binaryData, extensions, from, currentMonth, codes, map, regionId, selectableBoundaries, hoveredRegionId, changeRegion, locations, overlappingLocations, showLocationCounts, dongFeatures, dongScale]);
   useEffect(() => { onClearSelection(); }, [currentMonth, unit, category, regionId, onClearSelection]);
   useEffect(() => {
     if (!playing || !data) return;
@@ -197,6 +221,18 @@ export default function NationalPlayback({ map, onRegionChange, showLocationCoun
       <small>점은 인허가 · 고리는 폐업 · {name} 전체 집계{unit === 0 ? " · 누적 신고 건수" : ""}</small>
     </aside>}
     <section className="playback national-playback is-active" aria-label="지역별 시간 재생">
+        <button type="button" className="dong-toggle" aria-pressed={showDongs} onClick={() => setShowDongs(value => !value)}>동별 개폐업 증감 {showDongs ? "켜짐" : "꺼짐"}</button>
+        {showDongs && <div className="dong-legend" aria-label="동별 개폐업 증감 범례">
+          <span><i className="dong-positive" />개업 우세</span><span><i className="dong-negative" />폐업 우세</span><span><i className="dong-balanced" />동일</span><span><i className="dong-empty" />기간 내 기록 없음</span>
+          <details><summary>집계 기준 · 미배정 건수</summary>
+            <small>개업 − 폐업 · 차이가 클수록 진하게 · 동에 마우스를 올리거나 터치해 건수 확인</small>
+            <small>2026-10-01 행정동 경계 기준 · 읍·면 포함 · 과거 경계 복원 아님</small>
+            <small>경계: SGIS · 가공: vuski/admdongkor (CC BY 4.0) · 단순화 경계로 경계 부근 오차 가능</small>
+            {dong.result && <small>이 기간 동 미배정: 개업 {dong.result.unassigned.open.toLocaleString()}건 · 폐업 {dong.result.unassigned.close.toLocaleString()}건 (현재 재생 자료 중)</small>}
+          </details>
+          {dongSelection && <div className="dong-selection" role="status"><strong>{dongSelection.fullName}</strong> · 개업 {dongSelection.open.toLocaleString()}건 · 폐업 {dongSelection.close.toLocaleString()}건 · 증감 {(dongSelection.open - dongSelection.close).toLocaleString()}건 <button type="button" aria-label="동별 상세 닫기" onClick={() => setSelectedDong(null)}>×</button></div>}
+          {dong.error ? <div role="alert">{dong.error} <button type="button" onClick={dong.retry}>동별 집계 재시도</button></div> : !dong.result && <span role="status">{data ? "행정동 경계와 동별 집계를 준비하는 중…" : "지역 재생 데이터 준비 후 동별로 집계합니다."}</span>}
+        </div>}
         <div className="region-selection-feedback" role="status"><strong>{name} 선택됨</strong><span>{hoveredRegion && hoveredRegion.id !== regionId ? `${hoveredRegion.name} · 클릭하면 이 지역으로 재생 지역을 변경합니다.` : boundaries ? "지도에서 다른 지역을 클릭해 재생 지역을 바꿀 수 있습니다." : "지역 선택 경계를 준비하는 중…"}</span></div>
         {boundaryError && <div className="playback-status" role="alert"><span>{boundaryError} 아래 지역 목록으로 선택할 수 있습니다.</span><button onClick={() => setBoundaryAttempt(value => value + 1)}>경계 다시 불러오기</button></div>}
         {!!regions.length && <label>재생 지역<select aria-label="재생 지역" value={regionId} onChange={e => changeRegion(e.target.value)}>
