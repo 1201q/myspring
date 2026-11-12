@@ -22,5 +22,4 @@ public record SeoulRestaurantRow(
     @JsonProperty("Y") String y,
     @JsonProperty("LASTMODTS") String lastModifiedAt,
     @JsonProperty("UPDATEGBN") String updateType,
-    @JsonProperty("UPDATEDT") String updatedAt
-) {}
+    @JsonProperty("UPDATEDT") String updatedAt) {}

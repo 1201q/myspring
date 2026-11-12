@@ -1,11 +1,9 @@
 package com.example.permitmap.common.error;
 
-import com.example.permitmap.restaurant.exception.RestaurantNotFoundException;
 import com.example.permitmap.business.exception.BusinessNotFoundException;
 import com.example.permitmap.business.exception.InvalidBusinessQueryException;
-
+import com.example.permitmap.restaurant.exception.RestaurantNotFoundException;
 import org.springframework.http.HttpStatus;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -23,29 +21,28 @@ public class GlobalExceptionHandler {
   }
 
   @ExceptionHandler(InvalidBusinessQueryException.class)
-  public ResponseEntity<ErrorResponse> handleBusinessQuery(InvalidBusinessQueryException exception) {
-    return ResponseEntity.badRequest().body(new ErrorResponse("INVALID_QUERY", exception.getMessage()));
+  public ResponseEntity<ErrorResponse> handleBusinessQuery(
+      InvalidBusinessQueryException exception) {
+    return ResponseEntity.badRequest()
+        .body(new ErrorResponse("INVALID_QUERY", exception.getMessage()));
   }
 
   @ExceptionHandler(MethodArgumentTypeMismatchException.class)
-  public ResponseEntity<ErrorResponse> handleQueryType(MethodArgumentTypeMismatchException exception) {
-    return ResponseEntity.badRequest().body(new ErrorResponse("INVALID_QUERY",
-        "요청 값의 형식이 올바르지 않습니다: " + exception.getName()));
+  public ResponseEntity<ErrorResponse> handleQueryType(
+      MethodArgumentTypeMismatchException exception) {
+    return ResponseEntity.badRequest()
+        .body(new ErrorResponse("INVALID_QUERY", "요청 값의 형식이 올바르지 않습니다: " + exception.getName()));
   }
 
   @ExceptionHandler(RestaurantNotFoundException.class)
   public ResponseEntity<ErrorResponse> handleNotFound(RestaurantNotFoundException exception) {
-    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse("RESTAURANT_NOT_FOUND",
-        exception.getMessage()));
+    return ResponseEntity.status(HttpStatus.NOT_FOUND)
+        .body(new ErrorResponse("RESTAURANT_NOT_FOUND", exception.getMessage()));
   }
 
   @ExceptionHandler(MethodArgumentNotValidException.class)
-  public ResponseEntity<ErrorResponse> handleValidation(
-      MethodArgumentNotValidException exception) {
-    return ResponseEntity.badRequest().body(new ErrorResponse(
-        "INVALID_INPUT",
-        "이름, 주소, 카테고리는 공백일 수 없습니다."));
-
+  public ResponseEntity<ErrorResponse> handleValidation(MethodArgumentNotValidException exception) {
+    return ResponseEntity.badRequest()
+        .body(new ErrorResponse("INVALID_INPUT", "이름, 주소, 카테고리는 공백일 수 없습니다."));
   }
-
 }

@@ -1,12 +1,6 @@
 package com.example.permitmap.business;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.time.ZoneOffset;
-
 import com.example.permitmap.ingestion.RestaurantValidationReport.RowResult;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,116 +8,177 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 
 @Entity
-@Table(name = "permit_businesses", uniqueConstraints = @UniqueConstraint(
-    name = "uk_permit_business_source", columnNames = {"source_dataset", "management_number"}))
+@Table(
+    name = "permit_businesses",
+    uniqueConstraints =
+        @UniqueConstraint(
+            name = "uk_permit_business_source",
+            columnNames = {"source_dataset", "management_number"}))
 public class PermitBusiness {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    @Column(nullable = false, columnDefinition = "text")
-    private String sourceDataset;
+  @Column(nullable = false, columnDefinition = "text")
+  private String sourceDataset;
 
-    @Column(nullable = false, columnDefinition = "text")
-    private String managementNumber;
+  @Column(nullable = false, columnDefinition = "text")
+  private String managementNumber;
 
-    @Column(nullable = false, columnDefinition = "text")
-    private String municipalityCode;
+  @Column(nullable = false, columnDefinition = "text")
+  private String municipalityCode;
 
-    @Column(nullable = false, columnDefinition = "text")
-    private String name;
+  @Column(nullable = false, columnDefinition = "text")
+  private String name;
 
-    @Column(columnDefinition = "text")
-    private String lotAddress;
+  @Column(columnDefinition = "text")
+  private String lotAddress;
 
-    @Column(columnDefinition = "text")
-    private String roadAddress;
+  @Column(columnDefinition = "text")
+  private String roadAddress;
 
-    @Column(columnDefinition = "text")
-    private String businessType;
+  @Column(columnDefinition = "text")
+  private String businessType;
 
-    @Column(nullable = false)
-    private LocalDate permittedAt;
+  @Column(nullable = false)
+  private LocalDate permittedAt;
 
-    private LocalDate closedAt;
+  private LocalDate closedAt;
 
-    @Column(columnDefinition = "text")
-    private String statusCode;
+  @Column(columnDefinition = "text")
+  private String statusCode;
 
-    @Column(columnDefinition = "text")
-    private String detailStatusCode;
+  @Column(columnDefinition = "text")
+  private String detailStatusCode;
 
-    @Column(name = "source_x", precision = 38, scale = 20)
-    private BigDecimal sourceX;
+  @Column(name = "source_x", precision = 38, scale = 20)
+  private BigDecimal sourceX;
 
-    @Column(name = "source_y", precision = 38, scale = 20)
-    private BigDecimal sourceY;
+  @Column(name = "source_y", precision = 38, scale = 20)
+  private BigDecimal sourceY;
 
-    @Column(nullable = false)
-    private Integer sourceCrs;
+  @Column(nullable = false)
+  private Integer sourceCrs;
 
-    @Column(nullable = false, columnDefinition = "text")
-    private String sourceJson;
+  @Column(nullable = false, columnDefinition = "text")
+  private String sourceJson;
 
-    @Column(nullable = false, columnDefinition = "text")
-    private String issuesJson;
+  @Column(nullable = false, columnDefinition = "text")
+  private String issuesJson;
 
-    @Column(nullable = false)
-    private OffsetDateTime lastImportedAt;
+  @Column(nullable = false)
+  private OffsetDateTime lastImportedAt;
 
-    protected PermitBusiness() {}
+  protected PermitBusiness() {}
 
-    public PermitBusiness(String sourceDataset, RowResult row, String sourceJson, String issuesJson) {
-        this.sourceDataset = sourceDataset;
-        this.managementNumber = row.source().managementNumber().strip();
-        applyRow(row, sourceJson, issuesJson);
-    }
+  public PermitBusiness(String sourceDataset, RowResult row, String sourceJson, String issuesJson) {
+    this.sourceDataset = sourceDataset;
+    this.managementNumber = row.source().managementNumber().strip();
+    applyRow(row, sourceJson, issuesJson);
+  }
 
-    public boolean hasSameContent(String sourceJson, String issuesJson) {
-        return this.sourceJson.equals(sourceJson) && this.issuesJson.equals(issuesJson);
-    }
+  public boolean hasSameContent(String sourceJson, String issuesJson) {
+    return this.sourceJson.equals(sourceJson) && this.issuesJson.equals(issuesJson);
+  }
 
-    public void refresh(RowResult row, String sourceJson, String issuesJson) {
-        applyRow(row, sourceJson, issuesJson);
-    }
+  public void refresh(RowResult row, String sourceJson, String issuesJson) {
+    applyRow(row, sourceJson, issuesJson);
+  }
 
-    private void applyRow(RowResult row, String sourceJson, String issuesJson) {
-        this.municipalityCode = row.source().municipalityCode().strip();
-        this.name = row.source().businessName().strip();
-        this.lotAddress = row.source().lotAddress();
-        this.roadAddress = row.source().roadAddress();
-        this.businessType = row.source().businessType();
-        this.permittedAt = row.permittedAt();
-        this.closedAt = row.closedAt();
-        this.statusCode = row.source().statusCode();
-        this.detailStatusCode = row.source().detailStatusCode();
-        this.sourceX = row.sourceX();
-        this.sourceY = row.sourceY();
-        this.sourceCrs = 5174;
-        this.sourceJson = sourceJson;
-        this.issuesJson = issuesJson;
-        this.lastImportedAt = OffsetDateTime.now(ZoneOffset.UTC);
-    }
+  private void applyRow(RowResult row, String sourceJson, String issuesJson) {
+    this.municipalityCode = row.source().municipalityCode().strip();
+    this.name = row.source().businessName().strip();
+    this.lotAddress = row.source().lotAddress();
+    this.roadAddress = row.source().roadAddress();
+    this.businessType = row.source().businessType();
+    this.permittedAt = row.permittedAt();
+    this.closedAt = row.closedAt();
+    this.statusCode = row.source().statusCode();
+    this.detailStatusCode = row.source().detailStatusCode();
+    this.sourceX = row.sourceX();
+    this.sourceY = row.sourceY();
+    this.sourceCrs = 5174;
+    this.sourceJson = sourceJson;
+    this.issuesJson = issuesJson;
+    this.lastImportedAt = OffsetDateTime.now(ZoneOffset.UTC);
+  }
 
-    public Long getId() { return id; }
-    public String getName() { return name; }
-    public String getManagementNumber() { return managementNumber; }
-    public LocalDate getClosedAt() { return closedAt; }
-    public BigDecimal getSourceX() { return sourceX; }
-    public BigDecimal getSourceY() { return sourceY; }
-    public Integer getSourceCrs() { return sourceCrs; }
-    public String getSourceJson() { return sourceJson; }
-    public String getIssuesJson() { return issuesJson; }
-    public String getSourceDataset() { return sourceDataset; }
-    public String getMunicipalityCode() { return municipalityCode; }
-    public String getLotAddress() { return lotAddress; }
-    public String getRoadAddress() { return roadAddress; }
-    public String getBusinessType() { return businessType; }
-    public LocalDate getPermittedAt() { return permittedAt; }
-    public String getStatusCode() { return statusCode; }
-    public String getDetailStatusCode() { return detailStatusCode; }
-    public OffsetDateTime getLastImportedAt() { return lastImportedAt; }
+  public Long getId() {
+    return id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public String getManagementNumber() {
+    return managementNumber;
+  }
+
+  public LocalDate getClosedAt() {
+    return closedAt;
+  }
+
+  public BigDecimal getSourceX() {
+    return sourceX;
+  }
+
+  public BigDecimal getSourceY() {
+    return sourceY;
+  }
+
+  public Integer getSourceCrs() {
+    return sourceCrs;
+  }
+
+  public String getSourceJson() {
+    return sourceJson;
+  }
+
+  public String getIssuesJson() {
+    return issuesJson;
+  }
+
+  public String getSourceDataset() {
+    return sourceDataset;
+  }
+
+  public String getMunicipalityCode() {
+    return municipalityCode;
+  }
+
+  public String getLotAddress() {
+    return lotAddress;
+  }
+
+  public String getRoadAddress() {
+    return roadAddress;
+  }
+
+  public String getBusinessType() {
+    return businessType;
+  }
+
+  public LocalDate getPermittedAt() {
+    return permittedAt;
+  }
+
+  public String getStatusCode() {
+    return statusCode;
+  }
+
+  public String getDetailStatusCode() {
+    return detailStatusCode;
+  }
+
+  public OffsetDateTime getLastImportedAt() {
+    return lastImportedAt;
+  }
 }

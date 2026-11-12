@@ -1,8 +1,7 @@
 package com.example.permitmap.restaurant.exception;
 
 public class RestaurantNotFoundException extends RuntimeException {
-  @java.io.Serial
-  private static final long serialVersionUID = 1L;
+  @java.io.Serial private static final long serialVersionUID = 1L;
 
   public RestaurantNotFoundException() {
     // RuntimeException 생성자 호출

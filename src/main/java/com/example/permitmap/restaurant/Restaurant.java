@@ -2,9 +2,9 @@ package com.example.permitmap.restaurant;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.GenerationType;
 
 @Entity
 @Table(name = "restaurants")
@@ -20,9 +20,7 @@ public class Restaurant {
 
   private String category;
 
-  protected Restaurant() {
-
-  }
+  protected Restaurant() {}
 
   public Restaurant(String name, String address, String category) {
     this.name = name;
@@ -51,5 +49,4 @@ public class Restaurant {
   public String getCategory() {
     return category;
   }
-
 }

@@ -1,154 +1,154 @@
 {
-    "categories":  [
-                       {
-                           "id":  "general_restaurants",
-                           "name":  "일반음식점",
-                           "sourceCrs":  5174,
-                           "catalogUrl":  "https://www.data.go.kr/data/15154916/openapi.do",
-                           "catalogTitle":  "행정안전부_식품_일반음식점 조회서비스 | 공공데이터포털",
-                           "documentTextSha256":  "b56d6a19ad7e51358c919be6a6b810bf7c7f97c6877bb103b0cf0d652c1e80dd",
-                           "declaration":  "EPSG:5174",
-                           "verifiedAt":  "2026-11-06T04:18:36.1236253Z"
-                       },
-                       {
-                           "id":  "rest_cafes",
-                           "name":  "휴게음식점",
-                           "sourceCrs":  5174,
-                           "catalogUrl":  "https://www.data.go.kr/data/15154921/openapi.do",
-                           "catalogTitle":  "행정안전부_식품_휴게음식점 조회서비스 | 공공데이터포털",
-                           "documentTextSha256":  "3bb63ee021879c4dcec6e0b175f5d4ca2c95ca8a4a0dbfe9f4a4e2860f828026",
-                           "declaration":  "EPSG:5174",
-                           "verifiedAt":  "2026-11-06T04:18:36.5560904Z"
-                       },
-                       {
-                           "id":  "bakeries",
-                           "name":  "제과점영업",
-                           "sourceCrs":  5174,
-                           "catalogUrl":  "https://www.data.go.kr/data/15155252/openapi.do",
-                           "catalogTitle":  "행정안전부_식품_제과점영업 조회서비스 | 공공데이터포털",
-                           "documentTextSha256":  "f04b29c13e928cb3c914168a85ea16f3b1424288a4e484d462301a1b386ac95c",
-                           "declaration":  "EPSG:5174",
-                           "verifiedAt":  "2026-11-06T04:18:36.9877089Z"
-                       },
-                       {
-                           "id":  "beauty_salons",
-                           "name":  "미용업",
-                           "sourceCrs":  5174,
-                           "catalogUrl":  "https://www.data.go.kr/data/15154918/openapi.do",
-                           "catalogTitle":  "행정안전부_생활_미용업 조회서비스 | 공공데이터포털",
-                           "documentTextSha256":  "e70fb4a729b70475d91d51661b3d4226d94909f219c3b692d6ff297452eb5f19",
-                           "declaration":  "EPSG:5174",
-                           "verifiedAt":  "2026-11-06T04:18:37.3910548Z"
-                       },
-                       {
-                           "id":  "barber_shops",
-                           "name":  "이용업",
-                           "sourceCrs":  5174,
-                           "catalogUrl":  "https://www.data.go.kr/data/15154922/openapi.do",
-                           "catalogTitle":  "행정안전부_생활_이용업 조회서비스 | 공공데이터포털",
-                           "documentTextSha256":  "68c2089a30870ef4bc0f540abad28a48687fa362c89e098c7b3703404ac4f1df",
-                           "declaration":  "EPSG:5174",
-                           "verifiedAt":  "2026-11-06T04:18:37.7785028Z"
-                       },
-                       {
-                           "id":  "laundries",
-                           "name":  "세탁업",
-                           "sourceCrs":  5174,
-                           "catalogUrl":  "https://www.data.go.kr/data/15154927/openapi.do",
-                           "catalogTitle":  "행정안전부_생활_세탁업 조회서비스 | 공공데이터포털",
-                           "documentTextSha256":  "0ff43e90730492af9efb229ccfa44dae3eaeb51e7e7d25a5f8963769e6a5a4be",
-                           "declaration":  "EPSG:5174",
-                           "verifiedAt":  "2026-11-06T04:18:38.1949903Z"
-                       },
-                       {
-                           "id":  "public_baths",
-                           "name":  "목욕장업",
-                           "sourceCrs":  5174,
-                           "catalogUrl":  "https://www.data.go.kr/data/15155091/openapi.do",
-                           "catalogTitle":  "행정안전부_생활_목욕장업 조회서비스 | 공공데이터포털",
-                           "documentTextSha256":  "f4bebc585df457860ad722df7a5522cb44014f683b1e382e6663d5791387a8b9",
-                           "declaration":  "EPSG:5174",
-                           "verifiedAt":  "2026-11-06T04:18:38.6067255Z"
-                       },
-                       {
-                           "id":  "hospitals",
-                           "name":  "병원",
-                           "sourceCrs":  5174,
-                           "catalogUrl":  "https://www.data.go.kr/data/15154458/openapi.do",
-                           "catalogTitle":  "행정안전부_건강_병원 조회서비스 | 공공데이터포털",
-                           "documentTextSha256":  "8d8aed4868915f98e08522b63828159158c5bff2b0403fc954f19398866e87ef",
-                           "declaration":  "EPSG:5174",
-                           "verifiedAt":  "2026-11-06T04:18:39.0381535Z"
-                       },
-                       {
-                           "id":  "clinics",
-                           "name":  "의원",
-                           "sourceCrs":  5174,
-                           "catalogUrl":  "https://www.data.go.kr/data/15154874/openapi.do",
-                           "catalogTitle":  "행정안전부_건강_의원 조회서비스 | 공공데이터포털",
-                           "documentTextSha256":  "3369bb9ad7d7e3672170740a57cb51210ee2cb90126a77fd111336f9b604e28c",
-                           "declaration":  "EPSG:5174",
-                           "verifiedAt":  "2026-11-06T04:18:39.4989597Z"
-                       },
-                       {
-                           "id":  "pharmacies",
-                           "name":  "약국",
-                           "sourceCrs":  5174,
-                           "catalogUrl":  "https://www.data.go.kr/data/15154822/openapi.do",
-                           "catalogTitle":  "행정안전부_건강_약국 조회서비스 | 공공데이터포털",
-                           "documentTextSha256":  "7d884e34c9694fda010ba2614d6646c1aa7b3515840cdce3a54cde4008973bec",
-                           "declaration":  "EPSG:5174",
-                           "verifiedAt":  "2026-11-06T04:18:39.8996212Z"
-                       },
-                       {
-                           "id":  "optical_shops",
-                           "name":  "안경업",
-                           "sourceCrs":  5174,
-                           "catalogUrl":  "https://www.data.go.kr/data/15154899/openapi.do",
-                           "catalogTitle":  "행정안전부_건강_안경업 조회서비스 | 공공데이터포털",
-                           "documentTextSha256":  "8a4cb50f1921c483558ec31b6294816b1f64425a3b710354fbe26b4f4f8e65f4",
-                           "declaration":  "EPSG:5174",
-                           "verifiedAt":  "2026-11-06T04:18:40.3099559Z"
-                       },
-                       {
-                           "id":  "karaoke_rooms",
-                           "name":  "노래연습장업",
-                           "sourceCrs":  5174,
-                           "catalogUrl":  "https://www.data.go.kr/data/15155135/openapi.do",
-                           "catalogTitle":  "행정안전부_문화_노래연습장업 조회서비스 | 공공데이터포털",
-                           "documentTextSha256":  "2ef7397a728cd1b054fe53d721abc411c0db68eb50cb047b34036ec058ac3845",
-                           "declaration":  "EPSG:5174",
-                           "verifiedAt":  "2026-11-06T04:18:40.7138514Z"
-                       },
-                       {
-                           "id":  "fitness_centers",
-                           "name":  "체력단련장업",
-                           "sourceCrs":  5174,
-                           "catalogUrl":  "https://www.data.go.kr/data/15155077/openapi.do",
-                           "catalogTitle":  "행정안전부_생활_체력단련장업 조회서비스 | 공공데이터포털",
-                           "documentTextSha256":  "de2e500639a30b8fb7b81ea23a80fe643185cc56c76f6d9ab1145c8263ae8fb9",
-                           "declaration":  "EPSG:5174",
-                           "verifiedAt":  "2026-11-06T04:18:41.3750359Z"
-                       },
-                       {
-                           "id":  "billiard_halls",
-                           "name":  "당구장업",
-                           "sourceCrs":  5174,
-                           "catalogUrl":  "https://www.data.go.kr/data/15155011/openapi.do",
-                           "catalogTitle":  "행정안전부_생활_당구장업 조회서비스 | 공공데이터포털",
-                           "documentTextSha256":  "98631e815408b2d5fd166a9994144510643a37ca15c0e740b9cdc719f5bbe392",
-                           "declaration":  "EPSG:5174",
-                           "verifiedAt":  "2026-11-06T04:18:41.8215895Z"
-                       },
-                       {
-                           "id":  "lodgings",
-                           "name":  "숙박업",
-                           "sourceCrs":  5174,
-                           "catalogUrl":  "https://www.data.go.kr/data/15155124/openapi.do",
-                           "catalogTitle":  "행정안전부_문화_숙박업 조회서비스 | 공공데이터포털",
-                           "documentTextSha256":  "d808570f7d46aa3286f29238a757e12df963a9a42fb1d2bbae74c6555be65e65",
-                           "declaration":  "EPSG:5174",
-                           "verifiedAt":  "2026-11-06T04:18:42.2305524Z"
-                       }
-                   ]
+  "categories": [
+    {
+      "id": "general_restaurants",
+      "name": "일반음식점",
+      "sourceCrs": 5174,
+      "catalogUrl": "https://www.data.go.kr/data/15154916/openapi.do",
+      "catalogTitle": "행정안전부_식품_일반음식점 조회서비스 | 공공데이터포털",
+      "documentTextSha256": "b56d6a19ad7e51358c919be6a6b810bf7c7f97c6877bb103b0cf0d652c1e80dd",
+      "declaration": "EPSG:5174",
+      "verifiedAt": "2026-11-06T04:18:36.1236253Z"
+    },
+    {
+      "id": "rest_cafes",
+      "name": "휴게음식점",
+      "sourceCrs": 5174,
+      "catalogUrl": "https://www.data.go.kr/data/15154921/openapi.do",
+      "catalogTitle": "행정안전부_식품_휴게음식점 조회서비스 | 공공데이터포털",
+      "documentTextSha256": "3bb63ee021879c4dcec6e0b175f5d4ca2c95ca8a4a0dbfe9f4a4e2860f828026",
+      "declaration": "EPSG:5174",
+      "verifiedAt": "2026-11-06T04:18:36.5560904Z"
+    },
+    {
+      "id": "bakeries",
+      "name": "제과점영업",
+      "sourceCrs": 5174,
+      "catalogUrl": "https://www.data.go.kr/data/15155252/openapi.do",
+      "catalogTitle": "행정안전부_식품_제과점영업 조회서비스 | 공공데이터포털",
+      "documentTextSha256": "f04b29c13e928cb3c914168a85ea16f3b1424288a4e484d462301a1b386ac95c",
+      "declaration": "EPSG:5174",
+      "verifiedAt": "2026-11-06T04:18:36.9877089Z"
+    },
+    {
+      "id": "beauty_salons",
+      "name": "미용업",
+      "sourceCrs": 5174,
+      "catalogUrl": "https://www.data.go.kr/data/15154918/openapi.do",
+      "catalogTitle": "행정안전부_생활_미용업 조회서비스 | 공공데이터포털",
+      "documentTextSha256": "e70fb4a729b70475d91d51661b3d4226d94909f219c3b692d6ff297452eb5f19",
+      "declaration": "EPSG:5174",
+      "verifiedAt": "2026-11-06T04:18:37.3910548Z"
+    },
+    {
+      "id": "barber_shops",
+      "name": "이용업",
+      "sourceCrs": 5174,
+      "catalogUrl": "https://www.data.go.kr/data/15154922/openapi.do",
+      "catalogTitle": "행정안전부_생활_이용업 조회서비스 | 공공데이터포털",
+      "documentTextSha256": "68c2089a30870ef4bc0f540abad28a48687fa362c89e098c7b3703404ac4f1df",
+      "declaration": "EPSG:5174",
+      "verifiedAt": "2026-11-06T04:18:37.7785028Z"
+    },
+    {
+      "id": "laundries",
+      "name": "세탁업",
+      "sourceCrs": 5174,
+      "catalogUrl": "https://www.data.go.kr/data/15154927/openapi.do",
+      "catalogTitle": "행정안전부_생활_세탁업 조회서비스 | 공공데이터포털",
+      "documentTextSha256": "0ff43e90730492af9efb229ccfa44dae3eaeb51e7e7d25a5f8963769e6a5a4be",
+      "declaration": "EPSG:5174",
+      "verifiedAt": "2026-11-06T04:18:38.1949903Z"
+    },
+    {
+      "id": "public_baths",
+      "name": "목욕장업",
+      "sourceCrs": 5174,
+      "catalogUrl": "https://www.data.go.kr/data/15155091/openapi.do",
+      "catalogTitle": "행정안전부_생활_목욕장업 조회서비스 | 공공데이터포털",
+      "documentTextSha256": "f4bebc585df457860ad722df7a5522cb44014f683b1e382e6663d5791387a8b9",
+      "declaration": "EPSG:5174",
+      "verifiedAt": "2026-11-06T04:18:38.6067255Z"
+    },
+    {
+      "id": "hospitals",
+      "name": "병원",
+      "sourceCrs": 5174,
+      "catalogUrl": "https://www.data.go.kr/data/15154458/openapi.do",
+      "catalogTitle": "행정안전부_건강_병원 조회서비스 | 공공데이터포털",
+      "documentTextSha256": "8d8aed4868915f98e08522b63828159158c5bff2b0403fc954f19398866e87ef",
+      "declaration": "EPSG:5174",
+      "verifiedAt": "2026-11-06T04:18:39.0381535Z"
+    },
+    {
+      "id": "clinics",
+      "name": "의원",
+      "sourceCrs": 5174,
+      "catalogUrl": "https://www.data.go.kr/data/15154874/openapi.do",
+      "catalogTitle": "행정안전부_건강_의원 조회서비스 | 공공데이터포털",
+      "documentTextSha256": "3369bb9ad7d7e3672170740a57cb51210ee2cb90126a77fd111336f9b604e28c",
+      "declaration": "EPSG:5174",
+      "verifiedAt": "2026-11-06T04:18:39.4989597Z"
+    },
+    {
+      "id": "pharmacies",
+      "name": "약국",
+      "sourceCrs": 5174,
+      "catalogUrl": "https://www.data.go.kr/data/15154822/openapi.do",
+      "catalogTitle": "행정안전부_건강_약국 조회서비스 | 공공데이터포털",
+      "documentTextSha256": "7d884e34c9694fda010ba2614d6646c1aa7b3515840cdce3a54cde4008973bec",
+      "declaration": "EPSG:5174",
+      "verifiedAt": "2026-11-06T04:18:39.8996212Z"
+    },
+    {
+      "id": "optical_shops",
+      "name": "안경업",
+      "sourceCrs": 5174,
+      "catalogUrl": "https://www.data.go.kr/data/15154899/openapi.do",
+      "catalogTitle": "행정안전부_건강_안경업 조회서비스 | 공공데이터포털",
+      "documentTextSha256": "8a4cb50f1921c483558ec31b6294816b1f64425a3b710354fbe26b4f4f8e65f4",
+      "declaration": "EPSG:5174",
+      "verifiedAt": "2026-11-06T04:18:40.3099559Z"
+    },
+    {
+      "id": "karaoke_rooms",
+      "name": "노래연습장업",
+      "sourceCrs": 5174,
+      "catalogUrl": "https://www.data.go.kr/data/15155135/openapi.do",
+      "catalogTitle": "행정안전부_문화_노래연습장업 조회서비스 | 공공데이터포털",
+      "documentTextSha256": "2ef7397a728cd1b054fe53d721abc411c0db68eb50cb047b34036ec058ac3845",
+      "declaration": "EPSG:5174",
+      "verifiedAt": "2026-11-06T04:18:40.7138514Z"
+    },
+    {
+      "id": "fitness_centers",
+      "name": "체력단련장업",
+      "sourceCrs": 5174,
+      "catalogUrl": "https://www.data.go.kr/data/15155077/openapi.do",
+      "catalogTitle": "행정안전부_생활_체력단련장업 조회서비스 | 공공데이터포털",
+      "documentTextSha256": "de2e500639a30b8fb7b81ea23a80fe643185cc56c76f6d9ab1145c8263ae8fb9",
+      "declaration": "EPSG:5174",
+      "verifiedAt": "2026-11-06T04:18:41.3750359Z"
+    },
+    {
+      "id": "billiard_halls",
+      "name": "당구장업",
+      "sourceCrs": 5174,
+      "catalogUrl": "https://www.data.go.kr/data/15155011/openapi.do",
+      "catalogTitle": "행정안전부_생활_당구장업 조회서비스 | 공공데이터포털",
+      "documentTextSha256": "98631e815408b2d5fd166a9994144510643a37ca15c0e740b9cdc719f5bbe392",
+      "declaration": "EPSG:5174",
+      "verifiedAt": "2026-11-06T04:18:41.8215895Z"
+    },
+    {
+      "id": "lodgings",
+      "name": "숙박업",
+      "sourceCrs": 5174,
+      "catalogUrl": "https://www.data.go.kr/data/15155124/openapi.do",
+      "catalogTitle": "행정안전부_문화_숙박업 조회서비스 | 공공데이터포털",
+      "documentTextSha256": "d808570f7d46aa3286f29238a757e12df963a9a42fb1d2bbae74c6555be65e65",
+      "declaration": "EPSG:5174",
+      "verifiedAt": "2026-11-06T04:18:42.2305524Z"
+    }
+  ]
 }
