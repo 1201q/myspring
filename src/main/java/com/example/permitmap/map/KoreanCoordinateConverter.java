@@ -15,10 +15,9 @@ public class KoreanCoordinateConverter {
   // 보정 원점은 0이 아니므로 EPSG:5191의 이동량을 towgs84에 그대로 넣으면 안 된다.
   // 유도식과 독립 PROJ 기준값은 docs/coordinate-conversion.md 참고.
   private static final String SOURCE_DEFINITION =
-      "+proj=tmerc +lat_0=38 +lon_0=127.002890277778 +k=1 "
-          + "+x_0=200000 +y_0=500000 +ellps=bessel "
-          + "+towgs84=-114.61998513899744,475.96296987030655,675.0183286857791,1.162,-2.347,-1.592,6.342 "
-          + "+units=m +no_defs";
+      "+proj=tmerc +lat_0=38 +lon_0=127.002890277778 +k=1 +x_0=200000 +y_0=500000 +ellps=bessel"
+          + " +towgs84=-114.61998513899744,475.96296987030655,675.0183286857791,1.162,-2.347,-1.592,6.342"
+          + " +units=m +no_defs";
 
   private final CoordinateTransform transform;
 

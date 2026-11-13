@@ -44,6 +44,13 @@ ssh -N -o ExitOnForwardFailure=yes -o ServerAliveInterval=30 -L 127.0.0.1:15432:
 .\gradlew.bat bootRun --args='--server.port=8081'
 ```
 
+## Swagger API 문서
+
+서버 실행 후 [Swagger UI](http://localhost:8080/swagger-ui/index.html)에서 API 목록과 요청·응답 구조를 확인하고 `Try it out`으로 요청할 수 있습니다.
+OpenAPI JSON 명세는 [여기](http://localhost:8080/v3/api-docs)에서 확인합니다. 서버 포트를 변경했다면 문서 주소도 같은 포트로 변경합니다.
+
+문서는 Controller에서 자동 생성됩니다. `POST`, `PUT`, `DELETE`를 실행하면 연결된 DB의 실제 데이터가 변경됩니다.
+
 ## 테스트와 빌드
 
 ```powershell
