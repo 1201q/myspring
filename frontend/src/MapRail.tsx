@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Map as LibreMap } from "maplibre-gl";
-import { LocateFixed, Minus, Moon, Plus, Sun } from "lucide-react";
+import { Layers, LocateFixed, Minus, Moon, Plus, Sun } from "lucide-react";
 import type { Theme } from "./theme";
 import "./MapRail.css";
 
@@ -9,10 +9,14 @@ type Props = {
   theme: Theme;
   onToggleTheme: () => void;
   regionBounds: [number, number, number, number] | null;
+  /** True while any dock layer (동별 증감, 지하철) is on. */
+  layersActive: boolean;
+  sheetOpen: boolean;
+  onToggleSheet: () => void;
 };
 
-/** Top-right tool rail: theme on top, then zoom in · zoom out · fit the playback region. */
-export default function MapRail({ map, theme, onToggleTheme, regionBounds }: Props) {
+/** Top-right tool rail: layers and theme on top, then zoom in · zoom out · fit the playback region. */
+export default function MapRail({ map, theme, onToggleTheme, regionBounds, layersActive, sheetOpen, onToggleSheet }: Props) {
   const [zoom, setZoom] = useState(() => map?.getZoom() ?? 10);
   const [limits, setLimits] = useState({ min: 0, max: 24 });
   useEffect(() => {
@@ -32,6 +36,18 @@ export default function MapRail({ map, theme, onToggleTheme, regionBounds }: Pro
   return (
     <div className="rail-stack">
       <div className="rail dn-glass" role="toolbar" aria-orientation="vertical" aria-label="지도 표시">
+        <button
+          type="button"
+          className={`rail-btn rail-layers${layersActive || sheetOpen ? " is-active" : ""}`}
+          aria-label="지도 레이어"
+          aria-haspopup="dialog"
+          aria-expanded={sheetOpen}
+          aria-controls={sheetOpen ? "layer-sheet" : undefined}
+          data-tip={sheetOpen ? undefined : "지도 레이어"}
+          onClick={onToggleSheet}
+        >
+          <Layers aria-hidden="true" className="rail-ico-lg" />
+        </button>
         <button type="button" className="rail-btn" aria-label={nextTheme} data-tip={nextTheme} onClick={onToggleTheme}>
           {theme === "dark" ? <Moon aria-hidden="true" /> : <Sun aria-hidden="true" />}
         </button>

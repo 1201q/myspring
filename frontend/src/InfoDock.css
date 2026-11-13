@@ -1,0 +1,167 @@
+/* Bottom-right info dock. See the design system's InfoDock component. */
+.dock {
+  position: absolute;
+  z-index: var(--z-chrome);
+  right: var(--space-4);
+  bottom: calc(var(--space-4) + 60px + var(--space-4));
+  width: var(--dock-w);
+  max-width: calc(100% - 32px);
+  max-height: calc(100dvh - 92px - 230px);
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-3);
+  border-radius: var(--radius-lg);
+  font-size: 12px;
+  animation: dock-in 0.16s ease-out;
+}
+@keyframes dock-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dock {
+    animation-name: dock-fade;
+  }
+  @keyframes dock-fade {
+    from {
+      opacity: 0;
+    }
+  }
+}
+.dock-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: var(--space-3);
+}
+.dock-tabs {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  border-radius: var(--radius-pill);
+  background: var(--fill-hover);
+}
+.dock-tabs button {
+  height: var(--control-sm);
+  padding: 0 var(--space-3);
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--ink-muted);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.dock-tabs button:hover {
+  color: var(--ink);
+}
+.dock-tabs button[aria-selected="true"] {
+  background: var(--selected);
+  color: var(--on-selected);
+}
+.dock-close {
+  width: 28px;
+  height: 28px;
+  margin-left: auto;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--ink-muted);
+}
+.dock-close svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 1.75;
+}
+.dock-close:hover {
+  background: var(--fill-hover);
+  color: var(--ink);
+}
+.dock-body {
+  min-height: 0;
+  overflow: auto;
+}
+
+/* Shared pieces for dock content */
+.dock-hint {
+  margin: var(--space-3) 0 0;
+  padding: 10px var(--space-3);
+  border-radius: var(--radius-md);
+  background: var(--fill-hover);
+  font-size: 12px;
+  line-height: 17px;
+  color: var(--ink-muted);
+}
+.dock-note {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: var(--space-3);
+  font-size: 11px;
+  line-height: 15px;
+  color: var(--ink-subtle);
+}
+.dock-note svg {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  stroke-width: 1.75;
+}
+.dock-note button {
+  flex: none;
+  margin-left: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink-muted);
+  font: inherit;
+  font-weight: 600;
+}
+.dock-note button:hover {
+  color: var(--ink);
+}
+.dock-error {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: var(--space-3);
+  color: var(--danger);
+  font-weight: 600;
+}
+.dock-error button {
+  flex: none;
+  height: 26px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--fill-pressed);
+  color: var(--ink);
+  font: inherit;
+  font-size: 11px;
+  font-weight: 650;
+}
+
+@media (max-width: 900px) {
+  /* The playback bar is two rows (about 118px) here. */
+  .dock {
+    bottom: calc(var(--space-4) + 118px + var(--space-3));
+    max-height: calc(100dvh - 150px - 240px);
+  }
+}
+@media (max-width: 760px) {
+  .dock {
+    left: var(--space-3);
+    right: var(--space-3);
+    bottom: calc(var(--space-3) + 118px + var(--space-2));
+    width: auto;
+    max-width: none;
+    /* Stay below the ranking panel (top band ≈ 300px) until it collapses on mobile. */
+    max-height: calc(100dvh - 138px - 300px);
+  }
+}

@@ -1,67 +1,9 @@
-/* Interim dong panel (bottom-right, above the playback bar) and error toasts. */
-.dong-panel {
-  position: absolute;
-  z-index: var(--z-chrome);
-  right: var(--space-4);
-  bottom: calc(var(--space-4) + 60px + var(--space-4));
-  width: var(--dock-w);
-  max-width: calc(100% - 32px);
-  padding: 10px var(--space-3) var(--space-3);
-  border-radius: var(--radius-lg);
-  font-size: 12px;
-}
-.dong-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-}
-.dong-head strong {
-  font-size: 13px;
-  font-weight: 650;
-}
-.dong-panel:has(.dong-switch[aria-checked="false"]) {
-  width: auto;
-  padding-bottom: 10px;
-}
-.dong-panel:has(.dong-switch[aria-checked="false"]) .dong-head {
-  gap: var(--space-3);
-}
-.dong-switch {
-  position: relative;
-  width: 34px;
-  height: 20px;
-  flex: none;
-  padding: 0;
-  border: 0;
-  border-radius: var(--radius-pill);
-  background: var(--fill-pressed);
-  transition: background 0.15s;
-}
-.dong-switch::after {
-  content: "";
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--ink-muted);
-  transition: transform 0.18s, background 0.18s;
-}
-.dong-switch[aria-checked="true"] {
-  background: var(--accent);
-}
-.dong-switch[aria-checked="true"]::after {
-  transform: translateX(14px);
-  background: var(--on-accent);
-}
+/* 동별 증감 content inside the info dock, and error toasts. */
 .dong-ramp {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 2px;
   height: 10px;
-  margin-top: var(--space-3);
 }
 .dong-ramp i {
   border-radius: 3px;
@@ -144,25 +86,6 @@
 .dong-focus-nums .c {
   color: var(--close-ink);
 }
-.dong-hint {
-  margin: var(--space-3) 0 0;
-  padding: 10px var(--space-3);
-  border-radius: var(--radius-md);
-  background: var(--fill-hover);
-  font-size: 12px;
-  line-height: 17px;
-  color: var(--ink-muted);
-}
-.dong-error {
-  margin-top: var(--space-3);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  color: var(--danger);
-  font-weight: 600;
-}
-.dong-error button,
 .toast button {
   flex: none;
   height: 26px;
@@ -225,18 +148,7 @@
   color: var(--ink);
 }
 
-@media (max-width: 900px) {
-  /* The playback bar is two rows (about 118px) here. */
-  .dong-panel {
-    bottom: calc(var(--space-4) + 118px + var(--space-3));
-  }
-}
 @media (max-width: 760px) {
-  .dong-panel {
-    right: var(--space-3);
-    bottom: calc(var(--space-3) + 118px + var(--space-2));
-    max-width: calc(100% - 24px);
-  }
   .toasts {
     top: calc(var(--space-3) + var(--control-lg) + var(--space-2));
   }

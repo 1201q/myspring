@@ -9,6 +9,10 @@ import LocationRecords from "./LocationRecords";
 import PlaybackBoundary from "./PlaybackBoundary";
 import SubwayOverlay from "./SubwayOverlay";
 import MapRail from "./MapRail";
+import LayerSheet from "./LayerSheet";
+import InfoDock from "./InfoDock";
+import { DEFAULT_LAYERS, DOCK_KEYS } from "./layers";
+import type { DockKey, LayerKey, LayerState } from "./layers";
 import { MAP_PALETTE } from "./theme";
 import type { Theme } from "./theme";
 
@@ -49,6 +53,21 @@ export default function App() {
   const [playbackRegionVersion, setPlaybackRegionVersion] = useState(0);
   const [playbackRegionId, setPlaybackRegionId] = useState("seoul");
   const [regionBounds, setRegionBounds] = useState<[number, number, number, number] | null>(null);
+  // Layers, the layer sheet and the info dock. The dock shows one tab per dock layer that is on;
+  // closing it hides the dock until a layer is switched on again.
+  const [layers, setLayers] = useState<LayerState>(DEFAULT_LAYERS);
+  const [sheetOpen, setSheetOpen] = useState(false);
+  const [dockTab, setDockTab] = useState<DockKey | null>(null);
+  const [dockHidden, setDockHidden] = useState(false);
+  const [dockBody, setDockBody] = useState<HTMLDivElement | null>(null);
+  const dockTabs = DOCK_KEYS.filter(key => layers[key]);
+  const activeDockTab = dockTab && layers[dockTab] ? dockTab : dockTabs.at(-1) ?? null;
+  const dockOpen = activeDockTab !== null && !dockHidden;
+  const toggleLayer = (key: LayerKey) => {
+    const on = !layers[key];
+    setLayers({ ...layers, [key]: on });
+    if (on && key !== "rank") { setDockTab(key); setDockHidden(false); }
+  };
   const onPlaybackRegionChange = useCallback((id: string) => { setPlaybackRegionId(id); setPlaybackRegionVersion(v => v + 1); }, []);
   const pinned = useRef(false);
   const [isPinned, setIsPinned] = useState(false);
@@ -206,11 +225,14 @@ export default function App() {
       <section className="map-panel" aria-label="전국 인허가 지도">
         <div ref={container} className="map" onPointerLeave={() => hoverLocation(null, 0, 0)} />
         <h1 className="visually-hidden">동네의 기록</h1>
-        <MapRail map={mapInstance} theme={theme} onToggleTheme={() => setTheme(theme === "light" ? "dark" : "light")} regionBounds={regionBounds} />
-        <SubwayOverlay theme={theme} map={mapInstance} playbackRegionId={playbackRegionId} playbackRegionVersion={playbackRegionVersion} />
+        <MapRail map={mapInstance} theme={theme} onToggleTheme={() => setTheme(theme === "light" ? "dark" : "light")} regionBounds={regionBounds}
+          layersActive={dockTabs.length > 0} sheetOpen={sheetOpen} onToggleSheet={() => { setSheetOpen(open => !open); setDockHidden(false); }} />
+        {sheetOpen && <LayerSheet layers={layers} onToggle={toggleLayer} onClose={() => setSheetOpen(false)} />}
+        {dockOpen && <InfoDock tabs={dockTabs} active={activeDockTab} onTab={setDockTab} onClose={() => setDockHidden(true)} bodyRef={setDockBody} />}
+        <SubwayOverlay enabled={layers.subway} dock={dockOpen && activeDockTab === "subway" ? dockBody : null} theme={theme} map={mapInstance} playbackRegionId={playbackRegionId} playbackRegionVersion={playbackRegionVersion} />
         <PlaybackBoundary>
           <Suspense fallback={<section className="playback is-active dn-glass" role="status">지역과 시간 재생을 준비하는 중…</section>}>
-            <NationalPlayback theme={theme} onRegionBoundsChange={setRegionBounds} map={mapInstance} onRegionChange={onPlaybackRegionChange} showLocationCounts={zoom >= 15} category={category} categories={categories} categoryError={categoryError} onCategoryChange={value => { clearSelection(); setCategory(value); }} onRetryCategories={() => setAttempt(value => value + 1)} onClearSelection={clearSelection} onSelectId={selectId} onSelectLocation={pinLocation} onHoverLocation={hoverLocation} />
+            <NationalPlayback showDongs={layers.dong} showRanks={layers.rank} dongDock={dockOpen && activeDockTab === "dong" ? dockBody : null} theme={theme} onRegionBoundsChange={setRegionBounds} map={mapInstance} onRegionChange={onPlaybackRegionChange} showLocationCounts={zoom >= 15} category={category} categories={categories} categoryError={categoryError} onCategoryChange={value => { clearSelection(); setCategory(value); }} onRetryCategories={() => setAttempt(value => value + 1)} onClearSelection={clearSelection} onSelectId={selectId} onSelectLocation={pinLocation} onHoverLocation={hoverLocation} />
           </Suspense>
         </PlaybackBoundary>
         {mapError && <p className="map-error dn-glass-strong" role="alert">{mapError}<button onClick={() => window.location.reload()}>새로고침</button></p>}

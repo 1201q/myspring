@@ -37,11 +37,16 @@
   height: 18px;
   stroke-width: 1.75;
 }
+.rail-btn svg.rail-ico-lg {
+  width: 20px;
+  height: 20px;
+}
 .rail-btn:hover:not(:disabled) {
   background: var(--fill-hover);
   color: var(--ink);
 }
-.rail-btn.is-active {
+.rail-btn.is-active,
+.rail-btn.is-active:hover:not(:disabled) {
   background: var(--accent-soft);
   color: var(--accent);
 }

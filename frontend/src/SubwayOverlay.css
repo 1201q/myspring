@@ -1,110 +1,89 @@
-/* Subway layer control. Sits on the right under the map tools until the layer sheet replaces it. */
-.subway-control {
-  position: absolute;
-  z-index: var(--z-chrome);
-  /* Below the two rail groups (about 194px). */
-  top: calc(var(--space-4) + 190px);
-  right: var(--space-4);
-  width: 252px;
-  max-width: calc(100% - 32px);
-  padding: 10px var(--space-3);
-  border-radius: var(--radius-lg);
-  font-size: 12px;
-}
-.subway-control-row {
+/* 지하철 노선 content inside the info dock. */
+.subway-search {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 8px;
-}
-.subway-control-row label {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  font-size: 13px;
-  font-weight: 600;
-}
-.subway-control input {
-  accent-color: var(--accent);
-  margin: 0;
-}
-.subway-control button {
-  border: 0;
+  height: 32px;
+  padding: 0 var(--space-3);
   border-radius: var(--radius-pill);
-  background: transparent;
-  color: var(--ink-muted);
-  cursor: pointer;
-  font: inherit;
-  font-weight: 600;
-  padding: 4px 8px;
-}
-.subway-control button:hover {
   background: var(--fill-hover);
-  color: var(--ink);
-}
-.subway-control button:disabled {
-  opacity: 0.35;
-}
-.subway-control p {
-  margin: 6px 0 0;
-  font-size: 11px;
-  line-height: 15px;
-  color: var(--ink-muted);
-}
-.subway-caption {
   color: var(--ink-subtle);
 }
-.subway-legend {
-  max-height: min(42dvh, 350px);
-  overflow: auto;
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px solid var(--divider);
+.subway-search:focus-within {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
-.subway-select-label {
-  display: grid;
-  gap: 5px;
-  color: var(--ink-muted);
+.subway-search svg {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  stroke-width: 1.75;
 }
-.subway-select-label select {
-  width: 100%;
-  height: var(--control-md);
-  padding: 0 10px;
+.subway-search input {
+  flex: 1;
+  min-width: 0;
   border: 0;
-  border-radius: var(--radius-pill);
-  background: var(--fill-hover);
+  outline: 0;
+  background: transparent;
   color: var(--ink);
   font: inherit;
+  font-size: 12px;
 }
-.subway-select-label select option {
-  background: var(--map-land);
+.subway-search input::placeholder {
+  color: var(--ink-subtle);
 }
-.subway-legend ul {
+.subway-lines {
   list-style: none;
+  margin: var(--space-2) 0 0;
+  padding: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 6px 8px;
-  margin: 12px 0;
-  padding: 0;
+  gap: 2px;
 }
-.subway-legend li {
+.subway-lines button {
+  width: 100%;
+  height: 30px;
   display: flex;
   align-items: center;
   gap: 8px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
   font-size: 12px;
+  font-weight: 500;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.subway-swatch {
-  display: inline-block;
+.subway-lines button:hover {
+  background: var(--fill-hover);
+}
+.subway-lines button[aria-pressed="true"] {
+  background: var(--fill-pressed);
+  font-weight: 650;
+}
+.subway-lines i {
   width: 16px;
   height: 4px;
+  flex: none;
   border-radius: 2px;
-  flex-shrink: 0;
 }
-@media (max-width: 760px) {
-  .subway-control {
-    /* Below the rail and the ranking panel (64px + 28vh). */
-    top: max(258px, calc(72px + 28vh));
-    right: var(--space-3);
-    width: 220px;
-  }
+.subway-empty {
+  grid-column: 1 / -1;
+  padding: 8px;
+  color: var(--ink-muted);
+}
+.subway-source {
+  margin: 6px 0 0;
+  font-size: 10px;
+  line-height: 14px;
+  color: var(--ink-subtle);
+}
+.dock-note button:disabled {
+  opacity: 0.4;
+  cursor: default;
 }

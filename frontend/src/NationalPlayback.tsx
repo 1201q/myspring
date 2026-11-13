@@ -22,8 +22,15 @@ import FilterCapsule from "./FilterCapsule";
 import PlaybackBar, { PlaybackBarLoading } from "./PlaybackBar";
 import { activitySeries, formatMonth } from "./playbackSeries";
 import { TriangleAlert } from "lucide-react";
+import { createPortal } from "react-dom";
 
 type Props = {
+  /** 동별 증감 layer on (from the layer sheet). */
+  showDongs: boolean;
+  /** 개업 순위 panel on (from the layer sheet). */
+  showRanks: boolean;
+  /** Info dock body while the 동별 증감 tab is showing; the legend and details render into it. */
+  dongDock: HTMLElement | null;
   /** Current region bounds, for the rail’s "fit region" button. */
   onRegionBoundsChange: (bbox: [number, number, number, number]) => void;
   theme: Theme;
@@ -74,6 +81,9 @@ function progressLabel(value: LoadProgress, name: string): { text: string; perce
   };
 }
 export default function NationalPlayback({
+  showDongs,
+  showRanks,
+  dongDock,
   theme,
   onRegionBoundsChange,
   map,
@@ -105,7 +115,6 @@ export default function NationalPlayback({
   const [unit, setUnit] = useState(1);
   const [speed, setSpeed] = useState(1);
   const [playing, setPlaying] = useState(false);
-  const [showDongs, setShowDongs] = useState(false);
   const [selectedDong, setSelectedDong] = useState<{
     code: string;
     regionId: string;
@@ -618,7 +627,7 @@ export default function NationalPlayback({
         categoryError={categoryError}
         onRetryCategories={onRetryCategories}
       />
-      {data && (
+      {data && showRanks && (
         <aside className="seoul-ranks dn-glass" aria-label={`${name} 전체 업종 순위`}>
           <strong>개업 많은 순 · {name} 전체</strong>
           <p>
@@ -677,90 +686,78 @@ export default function NationalPlayback({
               : progressLabel(progress, name))}
         />
       )}
-      {/* Interim home for the dong layer until the layer sheet and info dock (design stage 4). */}
-      <aside className="dong-panel dn-glass-strong" aria-label="동별 개폐업 증감">
-        <div className="dong-head">
-          <strong>동별 증감</strong>
-          <button
-            type="button"
-            role="switch"
-            className="dong-switch"
-            aria-checked={showDongs}
-            aria-label="동별 개폐업 증감 표시"
-            onClick={() => setShowDongs((value) => !value)}
-          />
-        </div>
-        {showDongs && (
+      {dongDock &&
+        createPortal(
           <>
-            <div className="dong-ramp" aria-hidden="true">
-              {["neg-3", "neg-2", "neg-1", "even", "pos-1", "pos-2", "pos-3"].map((stepName) => (
-                <i key={stepName} style={{ background: `var(--dong-${stepName})` }} />
-              ))}
+        <div className="dong-ramp" aria-hidden="true">
+          {["neg-3", "neg-2", "neg-1", "even", "pos-1", "pos-2", "pos-3"].map((stepName) => (
+            <i key={stepName} style={{ background: `var(--dong-${stepName})` }} />
+          ))}
+        </div>
+        <div className="dong-ramp-labels">
+          <span>폐업 우세</span>
+          <span>같음</span>
+          <span>개업 우세</span>
+        </div>
+        <div className="dong-ramp-labels dong-empty-row">
+          <i className="dong-empty" aria-hidden="true" />
+          <span>기간 내 기록 없음</span>
+        </div>
+        {dongSelection ? (
+          <div className="dong-focus" role="status">
+            <div className="dong-focus-name">
+              <span>{dongSelection.fullName}</span>
+              <button type="button" aria-label="동별 상세 닫기" onClick={() => setSelectedDong(null)}>
+                ×
+              </button>
             </div>
-            <div className="dong-ramp-labels">
-              <span>폐업 우세</span>
-              <span>같음</span>
-              <span>개업 우세</span>
+            <div className="dong-split" aria-hidden="true">
+              <i className="o" style={{ flex: dongSelection.open || 0.0001 }} />
+              <i className="c" style={{ flex: dongSelection.close || 0.0001 }} />
             </div>
-            <div className="dong-ramp-labels dong-empty-row">
-              <i className="dong-empty" aria-hidden="true" />
-              <span>기간 내 기록 없음</span>
+            <div className="dong-focus-nums dn-num">
+              <span className="o">개업 {dongSelection.open.toLocaleString()}</span>
+              <span>
+                순증 {dongSelection.open - dongSelection.close > 0 ? "+" : ""}
+                {(dongSelection.open - dongSelection.close).toLocaleString()}
+              </span>
+              <span className="c">폐업 {dongSelection.close.toLocaleString()}</span>
             </div>
-            {dongSelection ? (
-              <div className="dong-focus" role="status">
-                <div className="dong-focus-name">
-                  <span>{dongSelection.fullName}</span>
-                  <button type="button" aria-label="동별 상세 닫기" onClick={() => setSelectedDong(null)}>
-                    ×
-                  </button>
-                </div>
-                <div className="dong-split" aria-hidden="true">
-                  <i className="o" style={{ flex: dongSelection.open || 0.0001 }} />
-                  <i className="c" style={{ flex: dongSelection.close || 0.0001 }} />
-                </div>
-                <div className="dong-focus-nums dn-num">
-                  <span className="o">개업 {dongSelection.open.toLocaleString()}</span>
-                  <span>
-                    순증 {dongSelection.open - dongSelection.close > 0 ? "+" : ""}
-                    {(dongSelection.open - dongSelection.close).toLocaleString()}
-                  </span>
-                  <span className="c">폐업 {dongSelection.close.toLocaleString()}</span>
-                </div>
-              </div>
-            ) : (
-              !dong.error && (
-                <p className="dong-hint" role="status">
-                  {dong.result
-                    ? "동을 누르면 건수를 고정해 보여 줍니다."
-                    : data
-                      ? "행정동 경계와 동별 집계를 준비하는 중…"
-                      : "지역 재생 자료 준비 후 동별로 집계합니다."}
-                </p>
-              )
-            )}
-            {dong.error && (
-              <div className="dong-error" role="alert">
-                {dong.error}
-                <button type="button" onClick={dong.retry}>
-                  다시 시도
-                </button>
-              </div>
-            )}
-            <details className="dong-basis">
-              <summary>집계 기준</summary>
-              <p>개업 − 폐업. 차이가 클수록 진하게 칠합니다.</p>
-              <p>2026.10.01 행정동 경계 기준 · 읍·면 포함 · 과거 경계 복원 아님</p>
-              <p>경계: SGIS · 가공: vuski/admdongkor (CC BY 4.0) · 단순화 경계로 경계 부근 오차 가능</p>
-              {dong.result && (
-                <p className="dn-num">
-                  이 기간 동 미배정: 개업 {dong.result.unassigned.open.toLocaleString()}건 · 폐업{" "}
-                  {dong.result.unassigned.close.toLocaleString()}건
-                </p>
-              )}
-            </details>
-          </>
+          </div>
+        ) : (
+          !dong.error && (
+            <p className="dock-hint" role="status">
+              {dong.result
+                ? "동을 누르면 건수를 고정해 보여 줍니다."
+                : data
+                  ? "행정동 경계와 동별 집계를 준비하는 중…"
+                  : "지역 재생 자료 준비 후 동별로 집계합니다."}
+            </p>
+          )
         )}
-      </aside>
+        {dong.error && (
+          <div className="dock-error" role="alert">
+            {dong.error}
+            <button type="button" onClick={dong.retry}>
+              다시 시도
+            </button>
+          </div>
+        )}
+        <details className="dong-basis">
+          <summary>집계 기준</summary>
+          <p>개업 − 폐업. 차이가 클수록 진하게 칠합니다.</p>
+          <p>2026.10.01 행정동 경계 기준 · 읍·면 포함 · 과거 경계 복원 아님</p>
+          <p>경계: SGIS · 가공: vuski/admdongkor (CC BY 4.0) · 단순화 경계로 경계 부근 오차 가능</p>
+          {dong.result && (
+            <p className="dn-num">
+              이 기간 동 미배정: 개업 {dong.result.unassigned.open.toLocaleString()}건 · 폐업{" "}
+              {dong.result.unassigned.close.toLocaleString()}건
+            </p>
+          )}
+        </details>
+          </>,
+          dongDock,
+        )}
       {(error || boundaryError) && (
         <div className="toasts">
           {error && (

@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import type { FeatureCollection, LineString, Point } from "geojson";
 import type { Map as LibreMap } from "maplibre-gl";
+import { createPortal } from "react-dom";
+import { Info, Search } from "lucide-react";
 import "./SubwayOverlay.css";
 import { MAP_PALETTE } from "./theme";
 import type { Theme } from "./theme";
@@ -32,9 +34,19 @@ async function loadDataset(signal: AbortSignal): Promise<Dataset> {
     stations: { ...stations, features: [...stations.features, ...regionalStations.features] } };
 }
 
-export default function SubwayOverlay({ theme, map, playbackRegionId, playbackRegionVersion }: { theme: Theme; map: LibreMap | null; playbackRegionId: string; playbackRegionVersion: number }) {
-  const [enabled, setEnabled] = useState(true);
-  const [expanded, setExpanded] = useState(false);
+type Props = {
+  /** 지하철 노선 layer on (from the layer sheet). */
+  enabled: boolean;
+  /** Info dock body while the 지하철 노선 tab is showing; the line list renders into it. */
+  dock: HTMLElement | null;
+  theme: Theme;
+  map: LibreMap | null;
+  playbackRegionId: string;
+  playbackRegionVersion: number;
+};
+
+export default function SubwayOverlay({ enabled, dock, theme, map, playbackRegionId, playbackRegionVersion }: Props) {
+  const [query, setQuery] = useState("");
   const [selection, setSelection] = useState({ id: "", version: 0 });
   const selected = selection.version === playbackRegionVersion ? selection.id : "";
   const [region, setRegion] = useState("seoul");
@@ -123,26 +135,35 @@ export default function SubwayOverlay({ theme, map, playbackRegionId, playbackRe
     const bounds = coordinates.reduce((b, p) => [Math.min(b[0], p[0]), Math.min(b[1], p[1]), Math.max(b[2], p[0]), Math.max(b[3], p[1])], [180, 90, -180, -90]);
     map.fitBounds([[bounds[0], bounds[1]], [bounds[2], bounds[3]]], { padding: 80, duration: 600, maxZoom: 12 });
   };
-  return <section className="subway-control dn-glass" aria-label="지하철 노선">
-    <div className="subway-control-row">
-      <label><input type="checkbox" checked={enabled} onChange={e => setEnabled(e.target.checked)} />지하철 노선</label>
-      <button type="button" aria-expanded={expanded} aria-controls="subway-legend" onClick={() => setExpanded(v => !v)}>노선 선택 {expanded ? "▴" : "▾"}</button>
-    </div>
-    <p className="subway-caption">{regions.find(r => r.id === region)?.name ?? "전체 권역"} · 현재 노선 기준 · 시험 표시</p>
-    {enabled && !dataset && !error && <p role="status">노선 불러오는 중…</p>}
-    {enabled && error && <p role="alert">{error} <button onClick={() => { setError(""); setAttempt(v => v + 1); }}>다시 시도</button></p>}
-    {expanded && <div id="subway-legend" className="subway-legend">
-      <label className="subway-select-label">표시할 노선
-        <select value={selected} onChange={e => setSelection({ id: e.target.value, version: playbackRegionVersion })} disabled={!dataset}>
-          <option value="">전체 노선</option>
-          {visibleLines.map(line => <option key={line.id} value={line.id}>{line.name}</option>)}
-        </select>
+  if (!dock) return null;
+  const q = query.trim();
+  const listed = q ? visibleLines.filter(line => line.name.includes(q)) : visibleLines;
+  const regionName = regions.find(r => r.id === region)?.name;
+  return createPortal(<>
+    {!dataset && !error && <p className="dock-hint" role="status">노선을 불러오는 중…</p>}
+    {error && <div className="dock-error" role="alert">{error}<button type="button" onClick={() => { setError(""); setAttempt(v => v + 1); }}>다시 시도</button></div>}
+    {dataset && !visibleLines.length && <p className="dock-hint">지금 보는 곳에는 표시할 지하철 노선이 없습니다. 수도권·부산·대구·광주·대전으로 옮기면 나옵니다.</p>}
+    {dataset && visibleLines.length > 0 && <>
+      <label className="subway-search">
+        <Search aria-hidden="true" />
+        <input type="search" placeholder={`${regionName ?? "노선"} 노선 찾기`} aria-label="노선 찾기" value={query} onChange={e => setQuery(e.target.value)} />
       </label>
-      <button type="button" onClick={fitTransit} disabled={!dataset}>노선 범위 보기</button>
-      <ul>{visibleLines.filter(l => !selected || l.id === selected).map(line =>
-        <li key={line.id}><span className="subway-swatch" style={{ backgroundColor: line.color }} />{line.name}</li>)}</ul>
-      <p>확대하면 역과 역명이 표시됩니다. 과거 월을 선택해도 노선은 바뀌지 않습니다.</p>
-      <p>OSM {dataset?.manifest.osmBaseTimestamp.slice(0, 10) ?? "—"} 수집본 · 누락·역명 차이 가능</p>
-    </div>}
-  </section>;
+      <ul className="subway-lines" aria-label={`${regionName ?? ""} 노선 · 누르면 그 노선만 표시`}>
+        {listed.map(line => <li key={line.id}>
+          <button type="button" aria-pressed={line.id === selected}
+            onClick={() => setSelection({ id: line.id === selected ? "" : line.id, version: playbackRegionVersion })}>
+            <i style={{ backgroundColor: line.color }} aria-hidden="true" />{line.name}
+          </button>
+        </li>)}
+        {!listed.length && <li className="subway-empty">'{q}'에 맞는 노선이 없습니다.</li>}
+      </ul>
+    </>}
+    <div className="dock-note">
+      <Info aria-hidden="true" />
+      <span>{selected ? "고른 노선만 표시 중" : "현재 노선 기준 · 과거 월에도 바뀌지 않음"}</span>
+      {selected && <button type="button" onClick={() => setSelection({ id: "", version: playbackRegionVersion })}>전체 보기</button>}
+      <button type="button" disabled={!dataset || !visibleLines.length} onClick={fitTransit}>범위 보기</button>
+    </div>
+    <p className="subway-source">확대하면 역과 역명이 나옵니다 · OSM {dataset?.manifest.osmBaseTimestamp.slice(0, 10) ?? "—"} 수집본, 누락·역명 차이 가능</p>
+  </>, dock);
 }
