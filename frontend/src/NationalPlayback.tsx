@@ -14,10 +14,13 @@ import type { LocationGroup } from "./locationGroups";
 import { useDongStatistics } from "./useDongStatistics";
 import { dongColor } from "./dongStatistics";
 import type { DongProperties } from "./dongStatistics";
+import { MAP_PALETTE } from "./theme";
+import type { Theme } from "./theme";
 import "./SeoulPlayback.css";
 import "./NationalPlayback.css";
 
 type Props = {
+  theme: Theme;
   onRegionChange: (id: string) => void;
   onHoverLocation: (group: LocationGroup | null, x: number, y: number) => void;
   map: LibreMap | null;
@@ -39,6 +42,20 @@ const format = (m: number) =>
   `${1990 + Math.floor(m / 12)}-${String((m % 12) + 1).padStart(2, "0")}`;
 const parse = (v: string) =>
   (Number(v.slice(0, 4)) - 1990) * 12 + Number(v.slice(5, 7)) - 1;
+// Deck tooltips are DOM nodes inside the map, so they can use the CSS tokens directly.
+const tooltipStyle = {
+  fontSize: "12px",
+  fontFamily: "var(--font-sans)",
+  fontWeight: "600",
+  lineHeight: "17px",
+  whiteSpace: "pre-line",
+  backgroundColor: "var(--glass-strong)",
+  backdropFilter: "blur(var(--blur-lg)) saturate(var(--glass-saturate))",
+  color: "var(--ink)",
+  border: "1px solid var(--glass-line)",
+  borderRadius: "var(--radius-md)",
+  boxShadow: "var(--shadow-pop)",
+};
 const initialProgress: LoadProgress = {
   stage: "preparing",
   bytes: 0,
@@ -52,6 +69,7 @@ function progressText(value: LoadProgress, name: string) {
   return `${name} 기록 다운로드 ${value.total ? Math.round((value.bytes / value.total) * 100) : 100}% · ${mb(value.bytes)} / ${mb(value.total)} MB`;
 }
 export default function NationalPlayback({
+  theme,
   map,
   onRegionChange,
   showLocationCounts,
@@ -270,6 +288,7 @@ export default function NationalPlayback({
         : null,
     [dong.boundaries, dong.result],
   );
+  const palette = MAP_PALETTE[theme];
   const dongScale = useMemo(
     () =>
       dong.result
@@ -321,18 +340,18 @@ export default function NationalPlayback({
           stroked: true,
           getFillColor: (feature) =>
             feature.properties.id === hoveredRegionId
-              ? [108, 149, 224, 40]
+              ? [...palette.accent, 40]
               : [0, 0, 0, 1],
           getLineColor: (feature) =>
             feature.properties.id === hoveredRegionId
-              ? [114, 157, 237, 255]
+              ? [...palette.accent, 255]
               : [0, 0, 0, 0],
           getLineWidth: (feature) =>
             feature.properties.id === hoveredRegionId ? 2.5 : 0,
           lineWidthUnits: "pixels",
           updateTriggers: {
-            getFillColor: [hoveredRegionId],
-            getLineColor: [hoveredRegionId],
+            getFillColor: [hoveredRegionId, palette],
+            getLineColor: [hoveredRegionId, palette],
             getLineWidth: [hoveredRegionId],
           },
           onClick: (info) => {
@@ -351,11 +370,12 @@ export default function NationalPlayback({
           pickable: true,
           filled: true,
           stroked: true,
-          getFillColor: (feature) => dongColor(feature.properties, dongScale),
-          getLineColor: [146, 165, 174, 130],
+          getFillColor: (feature) =>
+            dongColor(feature.properties, dongScale, palette),
+          getLineColor: [...palette.dongStroke, 110],
           getLineWidth: 0.7,
           lineWidthUnits: "pixels",
-          updateTriggers: { getFillColor: [dongScale] },
+          updateTriggers: { getFillColor: [dongScale, palette], getLineColor: [palette] },
           onClick: (info) => {
             if (!info.object) return false;
             setPlaying(false);
@@ -401,10 +421,7 @@ export default function NationalPlayback({
           return {
             text: `${p.fullName}\n${format(from)} ~ ${format(currentMonth)}\n개업 ${p.open.toLocaleString()}건 · 폐업 ${p.close.toLocaleString()}건\n증감 ${delta > 0 ? "+" : ""}${delta.toLocaleString()}건${p.open + p.close === 0 ? " · 기간 내 기록 없음" : ""}`,
             style: {
-              fontSize: "13px",
-              backgroundColor: "#1d2b30",
-              color: "#f0faf6",
-              borderRadius: "8px",
+              ...tooltipStyle,
               padding: "10px 12px",
             },
           };
@@ -417,10 +434,7 @@ export default function NationalPlayback({
         return {
           text: feature.properties.name + " · 클릭하여 재생 지역 변경",
           style: {
-            fontSize: "12px",
-            backgroundColor: "#1d2b30",
-            color: "#f0faf6",
-            borderRadius: "8px",
+            ...tooltipStyle,
             padding: "8px 10px",
           },
         };
@@ -444,9 +458,10 @@ export default function NationalPlayback({
                   radiusMinPixels: 1.5,
                   radiusMaxPixels: 6,
                   getFillColor: (kind === 0
-                    ? [65, 207, 182, 170]
+                    ? [...palette.open, 190]
                     : [0, 0, 0, 0]) as Color,
-                  getLineColor: [244, 166, 107, 210] as Color,
+                  getLineColor: [...palette.close, 220] as Color,
+                  updateTriggers: { getFillColor: [palette], getLineColor: [palette] },
                   lineWidthUnits: "pixels",
                   getLineWidth: 1.3,
                   lineWidthMinPixels: 1.3,
@@ -487,11 +502,12 @@ export default function NationalPlayback({
           getPosition: (group) => group.position,
           getText: (group) => String(group.ids.length),
           getSize: 13,
-          getColor: [255, 255, 255, 255],
+          getColor: [...palette.onSelected, 255],
           background: true,
-          getBackgroundColor: [28, 91, 83, 245],
+          getBackgroundColor: [...palette.selected, 240],
+          updateTriggers: { getColor: [palette], getBackgroundColor: [palette] },
           backgroundPadding: [6, 4],
-          fontFamily: "sans-serif",
+          fontFamily: "Pretendard Variable, Pretendard, sans-serif",
           fontWeight: "bold",
           onClick: (info) => {
             if (!info.object) return false;
@@ -522,6 +538,7 @@ export default function NationalPlayback({
     showLocationCounts,
     dongFeatures,
     dongScale,
+    palette,
   ]);
   useEffect(() => {
     onClearSelection();
@@ -562,7 +579,7 @@ export default function NationalPlayback({
   };
   return (
     <>
-      <section className="map-primary-filters" aria-label="지역 및 업종 선택">
+      <section className="map-primary-filters dn-glass" aria-label="지역 및 업종 선택">
         <label>
           <span className="visually-hidden">선택한 지역</span>
           <select
@@ -610,7 +627,7 @@ export default function NationalPlayback({
         )}
       </section>
       {data && (
-        <aside className="seoul-ranks" aria-label={`${name} 전체 업종 순위`}>
+        <aside className="seoul-ranks dn-glass" aria-label={`${name} 전체 업종 순위`}>
           <strong>개업 많은 순 · {name} 전체</strong>
           <p>
             이 기간에 인허가 {opens.toLocaleString()} · 폐업{" "}
@@ -632,7 +649,7 @@ export default function NationalPlayback({
         </aside>
       )}
       <section
-        className="playback national-playback is-active"
+        className="playback national-playback is-active dn-glass"
         aria-label="지역별 시간 재생"
       >
         <button

@@ -1,10 +1,90 @@
-.seoul-ranks { position:absolute; z-index:2; top:60px; right:16px; width:300px; max-height:42vh; padding:15px; border:1px solid #cbdad2; border-radius:14px; background:#fffffff0; font-size:11px; box-shadow:0 5px 25px #182c2520; }
-.seoul-ranks p { margin:8px 0; color:#4d7d6d; }
-.seoul-rank-scroll { max-height:25vh; overflow:auto; }
-.seoul-rank { display:grid; grid-template-columns:1fr 64px 64px; gap:8px; padding:5px 0; border-bottom:1px solid #b9ccc340; }
-.seoul-rank b,.seoul-rank small { text-align:right; font-variant-numeric:tabular-nums; }
-.seoul-ranks > small { display:block; margin-top:8px; color:#789087; font-size:9px; }
-.seoul-playback input[type="month"] { width:128px; }
-.app[data-theme="dark"] .seoul-ranks { background:#19262bf0; border-color:#3a4b50; }
-.app[data-theme="dark"] .seoul-ranks p { color:#9ecbbb; }
-@media(max-width:760px){ .seoul-ranks { top:52px; right:8px; width:260px; max-height:28vh; } .seoul-rank-scroll { max-height:13vh; } }
+/* "개업 많은 순" ranking panel. */
+.seoul-ranks {
+  position: absolute;
+  z-index: var(--z-chrome);
+  top: calc(var(--space-4) + var(--control-lg) + var(--space-3));
+  left: var(--space-4);
+  width: var(--panel-w);
+  /* Stop above the playback bar (about 200px tall while it still wraps to two rows). */
+  max-height: calc(100dvh - 340px);
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-3) var(--space-2) var(--space-3);
+  border-radius: var(--radius-lg);
+  font-size: 12px;
+}
+.seoul-ranks > strong {
+  padding: 0 var(--space-2);
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+.seoul-ranks p {
+  margin: 2px var(--space-2) var(--space-2);
+  font-size: 11px;
+  line-height: 15px;
+  color: var(--ink-muted);
+  font-variant-numeric: tabular-nums;
+}
+.seoul-rank-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}
+.seoul-rank {
+  display: grid;
+  grid-template-columns: 1fr 56px 56px;
+  gap: 8px;
+  padding: 7px var(--space-2);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  line-height: 19px;
+}
+.seoul-rank:hover {
+  background: var(--fill-hover);
+}
+.seoul-rank span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.seoul-rank b,
+.seoul-rank small {
+  text-align: right;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+.seoul-rank b {
+  color: var(--open-ink);
+  font-weight: 600;
+}
+.seoul-rank small {
+  color: var(--close-ink);
+  font-weight: 500;
+}
+.seoul-ranks > small {
+  display: block;
+  margin-top: var(--space-2);
+  padding: var(--space-2) var(--space-2) 0;
+  border-top: 1px solid var(--divider);
+  font-size: 11px;
+  line-height: 15px;
+  color: var(--ink-muted);
+}
+.seoul-playback input[type="month"] {
+  width: 128px;
+}
+@media (max-width: 1100px) {
+  .seoul-ranks {
+    max-height: 36vh;
+  }
+}
+@media (max-width: 760px) {
+  .seoul-ranks {
+    top: 60px;
+    left: var(--space-3);
+    width: 240px;
+    max-height: 28vh;
+  }
+}

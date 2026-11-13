@@ -3,6 +3,7 @@ import { test } from 'node:test';
 import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { buildDongIndex, createDongLocator, dongColor } from './dongStatistics.ts';
+import { MAP_PALETTE } from './theme.ts';
 
 const square = (x, y, size = 1) => [[x,y],[x+size,y],[x+size,y+size],[x,y+size],[x,y]];
 const feature = (code, coordinates, type = 'Polygon') => ({ type:'Feature', properties:{ code, name:code, fullName:code, boundaryVersion:'20261001' }, geometry:{ type, coordinates } });
@@ -31,7 +32,18 @@ test('monthly category sums count openings and closures independently and conser
   assert.deepEqual(query(1,1,[0]), { counts:[{open:0,close:1},{open:0,close:0}], unassigned:{open:1,close:0} });
   assert.deepEqual(query(2,2,[1]).counts, [{open:1,close:0},{open:0,close:1}]);
   assert.deepEqual(query(0,2,[]).counts, [{open:0,close:0},{open:0,close:0}]);
-  assert.notDeepEqual(dongColor({open:0,close:0},1), dongColor({open:1,close:1},1));
+  const palette = MAP_PALETTE.dark;
+  assert.notDeepEqual(dongColor({open:0,close:0},1,palette), dongColor({open:1,close:1},1,palette));
+});
+test('dong colors diverge from the even step toward open (teal) and close (orange) ramps', () => {
+  for (const palette of Object.values(MAP_PALETTE)) {
+    assert.deepEqual(dongColor({open:0,close:0},9,palette), palette.dongEmpty);
+    assert.deepEqual(dongColor({open:2,close:2},9,palette), [...palette.dong[3], 184]);
+    assert.deepEqual(dongColor({open:2,close:0},9,palette), [...palette.dong[4], 184]);
+    assert.deepEqual(dongColor({open:9,close:0},9,palette), [...palette.dong[6], 184]);
+    assert.deepEqual(dongColor({open:0,close:5},9,palette), [...palette.dong[1], 184]);
+    assert.deepEqual(dongColor({open:0,close:90},9,palette), [...palette.dong[0], 184]);
+  }
 });
 test('all regional assets have intact provenance, unique administrative codes, valid WGS84 closed rings', async () => {
   const source = JSON.parse(await readFile(new URL('../public/data/dongs/source.json', import.meta.url)));

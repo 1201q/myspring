@@ -1,0 +1,117 @@
+/* 동네의 기록 design tokens — generated from the design system tokens.json. Edit the design system, then regenerate. */
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+  --map-land: #0f1417;
+  --map-block: #161c20;
+  --map-water: #0a0e11;
+  --map-road: #20292e;
+  --map-road-major: #2c373d;
+  --map-label: #8a9894;
+  --glass: rgba(16, 21, 24, 0.64);
+  --glass-strong: rgba(18, 24, 28, 0.84);
+  --glass-line: rgba(255, 255, 255, 0.08);
+  --divider: rgba(255, 255, 255, 0.08);
+  --fill-hover: rgba(255, 255, 255, 0.06);
+  --fill-pressed: rgba(255, 255, 255, 0.11);
+  --ink: #eef3f1;
+  --ink-muted: #a3b1ad;
+  --ink-subtle: #808e8a;
+  --selected: var(--ink);
+  --on-selected: #0f1417;
+  --accent: #8ab4ff;
+  --accent-soft: rgba(138, 180, 255, 0.16);
+  --on-accent: #0b1530;
+  --open: #41cfb6;
+  --open-ink: #62dcc5;
+  --open-soft: rgba(65, 207, 182, 0.16);
+  --close: #f4a66b;
+  --close-ink: #f6b182;
+  --close-soft: rgba(244, 166, 107, 0.16);
+  --dong-neg-3: #f29a5c;
+  --dong-neg-2: #b06a3b;
+  --dong-neg-1: #5e4130;
+  --dong-even: #4c565a;
+  --dong-pos-1: #1d5a51;
+  --dong-pos-2: #1f9e8a;
+  --dong-pos-3: #2fd4b8;
+  --dong-empty: rgba(110, 125, 133, 0.10);
+  --danger: #ff8593;
+  --danger-soft: rgba(255, 133, 147, 0.14);
+  --shadow-float: 0 10px 30px rgba(0, 0, 0, 0.38), 0 1px 2px rgba(0, 0, 0, 0.30);
+  --shadow-pop: 0 24px 60px rgba(0, 0, 0, 0.50), 0 2px 6px rgba(0, 0, 0, 0.30);
+  --shadow-sheen: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+  --map-land: #eceeea;
+  --map-block: #e2e5e0;
+  --map-water: #cfd9dd;
+  --map-road: #fbfbf9;
+  --map-road-major: #ffffff;
+  --map-label: #5f6c67;
+  --glass: rgba(250, 251, 250, 0.70);
+  --glass-strong: rgba(255, 255, 255, 0.88);
+  --glass-line: rgba(16, 32, 28, 0.08);
+  --divider: rgba(16, 32, 28, 0.10);
+  --fill-hover: rgba(16, 32, 28, 0.05);
+  --fill-pressed: rgba(16, 32, 28, 0.09);
+  --ink: #0f1a17;
+  --ink-muted: #4f5d58;
+  --ink-subtle: #64716d;
+  --selected: var(--ink);
+  --on-selected: #ffffff;
+  --accent: #2f6bdb;
+  --accent-soft: rgba(47, 107, 219, 0.12);
+  --on-accent: #ffffff;
+  --open: #13a189;
+  --open-ink: #0b7a67;
+  --open-soft: rgba(19, 161, 137, 0.12);
+  --close: #e07a35;
+  --close-ink: #b45311;
+  --close-soft: rgba(224, 122, 53, 0.12);
+  --dong-neg-3: #c4621f;
+  --dong-neg-2: #e99a63;
+  --dong-neg-1: #f4d2b8;
+  --dong-even: #c3cacb;
+  --dong-pos-1: #b3e3d8;
+  --dong-pos-2: #5cc2ae;
+  --dong-pos-3: #0e8f7c;
+  --dong-empty: rgba(110, 125, 133, 0.10);
+  --danger: #c2253b;
+  --danger-soft: rgba(194, 37, 59, 0.10);
+  --shadow-float: 0 10px 30px rgba(20, 40, 34, 0.12), 0 1px 2px rgba(20, 40, 34, 0.08);
+  --shadow-pop: 0 24px 60px rgba(20, 40, 34, 0.18), 0 2px 6px rgba(20, 40, 34, 0.08);
+  --shadow-sheen: inset 0 1px 0 rgba(255, 255, 255, 0.90);
+}
+
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 30px;
+  --radius-pill: 999px;
+  --blur-sm: 12px;
+  --blur-md: 20px;
+  --blur-lg: 32px;
+  --glass-saturate: 180%;
+  --control-sm: 28px;
+  --control-md: 36px;
+  --control-lg: 44px;
+  --panel-w: 300px;
+  --dock-w: 340px;
+  --playbar-max: 820px;
+  --z-map-overlay: 2;
+  --z-chrome: 10;
+  --z-popover: 20;
+  --z-toast: 30;
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+}

@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import type { FeatureCollection, LineString, Point } from "geojson";
 import type { Map as LibreMap } from "maplibre-gl";
 import "./SubwayOverlay.css";
+import { MAP_PALETTE } from "./theme";
+import type { Theme } from "./theme";
 
 type Line = { id: string; name: string; color: string; region: string };
 type Manifest = { osmBaseTimestamp: string; lines: Line[] };
@@ -30,7 +32,7 @@ async function loadDataset(signal: AbortSignal): Promise<Dataset> {
     stations: { ...stations, features: [...stations.features, ...regionalStations.features] } };
 }
 
-export default function SubwayOverlay({ map, playbackRegionId, playbackRegionVersion }: { map: LibreMap | null; playbackRegionId: string; playbackRegionVersion: number }) {
+export default function SubwayOverlay({ theme, map, playbackRegionId, playbackRegionVersion }: { theme: Theme; map: LibreMap | null; playbackRegionId: string; playbackRegionVersion: number }) {
   const [enabled, setEnabled] = useState(true);
   const [expanded, setExpanded] = useState(false);
   const [selection, setSelection] = useState({ id: "", version: 0 });
@@ -103,6 +105,15 @@ export default function SubwayOverlay({ map, playbackRegionId, playbackRegionVer
     }
   }, [map, dataset, enabled, selected]);
 
+  useEffect(() => {
+    if (!map || !dataset || !map.getLayer(layerIds[3])) return;
+    const palette = MAP_PALETTE[theme];
+    map.setPaintProperty(layerIds[0], "line-color", palette.mapLandHex);
+    map.setPaintProperty(layerIds[2], "circle-color", palette.mapLandHex);
+    map.setPaintProperty(layerIds[3], "text-color", palette.inkMutedHex);
+    map.setPaintProperty(layerIds[3], "text-halo-color", palette.mapLandHex);
+  }, [map, dataset, theme]);
+
   const visibleLines = dataset?.manifest.lines.filter(line => !region || line.region === region) ?? [];
   const fitTransit = () => {
     if (!map || !dataset) return;
@@ -112,7 +123,7 @@ export default function SubwayOverlay({ map, playbackRegionId, playbackRegionVer
     const bounds = coordinates.reduce((b, p) => [Math.min(b[0], p[0]), Math.min(b[1], p[1]), Math.max(b[2], p[0]), Math.max(b[3], p[1])], [180, 90, -180, -90]);
     map.fitBounds([[bounds[0], bounds[1]], [bounds[2], bounds[3]]], { padding: 80, duration: 600, maxZoom: 12 });
   };
-  return <section className="subway-control" aria-label="지하철 노선">
+  return <section className="subway-control dn-glass" aria-label="지하철 노선">
     <div className="subway-control-row">
       <label><input type="checkbox" checked={enabled} onChange={e => setEnabled(e.target.checked)} />지하철 노선</label>
       <button type="button" aria-expanded={expanded} aria-controls="subway-legend" onClick={() => setExpanded(v => !v)}>노선 선택 {expanded ? "▴" : "▾"}</button>

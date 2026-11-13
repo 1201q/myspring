@@ -8,6 +8,8 @@ import type { LocationGroup } from "./locationGroups";
 import LocationRecords from "./LocationRecords";
 import PlaybackBoundary from "./PlaybackBoundary";
 import SubwayOverlay from "./SubwayOverlay";
+import { MAP_PALETTE } from "./theme";
+import type { Theme } from "./theme";
 
 const NationalPlayback = lazy(() => import("./NationalPlayback"));
 maplibregl.setWorkerUrl(mapWorkerUrl);
@@ -33,9 +35,10 @@ const located = (b: Business) =>
   Number.isFinite(b.longitude) && Number.isFinite(b.latitude);
 
 export default function App() {
-  const [theme, setTheme] = useState<"light" | "dark">(() => {
-    try { return localStorage.getItem("permit-map-theme") === "dark" ? "dark" : "light"; }
-    catch { return "light"; }
+  // Dark-first: only an explicit stored "light" choice starts in light mode.
+  const [theme, setTheme] = useState<Theme>(() => {
+    try { return localStorage.getItem("permit-map-theme") === "light" ? "light" : "dark"; }
+    catch { return "dark"; }
   });
   const initialTheme = useRef(theme);
   const container = useRef<HTMLDivElement>(null);
@@ -123,13 +126,15 @@ export default function App() {
     if (source) source.setData(data);
     else {
       mapInstance.addSource("selected-business", { type: "geojson", data });
-      mapInstance.addLayer({ id: "selected-business-halo", type: "circle", source: "selected-business", paint: { "circle-radius": 13, "circle-color": "#247d76", "circle-opacity": 0.14, "circle-stroke-width": 1, "circle-stroke-color": "#247d76" } });
-      mapInstance.addLayer({ id: "selected-business-core", type: "circle", source: "selected-business", paint: { "circle-radius": 5, "circle-color": "#155e58", "circle-stroke-width": 2, "circle-stroke-color": "#ffffff" } });
+      const accent = MAP_PALETTE[initialTheme.current];
+      mapInstance.addLayer({ id: "selected-business-halo", type: "circle", source: "selected-business", paint: { "circle-radius": 13, "circle-color": accent.accentHex, "circle-opacity": 0.16, "circle-stroke-width": 1.5, "circle-stroke-color": accent.accentHex } });
+      mapInstance.addLayer({ id: "selected-business-core", type: "circle", source: "selected-business", paint: { "circle-radius": 5, "circle-color": accent.accentHex, "circle-stroke-width": 2, "circle-stroke-color": accent.mapLandHex } });
     }
   }, [mapInstance, selected, selectedPosition]);
 
   useEffect(() => {
     try { localStorage.setItem("permit-map-theme", theme); } catch { /* Storage may be disabled. */ }
+    document.documentElement.dataset.theme = theme;
     if (!mapInstance) return;
     const controller = new AbortController();
     async function applyTheme() {
@@ -143,10 +148,11 @@ export default function App() {
           for (const [property, value] of Object.entries(layer.paint || {}))
             mapInstance!.setPaintProperty(layer.id, property as Parameters<maplibregl.Map["setPaintProperty"]>[1], value);
         }
-        const accent = theme === "dark" ? "#63c6b9" : "#247d76";
-        mapInstance!.setPaintProperty("selected-business-halo", "circle-color", accent);
-        mapInstance!.setPaintProperty("selected-business-halo", "circle-stroke-color", accent);
-        mapInstance!.setPaintProperty("selected-business-core", "circle-color", theme === "dark" ? "#94e4d5" : "#155e58");
+        const palette = MAP_PALETTE[theme];
+        mapInstance!.setPaintProperty("selected-business-halo", "circle-color", palette.accentHex);
+        mapInstance!.setPaintProperty("selected-business-halo", "circle-stroke-color", palette.accentHex);
+        mapInstance!.setPaintProperty("selected-business-core", "circle-color", palette.accentHex);
+        mapInstance!.setPaintProperty("selected-business-core", "circle-stroke-color", palette.mapLandHex);
       } catch {
         if (!controller.signal.aborted) setMapError("지도 테마를 불러오지 못했습니다. 다시 전환해 주세요.");
       }
@@ -200,18 +206,18 @@ export default function App() {
         <div ref={container} className="map" onPointerLeave={() => hoverLocation(null, 0, 0)} />
         <div className="map-toolbar">
           <h1 className="visually-hidden">동네의 기록</h1>
-          <button className="theme-toggle" aria-pressed={theme === "dark"} onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
+          <button className="theme-toggle dn-glass" aria-pressed={theme === "dark"} onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
             {theme === "light" ? "다크 모드" : "라이트 모드"}
           </button>
         </div>
-        <output className="map-zoom" aria-label="현재 지도 줌 단계">줌 {zoom.toFixed(1)}</output>
-        <SubwayOverlay map={mapInstance} playbackRegionId={playbackRegionId} playbackRegionVersion={playbackRegionVersion} />
+        <output className="map-zoom dn-glass dn-num" aria-label="현재 지도 줌 단계">줌 {zoom.toFixed(1)}</output>
+        <SubwayOverlay theme={theme} map={mapInstance} playbackRegionId={playbackRegionId} playbackRegionVersion={playbackRegionVersion} />
         <PlaybackBoundary>
-          <Suspense fallback={<section className="playback is-active" role="status">지역과 시간 재생을 준비하는 중…</section>}>
-            <NationalPlayback map={mapInstance} onRegionChange={onPlaybackRegionChange} showLocationCounts={zoom >= 15} category={category} categories={categories} categoryError={categoryError} onCategoryChange={value => { clearSelection(); setCategory(value); }} onRetryCategories={() => setAttempt(value => value + 1)} onClearSelection={clearSelection} onSelectId={selectId} onSelectLocation={pinLocation} onHoverLocation={hoverLocation} />
+          <Suspense fallback={<section className="playback is-active dn-glass" role="status">지역과 시간 재생을 준비하는 중…</section>}>
+            <NationalPlayback theme={theme} map={mapInstance} onRegionChange={onPlaybackRegionChange} showLocationCounts={zoom >= 15} category={category} categories={categories} categoryError={categoryError} onCategoryChange={value => { clearSelection(); setCategory(value); }} onRetryCategories={() => setAttempt(value => value + 1)} onClearSelection={clearSelection} onSelectId={selectId} onSelectLocation={pinLocation} onHoverLocation={hoverLocation} />
           </Suspense>
         </PlaybackBoundary>
-        {mapError && <p className="map-error" role="alert">{mapError}<button onClick={() => window.location.reload()}>새로고침</button></p>}
+        {mapError && <p className="map-error dn-glass-strong" role="alert">{mapError}<button onClick={() => window.location.reload()}>새로고침</button></p>}
         <div className={`selection-popup${hoverPoint ? " is-positioned" : ""}${isPinned ? " is-pinned" : " is-hover"}`} style={hoverPoint ? {
           left: Math.max(8, Math.min(hoverPoint.x + 14, (mapInstance?.getContainer().clientWidth ?? 400) - popupWidth - 8)),
           top: hoverPoint.y > popupHeight / 2 ? Math.max(8, hoverPoint.y - 14) : hoverPoint.y + 14,
@@ -221,7 +227,7 @@ export default function App() {
         } : undefined}>
         {locationIds.length > 1 && !selected && <LocationRecords key={locationIds.join(",")} ids={locationIds} onSelect={selectId} onClose={clearSelection} />}
         {selected && (
-          <article className="detail" aria-label="인허가 상세">
+          <article className="detail dn-glass-strong" aria-label="인허가 상세">
             <button
               className="close"
               aria-label="상세 닫기"

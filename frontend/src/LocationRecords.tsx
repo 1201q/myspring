@@ -18,7 +18,7 @@ export default function LocationRecords({ ids, onSelect, onClose }: { ids: numbe
     return () => controller.abort();
   }, [ids, page, attempt]);
   const rows = result?.page === page && result.attempt === attempt ? result.rows : null;
-  return <article className="detail location-records" aria-label="같은 위치의 기록">
+  return <article className="detail location-records dn-glass-strong" aria-label="같은 위치의 기록">
     <button className="close" aria-label="목록 닫기" onClick={onClose}>×</button>
     <span className="eyebrow">현재 조회 조건 기준</span>
     <h2>이 위치의 기록 · {ids.length}건</h2>

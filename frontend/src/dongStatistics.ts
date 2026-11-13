@@ -1,5 +1,6 @@
 import type { FeatureCollection, Polygon, MultiPolygon, Position } from 'geojson';
 import type { Points } from './nationalPlaybackData';
+import type { MapPalette } from './theme';
 
 export type DongProperties = { code: string; name: string; fullName: string; boundaryVersion: string };
 export type DongBoundaries = FeatureCollection<Polygon | MultiPolygon, DongProperties>;
@@ -76,10 +77,11 @@ export function buildDongIndex(boundaries: DongBoundaries, points: Points[], min
   };
 }
 
-export function dongColor(count: DongCount, scale: number): [number, number, number, number] {
-  if (count.open + count.close === 0) return [110, 125, 133, 22];
+/** Seven-step diverging ramp (palette.dong: neg-3 … even … pos-3) at 0.72 opacity. */
+export function dongColor(count: DongCount, scale: number, palette: MapPalette): [number, number, number, number] {
+  if (count.open + count.close === 0) return palette.dongEmpty;
   const delta = count.open - count.close;
-  if (!delta) return [157, 168, 170, 65];
-  const alpha = Math.round(65 + 130 * Math.min(1, Math.abs(delta) / Math.max(1, scale)));
-  return delta > 0 ? [25, 181, 159, alpha] : [119, 125, 139, alpha];
+  const ratio = Math.min(1, Math.abs(delta) / Math.max(1, scale));
+  const step = delta === 0 ? 0 : ratio < 1 / 3 ? 1 : ratio < 2 / 3 ? 2 : 3;
+  return [...palette.dong[3 + Math.sign(delta) * step], 184];
 }

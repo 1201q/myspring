@@ -1,20 +1,108 @@
-.subway-control { position:absolute; z-index:2; top:82px; left:16px; width:252px; max-width:calc(100% - 90px); padding:10px 12px; border:1px solid #d5e1db; border-radius:12px; background:#fffffff0; box-shadow:0 3px 18px #24433415; color:#29463e; font-size:12px; }
-.subway-control-row { display:flex; align-items:center; justify-content:space-between; gap:8px; }
-.subway-control-row label { display:flex; gap:7px; align-items:center; font-weight:600; }
-.subway-control input { accent-color:#247d76; margin:0; }
-.subway-control button { border:0; background:transparent; color:inherit; cursor:pointer; font:inherit; padding:4px; }
-.subway-control p { margin:7px 0 0; font-size:11px; line-height:1.5; }
-.subway-caption { color:#61766e; }
-.subway-legend { max-height:min(42dvh, 350px); overflow:auto; margin-top:10px; border-top:1px solid #d5e1db; padding-top:10px; }
-.subway-select-label { display:grid; gap:5px; }
-.subway-select-label select { width:100%; border:1px solid #c6d5ce; border-radius:5px; padding:6px; color:inherit; background:#fff; font:inherit; }
-.subway-legend ul { list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:12px 0; padding:0; }
-.subway-legend li { display:flex; align-items:center; gap:6px; font-size:11px; }
-.subway-swatch { display:inline-block; width:17px; height:4px; border-radius:3px; box-shadow:0 0 0 1px #0002; flex-shrink:0; }
-.app[data-theme="dark"] .subway-control { background:#19262bf0; border-color:#3a4b50; color:#dce9e3; }
-.app[data-theme="dark"] .subway-caption { color:#a5b8b0; }
-.app[data-theme="dark"] .subway-select-label select { background:#24343a; border-color:#51635d; }
-.app[data-theme="dark"] .subway-legend { border-color:#3a4b50; }
-@media(max-width:760px) {
-  .subway-control { top:72px; left:12px; z-index:3; }
+/* Subway layer control. Sits on the right under the map tools until the layer sheet replaces it. */
+.subway-control {
+  position: absolute;
+  z-index: var(--z-chrome);
+  top: calc(var(--space-4) + 120px);
+  right: var(--space-4);
+  width: 252px;
+  max-width: calc(100% - 32px);
+  padding: 10px var(--space-3);
+  border-radius: var(--radius-lg);
+  font-size: 12px;
+}
+.subway-control-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.subway-control-row label {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 600;
+}
+.subway-control input {
+  accent-color: var(--accent);
+  margin: 0;
+}
+.subway-control button {
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--ink-muted);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+  padding: 4px 8px;
+}
+.subway-control button:hover {
+  background: var(--fill-hover);
+  color: var(--ink);
+}
+.subway-control button:disabled {
+  opacity: 0.35;
+}
+.subway-control p {
+  margin: 6px 0 0;
+  font-size: 11px;
+  line-height: 15px;
+  color: var(--ink-muted);
+}
+.subway-caption {
+  color: var(--ink-subtle);
+}
+.subway-legend {
+  max-height: min(42dvh, 350px);
+  overflow: auto;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--divider);
+}
+.subway-select-label {
+  display: grid;
+  gap: 5px;
+  color: var(--ink-muted);
+}
+.subway-select-label select {
+  width: 100%;
+  height: var(--control-md);
+  padding: 0 10px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--fill-hover);
+  color: var(--ink);
+  font: inherit;
+}
+.subway-select-label select option {
+  background: var(--map-land);
+}
+.subway-legend ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 8px;
+  margin: 12px 0;
+  padding: 0;
+}
+.subway-legend li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+.subway-swatch {
+  display: inline-block;
+  width: 16px;
+  height: 4px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+@media (max-width: 760px) {
+  .subway-control {
+    top: 200px;
+    right: var(--space-3);
+    width: 220px;
+  }
 }

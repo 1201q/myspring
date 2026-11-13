@@ -17,3 +17,7 @@ Upstream style repository: https://github.com/hyperknot/openfreemap-styles
 Business points, count labels, and the selected-location overlay are styled in
 `src/App.tsx`. Count label collisions are suppressed; groups below 10 omit labels.
 All aggregate circles remain visible and clickable, so this is not a count filter.
+
+Colors follow the map tokens of the design system (`map-land`, `map-block`, `map-water`,
+`map-road`, `map-road-major`, `map-label`), mirrored in `src/styles/tokens.css`. Change the
+tokens first, then these paint values, so the floating glass UI and the map stay in step.

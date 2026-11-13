@@ -1,0 +1,35 @@
+/* Glass material — three levels. See the design system's Glass component. */
+.dn-glass,
+.dn-glass-sm,
+.dn-glass-strong {
+  border: 1px solid var(--glass-line);
+  color: var(--ink);
+}
+.dn-glass {
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(var(--blur-md)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--blur-md)) saturate(var(--glass-saturate));
+  box-shadow: var(--shadow-float), var(--shadow-sheen);
+}
+.dn-glass-sm {
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(var(--blur-sm)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--blur-sm)) saturate(var(--glass-saturate));
+  box-shadow: var(--shadow-float), var(--shadow-sheen);
+}
+.dn-glass-strong {
+  background: var(--glass-strong);
+  -webkit-backdrop-filter: blur(var(--blur-lg)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--blur-lg)) saturate(var(--glass-saturate));
+  box-shadow: var(--shadow-pop), var(--shadow-sheen);
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .dn-glass,
+  .dn-glass-sm {
+    background: var(--glass-strong);
+  }
+}
+.dn-num {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
