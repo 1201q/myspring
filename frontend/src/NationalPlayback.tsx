@@ -19,6 +19,9 @@ import type { Theme } from "./theme";
 import "./SeoulPlayback.css";
 import "./NationalPlayback.css";
 import FilterCapsule from "./FilterCapsule";
+import PlaybackBar, { PlaybackBarLoading } from "./PlaybackBar";
+import { activitySeries, formatMonth } from "./playbackSeries";
+import { TriangleAlert } from "lucide-react";
 
 type Props = {
   /** Current region bounds, for the rail’s "fit region" button. */
@@ -41,10 +44,6 @@ type Props = {
   onSelectId: (id: number) => void;
   onClearSelection: () => void;
 };
-const format = (m: number) =>
-  `${1990 + Math.floor(m / 12)}-${String((m % 12) + 1).padStart(2, "0")}`;
-const parse = (v: string) =>
-  (Number(v.slice(0, 4)) - 1990) * 12 + Number(v.slice(5, 7)) - 1;
 // Deck tooltips are DOM nodes inside the map, so they can use the CSS tokens directly.
 const tooltipStyle = {
   fontSize: "12px",
@@ -64,12 +63,15 @@ const initialProgress: LoadProgress = {
   bytes: 0,
   total: 0,
 };
-function progressText(value: LoadProgress, name: string) {
+function progressLabel(value: LoadProgress, name: string): { text: string; percent?: number } {
   if (value.stage === "preparing")
-    return `${name} 재생 데이터를 준비하는 중… 최초 준비는 몇 분 걸릴 수 있습니다.`;
-  if (value.stage === "decoding") return `${name}의 기록을 지도에 배치하는 중…`;
+    return { text: `${name} 재생 자료 준비 중 · 처음에는 몇 분 걸릴 수 있습니다` };
+  if (value.stage === "decoding") return { text: `${name} 기록을 지도에 놓는 중` };
   const mb = (bytes: number) => (bytes / 1048576).toFixed(1);
-  return `${name} 기록 다운로드 ${value.total ? Math.round((value.bytes / value.total) * 100) : 100}% · ${mb(value.bytes)} / ${mb(value.total)} MB`;
+  return {
+    text: `${name} 재생 자료 내려받는 중 · ${mb(value.bytes)} / ${mb(value.total)} MB`,
+    percent: value.total ? Math.round((value.bytes / value.total) * 100) : 100,
+  };
 }
 export default function NationalPlayback({
   theme,
@@ -119,7 +121,6 @@ export default function NationalPlayback({
     locationClick.current = onSelectLocation;
   }, [onSelectLocation]);
   const selectedRegion = regions.find((r) => r.id === regionId);
-  const hoveredRegion = regions.find((r) => r.id === hoveredRegionId);
   const name = selectedRegion?.name ?? "서울";
   const selectableBoundaries = useMemo(
     () =>
@@ -424,7 +425,7 @@ export default function NationalPlayback({
           const p = info.object.properties;
           const delta = p.open - p.close;
           return {
-            text: `${p.fullName}\n${format(from)} ~ ${format(currentMonth)}\n개업 ${p.open.toLocaleString()}건 · 폐업 ${p.close.toLocaleString()}건\n증감 ${delta > 0 ? "+" : ""}${delta.toLocaleString()}건${p.open + p.close === 0 ? " · 기간 내 기록 없음" : ""}`,
+            text: `${p.fullName}\n${formatMonth(from)} – ${formatMonth(currentMonth)}\n개업 ${p.open.toLocaleString()}건 · 폐업 ${p.close.toLocaleString()}건\n증감 ${delta > 0 ? "+" : ""}${delta.toLocaleString()}건${p.open + p.close === 0 ? " · 기간 내 기록 없음" : ""}`,
             style: {
               ...tooltipStyle,
               padding: "10px 12px",
@@ -571,6 +572,10 @@ export default function NationalPlayback({
     }
     return counts;
   }, [data, from, currentMonth, min]);
+  const series = useMemo(
+    () => (data ? activitySeries(data.manifest, codes, 3) : null),
+    [data, codes],
+  );
   const rows = useMemo(() => {
     if (!data) return [];
     const m = data.manifest,
@@ -617,8 +622,8 @@ export default function NationalPlayback({
         <aside className="seoul-ranks dn-glass" aria-label={`${name} 전체 업종 순위`}>
           <strong>개업 많은 순 · {name} 전체</strong>
           <p>
-            이 기간에 인허가 {opens.toLocaleString()} · 폐업{" "}
-            {closes.toLocaleString()}
+            {formatMonth(from)} – {formatMonth(currentMonth)} · 개업{" "}
+            {opens.toLocaleString()} · 폐업 {closes.toLocaleString()}
           </p>
           <div className="seoul-rank-scroll">
             {rows.map((row) => (
@@ -630,126 +635,140 @@ export default function NationalPlayback({
             ))}
           </div>
           <small>
-            점은 인허가 · 고리는 폐업 · {name} 전체 집계
-            {unit === 0 ? " · 누적 신고 건수" : ""}
+            점은 개업 · 고리는 폐업 ·{" "}
+            {unit === 0 ? "해당 월까지 누적한" : "선택 기간의"} 신고 건수로, 지금 영업
+            중인 사업장 수와 다를 수 있습니다.
           </small>
         </aside>
       )}
-      <section
-        className="playback national-playback is-active dn-glass"
-        aria-label="지역별 시간 재생"
-      >
-        <button
-          type="button"
-          className="dong-toggle"
-          aria-pressed={showDongs}
-          onClick={() => setShowDongs((value) => !value)}
-        >
-          동별 개폐업 증감 {showDongs ? "켜짐" : "꺼짐"}
-        </button>
+      {data ? (
+        <PlaybackBar
+          min={min}
+          max={max}
+          current={currentMonth}
+          from={from}
+          unit={unit}
+          onUnitChange={(value) => {
+            setPlaying(false);
+            setUnit(value);
+          }}
+          speed={speed}
+          onSpeedChange={setSpeed}
+          playing={playing}
+          onTogglePlay={() => {
+            if (currentMonth >= max) setMonth(min);
+            setPlaying((value) => !value);
+          }}
+          onStep={step}
+          onSeek={(value) => {
+            setPlaying(false);
+            setMonth(Math.max(min, Math.min(max, value)));
+          }}
+          opens={opens}
+          closes={closes}
+          series={series}
+        />
+      ) : (
+        <PlaybackBarLoading
+          {...(error
+            ? { text: "재생 자료를 불러오지 못했습니다" }
+            : !regions.length
+              ? { text: "재생 지역 목록을 불러오는 중" }
+              : progressLabel(progress, name))}
+        />
+      )}
+      {/* Interim home for the dong layer until the layer sheet and info dock (design stage 4). */}
+      <aside className="dong-panel dn-glass-strong" aria-label="동별 개폐업 증감">
+        <div className="dong-head">
+          <strong>동별 증감</strong>
+          <button
+            type="button"
+            role="switch"
+            className="dong-switch"
+            aria-checked={showDongs}
+            aria-label="동별 개폐업 증감 표시"
+            onClick={() => setShowDongs((value) => !value)}
+          />
+        </div>
         {showDongs && (
-          <div className="dong-legend" aria-label="동별 개폐업 증감 범례">
-            <span>
-              <i className="dong-positive" />
-              개업 우세
-            </span>
-            <span>
-              <i className="dong-negative" />
-              폐업 우세
-            </span>
-            <span>
-              <i className="dong-balanced" />
-              동일
-            </span>
-            <span>
-              <i className="dong-empty" />
-              기간 내 기록 없음
-            </span>
-            <details>
-              <summary>집계 기준 · 미배정 건수</summary>
-              <small>
-                개업 − 폐업 · 차이가 클수록 진하게 · 동에 마우스를 올리거나
-                터치해 건수 확인
-              </small>
-              <small>
-                2026-10-01 행정동 경계 기준 · 읍·면 포함 · 과거 경계 복원 아님
-              </small>
-              <small>
-                경계: SGIS · 가공: vuski/admdongkor (CC BY 4.0) · 단순화 경계로
-                경계 부근 오차 가능
-              </small>
-              {dong.result && (
-                <small>
-                  이 기간 동 미배정: 개업{" "}
-                  {dong.result.unassigned.open.toLocaleString()}건 · 폐업{" "}
-                  {dong.result.unassigned.close.toLocaleString()}건 (현재 재생
-                  자료 중)
-                </small>
-              )}
-            </details>
-            {dongSelection && (
-              <div className="dong-selection" role="status">
-                <strong>{dongSelection.fullName}</strong> · 개업{" "}
-                {dongSelection.open.toLocaleString()}건 · 폐업{" "}
-                {dongSelection.close.toLocaleString()}건 · 증감{" "}
-                {(dongSelection.open - dongSelection.close).toLocaleString()}건{" "}
-                <button
-                  type="button"
-                  aria-label="동별 상세 닫기"
-                  onClick={() => setSelectedDong(null)}
-                >
-                  ×
-                </button>
-              </div>
-            )}
-            {dong.error ? (
-              <div role="alert">
-                {dong.error}{" "}
-                <button type="button" onClick={dong.retry}>
-                  동별 집계 재시도
-                </button>
+          <>
+            <div className="dong-ramp" aria-hidden="true">
+              {["neg-3", "neg-2", "neg-1", "even", "pos-1", "pos-2", "pos-3"].map((stepName) => (
+                <i key={stepName} style={{ background: `var(--dong-${stepName})` }} />
+              ))}
+            </div>
+            <div className="dong-ramp-labels">
+              <span>폐업 우세</span>
+              <span>같음</span>
+              <span>개업 우세</span>
+            </div>
+            <div className="dong-ramp-labels dong-empty-row">
+              <i className="dong-empty" aria-hidden="true" />
+              <span>기간 내 기록 없음</span>
+            </div>
+            {dongSelection ? (
+              <div className="dong-focus" role="status">
+                <div className="dong-focus-name">
+                  <span>{dongSelection.fullName}</span>
+                  <button type="button" aria-label="동별 상세 닫기" onClick={() => setSelectedDong(null)}>
+                    ×
+                  </button>
+                </div>
+                <div className="dong-split" aria-hidden="true">
+                  <i className="o" style={{ flex: dongSelection.open || 0.0001 }} />
+                  <i className="c" style={{ flex: dongSelection.close || 0.0001 }} />
+                </div>
+                <div className="dong-focus-nums dn-num">
+                  <span className="o">개업 {dongSelection.open.toLocaleString()}</span>
+                  <span>
+                    순증 {dongSelection.open - dongSelection.close > 0 ? "+" : ""}
+                    {(dongSelection.open - dongSelection.close).toLocaleString()}
+                  </span>
+                  <span className="c">폐업 {dongSelection.close.toLocaleString()}</span>
+                </div>
               </div>
             ) : (
-              !dong.result && (
-                <span role="status">
-                  {data
-                    ? "행정동 경계와 동별 집계를 준비하는 중…"
-                    : "지역 재생 데이터 준비 후 동별로 집계합니다."}
-                </span>
+              !dong.error && (
+                <p className="dong-hint" role="status">
+                  {dong.result
+                    ? "동을 누르면 건수를 고정해 보여 줍니다."
+                    : data
+                      ? "행정동 경계와 동별 집계를 준비하는 중…"
+                      : "지역 재생 자료 준비 후 동별로 집계합니다."}
+                </p>
               )
             )}
-          </div>
+            {dong.error && (
+              <div className="dong-error" role="alert">
+                {dong.error}
+                <button type="button" onClick={dong.retry}>
+                  다시 시도
+                </button>
+              </div>
+            )}
+            <details className="dong-basis">
+              <summary>집계 기준</summary>
+              <p>개업 − 폐업. 차이가 클수록 진하게 칠합니다.</p>
+              <p>2026.10.01 행정동 경계 기준 · 읍·면 포함 · 과거 경계 복원 아님</p>
+              <p>경계: SGIS · 가공: vuski/admdongkor (CC BY 4.0) · 단순화 경계로 경계 부근 오차 가능</p>
+              {dong.result && (
+                <p className="dn-num">
+                  이 기간 동 미배정: 개업 {dong.result.unassigned.open.toLocaleString()}건 · 폐업{" "}
+                  {dong.result.unassigned.close.toLocaleString()}건
+                </p>
+              )}
+            </details>
+          </>
         )}
-        <div className="region-selection-feedback" role="status">
-          <strong>{name} 선택됨</strong>
-          <span>
-            {hoveredRegion && hoveredRegion.id !== regionId
-              ? `${hoveredRegion.name} · 클릭하면 이 지역으로 재생 지역을 변경합니다.`
-              : boundaries
-                ? "지도에서 다른 지역을 클릭해 재생 지역을 바꿀 수 있습니다."
-                : "지역 선택 경계를 준비하는 중…"}
-          </span>
-        </div>
-        {boundaryError && (
-          <div className="playback-status" role="alert">
-            <span>
-              {boundaryError} 왼쪽 상단 지역 목록으로 선택할 수 있습니다.
-            </span>
-            <button onClick={() => setBoundaryAttempt((value) => value + 1)}>
-              경계 다시 불러오기
-            </button>
-          </div>
-        )}
-        {!data ? (
-          <div className="playback-status" role={error ? "alert" : "status"}>
-            <span>
-              {error ||
-                (!regions.length
-                  ? "재생 지역 목록을 불러오는 중…"
-                  : progressText(progress, name))}
-            </span>
-            {error && (
+      </aside>
+      {(error || boundaryError) && (
+        <div className="toasts">
+          {error && (
+            <p className="toast dn-glass-strong" role="alert">
+              <TriangleAlert aria-hidden="true" />
+              <span>{error}</span>
               <button
+                type="button"
                 onClick={() => {
                   setError("");
                   setProgress(initialProgress);
@@ -758,117 +777,19 @@ export default function NationalPlayback({
               >
                 다시 조회
               </button>
-            )}
-            {!error && progress.stage === "downloading" && (
-              <progress
-                aria-label="재생 데이터 다운로드"
-                max={progress.total || 1}
-                value={progress.bytes}
-              />
-            )}
-          </div>
-        ) : (
-          <>
-            <label>
-              재생 단위
-              <select
-                aria-label="재생 단위"
-                value={unit}
-                onChange={(e) => {
-                  setPlaying(false);
-                  setUnit(Number(e.target.value));
-                }}
-              >
-                <option value={1}>1개월</option>
-                <option value={3}>3개월</option>
-                <option value={12}>12개월</option>
-                <option value={0}>누적</option>
-              </select>
-            </label>
-            <div className="playback-timeline">
-              <input
-                type="range"
-                aria-label="재생 월"
-                min={min}
-                max={max}
-                value={currentMonth}
-                onChange={(e) => {
-                  setPlaying(false);
-                  setMonth(Number(e.target.value));
-                }}
-              />
-              <div className="playback-years">
-                <span>{format(min)}</span>
-                <span>2000</span>
-                <span>2010</span>
-                <span>2020</span>
-                <span>{format(max)}</span>
-              </div>
-            </div>
-            <button
-              className="playback-play"
-              aria-label={playing ? "일시정지" : "재생"}
-              onClick={() => {
-                if (currentMonth >= max) setMonth(min);
-                setPlaying((value) => !value);
-              }}
-            >
-              {playing ? "Ⅱ" : "▶"}
-            </button>
-            <select
-              aria-label="재생 속도"
-              value={speed}
-              onChange={(e) => setSpeed(Number(e.target.value))}
-            >
-              <option value={0.5}>0.5×</option>
-              <option value={1}>1×</option>
-              <option value={2}>2×</option>
-              <option value={4}>4×</option>
-            </select>
-            <button
-              aria-label="이전 기간"
-              disabled={currentMonth === min}
-              onClick={() => step(-1)}
-            >
-              ◀
-            </button>
-            <input
-              type="month"
-              aria-label="선택 월"
-              min={format(min)}
-              max={format(max)}
-              value={format(currentMonth)}
-              onInput={(e) => {
-                if (e.currentTarget.value) {
-                  setPlaying(false);
-                  setMonth(
-                    Math.max(min, Math.min(max, parse(e.currentTarget.value))),
-                  );
-                }
-              }}
-            />
-            <button
-              aria-label="다음 기간"
-              disabled={currentMonth === max}
-              onClick={() => step(1)}
-            >
-              ▶
-            </button>
-            <div className="playback-status" role="status">
-              <span>
-                {name} 전체 · {format(from)} ~ {format(currentMonth)} · 인허가{" "}
-                {opens.toLocaleString()} · 폐업 {closes.toLocaleString()}
-              </span>
-              <span>
-                {unit === 0
-                  ? "누적은 해당 월까지의 신고 기록입니다."
-                  : "선택 기간에 발생한 신고 기록입니다."}{" "}
-                현재 영업 중인 사업장 수와 다를 수 있습니다.
-              </span>
-            </div>
-          </>
-        )}
-      </section>
+            </p>
+          )}
+          {boundaryError && (
+            <p className="toast dn-glass-strong" role="alert">
+              <TriangleAlert aria-hidden="true" />
+              <span>{boundaryError} 지역은 왼쪽 위 목록에서 고를 수 있습니다.</span>
+              <button type="button" onClick={() => setBoundaryAttempt((value) => value + 1)}>
+                다시 시도
+              </button>
+            </p>
+          )}
+        </div>
+      )}
     </>
   );
 }

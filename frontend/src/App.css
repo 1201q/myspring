@@ -1,4 +1,4 @@
-/* App shell, popups and the playback bar. Colors come from src/styles/tokens.css only. */
+/* App shell and map popups. Colors come from src/styles/tokens.css only. */
 .app {
   position: relative;
   height: 100dvh;
@@ -244,125 +244,40 @@
   pointer-events: none;
 }
 
-/* ---------- playback bar ---------- */
+/* ---------- playback placeholder (loading fallback and error boundary) ---------- */
+/* The real bar is PlaybackBar (.pb); this only styles the stand-ins shown before it mounts. */
 .playback {
   position: absolute;
   z-index: var(--z-chrome);
   bottom: var(--space-4);
   left: 50%;
   transform: translateX(-50%);
-  width: min(1100px, calc(100% - 32px));
+  width: min(var(--playbar-max), calc(100% - 32px));
+  min-height: 60px;
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 10px var(--space-3);
-  border-radius: var(--radius-lg);
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: 0 var(--space-3) 0 20px;
+  border-radius: var(--radius-xl);
   font-size: 12px;
+  font-weight: 600;
 }
-.playback button,
-.playback select,
-.playback input[type="month"] {
+.playback button {
   height: var(--control-sm);
-  padding: 0 10px;
+  padding: 0 var(--space-3);
   border: 0;
   border-radius: var(--radius-pill);
-  background: var(--fill-hover);
-  color: var(--ink);
-  font: inherit;
-  font-size: 12px;
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-}
-.playback button:hover,
-.playback select:hover {
   background: var(--fill-pressed);
-}
-.playback button:disabled {
-  opacity: 0.35;
-  cursor: default;
-}
-.playback label {
-  display: grid;
-  gap: 2px;
-  font-size: 10px;
-  font-weight: 600;
-  color: var(--ink-subtle);
-}
-.playback-timeline {
-  flex: 1;
-  min-width: 180px;
-}
-.playback input[type="range"] {
-  width: 100%;
-  margin: 0;
-  accent-color: var(--ink);
-  cursor: pointer;
-}
-.playback-years {
-  display: flex;
-  justify-content: space-between;
-  font-size: 10px;
-  line-height: 12px;
-  font-weight: 600;
-  color: var(--ink-subtle);
-  font-variant-numeric: tabular-nums;
-}
-.playback .playback-play {
-  width: var(--control-lg);
-  height: var(--control-lg);
-  padding: 0;
-  border-radius: 50%;
-  background: var(--selected);
-  color: var(--on-selected);
-  font-size: 15px;
-}
-.playback .playback-play:hover {
-  background: var(--selected);
-  opacity: 0.9;
-}
-.playback-status {
-  flex-basis: 100%;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 6px;
-  padding-top: 8px;
-  border-top: 1px solid var(--divider);
+  color: var(--ink);
   font-size: 11px;
-  line-height: 15px;
-  color: var(--ink-muted);
-}
-.event-open {
-  color: var(--open-ink);
-  font-weight: 600;
-}
-.event-close {
-  color: var(--close-ink);
-  font-weight: 600;
+  font-weight: 650;
 }
 
-@media (max-width: 1100px) {
-  .playback {
-    gap: 8px;
-  }
-  .playback-timeline {
-    flex-basis: 100%;
-    order: 1;
-  }
-  .playback-status {
-    order: 2;
-  }
-}
 @media (max-width: 760px) {
   .playback {
     width: calc(100% - 24px);
     bottom: var(--space-3);
-    padding: 10px;
-    gap: 6px;
-  }
-  .playback-status {
-    font-size: 10px;
   }
   .detail {
     top: auto;

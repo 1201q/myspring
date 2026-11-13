@@ -5,8 +5,8 @@
   top: calc(var(--space-4) + var(--control-lg) + var(--space-3));
   left: var(--space-4);
   width: var(--panel-w);
-  /* Stop above the playback bar (about 200px tall while it still wraps to two rows). */
-  max-height: calc(100dvh - 340px);
+  /* Stop above the bottom band reserved for the playback bar: 72px top + 60px bar + 2 × 16px. */
+  max-height: calc(100dvh - 72px - 92px - var(--space-4));
   display: flex;
   flex-direction: column;
   padding: var(--space-3) var(--space-2) var(--space-3);
@@ -78,6 +78,12 @@
 @media (max-width: 1100px) {
   .seoul-ranks {
     max-height: 36vh;
+  }
+}
+@media (max-width: 900px) and (min-width: 761px) {
+  .seoul-ranks {
+    /* The playback bar wraps to two rows (about 118px) below 900px. */
+    max-height: min(36vh, calc(100dvh - 72px - 150px - var(--space-4)));
   }
 }
 @media (max-width: 760px) {
