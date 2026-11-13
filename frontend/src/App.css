@@ -78,7 +78,7 @@
   font-weight: 650;
 }
 
-/* ---------- map popup (detail + same-location list) ---------- */
+/* ---------- map popup (detail + same-location list). See the design system's MapPopup. ---------- */
 .detail {
   position: absolute;
   z-index: var(--z-popover);
@@ -89,6 +89,15 @@
   overflow: auto;
   padding: var(--space-4);
   border-radius: var(--radius-lg);
+}
+.detail-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 28px;
+}
+.detail-top .close {
+  margin: 0 -6px 0 auto;
 }
 .detail h2 {
   margin: 6px 0 2px;
@@ -102,6 +111,12 @@
   font-size: 13px;
   line-height: 19px;
   color: var(--ink-muted);
+}
+.detail .detail-note {
+  margin-top: var(--space-2);
+  font-size: 11px;
+  line-height: 15px;
+  color: var(--ink-subtle);
 }
 .detail dl {
   margin: var(--space-3) 0 0;
@@ -123,40 +138,86 @@
 .detail dd {
   margin: 0;
   font-weight: 600;
-  font-variant-numeric: tabular-nums;
 }
-.detail dl + p {
-  margin-top: var(--space-3);
+.detail dd.is-missing {
+  color: var(--ink-subtle);
+  font-weight: 500;
 }
 .detail a {
   display: inline-flex;
+  align-items: center;
+  gap: 3px;
   margin-top: var(--space-3);
   font-size: 12px;
   font-weight: 600;
   text-decoration: none;
 }
+.detail a svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 2;
+}
 .detail a:hover {
   text-decoration: underline;
 }
 .close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
   width: 28px;
   height: 28px;
+  flex: none;
   display: grid;
   place-items: center;
   border: 0;
   border-radius: var(--radius-pill);
   background: transparent;
   color: var(--ink-muted);
-  font-size: 20px;
-  line-height: 1;
+}
+.close svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 1.75;
 }
 .close:hover {
   background: var(--fill-hover);
   color: var(--ink);
 }
+
+/* Status badge and the dot / ring marks */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 20px;
+  padding: 0 8px;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  line-height: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.badge-open {
+  background: var(--open-soft);
+  color: var(--open-ink);
+}
+.badge-close {
+  background: var(--close-soft);
+  color: var(--close-ink);
+}
+.mark-open,
+.mark-close {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  flex: none;
+  border-radius: 50%;
+}
+.mark-open {
+  background: var(--open);
+}
+.mark-close {
+  border: 1.5px solid var(--close);
+}
+
+/* Same-location list */
 .location-back,
 .location-pages button,
 .location-records > button:not(.close) {
@@ -170,8 +231,20 @@
   font-weight: 600;
 }
 .location-back {
-  display: block;
-  margin: 0 32px var(--space-3) 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  margin: 0 0 var(--space-2);
+  padding-left: 6px;
+}
+.location-back svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 1.75;
+}
+.location-back:hover,
+.location-pages button:hover:not(:disabled) {
+  background: var(--fill-pressed);
 }
 .location-pages button:disabled {
   opacity: 0.35;
@@ -195,9 +268,12 @@
   gap: 1px;
 }
 .result {
-  display: block;
   width: 100%;
-  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 6px 10px;
   border: 0;
   border-radius: var(--radius-sm);
   background: transparent;
@@ -207,19 +283,29 @@
 .result:hover {
   background: var(--fill-hover);
 }
+.result-body {
+  display: grid;
+  gap: 1px;
+  min-width: 0;
+}
 .result-name {
-  display: block;
-  margin-bottom: 2px;
   font-size: 13px;
   line-height: 19px;
-  font-weight: 650;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-.result > span:not(.result-name) {
-  display: block;
+.result-body > span:not(.result-name) {
   font-size: 11px;
-  line-height: 16px;
+  line-height: 15px;
   color: var(--ink-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
+
+/* Positioning next to the pointer, and the light hover variant */
 .selection-popup:not(.is-positioned) {
   display: contents;
 }
@@ -237,7 +323,7 @@
   max-height: none;
   margin: 0;
 }
-.selection-popup.is-hover :is(.close, .location-back, .location-pages) {
+.selection-popup.is-hover :is(.close, .location-back, .location-pages, .detail a) {
   display: none;
 }
 .selection-popup.is-hover {

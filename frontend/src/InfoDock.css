@@ -161,7 +161,7 @@
     bottom: calc(var(--space-3) + 118px + var(--space-2));
     width: auto;
     max-width: none;
-    /* Stay below the ranking panel (top band ≈ 300px) until it collapses on mobile. */
-    max-height: calc(100dvh - 138px - 300px);
+    /* Stay below the ranking panel (64px + up to 40vh) when it is expanded. */
+    max-height: calc(100dvh - 138px - 72px - 40vh);
   }
 }

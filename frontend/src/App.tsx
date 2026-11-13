@@ -6,6 +6,9 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import "./App.css";
 import type { LocationGroup } from "./locationGroups";
 import LocationRecords from "./LocationRecords";
+import BusinessStatus from "./BusinessStatus";
+import { formatDate } from "./format";
+import { ArrowUpRight, ChevronLeft, X } from "lucide-react";
 import PlaybackBoundary from "./PlaybackBoundary";
 import SubwayOverlay from "./SubwayOverlay";
 import MapRail from "./MapRail";
@@ -246,39 +249,30 @@ export default function App() {
         {locationIds.length > 1 && !selected && <LocationRecords key={locationIds.join(",")} ids={locationIds} onSelect={selectId} onClose={clearSelection} />}
         {selected && (
           <article className="detail dn-glass-strong" aria-label="인허가 상세">
-            <button
-              className="close"
-              aria-label="상세 닫기"
-              onClick={clearSelection}
-            >
-              ×
-            </button>
-            {locationIds.length > 1 && <button className="location-back" onClick={() => { detailRequest.current?.abort(); setSelected(null); }}>← 같은 위치의 기록 {locationIds.length}건</button>}
-            <span className="eyebrow">인허가 기록</span>
+            {locationIds.length > 1 && <button className="location-back" onClick={() => { detailRequest.current?.abort(); setSelected(null); }}><ChevronLeft aria-hidden="true" />같은 위치의 기록 {locationIds.length}건</button>}
+            <div className="detail-top">
+              <BusinessStatus closedAt={selected.closedAt} />
+              <span className="eyebrow">{selected.businessType || "업종 정보 없음"}</span>
+              <button className="close" aria-label="상세 닫기" onClick={clearSelection}>
+                <X aria-hidden="true" />
+              </button>
+            </div>
             <h2>{selected.name}</h2>
-            <p>
-              {selected.roadAddress || selected.lotAddress || "주소 정보 없음"}
-            </p>
-            <dl>
-              <div>
-                <dt>업종</dt>
-                <dd>{selected.businessType || "정보 없음"}</dd>
-              </div>
+            <p>{selected.roadAddress || selected.lotAddress || "주소 정보 없음"}</p>
+            <dl className="dn-num">
               <div>
                 <dt>인허가일</dt>
-                <dd>{selected.permittedAt || "원천 데이터에 기록 없음"}</dd>
+                <dd className={selected.permittedAt ? undefined : "is-missing"}>{formatDate(selected.permittedAt) ?? "기록 없음"}</dd>
               </div>
               <div>
                 <dt>폐업일</dt>
-                <dd>{selected.closedAt || "원천 데이터에 기록 없음"}</dd>
+                <dd className={selected.closedAt ? undefined : "is-missing"}>{formatDate(selected.closedAt) ?? "기록 없음"}</dd>
               </div>
             </dl>
-            {!located(selected) && (
-              <p>좌표가 없어 지도 위치를 표시할 수 없습니다.</p>
-            )}
+            {!located(selected) && <p className="detail-note">좌표가 없어 지도 위치를 표시할 수 없습니다.</p>}
             {selected.sourceUrl && (
               <a href={selected.sourceUrl} target="_blank" rel="noreferrer">
-                원천 데이터 보기 ↗
+                원천 데이터 보기<ArrowUpRight aria-hidden="true" />
               </a>
             )}
           </article>

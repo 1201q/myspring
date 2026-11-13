@@ -16,7 +16,7 @@ import { dongColor } from "./dongStatistics";
 import type { DongProperties } from "./dongStatistics";
 import { MAP_PALETTE } from "./theme";
 import type { Theme } from "./theme";
-import "./SeoulPlayback.css";
+import RankPanel from "./RankPanel";
 import "./NationalPlayback.css";
 import FilterCapsule from "./FilterCapsule";
 import PlaybackBar, { PlaybackBarLoading } from "./PlaybackBar";
@@ -585,12 +585,12 @@ export default function NationalPlayback({
     () => (data ? activitySeries(data.manifest, codes, 3) : null),
     [data, codes],
   );
-  const rows = useMemo(() => {
+  // Every category for the ranking panel; totals below follow the category filter.
+  const allRows = useMemo(() => {
     if (!data) return [];
     const m = data.manifest,
       n = m.categories.length;
     return m.categories
-      .filter((c) => codes.includes(c.code))
       .map((c) => {
         let open = 0,
           close = 0;
@@ -601,7 +601,11 @@ export default function NationalPlayback({
         return { ...c, open, close };
       })
       .sort((a, b) => b.open - a.open);
-  }, [data, codes, from, currentMonth, min]);
+  }, [data, from, currentMonth, min]);
+  const rows = useMemo(
+    () => allRows.filter((row) => codes.includes(row.code)),
+    [allRows, codes],
+  );
   const opens = rows.reduce((sum, row) => sum + row.open, 0),
     closes = rows.reduce((sum, row) => sum + row.close, 0);
   const step = (direction: number) => {
@@ -628,27 +632,19 @@ export default function NationalPlayback({
         onRetryCategories={onRetryCategories}
       />
       {data && showRanks && (
-        <aside className="seoul-ranks dn-glass" aria-label={`${name} 전체 업종 순위`}>
-          <strong>개업 많은 순 · {name} 전체</strong>
-          <p>
-            {formatMonth(from)} – {formatMonth(currentMonth)} · 개업{" "}
-            {opens.toLocaleString()} · 폐업 {closes.toLocaleString()}
-          </p>
-          <div className="seoul-rank-scroll">
-            {rows.map((row) => (
-              <div className="seoul-rank" key={row.code}>
-                <span>{row.name}</span>
-                <b>{row.open.toLocaleString()}</b>
-                <small>{row.close.toLocaleString()}</small>
-              </div>
-            ))}
-          </div>
-          <small>
-            점은 개업 · 고리는 폐업 ·{" "}
-            {unit === 0 ? "해당 월까지 누적한" : "선택 기간의"} 신고 건수로, 지금 영업
-            중인 사업장 수와 다를 수 있습니다.
-          </small>
-        </aside>
+        <RankPanel
+          regionName={name}
+          period={`${formatMonth(from)} – ${formatMonth(currentMonth)}`}
+          opens={opens}
+          closes={closes}
+          rows={allRows}
+          category={category}
+          onCategoryChange={(value) => {
+            setPlaying(false);
+            onCategoryChange(value);
+          }}
+          cumulative={unit === 0}
+        />
       )}
       {data ? (
         <PlaybackBar

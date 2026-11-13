@@ -1,0 +1,264 @@
+/* "개업 많은 순" panel. See the design system's RankPanel component. */
+.rank,
+.rank-pill {
+  position: absolute;
+  z-index: var(--z-chrome);
+  top: calc(var(--space-4) + var(--control-lg) + var(--space-3));
+  left: var(--space-4);
+}
+.rank {
+  width: var(--panel-w);
+  /* Stop above the bottom band reserved for the playback bar. */
+  max-height: calc(100dvh - 72px - 92px - var(--space-4));
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.rank-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: var(--space-3) var(--space-3) 0 var(--space-4);
+}
+.rank-head h2 {
+  margin: 0;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+.rank-collapse {
+  width: 28px;
+  height: 28px;
+  margin-left: auto;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--ink-muted);
+}
+.rank-collapse:hover {
+  background: var(--fill-hover);
+  color: var(--ink);
+}
+.rank-collapse svg,
+.rank-pill svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 1.75;
+}
+.rank-scope {
+  margin: 2px var(--space-4) 0;
+  font-size: 11px;
+  line-height: 15px;
+  color: var(--ink-muted);
+}
+.rank-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin: var(--space-3) var(--space-3) 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--divider);
+  flex: none;
+}
+.rank-stats div {
+  display: grid;
+  gap: 2px;
+  padding: 10px 12px;
+  background: var(--glass-strong);
+}
+.rank-stats small {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  line-height: 15px;
+  color: var(--ink-muted);
+}
+.rank-stats b {
+  font-size: 17px;
+  line-height: 22px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+.rank-pos {
+  color: var(--open-ink);
+}
+.rank-neg {
+  color: var(--close-ink);
+}
+.rank-mark-open,
+.rank-mark-close {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  flex: none;
+  border-radius: 50%;
+}
+.rank-mark-open {
+  background: var(--open);
+}
+.rank-mark-close {
+  border: 1.5px solid var(--close);
+}
+.rank-list {
+  list-style: none;
+  margin: var(--space-2) 0 0;
+  padding: 0 var(--space-2) var(--space-2);
+  min-height: 0;
+  overflow: auto;
+}
+.rank-list button {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 18px 1fr auto;
+  align-items: center;
+  column-gap: 8px;
+  row-gap: 5px;
+  padding: 8px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  text-align: left;
+}
+.rank-list button:hover {
+  background: var(--fill-hover);
+}
+.rank-list button[aria-current="true"] {
+  background: var(--fill-pressed);
+}
+.rank-list button[aria-current="true"] .rank-name {
+  font-weight: 650;
+}
+.rank-no {
+  font-size: 10px;
+  line-height: 12px;
+  font-weight: 600;
+  color: var(--ink-subtle);
+  text-align: right;
+}
+.rank-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+  line-height: 19px;
+  font-weight: 500;
+}
+.rank-v {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.rank-open {
+  color: var(--open-ink);
+}
+.rank-v em {
+  font-style: normal;
+  font-weight: 500;
+  color: var(--ink-subtle);
+}
+.rank-bars {
+  grid-column: 2 / 4;
+  display: grid;
+  gap: 2px;
+}
+.rank-bars i {
+  display: block;
+  height: 4px;
+  min-width: 1px;
+  border-radius: var(--radius-xs);
+}
+.rank-bars .o {
+  background: var(--open);
+}
+.rank-bars .c {
+  height: 2px;
+  background: var(--close);
+  opacity: 0.9;
+}
+.rank-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 10px;
+  margin: 0;
+  padding: 10px var(--space-4) var(--space-3);
+  border-top: 1px solid var(--divider);
+  font-size: 11px;
+  line-height: 15px;
+  color: var(--ink-muted);
+  flex: none;
+}
+.rank-foot > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.rank-foot .rank-foot-note {
+  display: block;
+  flex-basis: 100%;
+  color: var(--ink-subtle);
+}
+
+/* Collapsed */
+.rank-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: calc(100% - 32px - var(--control-lg) - var(--space-2));
+  height: var(--control-lg);
+  padding: 0 12px 0 14px;
+  border-radius: var(--radius-pill);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.rank-pill:hover {
+  background: var(--glass-strong);
+}
+.rank-pill-top {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--ink-muted);
+  font-weight: 500;
+}
+.rank-pill-n {
+  color: var(--open-ink);
+}
+.rank-pill .rank-chev {
+  color: var(--ink-subtle);
+}
+
+@media (max-width: 1100px) {
+  .rank {
+    max-height: 36vh;
+  }
+}
+@media (max-width: 900px) and (min-width: 761px) {
+  .rank {
+    /* The playback bar wraps to two rows (about 118px) below 900px. */
+    max-height: min(36vh, calc(100dvh - 72px - 150px - var(--space-4)));
+  }
+}
+@media (max-width: 760px) {
+  .rank,
+  .rank-pill {
+    top: calc(var(--space-3) + var(--control-lg) + var(--space-2));
+    left: var(--space-3);
+  }
+  .rank {
+    width: min(var(--panel-w), calc(100% - 24px - var(--control-lg) - var(--space-2)));
+    max-height: 40vh;
+  }
+}
