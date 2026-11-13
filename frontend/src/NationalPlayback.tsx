@@ -18,8 +18,11 @@ import { MAP_PALETTE } from "./theme";
 import type { Theme } from "./theme";
 import "./SeoulPlayback.css";
 import "./NationalPlayback.css";
+import FilterCapsule from "./FilterCapsule";
 
 type Props = {
+  /** Current region bounds, for the rail’s "fit region" button. */
+  onRegionBoundsChange: (bbox: [number, number, number, number]) => void;
   theme: Theme;
   onRegionChange: (id: string) => void;
   onHoverLocation: (group: LocationGroup | null, x: number, y: number) => void;
@@ -70,6 +73,7 @@ function progressText(value: LoadProgress, name: string) {
 }
 export default function NationalPlayback({
   theme,
+  onRegionBoundsChange,
   map,
   onRegionChange,
   showLocationCounts,
@@ -223,6 +227,7 @@ export default function NationalPlayback({
   useEffect(() => {
     if (!map || !selectedRegion) return;
     const [west, south, east, north] = selectedRegion.bbox;
+    onRegionBoundsChange(selectedRegion.bbox);
     // A resize and a region click can happen in the same frame on narrow screens.
     map.resize();
     map.fitBounds(
@@ -232,7 +237,7 @@ export default function NationalPlayback({
       ],
       { padding: 45, duration: 600, maxZoom: 11 },
     );
-  }, [map, selectedRegion]);
+  }, [map, selectedRegion, onRegionBoundsChange]);
   useEffect(() => {
     if (!selectedRegion || data) return;
     const controller = new AbortController();
@@ -552,6 +557,20 @@ export default function NationalPlayback({
     }, 700 / speed);
     return () => window.clearTimeout(timer);
   }, [playing, data, max, currentMonth, unit, speed]);
+  // Openings per category id in the current window, for the category sheet.
+  const categoryCounts = useMemo(() => {
+    if (!data) return null;
+    const m = data.manifest,
+      n = m.categories.length,
+      counts = new Map<string, number>();
+    for (const c of m.categories) {
+      let open = 0;
+      for (let t = from; t <= currentMonth; t++)
+        open += m.monthlyCounts[(t - min) * 2 * n + c.code] ?? 0;
+      counts.set(c.id, open);
+    }
+    return counts;
+  }, [data, from, currentMonth, min]);
   const rows = useMemo(() => {
     if (!data) return [];
     const m = data.manifest,
@@ -579,53 +598,21 @@ export default function NationalPlayback({
   };
   return (
     <>
-      <section className="map-primary-filters dn-glass" aria-label="지역 및 업종 선택">
-        <label>
-          <span className="visually-hidden">선택한 지역</span>
-          <select
-            aria-label="재생 지역"
-            value={regionId}
-            disabled={!regions.length}
-            onChange={(e) => changeRegion(e.target.value)}
-          >
-            {!regions.length && <option value={regionId}>{name}</option>}
-            {regions.map((r) => (
-              <option value={r.id} key={r.id}>
-                {r.name}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label className="playback-category">
-          <span className="visually-hidden">업종</span>
-          <select
-            aria-label="업종"
-            disabled={!categories.length}
-            value={category}
-            onChange={(event) => {
-              setPlaying(false);
-              onCategoryChange(event.target.value);
-            }}
-          >
-            <option value="">
-              {categories.length
-                ? "전체"
-                : "목록 불러오는 중"}
-            </option>
-            {categories.map((entry) => (
-              <option value={entry.id} key={entry.id}>
-                {entry.name}
-              </option>
-            ))}
-          </select>
-        </label>
-        {categoryError && (
-          <div className="map-filter-error" role="alert">
-            <span>{categoryError}</span>
-            <button onClick={onRetryCategories}>업종 다시 불러오기</button>
-          </div>
-        )}
-      </section>
+      <FilterCapsule
+        regions={regions}
+        regionId={regionId}
+        regionName={name}
+        onRegionChange={changeRegion}
+        categories={categories}
+        category={category}
+        onCategoryChange={(value) => {
+          setPlaying(false);
+          onCategoryChange(value);
+        }}
+        categoryCounts={categoryCounts}
+        categoryError={categoryError}
+        onRetryCategories={onRetryCategories}
+      />
       {data && (
         <aside className="seoul-ranks dn-glass" aria-label={`${name} 전체 업종 순위`}>
           <strong>개업 많은 순 · {name} 전체</strong>

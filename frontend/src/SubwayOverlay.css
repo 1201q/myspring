@@ -2,7 +2,8 @@
 .subway-control {
   position: absolute;
   z-index: var(--z-chrome);
-  top: calc(var(--space-4) + 120px);
+  /* Below the two rail groups (about 194px). */
+  top: calc(var(--space-4) + 190px);
   right: var(--space-4);
   width: 252px;
   max-width: calc(100% - 32px);
@@ -101,7 +102,8 @@
 }
 @media (max-width: 760px) {
   .subway-control {
-    top: 200px;
+    /* Below the rail and the ranking panel (64px + 28vh). */
+    top: max(258px, calc(72px + 28vh));
     right: var(--space-3);
     width: 220px;
   }

@@ -82,7 +82,7 @@
 }
 @media (max-width: 760px) {
   .seoul-ranks {
-    top: 60px;
+    top: calc(var(--space-3) + var(--control-lg) + var(--space-2));
     left: var(--space-3);
     width: 240px;
     max-height: 28vh;

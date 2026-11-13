@@ -33,73 +33,7 @@
   color: var(--ink-muted);
 }
 
-/* ---------- top-right toolbar ---------- */
-.map-toolbar {
-  position: absolute;
-  z-index: var(--z-chrome);
-  top: var(--space-4);
-  right: calc(var(--space-4) + var(--control-lg) + var(--space-2));
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-}
-.theme-toggle {
-  height: var(--control-md);
-  padding: 0 14px;
-  border-radius: var(--radius-pill);
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--ink-muted);
-}
-.theme-toggle:hover {
-  color: var(--ink);
-}
-.map-zoom {
-  position: absolute;
-  z-index: var(--z-chrome);
-  top: calc(var(--space-4) + var(--control-md) + var(--space-2));
-  right: calc(var(--space-4) + var(--control-lg) + var(--space-2));
-  padding: 6px 10px;
-  border-radius: var(--radius-pill);
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--ink-muted);
-  pointer-events: none;
-}
-
-/* MapLibre controls as a glass rail */
-.maplibregl-ctrl-top-right {
-  top: var(--space-4);
-  right: var(--space-4);
-}
-.maplibregl-ctrl-top-right .maplibregl-ctrl {
-  margin: 0;
-}
-.maplibregl-ctrl-group:not(:empty) {
-  overflow: hidden;
-  border: 1px solid var(--glass-line);
-  border-radius: var(--radius-pill);
-  background: var(--glass);
-  -webkit-backdrop-filter: blur(var(--blur-md)) saturate(var(--glass-saturate));
-  backdrop-filter: blur(var(--blur-md)) saturate(var(--glass-saturate));
-  box-shadow: var(--shadow-float), var(--shadow-sheen);
-  padding: var(--space-1);
-}
-.maplibregl-ctrl-group button {
-  width: var(--control-md);
-  height: var(--control-md);
-  border-radius: var(--radius-pill);
-  background: transparent;
-}
-.maplibregl-ctrl-group button + button {
-  border-top: 0;
-}
-.maplibregl-ctrl-group button:not(:disabled):hover {
-  background-color: var(--fill-hover);
-}
-[data-theme="dark"] .maplibregl-ctrl-icon {
-  filter: invert(1) brightness(0.85);
-}
+/* MapLibre attribution on glass */
 .maplibregl-ctrl-attrib.maplibregl-compact,
 .maplibregl-ctrl-attrib {
   background: var(--glass);
@@ -429,15 +363,6 @@
   }
   .playback-status {
     font-size: 10px;
-  }
-  .map-toolbar {
-    top: auto;
-    bottom: auto;
-    top: 120px;
-    right: var(--space-3);
-  }
-  .map-zoom {
-    display: none;
   }
   .detail {
     top: auto;

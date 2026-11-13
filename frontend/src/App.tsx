@@ -8,6 +8,7 @@ import type { LocationGroup } from "./locationGroups";
 import LocationRecords from "./LocationRecords";
 import PlaybackBoundary from "./PlaybackBoundary";
 import SubwayOverlay from "./SubwayOverlay";
+import MapRail from "./MapRail";
 import { MAP_PALETTE } from "./theme";
 import type { Theme } from "./theme";
 
@@ -47,6 +48,7 @@ export default function App() {
   const [zoom, setZoom] = useState(10);
   const [playbackRegionVersion, setPlaybackRegionVersion] = useState(0);
   const [playbackRegionId, setPlaybackRegionId] = useState("seoul");
+  const [regionBounds, setRegionBounds] = useState<[number, number, number, number] | null>(null);
   const onPlaybackRegionChange = useCallback((id: string) => { setPlaybackRegionId(id); setPlaybackRegionVersion(v => v + 1); }, []);
   const pinned = useRef(false);
   const [isPinned, setIsPinned] = useState(false);
@@ -95,7 +97,6 @@ export default function App() {
       });
       map.current = instance;
       instance.on("load", () => { if (!disposed) setMapInstance(instance); });
-      instance.addControl(new maplibregl.NavigationControl(), "top-right");
       instance.on("zoom", () => { if (!disposed) setZoom(instance.getZoom()); });
       instance.on("error", () => {
         if (!disposed) setMapError("지도 일부를 불러오지 못했습니다. 페이지를 새로고침해주세요.");
@@ -204,17 +205,12 @@ export default function App() {
     <main className="app" data-theme={theme} data-playback="true">
       <section className="map-panel" aria-label="전국 인허가 지도">
         <div ref={container} className="map" onPointerLeave={() => hoverLocation(null, 0, 0)} />
-        <div className="map-toolbar">
-          <h1 className="visually-hidden">동네의 기록</h1>
-          <button className="theme-toggle dn-glass" aria-pressed={theme === "dark"} onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
-            {theme === "light" ? "다크 모드" : "라이트 모드"}
-          </button>
-        </div>
-        <output className="map-zoom dn-glass dn-num" aria-label="현재 지도 줌 단계">줌 {zoom.toFixed(1)}</output>
+        <h1 className="visually-hidden">동네의 기록</h1>
+        <MapRail map={mapInstance} theme={theme} onToggleTheme={() => setTheme(theme === "light" ? "dark" : "light")} regionBounds={regionBounds} />
         <SubwayOverlay theme={theme} map={mapInstance} playbackRegionId={playbackRegionId} playbackRegionVersion={playbackRegionVersion} />
         <PlaybackBoundary>
           <Suspense fallback={<section className="playback is-active dn-glass" role="status">지역과 시간 재생을 준비하는 중…</section>}>
-            <NationalPlayback theme={theme} map={mapInstance} onRegionChange={onPlaybackRegionChange} showLocationCounts={zoom >= 15} category={category} categories={categories} categoryError={categoryError} onCategoryChange={value => { clearSelection(); setCategory(value); }} onRetryCategories={() => setAttempt(value => value + 1)} onClearSelection={clearSelection} onSelectId={selectId} onSelectLocation={pinLocation} onHoverLocation={hoverLocation} />
+            <NationalPlayback theme={theme} onRegionBoundsChange={setRegionBounds} map={mapInstance} onRegionChange={onPlaybackRegionChange} showLocationCounts={zoom >= 15} category={category} categories={categories} categoryError={categoryError} onCategoryChange={value => { clearSelection(); setCategory(value); }} onRetryCategories={() => setAttempt(value => value + 1)} onClearSelection={clearSelection} onSelectId={selectId} onSelectLocation={pinLocation} onHoverLocation={hoverLocation} />
           </Suspense>
         </PlaybackBoundary>
         {mapError && <p className="map-error dn-glass-strong" role="alert">{mapError}<button onClick={() => window.location.reload()}>새로고침</button></p>}
