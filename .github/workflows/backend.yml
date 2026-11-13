@@ -3,8 +3,12 @@ name: Backend CI/CD
 on:
   push:
     branches: [dev, main]
+    paths-ignore:
+      - 'frontend/**'
   pull_request:
     branches: [dev, main]
+    paths-ignore:
+      - 'frontend/**'
 
 permissions:
   contents: read
