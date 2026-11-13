@@ -380,6 +380,7 @@ public class NationalPlaybackService {
       long unknownCategoryEvents,
       long publishedEvents) {}
 
+  @io.swagger.v3.oas.annotations.media.Schema(name = "NationalPlaybackManifest", description = "재생 파일 메타데이터. binaryUrl로 파일을 내려받은 후 FE에서 필터링합니다.")
   public record Manifest(
       String version,
       String binaryUrl,

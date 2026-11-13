@@ -51,6 +51,22 @@ OpenAPI JSON 명세는 [여기](http://localhost:8080/v3/api-docs)에서 확인�
 
 문서는 Controller에서 자동 생성됩니다. `POST`, `PUT`, `DELETE`를 실행하면 연결된 DB의 실제 데이터가 변경됩니다.
 
+Swagger 상단에는 현재 FE의 호출 순서와 데이터 제공 방식이 설명되어 있습니다.
+API는 지도 조회, 전국/서울 시간 재생, 영역별 이벤트, 샘플 인허가, 학습용 음식점, 연결 확인으로 구분됩니다.
+각 API를 펼치면 용도, 파라미터 설명과 예시, 응답 코드 및 스키마를 볼 수 있습니다.
+
+현재 지도 기능을 확인하려면 다음 순서로 호출합니다.
+
+1. `GET /api/v1/map/categories`에서 업종 ID를 확인합니다.
+2. `GET /api/v1/map/playback/national/regions`에서 지역 ID를 확인합니다.
+3. 해당 지역의 `manifest.json`을 조회합니다. 503이면 `Retry-After` 초 뒤 재시도합니다.
+4. 응답의 `binaryUrl`로 재생 파일을 받습니다. 이 응답은 JSON이 아닌 바이너리입니다.
+5. 파일의 실제 사업장 ID로 `GET /api/v1/map/businesses/{id}`를 조회합니다.
+
+`샘플 인허가`와 `학습용 음식점`의 ID는 전국 지도 ID와 별개입니다.
+지하철·행정경계는 프런트엔드 정적 파일이며 Swagger API 대상이 아닙니다.
+날짜·업종 변경은 다운로드한 재생 데이터로 FE에서 처리하며, DB 변경 후 재생 지도 갱신에는 파일 재발행이 필요합니다.
+
 ## 테스트와 빌드
 
 ```powershell
