@@ -14,6 +14,9 @@ Spring Data JPA와 Oracle Cloud `coin`의 PostgreSQL을 기본으로 사용합�
 자동 테스트는 별도 메모리 H2 DB를 사용합니다. `frontend`에는 Vite + React 지도 화면이 있습니다.
 SSH 터널과 실행 방법은 [원격 PostgreSQL 안내](docs/remote-postgresql.md)를 참고하세요.
 
+ARM64 서버의 GitHub Actions CI/CD와 `dev` → `main` 운영 흐름은
+[백엔드 배포 안내](docs/backend-deployment.md)를 참고하세요.
+
 ## 실행 (Windows PowerShell)
 
 먼저 별도 로컬 터미널에서 SSH 터널을 실행하고 유지합니다.

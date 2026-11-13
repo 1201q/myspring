@@ -1,0 +1,115 @@
+name: Backend CI/CD
+
+on:
+  push:
+    branches: [dev, main]
+  pull_request:
+    branches: [dev, main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: backend-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      packages: write
+    outputs:
+      image: ${{ steps.publish.outputs.image }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: gradle
+      - name: Test and build
+        run: bash gradlew --no-daemon test bootJar
+      - name: Build ARM64 runtime image
+        env:
+          COMMIT_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          mapfile -t jars < <(find build/libs -maxdepth 1 -name '*.jar' ! -name '*-plain.jar')
+          test "${#jars[@]}" -eq 1
+          cp "${jars[0]}" build/libs/app.jar
+          docker build --platform linux/arm64 \
+            --label "org.opencontainers.image.source=https://github.com/$GITHUB_REPOSITORY" \
+            --label "org.opencontainers.image.revision=$COMMIT_SHA" \
+            -t dongne-backend:ci .
+          test "$(docker image inspect dongne-backend:ci --format '{{.Architecture}}')" = arm64
+      - name: Smoke-test runtime and readiness with isolated H2
+        run: |
+          set -euo pipefail
+          trap 'docker rm -f dongne-smoke >/dev/null 2>&1 || true' EXIT
+          docker run -d --name dongne-smoke -p 127.0.0.1:18080:8080 \
+            -e SPRING_PROFILES_ACTIVE=prod \
+            -e DB_URL=jdbc:h2:mem:smoke \
+            -e DB_USERNAME=sa -e DB_PASSWORD= \
+            -e SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.h2.Driver \
+            dongne-backend:ci
+          curl --fail --silent --show-error --max-time 3 --retry 40 \
+            --retry-all-errors --retry-delay 2 \
+            http://127.0.0.1:18080/actuator/health/readiness
+          curl --fail --silent --show-error --max-time 5 \
+            http://127.0.0.1:18080/api/v1/map/categories >/dev/null
+      - name: Publish image
+        id: publish
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          image="ghcr.io/${GITHUB_REPOSITORY,,}-backend:$GITHUB_SHA"
+          printf '%s' "$GH_TOKEN" | docker login ghcr.io -u "$GITHUB_ACTOR" --password-stdin
+          docker tag dongne-backend:ci "$image"
+          docker push "$image"
+          digest=$(docker image inspect "$image" --format '{{index .RepoDigests 0}}')
+          test -n "$digest"
+          echo "image=$digest" >> "$GITHUB_OUTPUT"
+          docker logout ghcr.io
+
+  deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 15
+    environment: production
+    permissions:
+      contents: read
+      packages: read
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Deploy to coin
+        env:
+          SSH_HOST: ${{ secrets.COIN_HOST }}
+          SSH_USER: ${{ secrets.COIN_USER }}
+          SSH_PRIVATE_KEY: ${{ secrets.COIN_SSH_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.COIN_KNOWN_HOSTS }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEPLOY_IMAGE: ${{ needs.build.outputs.image }}
+        run: |
+          set -euo pipefail
+          : "${SSH_HOST:?Missing COIN_HOST}" "${SSH_USER:?Missing COIN_USER}"
+          : "${SSH_PRIVATE_KEY:?Missing COIN_SSH_KEY}" "${SSH_KNOWN_HOSTS:?Missing COIN_KNOWN_HOSTS}"
+          [[ "$DEPLOY_IMAGE" =~ ^ghcr.io/[a-z0-9/_.-]+@sha256:[a-f0-9]{64}$ ]]
+          ssh_dir=$(mktemp -d)
+          trap 'rm -rf "$ssh_dir"' EXIT
+          printf '%s\n' "$SSH_PRIVATE_KEY" > "$ssh_dir/key"
+          printf '%s\n' "$SSH_KNOWN_HOSTS" > "$ssh_dir/known_hosts"
+          chmod 600 "$ssh_dir/key"
+          opts=(-i "$ssh_dir/key" -o BatchMode=yes -o StrictHostKeyChecking=yes -o "UserKnownHostsFile=$ssh_dir/known_hosts" -o ConnectTimeout=15 -o ServerAliveInterval=15)
+          remote_script="/tmp/dongne-deploy-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT.sh"
+          scp "${opts[@]}" ops/deploy/deploy.sh "$SSH_USER@$SSH_HOST:$remote_script"
+          printf '%s\n' "$GH_TOKEN" | ssh "${opts[@]}" "$SSH_USER@$SSH_HOST" \
+            "set -eu; export DOCKER_CONFIG=\$(mktemp -d); trap 'rm -rf \"\$DOCKER_CONFIG\"; rm -f $remote_script' EXIT; docker login ghcr.io -u $GITHUB_ACTOR --password-stdin; bash $remote_script $DEPLOY_IMAGE"
