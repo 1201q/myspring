@@ -198,3 +198,7 @@ http://127.0.0.1:5173 에서 지역·업종·기간을 선택합니다. 페이�
 
 하단 **재생 지역**에서 지역을 선택하면 해당 지역의 인허가·폐업 신고를 월별 또는 누적으로 재생합니다. 선택한 지역의 바이너리만 받아 GPU 필터로 표시하며, 지역 전체 집계와 업종 순위를 함께 제공합니다. 수집 후 `.\scripts\export-national-playback.ps1`로 재생 파일을 발행합니다. API·데이터 범위·검증 방법은 [전국 시간 재생 안내](docs/national-playback-implementation.md)를 참고하세요.
 구체적인 연결 구조와 확인 절차는 [프런트엔드 안내](frontend/README.md)를 참고하세요.
+
+추가 지도 레이어의 전국 적용 범위, 데이터 출처·이용 조건, 시간 재생 연계와 도입 우선순위는 [전국 추가 레이어 적용 가능성 조사](docs/nationwide-layer-feasibility-research.md)에 정리했습니다.
+
+참고 서비스의 실제 지도·리포트·레이어 구성과 전국 서비스에 적용할 항목은 [서울펄스 제공 기능 조사](docs/seoulpulse-service-research.md)를 참고하세요.
