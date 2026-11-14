@@ -160,18 +160,18 @@ test("area counts use the manifest layout and drop points outside the area or an
 
 test("every 시군구 asset matches its recorded hash and covers the region dongs", async () => {
   const source = JSON.parse(
-    await readFile(new URL("../public/data/sigungu/source.json", import.meta.url)),
+    await readFile(new URL("../../public/data/sigungu/source.json", import.meta.url)),
   );
   assert.equal(source.assets.length, 16);
   for (const asset of source.assets) {
     const bytes = await readFile(
-      new URL(`../public/data/sigungu/${asset.filename}`, import.meta.url),
+      new URL(`../../public/data/sigungu/${asset.filename}`, import.meta.url),
     );
     assert.equal(createHash("sha256").update(bytes).digest("hex"), asset.sha256, asset.filename);
     const data = JSON.parse(bytes);
     const dongs = JSON.parse(
       await readFile(
-        new URL(`../public/data/dongs/${asset.regionId}-20261001.geojson`, import.meta.url),
+        new URL(`../../public/data/dongs/${asset.regionId}-20261001.geojson`, import.meta.url),
       ),
     );
     const sggCodes = new Set(dongs.features.map((f) => f.properties.code.slice(0, 5)));

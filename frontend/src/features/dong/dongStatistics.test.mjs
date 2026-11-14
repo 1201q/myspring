@@ -3,7 +3,7 @@ import { test } from "node:test";
 import { readFile } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import { assignPoints, buildDongIndex, createDongLocator, dongColor } from "./dongStatistics.ts";
-import { MAP_PALETTE } from "./theme.ts";
+import { MAP_PALETTE } from "../../lib/theme.ts";
 
 const square = (x, y, size = 1) => [
   [x, y],
@@ -116,13 +116,13 @@ test("dong colors diverge from the even step toward open (teal) and close (orang
 });
 test("all regional assets have intact provenance, unique administrative codes, valid WGS84 closed rings", async () => {
   const source = JSON.parse(
-    await readFile(new URL("../public/data/dongs/source.json", import.meta.url)),
+    await readFile(new URL("../../../public/data/dongs/source.json", import.meta.url)),
   );
   assert.equal(source.assets.length, 16);
   const seen = new Set();
   for (const asset of source.assets) {
     const bytes = await readFile(
-      new URL(`../public/data/dongs/${asset.filename}`, import.meta.url),
+      new URL(`../../../public/data/dongs/${asset.filename}`, import.meta.url),
     );
     assert.equal(createHash("sha256").update(bytes).digest("hex"), asset.sha256);
     const data = JSON.parse(bytes);

@@ -43,7 +43,7 @@ Vite가 브라우저의 `/api` 요청을 `http://127.0.0.1:8080`으로 프록시
 ```powershell
 npm run build
 npm run lint
-node --test src/nationalPlaybackData.test.mjs
+node --test src/data/nationalPlaybackData.test.mjs
 ```
 
 1. 첫 진입 시 별도 버튼 없이 지역 지도와 시간 컨트롤이 표시됩니다.

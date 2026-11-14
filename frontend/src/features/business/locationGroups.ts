@@ -1,4 +1,4 @@
-import type { Points } from "./nationalPlaybackData";
+import type { Points } from "../../data/nationalPlaybackData";
 
 export type LocationGroup = { position: [number, number]; ids: number[] };
 export const locationKey = (longitude: number, latitude: number) => `${longitude},${latitude}`;

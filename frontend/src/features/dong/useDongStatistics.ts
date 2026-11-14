@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import type { Dataset } from "./nationalPlaybackData";
+import type { Dataset } from "../../data/nationalPlaybackData";
 import type { DongBoundaries, DongResult } from "./dongStatistics";
 
 /** Places the region's points into 행정동 in a worker; enabled for the dong layer or a 시군구 selection. */

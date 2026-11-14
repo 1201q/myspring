@@ -1,6 +1,6 @@
 import type { FeatureCollection, Polygon, MultiPolygon, Position } from "geojson";
-import type { Points } from "./nationalPlaybackData";
-import type { MapPalette } from "./theme";
+import type { Points } from "../../data/nationalPlaybackData";
+import type { MapPalette } from "../../lib/theme";
 
 export type DongProperties = {
   code: string;

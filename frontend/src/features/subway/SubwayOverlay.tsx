@@ -4,8 +4,8 @@ import type { Map as LibreMap } from "maplibre-gl";
 import { createPortal } from "react-dom";
 import { Info, Search } from "lucide-react";
 import "./SubwayOverlay.css";
-import { MAP_PALETTE } from "./theme";
-import type { Theme } from "./theme";
+import { MAP_PALETTE } from "../../lib/theme";
+import type { Theme } from "../../lib/theme";
 
 type Line = { id: string; name: string; color: string; region: string };
 type Manifest = { osmBaseTimestamp: string; lines: Line[] };

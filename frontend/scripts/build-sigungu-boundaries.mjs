@@ -8,7 +8,7 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
-import { dissolve, sigunguParts } from "../src/sigunguGeometry.ts";
+import { dissolve, sigunguParts } from "../src/data/sigunguGeometry.ts";
 
 const version = "20261001";
 // Groups the source has no code for. Since the 2026 전남광주 integration, the former 광주광역시's

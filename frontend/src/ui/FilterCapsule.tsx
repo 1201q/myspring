@@ -1,6 +1,6 @@
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { Check, ChevronDown, MapPin, Search, Store } from "lucide-react";
-import type { AreaOption, SigunguProperties } from "./sigungu";
+import type { AreaOption, SigunguProperties } from "../data/sigungu";
 import "./FilterCapsule.css";
 
 type Option = { id: string; name: string };

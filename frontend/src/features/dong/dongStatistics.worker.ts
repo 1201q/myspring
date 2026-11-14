@@ -1,6 +1,6 @@
 import { assignPoints, buildDongIndex } from "./dongStatistics";
 import type { DongBoundaries } from "./dongStatistics";
-import type { Points } from "./nationalPlaybackData";
+import type { Points } from "../../data/nationalPlaybackData";
 
 let query: ReturnType<typeof buildDongIndex> | undefined;
 self.onmessage = (

@@ -3,10 +3,12 @@ import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { test } from "node:test";
 
-const bytes = await readFile(new URL("../public/data/regions-20261001.geojson", import.meta.url));
+const bytes = await readFile(
+  new URL("../../public/data/regions-20261001.geojson", import.meta.url),
+);
 const data = JSON.parse(bytes);
 const source = JSON.parse(
-  await readFile(new URL("../public/data/regions-source.json", import.meta.url)),
+  await readFile(new URL("../../public/data/regions-source.json", import.meta.url)),
 );
 const inRing = ([x, y], ring) => {
   let inside = false;

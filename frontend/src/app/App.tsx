@@ -4,22 +4,22 @@ import * as maplibregl from "maplibre-gl";
 import mapWorkerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
 import "maplibre-gl/dist/maplibre-gl.css";
 import "./App.css";
-import type { LocationGroup } from "./locationGroups";
-import LocationRecords from "./LocationRecords";
-import BusinessStatus from "./BusinessStatus";
-import { formatDate } from "./format";
+import type { LocationGroup } from "../features/business/locationGroups";
+import LocationRecords from "../features/business/LocationRecords";
+import BusinessStatus from "../features/business/BusinessStatus";
+import { formatDate } from "../lib/format";
 import { ArrowUpRight, ChevronLeft, X } from "lucide-react";
 import PlaybackBoundary from "./PlaybackBoundary";
-import SubwayOverlay from "./SubwayOverlay";
-import MapRail from "./MapRail";
-import LayerSheet from "./LayerSheet";
-import InfoDock from "./InfoDock";
-import { DEFAULT_LAYERS, DOCK_KEYS } from "./layers";
-import type { DockKey, LayerKey, LayerState } from "./layers";
-import { MAP_PALETTE } from "./theme";
-import type { Theme } from "./theme";
+import SubwayOverlay from "../features/subway/SubwayOverlay";
+import MapRail from "../ui/MapRail";
+import LayerSheet from "../ui/LayerSheet";
+import InfoDock from "../ui/InfoDock";
+import { DEFAULT_LAYERS, DOCK_KEYS } from "../ui/layers";
+import type { DockKey, LayerKey, LayerState } from "../ui/layers";
+import { MAP_PALETTE } from "../lib/theme";
+import type { Theme } from "../lib/theme";
 
-const NationalPlayback = lazy(() => import("./NationalPlayback"));
+const NationalPlayback = lazy(() => import("../features/playback/NationalPlayback"));
 maplibregl.setWorkerUrl(mapWorkerUrl);
 
 export type Business = {

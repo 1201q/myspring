@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Map as LibreMap } from "maplibre-gl";
 import { Layers, LocateFixed, Minus, Moon, Plus, Sun } from "lucide-react";
-import type { Theme } from "./theme";
+import type { Theme } from "../lib/theme";
 import "./MapRail.css";
 
 type Props = {
