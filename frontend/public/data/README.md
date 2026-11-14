@@ -4,6 +4,8 @@
 
 `regions-20261001.geojson`은 2026-10-01 시도 경계를 지역 재생 ID에 연결한 웹 지도용 파일입니다. 전남광주 통합 지역을 포함합니다. 화면 표시·클릭 선택에 사용하며 당시 행정구역 복원이나 사업장 통계 재분류에 사용하지 않습니다.
 
+`sigungu/`는 같은 행정동 경계를 시군구(행정동 코드 앞 5자리)별로 합친 파일입니다. 일반구가 있는 시(예: 수원시)는 구별 피처와 함께 시 전체 피처(`kind: "si"`, 소속 코드는 `members`)를 하나 더 둡니다. 전남광주에는 통합 전 광주광역시의 5구(동구·서구·남구·북구·광산구)를 묶은 '광주 5구' 피처를 합성 코드 12200으로 둡니다. 행정 코드가 아니라 화면 묶음용입니다. 원본에 다시 접속하지 않고 `dongs/` 파일만으로 만들며, 재생성은 `frontend`에서 `npm run build:sigungu`, 파일 SHA-256은 `sigungu/source.json`에 기록합니다. 재생 화면의 시군구 선택·경계 표시에만 쓰고, 과거 행정구역 복원에는 쓰지 않습니다.
+
 원본은 통계청 통계지리정보서비스([SGIS](https://sgis.kostat.go.kr))에서 공공누리 제1유형으로 개방한 행정동 경계를 가공한 [vuski/admdongkor](https://github.com/vuski/admdongkor)입니다. 가공 경계는 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)으로 배포됩니다. [데이터 라이선스](https://github.com/vuski/admdongkor/blob/master/LICENSE-DATA)를 따르며 SGIS와 가공자 출처를 보존합니다.
 
 원본 light 단순화 경계를 유지하고, 지역 ID/표시명을 추가했으며 WGS84 좌표를 소수점 6자리로 반올림했습니다. source commit, 원본 URL, 변환 내용, 파일 SHA-256은 `regions-source.json`에 기록합니다.

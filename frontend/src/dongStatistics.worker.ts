@@ -1,4 +1,4 @@
-import { buildDongIndex } from './dongStatistics';
+import { assignPoints, buildDongIndex } from './dongStatistics';
 import type { DongBoundaries } from './dongStatistics';
 import type { Points } from './nationalPlaybackData';
 
@@ -10,8 +10,10 @@ self.onmessage = (event: MessageEvent<
   try {
     const data = event.data;
     if (data.type === 'init') {
-      query = buildDongIndex(data.boundaries, data.points, data.min, data.max, data.categories);
-      self.postMessage({ type: 'ready' });
+      const assignments = assignPoints(data.boundaries, data.points);
+      query = buildDongIndex(data.boundaries, data.points, data.min, data.max, data.categories, assignments);
+      // The per-point dong arrays let the main thread filter and count points by 시군구.
+      self.postMessage({ type: 'ready', assignments }, { transfer: assignments.map(a => a.buffer) });
     } else if (query) {
       self.postMessage({ type: 'result', request: data.request, key: data.key, result: query(data.from, data.to, data.codes) });
     }

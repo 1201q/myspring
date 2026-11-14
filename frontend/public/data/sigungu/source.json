@@ -1,0 +1,122 @@
+{
+  "version": "20261001",
+  "derivedFrom": "../dongs/source.json",
+  "commit": "d5d5a821c8de6cc337d47eeca604d7af76271c9b",
+  "license": "CC-BY-4.0; upstream SGIS KOGL Type 1 attribution retained",
+  "attribution": "통계청 통계지리정보서비스(SGIS) 행정동 경계 가공: vuski/admdongkor",
+  "modifications": "Dissolve 행정동 light boundaries by the first five digits of the administrative dong code; add one feature per city with 일반구 covering its 구, and a synthetic \"광주 5구\" group (code 12200) covering the five former 광주광역시 구 in 전남광주. Group features list their 시군구 codes in \"members\".",
+  "assets": [
+    {
+      "regionId": "seoul",
+      "filename": "seoul-20261001.geojson",
+      "count": 25,
+      "bytes": 58709,
+      "sha256": "1511e7ddbe06163c5f142b95d7a1db2e55091e7d4a628fdb30b6b7865e2aaf4d"
+    },
+    {
+      "regionId": "jeonnamgwangju",
+      "filename": "jeonnamgwangju-20261001.geojson",
+      "count": 28,
+      "bytes": 555868,
+      "sha256": "bcf47951c998fc5b2cb894fb0a6f528cebbb303e5ecb232a5171ca8f6721d281"
+    },
+    {
+      "regionId": "busan",
+      "filename": "busan-20261001.geojson",
+      "count": 16,
+      "bytes": 50318,
+      "sha256": "96ec70b6fa15a08dc9ebe25a0bc000b2c4e48bfb49f16cc73c2bf548c7fe0de8"
+    },
+    {
+      "regionId": "daegu",
+      "filename": "daegu-20261001.geojson",
+      "count": 9,
+      "bytes": 45524,
+      "sha256": "bd3f6a51c43fa3c38917c5c49cf124bf2e329a37351182a4358789269180eb7d"
+    },
+    {
+      "regionId": "incheon",
+      "filename": "incheon-20261001.geojson",
+      "count": 11,
+      "bytes": 79058,
+      "sha256": "1d54589641310e602f6672de429ff2029e4d2b47adcd58663e3ca3bdfad96e3d"
+    },
+    {
+      "regionId": "daejeon",
+      "filename": "daejeon-20261001.geojson",
+      "count": 5,
+      "bytes": 24803,
+      "sha256": "3d216d64388b843605a14dc8f209b5310476cc4c2821514bc49c90b5cade0d8a"
+    },
+    {
+      "regionId": "ulsan",
+      "filename": "ulsan-20261001.geojson",
+      "count": 5,
+      "bytes": 28261,
+      "sha256": "73660b6b9281f1f78626e646cd57146475a3054786ba4f0747dbaa1da0a137ba"
+    },
+    {
+      "regionId": "sejong",
+      "filename": "sejong-20261001.geojson",
+      "count": 1,
+      "bytes": 11216,
+      "sha256": "783c88c6d51aed7c5ba9329230eb52f7f9dfbc3b3ee27b33d9d9699a0fdfe537"
+    },
+    {
+      "regionId": "gyeonggi",
+      "filename": "gyeonggi-20261001.geojson",
+      "count": 55,
+      "bytes": 349874,
+      "sha256": "68e0fba97ebf84e9232f1412a788a99468839fedc3f8b1982a78e6a26badf7f3"
+    },
+    {
+      "regionId": "chungbuk",
+      "filename": "chungbuk-20261001.geojson",
+      "count": 15,
+      "bytes": 160323,
+      "sha256": "46d9c59ac9f6a0faa67c7cbaae12c28ca0a42681bad467f1622559e3b8fbbeff"
+    },
+    {
+      "regionId": "chungnam",
+      "filename": "chungnam-20261001.geojson",
+      "count": 17,
+      "bytes": 205212,
+      "sha256": "e2bb422189d74635bb6d8419477af0024e55402bbc063becfda8a236aedc0563"
+    },
+    {
+      "regionId": "gyeongbuk",
+      "filename": "gyeongbuk-20261001.geojson",
+      "count": 24,
+      "bytes": 322419,
+      "sha256": "9199ae915941b77ff14a77a5c44b1ce9c60a3dff350148c0db47f9f6a2d18ad7"
+    },
+    {
+      "regionId": "gyeongnam",
+      "filename": "gyeongnam-20261001.geojson",
+      "count": 23,
+      "bytes": 317089,
+      "sha256": "c93ff44d366962e8720218e97ea167e2ad02717381ddf34913407908359b7be1"
+    },
+    {
+      "regionId": "jeju",
+      "filename": "jeju-20261001.geojson",
+      "count": 2,
+      "bytes": 40547,
+      "sha256": "5ae7f09f28958a122301b2a2f1d646aeacf2d95114590fdd93aab45facb0b723"
+    },
+    {
+      "regionId": "gangwon",
+      "filename": "gangwon-20261001.geojson",
+      "count": 18,
+      "bytes": 237747,
+      "sha256": "fe9ce33fad2df64cd7844e00c911242f817c52397e2a6524495b93b118d490e4"
+    },
+    {
+      "regionId": "jeonbuk",
+      "filename": "jeonbuk-20261001.geojson",
+      "count": 16,
+      "bytes": 174921,
+      "sha256": "b0a2b1ae9623854b8f2e71ca2965e62a5d1d5d4524241371c6c8cfe442b00a93"
+    }
+  ]
+}

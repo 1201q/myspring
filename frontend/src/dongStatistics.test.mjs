@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
-import { buildDongIndex, createDongLocator, dongColor } from './dongStatistics.ts';
+import { assignPoints, buildDongIndex, createDongLocator, dongColor } from './dongStatistics.ts';
 import { MAP_PALETTE } from './theme.ts';
 
 const square = (x, y, size = 1) => [[x,y],[x+size,y],[x+size,y+size],[x,y+size],[x,y]];
@@ -23,6 +23,11 @@ test('spatial assignment preserves holes, islands, shared borders and unmatched 
   assert.equal(locate(1,.5),0);
   assert.equal(locate(5,5),-1);
   assert.equal(locate(NaN,0),-1);
+});
+test('assigns each point its dong once per business, -1 outside every dong', () => {
+  const assignments = assignPoints(boundaries, [points([[.1,.1,0,0,1],[1.5,.5,1,1,2],[5,5,1,0,3]]), points([[.1,.1,1,0,1]])]);
+  assert.deepEqual(assignments.map(a => [...a]), [[0,1,-1],[0]]);
+  assert.ok(assignments.every(a => a instanceof Int32Array));
 });
 test('monthly category sums count openings and closures independently and conserve unmatched events', () => {
   const query = buildDongIndex(boundaries, [points([

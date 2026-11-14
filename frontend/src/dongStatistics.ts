@@ -44,15 +44,30 @@ export function createDongLocator(boundaries: DongBoundaries) {
     return -1;
   };
 }
-export function buildDongIndex(boundaries: DongBoundaries, points: Points[], min: number, max: number, categories: number) {
-  const months = max - min + 2, dongs = boundaries.features.length;
-  // Last dong slot stores events outside all known polygons.
-  const histogram = new Uint32Array((dongs + 1) * categories * 2 * months);
+/**
+ * Dong index of every point, per kind (open, close); -1 when outside all polygons. A business that
+ * appears as both an open and a close event is located once.
+ */
+export function assignPoints(boundaries: DongBoundaries, points: Points[]): Int32Array[] {
   const locate = createDongLocator(boundaries), owners = new Map<number, number>();
-  points.forEach((p, kind) => {
+  return points.map(p => {
+    const result = new Int32Array(p.length);
     for (let i = 0; i < p.length; i++) {
       let dong = owners.get(p.ids[i]);
       if (dong === undefined) { dong = locate(p.pos[i * 2], p.pos[i * 2 + 1]); owners.set(p.ids[i], dong); }
+      result[i] = dong;
+    }
+    return result;
+  });
+}
+export function buildDongIndex(boundaries: DongBoundaries, points: Points[], min: number, max: number, categories: number,
+  assignments: Int32Array[] = assignPoints(boundaries, points)) {
+  const months = max - min + 2, dongs = boundaries.features.length;
+  // Last dong slot stores events outside all known polygons.
+  const histogram = new Uint32Array((dongs + 1) * categories * 2 * months);
+  points.forEach((p, kind) => {
+    for (let i = 0; i < p.length; i++) {
+      const dong = assignments[kind][i];
       const month = p.month[i] - min, cat = p.cat[i];
       if (month < 0 || month >= months - 1 || cat < 0 || cat >= categories) continue;
       histogram[(((dong < 0 ? dongs : dong) * categories + cat) * 2 + kind) * months + month + 1]++;
