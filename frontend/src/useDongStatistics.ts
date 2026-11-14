@@ -12,9 +12,7 @@ export function useDongStatistics(
 ) {
   const worker = useRef<Worker | null>(null),
     request = useRef(0);
-  const datasetKey = data
-    ? `${data.manifest.regionId}:${data.manifest.version}`
-    : "";
+  const datasetKey = data ? `${data.manifest.regionId}:${data.manifest.version}` : "";
   const [attempt, setAttempt] = useState(0);
   const [state, setState] = useState<{
     datasetKey: string;
@@ -39,18 +37,11 @@ export function useDongStatistics(
     if (!enabled || !data) return;
     const controller = new AbortController();
     let activeWorker: Worker | undefined;
-    const fail = (message: string) =>
-      setError({ datasetKey, attempt, message });
+    const fail = (message: string) => setError({ datasetKey, attempt, message });
     async function initialize() {
-      const response = await fetch(
-        `/data/dongs/${data!.manifest.regionId}-20261001.geojson`,
-        {
-          signal: AbortSignal.any([
-            controller.signal,
-            AbortSignal.timeout(20000),
-          ]),
-        },
-      );
+      const response = await fetch(`/data/dongs/${data!.manifest.regionId}-20261001.geojson`, {
+        signal: AbortSignal.any([controller.signal, AbortSignal.timeout(20000)]),
+      });
       if (!response.ok) throw new Error("행정동 경계를 불러오지 못했습니다.");
       const boundaries: DongBoundaries = await response.json();
       if (
@@ -66,10 +57,9 @@ export function useDongStatistics(
         throw new Error("행정동 경계 형식이 올바르지 않습니다.");
       if (controller.signal.aborted) return;
       const source = data!;
-      activeWorker = new Worker(
-        new URL("./dongStatistics.worker.ts", import.meta.url),
-        { type: "module" },
-      );
+      activeWorker = new Worker(new URL("./dongStatistics.worker.ts", import.meta.url), {
+        type: "module",
+      });
       worker.current = activeWorker;
       setState({
         datasetKey,
@@ -90,10 +80,7 @@ export function useDongStatistics(
           });
           setError(null);
         } else if (event.data.type === "error") fail(event.data.message);
-        else if (
-          event.data.type === "result" &&
-          event.data.request === request.current
-        )
+        else if (event.data.type === "result" && event.data.request === request.current)
           setResult({
             datasetKey,
             attempt,
@@ -150,17 +137,14 @@ export function useDongStatistics(
     result.key === key
       ? result.value
       : null;
-  const live =
-    enabled && state?.datasetKey === datasetKey && state.attempt === attempt;
+  const live = enabled && state?.datasetKey === datasetKey && state.attempt === attempt;
   return {
     boundaries: live ? state.boundaries : null,
     result: current,
     /** Dong index per point (open, close) once the worker has placed every point; for 시군구 filtering. */
     assignments: live ? state.assignments : null,
     error:
-      enabled && error?.datasetKey === datasetKey && error.attempt === attempt
-        ? error.message
-        : "",
+      enabled && error?.datasetKey === datasetKey && error.attempt === attempt ? error.message : "",
     retry: () => setAttempt((v) => v + 1),
   };
 }

@@ -104,7 +104,7 @@ export default function FilterCapsule({
   };
   const categoryName = categoryError
     ? "업종 불러오기 실패"
-    : categories.find((c) => c.id === category)?.name ?? "전체 업종";
+    : (categories.find((c) => c.id === category)?.name ?? "전체 업종");
   const visible = useMemo(() => {
     const q = query.trim();
     const list = q ? categories.filter((c) => c.name.includes(q)) : categories;
@@ -178,7 +178,12 @@ export default function FilterCapsule({
             <div className="fc-tier">
               <h3>{regionName} 안에서</h3>
               <div className="fc-chips">
-                <button type="button" className="fc-chip" aria-pressed={!area} onClick={() => pickArea(null)}>
+                <button
+                  type="button"
+                  className="fc-chip"
+                  aria-pressed={!area}
+                  onClick={() => pickArea(null)}
+                >
                   전체
                 </button>
                 {areas.map((o) => (
@@ -202,7 +207,13 @@ export default function FilterCapsule({
             <div className="fc-tier">
               <h3>{city.name} 안에서</h3>
               <div className="fc-chips">
-                <button type="button" className="fc-chip" aria-pressed={area?.code === city.code} {...preview(city.code)} onClick={() => pickArea(city.code)}>
+                <button
+                  type="button"
+                  className="fc-chip"
+                  aria-pressed={area?.code === city.code}
+                  {...preview(city.code)}
+                  onClick={() => pickArea(city.code)}
+                >
                   {city.name} 전체
                 </button>
                 {city.children.map((o) => (
@@ -271,7 +282,17 @@ export default function FilterCapsule({
   );
 }
 
-function Row({ selected, name, count, onSelect }: { selected: boolean; name: string; count?: number; onSelect: () => void }) {
+function Row({
+  selected,
+  name,
+  count,
+  onSelect,
+}: {
+  selected: boolean;
+  name: string;
+  count?: number;
+  onSelect: () => void;
+}) {
   return (
     <li
       className="fc-row"
@@ -288,7 +309,9 @@ function Row({ selected, name, count, onSelect }: { selected: boolean; name: str
     >
       <Check className="fc-check" aria-hidden="true" />
       <span className="fc-row-name">{name}</span>
-      {count !== undefined && <span className="fc-row-n dn-num">{count.toLocaleString("ko-KR")}</span>}
+      {count !== undefined && (
+        <span className="fc-row-n dn-num">{count.toLocaleString("ko-KR")}</span>
+      )}
     </li>
   );
 }

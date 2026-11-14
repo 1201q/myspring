@@ -35,14 +35,26 @@ export default function LayerSheet({ layers, onToggle, onClose }: Props) {
     };
   }, []);
   return (
-    <div id="layer-sheet" className="ls dn-glass-strong" role="dialog" aria-label="지도 레이어" ref={root}>
+    <div
+      id="layer-sheet"
+      className="ls dn-glass-strong"
+      role="dialog"
+      aria-label="지도 레이어"
+      ref={root}
+    >
       <div className="ls-head">
         <h2>지도 레이어</h2>
         <small>켜면 정보가 함께 나옵니다</small>
       </div>
       <div className="ls-tiles">
         {TILES.map(({ key, label, note, Icon }) => (
-          <button type="button" key={key} className="ls-tile" aria-pressed={layers[key]} onClick={() => onToggle(key)}>
+          <button
+            type="button"
+            key={key}
+            className="ls-tile"
+            aria-pressed={layers[key]}
+            onClick={() => onToggle(key)}
+          >
             <Icon aria-hidden="true" />
             <span>
               {label}
@@ -51,7 +63,9 @@ export default function LayerSheet({ layers, onToggle, onClose }: Props) {
           </button>
         ))}
       </div>
-      <p className="ls-foot">점은 개업, 고리는 폐업입니다. 동별 증감과 지하철을 모두 끄면 오른쪽 아래 정보도 사라집니다.</p>
+      <p className="ls-foot">
+        점은 개업, 고리는 폐업입니다. 동별 증감과 지하철을 모두 끄면 오른쪽 아래 정보도 사라집니다.
+      </p>
     </div>
   );
 }

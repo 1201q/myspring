@@ -1,17 +1,19 @@
-import assert from 'node:assert/strict';
-import { test } from 'node:test';
-import { activitySeries, formatMonth, monthIndex } from './playbackSeries.ts';
+import assert from "node:assert/strict";
+import { test } from "node:test";
+import { activitySeries, formatMonth, monthIndex } from "./playbackSeries.ts";
 
-test('formats month indices as YYYY.MM and round-trips', () => {
-  assert.equal(formatMonth(0), '1990.01');
-  assert.equal(formatMonth(monthIndex(2024, 3)), '2024.03');
-  assert.equal(formatMonth(monthIndex(2026, 12)), '2026.12');
+test("formats month indices as YYYY.MM and round-trips", () => {
+  assert.equal(formatMonth(0), "1990.01");
+  assert.equal(formatMonth(monthIndex(2024, 3)), "2024.03");
+  assert.equal(formatMonth(monthIndex(2026, 12)), "2026.12");
 });
 
-test('bins openings and closings of the selected categories', () => {
+test("bins openings and closings of the selected categories", () => {
   // 2 categories, 4 months: per month [open c0, open c1, close c0, close c1]
   const manifest = {
-    minMonth: 10, maxMonth: 13, categories: [{}, {}],
+    minMonth: 10,
+    maxMonth: 13,
+    categories: [{}, {}],
     monthlyCounts: [1, 10, 2, 20, 3, 30, 4, 40, 5, 50, 6, 60, 7, 70, 8, 80],
   };
   const both = activitySeries(manifest, [0, 1], 3);

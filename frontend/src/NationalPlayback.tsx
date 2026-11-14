@@ -19,7 +19,14 @@ import type { Theme } from "./theme";
 import RankPanel from "./RankPanel";
 import "./NationalPlayback.css";
 import FilterCapsule from "./FilterCapsule";
-import { areaBounds, areaDongMask, areaMonthlyCounts, areaOptions, areaPointFlags, loadSigungu } from "./sigungu";
+import {
+  areaBounds,
+  areaDongMask,
+  areaMonthlyCounts,
+  areaOptions,
+  areaPointFlags,
+  loadSigungu,
+} from "./sigungu";
 import type { SigunguBoundaries, SigunguProperties } from "./sigungu";
 import PlaybackBar, { PlaybackBarLoading } from "./PlaybackBar";
 import { activitySeries, formatMonth } from "./playbackSeries";
@@ -125,7 +132,9 @@ export default function NationalPlayback({
   const [area, setArea] = useState<{ code: string; regionId: string } | null>(null);
   // 시군구 under the pointer or focus in the region sheet, outlined on the map as a preview.
   const [previewArea, setPreviewArea] = useState<string | null>(null);
-  const [sigungu, setSigungu] = useState<{ regionId: string; data: SigunguBoundaries } | null>(null);
+  const [sigungu, setSigungu] = useState<{ regionId: string; data: SigunguBoundaries } | null>(
+    null,
+  );
   const [sigunguError, setSigunguError] = useState("");
   const [sigunguAttempt, setSigunguAttempt] = useState(0);
   const areaFit = useRef<string | null>(null);
@@ -145,16 +154,13 @@ export default function NationalPlayback({
     () =>
       boundaries && {
         ...boundaries,
-        features: boundaries.features.filter(
-          (feature) => feature.properties.id !== regionId,
-        ),
+        features: boundaries.features.filter((feature) => feature.properties.id !== regionId),
       },
     [boundaries, regionId],
   );
   const changeRegion = useCallback(
     (id: string) => {
-      if (id === regionId || !regions.some((region) => region.id === id))
-        return;
+      if (id === regionId || !regions.some((region) => region.id === id)) return;
       setPlaying(false);
       setError("");
       setProgress(initialProgress);
@@ -198,28 +204,19 @@ export default function NationalPlayback({
       })
       .catch((reason) => {
         if (!controller.signal.aborted)
-          setBoundaryError(
-            reason instanceof Error
-              ? reason.message
-              : "지역 선택 경계 조회 실패",
-          );
+          setBoundaryError(reason instanceof Error ? reason.message : "지역 선택 경계 조회 실패");
       });
     return () => controller.abort();
   }, [boundaryAttempt]);
   useEffect(() => {
     if (!map || !boundaries) return;
     // Draw selection and hit detection from the same polygons, rather than bounding boxes.
-    const layers = ["boundary_province", "boundary_province_halo"].filter(
-      (id) => map.getLayer(id),
-    );
-    const previous = layers.map((id) =>
-      map.getLayoutProperty(id, "visibility"),
-    );
+    const layers = ["boundary_province", "boundary_province_halo"].filter((id) => map.getLayer(id));
+    const previous = layers.map((id) => map.getLayoutProperty(id, "visibility"));
     layers.forEach((id) => map.setLayoutProperty(id, "visibility", "none"));
     return () => {
       layers.forEach((id, index) => {
-        if (map.getLayer(id))
-          map.setLayoutProperty(id, "visibility", previous[index] ?? "visible");
+        if (map.getLayer(id)) map.setLayoutProperty(id, "visibility", previous[index] ?? "visible");
       });
       map.getCanvas().style.cursor = "";
     };
@@ -236,11 +233,7 @@ export default function NationalPlayback({
       })
       .catch((reason) => {
         if (!controller.signal.aborted)
-          setError(
-            reason instanceof Error
-              ? reason.message
-              : "재생 지역 목록 조회 실패",
-          );
+          setError(reason instanceof Error ? reason.message : "재생 지역 목록 조회 실패");
       });
     return () => controller.abort();
   }, [regions.length, attempt]);
@@ -285,18 +278,13 @@ export default function NationalPlayback({
         setMonth((value) =>
           Math.max(
             result.manifest.minMonth,
-            Math.min(
-              result.manifest.maxMonth,
-              value ?? result.manifest.maxMonth - 1,
-            ),
+            Math.min(result.manifest.maxMonth, value ?? result.manifest.maxMonth - 1),
           ),
         );
       })
       .catch((reason) => {
         if (!controller.signal.aborted)
-          setError(
-            reason instanceof Error ? reason.message : "재생 데이터 조회 실패",
-          );
+          setError(reason instanceof Error ? reason.message : "재생 데이터 조회 실패");
       });
     return () => controller.abort();
   }, [selectedRegion, regionId, attempt, data]);
@@ -306,9 +294,8 @@ export default function NationalPlayback({
   const from = unit === 0 ? min : Math.max(min, currentMonth - unit + 1);
   const codes = useMemo(
     () =>
-      data?.manifest.categories
-        .filter((c) => !category || c.id === category)
-        .map((c) => c.code) ?? [],
+      data?.manifest.categories.filter((c) => !category || c.id === category).map((c) => c.code) ??
+      [],
     [data, category],
   );
   const sigunguData = sigungu?.regionId === regionId ? sigungu.data : null;
@@ -331,7 +318,10 @@ export default function NationalPlayback({
     [areaFeature, dong.boundaries],
   );
   const areaFlags = useMemo(
-    () => (areaMask && dong.assignments ? dong.assignments.map((owners) => areaPointFlags(owners, areaMask)) : null),
+    () =>
+      areaMask && dong.assignments
+        ? dong.assignments.map((owners) => areaPointFlags(owners, areaMask))
+        : null,
     [areaMask, dong.assignments],
   );
   const areaCounts = useMemo(
@@ -412,9 +402,7 @@ export default function NationalPlayback({
   );
   const dongSelection =
     selectedDong?.regionId === regionId
-      ? dongFeatures?.features.find(
-          (f) => f.properties.code === selectedDong.code,
-        )?.properties
+      ? dongFeatures?.features.find((f) => f.properties.code === selectedDong.code)?.properties
       : null;
   const locations = useMemo(
     () =>
@@ -459,15 +447,10 @@ export default function NationalPlayback({
           filled: true,
           stroked: true,
           getFillColor: (feature) =>
-            feature.properties.id === hoveredRegionId
-              ? [...palette.accent, 40]
-              : [0, 0, 0, 1],
+            feature.properties.id === hoveredRegionId ? [...palette.accent, 40] : [0, 0, 0, 1],
           getLineColor: (feature) =>
-            feature.properties.id === hoveredRegionId
-              ? [...palette.accent, 255]
-              : [0, 0, 0, 0],
-          getLineWidth: (feature) =>
-            feature.properties.id === hoveredRegionId ? 2.5 : 0,
+            feature.properties.id === hoveredRegionId ? [...palette.accent, 255] : [0, 0, 0, 0],
+          getLineWidth: (feature) => (feature.properties.id === hoveredRegionId ? 2.5 : 0),
           lineWidthUnits: "pixels",
           updateTriggers: {
             getFillColor: [hoveredRegionId, palette],
@@ -497,7 +480,9 @@ export default function NationalPlayback({
                   [-180, 85],
                   [-180, -85],
                 ],
-                ...areaFeature.geometry.coordinates.map((polygon) => polygon[0] as [number, number][]),
+                ...areaFeature.geometry.coordinates.map(
+                  (polygon) => polygon[0] as [number, number][],
+                ),
               ],
             },
           ],
@@ -551,27 +536,27 @@ export default function NationalPlayback({
           updateTriggers: { getLineColor: [palette] },
         })
       : null;
-    const dongLayer = showDongs && dongFeatures
-      ? new GeoJsonLayer<DongProperties & { open: number; close: number }>({
-          id: "dong-net-change",
-          data: dongFeatures,
-          pickable: true,
-          filled: true,
-          stroked: true,
-          getFillColor: (feature) =>
-            dongColor(feature.properties, dongScale, palette),
-          getLineColor: [...palette.dongStroke, 110],
-          getLineWidth: 0.7,
-          lineWidthUnits: "pixels",
-          updateTriggers: { getFillColor: [dongScale, palette], getLineColor: [palette] },
-          onClick: (info) => {
-            if (!info.object) return false;
-            setPlaying(false);
-            setSelectedDong({ code: info.object.properties.code, regionId });
-            return true;
-          },
-        })
-      : null;
+    const dongLayer =
+      showDongs && dongFeatures
+        ? new GeoJsonLayer<DongProperties & { open: number; close: number }>({
+            id: "dong-net-change",
+            data: dongFeatures,
+            pickable: true,
+            filled: true,
+            stroked: true,
+            getFillColor: (feature) => dongColor(feature.properties, dongScale, palette),
+            getLineColor: [...palette.dongStroke, 110],
+            getLineWidth: 0.7,
+            lineWidthUnits: "pixels",
+            updateTriggers: { getFillColor: [dongScale, palette], getLineColor: [palette] },
+            onClick: (info) => {
+              if (!info.object) return false;
+              setPlaying(false);
+              setSelectedDong({ code: info.object.properties.code, regionId });
+              return true;
+            },
+          })
+        : null;
     overlay.current.setProps({
       onHover: (info) => {
         let group: LocationGroup | undefined;
@@ -587,19 +572,14 @@ export default function NationalPlayback({
           if (kind !== null) {
             const points = kind === 0 ? data.open : data.close;
             group = locations.get(
-              locationKey(
-                points.pos[info.index * 2],
-                points.pos[info.index * 2 + 1],
-              ),
+              locationKey(points.pos[info.index * 2], points.pos[info.index * 2 + 1]),
             );
           }
         }
         if (group) setPlaying(false);
         hover.current(group ?? null, info.x, info.y);
         const id = info.object?.properties?.id;
-        setHoveredRegionId(
-          typeof id === "string" && id !== regionId ? id : null,
-        );
+        setHoveredRegionId(typeof id === "string" && id !== regionId ? id : null);
         if (map) map.getCanvas().style.cursor = info.picked ? "pointer" : "";
       },
       getTooltip: (info) => {
@@ -615,10 +595,8 @@ export default function NationalPlayback({
           };
         }
         const feature = info.object as
-          | Feature<Polygon | MultiPolygon, RegionProperties>
-          | undefined;
-        if (!feature?.properties?.id || feature.properties.id === regionId)
-          return null;
+          Feature<Polygon | MultiPolygon, RegionProperties> | undefined;
+        if (!feature?.properties?.id || feature.properties.id === regionId) return null;
         return {
           text: feature.properties.name + " · 클릭하여 재생 지역 변경",
           style: {
@@ -649,9 +627,7 @@ export default function NationalPlayback({
                   getRadius: 16,
                   radiusMinPixels: 1.5,
                   radiusMaxPixels: 6,
-                  getFillColor: (kind === 0
-                    ? [...palette.open, 190]
-                    : [0, 0, 0, 0]) as Color,
+                  getFillColor: (kind === 0 ? [...palette.open, 190] : [0, 0, 0, 0]) as Color,
                   getLineColor: [...palette.close, 220] as Color,
                   updateTriggers: { getFillColor: [palette], getLineColor: [palette] },
                   lineWidthUnits: "pixels",
@@ -662,10 +638,7 @@ export default function NationalPlayback({
                     if (info.index >= 0) {
                       setPlaying(false);
                       const group = locations.get(
-                        locationKey(
-                          points.pos[info.index * 2],
-                          points.pos[info.index * 2 + 1],
-                        ),
+                        locationKey(points.pos[info.index * 2], points.pos[info.index * 2 + 1]),
                       );
                       if (group && group.ids.length > 1)
                         locationClick.current(group.ids, group.position, {
@@ -765,7 +738,8 @@ export default function NationalPlayback({
     return counts;
   }, [data, monthlyCounts, from, currentMonth, min]);
   const series = useMemo(
-    () => (data && monthlyCounts ? activitySeries({ ...data.manifest, monthlyCounts }, codes, 3) : null),
+    () =>
+      data && monthlyCounts ? activitySeries({ ...data.manifest, monthlyCounts }, codes, 3) : null,
     [data, monthlyCounts, codes],
   );
   // Every category for the ranking panel; totals below follow the category filter.
@@ -785,17 +759,12 @@ export default function NationalPlayback({
       })
       .sort((a, b) => b.open - a.open);
   }, [data, monthlyCounts, from, currentMonth, min]);
-  const rows = useMemo(
-    () => allRows.filter((row) => codes.includes(row.code)),
-    [allRows, codes],
-  );
+  const rows = useMemo(() => allRows.filter((row) => codes.includes(row.code)), [allRows, codes]);
   const opens = rows.reduce((sum, row) => sum + row.open, 0),
     closes = rows.reduce((sum, row) => sum + row.close, 0);
   const step = (direction: number) => {
     setPlaying(false);
-    setMonth(
-      Math.max(min, Math.min(max, currentMonth + direction * (unit || 1))),
-    );
+    setMonth(Math.max(min, Math.min(max, currentMonth + direction * (unit || 1))));
   };
   return (
     <>
@@ -877,72 +846,78 @@ export default function NationalPlayback({
       {dongDock &&
         createPortal(
           <>
-        <div className="dong-ramp" aria-hidden="true">
-          {["neg-3", "neg-2", "neg-1", "even", "pos-1", "pos-2", "pos-3"].map((stepName) => (
-            <i key={stepName} style={{ background: `var(--dong-${stepName})` }} />
-          ))}
-        </div>
-        <div className="dong-ramp-labels">
-          <span>폐업 우세</span>
-          <span>같음</span>
-          <span>개업 우세</span>
-        </div>
-        <div className="dong-ramp-labels dong-empty-row">
-          <i className="dong-empty" aria-hidden="true" />
-          <span>기간 내 기록 없음</span>
-        </div>
-        {dongSelection ? (
-          <div className="dong-focus" role="status">
-            <div className="dong-focus-name">
-              <span>{dongSelection.fullName}</span>
-              <button type="button" aria-label="동별 상세 닫기" onClick={() => setSelectedDong(null)}>
-                ×
-              </button>
+            <div className="dong-ramp" aria-hidden="true">
+              {["neg-3", "neg-2", "neg-1", "even", "pos-1", "pos-2", "pos-3"].map((stepName) => (
+                <i key={stepName} style={{ background: `var(--dong-${stepName})` }} />
+              ))}
             </div>
-            <div className="dong-split" aria-hidden="true">
-              <i className="o" style={{ flex: dongSelection.open || 0.0001 }} />
-              <i className="c" style={{ flex: dongSelection.close || 0.0001 }} />
+            <div className="dong-ramp-labels">
+              <span>폐업 우세</span>
+              <span>같음</span>
+              <span>개업 우세</span>
             </div>
-            <div className="dong-focus-nums dn-num">
-              <span className="o">개업 {dongSelection.open.toLocaleString()}</span>
-              <span>
-                순증 {dongSelection.open - dongSelection.close > 0 ? "+" : ""}
-                {(dongSelection.open - dongSelection.close).toLocaleString()}
-              </span>
-              <span className="c">폐업 {dongSelection.close.toLocaleString()}</span>
+            <div className="dong-ramp-labels dong-empty-row">
+              <i className="dong-empty" aria-hidden="true" />
+              <span>기간 내 기록 없음</span>
             </div>
-          </div>
-        ) : (
-          !dong.error && (
-            <p className="dock-hint" role="status">
-              {dong.result
-                ? "동을 누르면 건수를 고정해 보여 줍니다."
-                : data
-                  ? "행정동 경계와 동별 집계를 준비하는 중…"
-                  : "지역 재생 자료 준비 후 동별로 집계합니다."}
-            </p>
-          )
-        )}
-        {dong.error && (
-          <div className="dock-error" role="alert">
-            {dong.error}
-            <button type="button" onClick={dong.retry}>
-              다시 시도
-            </button>
-          </div>
-        )}
-        <details className="dong-basis">
-          <summary>집계 기준</summary>
-          <p>개업 − 폐업. 차이가 클수록 진하게 칠합니다.</p>
-          <p>2026.10.01 행정동 경계 기준 · 읍·면 포함 · 과거 경계 복원 아님</p>
-          <p>경계: SGIS · 가공: vuski/admdongkor (CC BY 4.0) · 단순화 경계로 경계 부근 오차 가능</p>
-          {dong.result && (
-            <p className="dn-num">
-              이 기간 동 미배정: 개업 {dong.result.unassigned.open.toLocaleString()}건 · 폐업{" "}
-              {dong.result.unassigned.close.toLocaleString()}건
-            </p>
-          )}
-        </details>
+            {dongSelection ? (
+              <div className="dong-focus" role="status">
+                <div className="dong-focus-name">
+                  <span>{dongSelection.fullName}</span>
+                  <button
+                    type="button"
+                    aria-label="동별 상세 닫기"
+                    onClick={() => setSelectedDong(null)}
+                  >
+                    ×
+                  </button>
+                </div>
+                <div className="dong-split" aria-hidden="true">
+                  <i className="o" style={{ flex: dongSelection.open || 0.0001 }} />
+                  <i className="c" style={{ flex: dongSelection.close || 0.0001 }} />
+                </div>
+                <div className="dong-focus-nums dn-num">
+                  <span className="o">개업 {dongSelection.open.toLocaleString()}</span>
+                  <span>
+                    순증 {dongSelection.open - dongSelection.close > 0 ? "+" : ""}
+                    {(dongSelection.open - dongSelection.close).toLocaleString()}
+                  </span>
+                  <span className="c">폐업 {dongSelection.close.toLocaleString()}</span>
+                </div>
+              </div>
+            ) : (
+              !dong.error && (
+                <p className="dock-hint" role="status">
+                  {dong.result
+                    ? "동을 누르면 건수를 고정해 보여 줍니다."
+                    : data
+                      ? "행정동 경계와 동별 집계를 준비하는 중…"
+                      : "지역 재생 자료 준비 후 동별로 집계합니다."}
+                </p>
+              )
+            )}
+            {dong.error && (
+              <div className="dock-error" role="alert">
+                {dong.error}
+                <button type="button" onClick={dong.retry}>
+                  다시 시도
+                </button>
+              </div>
+            )}
+            <details className="dong-basis">
+              <summary>집계 기준</summary>
+              <p>개업 − 폐업. 차이가 클수록 진하게 칠합니다.</p>
+              <p>2026.10.01 행정동 경계 기준 · 읍·면 포함 · 과거 경계 복원 아님</p>
+              <p>
+                경계: SGIS · 가공: vuski/admdongkor (CC BY 4.0) · 단순화 경계로 경계 부근 오차 가능
+              </p>
+              {dong.result && (
+                <p className="dn-num">
+                  이 기간 동 미배정: 개업 {dong.result.unassigned.open.toLocaleString()}건 · 폐업{" "}
+                  {dong.result.unassigned.close.toLocaleString()}건
+                </p>
+              )}
+            </details>
           </>,
           dongDock,
         )}

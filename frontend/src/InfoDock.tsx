@@ -32,11 +32,22 @@ export default function InfoDock({ tabs, active, onTab, onClose, bodyRef }: Prop
             </button>
           ))}
         </div>
-        <button type="button" className="dock-close" aria-label="정보 닫기 (레이어는 켜진 채로 둡니다)" onClick={onClose}>
+        <button
+          type="button"
+          className="dock-close"
+          aria-label="정보 닫기 (레이어는 켜진 채로 둡니다)"
+          onClick={onClose}
+        >
           <X aria-hidden="true" />
         </button>
       </div>
-      <div id="dock-body" className="dock-body" role="tabpanel" aria-labelledby={`dock-tab-${active}`} ref={bodyRef} />
+      <div
+        id="dock-body"
+        className="dock-body"
+        role="tabpanel"
+        aria-labelledby={`dock-tab-${active}`}
+        ref={bodyRef}
+      />
     </section>
   );
 }

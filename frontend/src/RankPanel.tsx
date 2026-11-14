@@ -23,13 +23,31 @@ const fmt = (n: number) => n.toLocaleString("ko-KR");
 const signed = (n: number) => (n > 0 ? "+" : n < 0 ? "−" : "") + fmt(Math.abs(n));
 
 /** Left panel under the filter capsule: period totals and categories ranked by openings. */
-export default function RankPanel({ regionName, period, opens, closes, rows, category, onCategoryChange, cumulative, note }: Props) {
+export default function RankPanel({
+  regionName,
+  period,
+  opens,
+  closes,
+  rows,
+  category,
+  onCategoryChange,
+  cumulative,
+  note,
+}: Props) {
   // Start collapsed where the panel would crowd the map.
-  const [collapsed, setCollapsed] = useState(() => typeof window !== "undefined" && window.innerWidth < 1100);
+  const [collapsed, setCollapsed] = useState(
+    () => typeof window !== "undefined" && window.innerWidth < 1100,
+  );
   const top = rows[0];
   if (collapsed)
     return (
-      <button type="button" className="rank-pill dn-glass" aria-expanded="false" aria-controls="rank-panel" onClick={() => setCollapsed(false)}>
+      <button
+        type="button"
+        className="rank-pill dn-glass"
+        aria-expanded="false"
+        aria-controls="rank-panel"
+        onClick={() => setCollapsed(false)}
+      >
         <ListOrdered aria-hidden="true" />
         <span>개업 많은 순</span>
         {top && (
@@ -45,10 +63,20 @@ export default function RankPanel({ regionName, period, opens, closes, rows, cat
   const scale = Math.max(1, ...rows.map((r) => Math.max(r.open, r.close)));
   const selected = rows.find((r) => r.id === category);
   return (
-    <section id="rank-panel" className="rank dn-glass" aria-label={`${regionName} 업종별 개업 순위`}>
+    <section
+      id="rank-panel"
+      className="rank dn-glass"
+      aria-label={`${regionName} 업종별 개업 순위`}
+    >
       <div className="rank-head">
         <h2>개업 많은 순</h2>
-        <button type="button" className="rank-collapse" aria-label="순위 접기" aria-expanded="true" onClick={() => setCollapsed(true)}>
+        <button
+          type="button"
+          className="rank-collapse"
+          aria-label="순위 접기"
+          aria-expanded="true"
+          onClick={() => setCollapsed(true)}
+        >
           <ChevronUp aria-hidden="true" />
         </button>
       </div>
@@ -107,7 +135,8 @@ export default function RankPanel({ regionName, period, opens, closes, rows, cat
           폐업
         </span>
         <span className="rank-foot-note">
-          {cumulative ? "해당 월까지 누적한" : "선택 기간의"} 신고 건수 · 지금 영업 중인 사업장 수와 다를 수 있습니다. 행을 누르면 업종 필터.
+          {cumulative ? "해당 월까지 누적한" : "선택 기간의"} 신고 건수 · 지금 영업 중인 사업장 수와
+          다를 수 있습니다. 행을 누르면 업종 필터.
           {note && ` ${note}`}
         </span>
       </p>

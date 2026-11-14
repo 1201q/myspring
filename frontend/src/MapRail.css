@@ -30,7 +30,9 @@
   border-radius: var(--radius-pill);
   background: transparent;
   color: var(--ink-muted);
-  transition: background 0.15s, color 0.15s;
+  transition:
+    background 0.15s,
+    color 0.15s;
 }
 .rail-btn svg {
   width: 18px;
@@ -76,7 +78,9 @@
   font-variant-numeric: tabular-nums;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.12s, transform 0.12s;
+  transition:
+    opacity 0.12s,
+    transform 0.12s;
 }
 .rail-btn:is(:hover, :focus-visible):not(:disabled)::after {
   opacity: 1;

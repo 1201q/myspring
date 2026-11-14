@@ -16,7 +16,15 @@ type Props = {
 };
 
 /** Top-right tool rail: layers and theme on top, then zoom in · zoom out · fit the playback region. */
-export default function MapRail({ map, theme, onToggleTheme, regionBounds, layersActive, sheetOpen, onToggleSheet }: Props) {
+export default function MapRail({
+  map,
+  theme,
+  onToggleTheme,
+  regionBounds,
+  layersActive,
+  sheetOpen,
+  onToggleSheet,
+}: Props) {
   const [zoom, setZoom] = useState(() => map?.getZoom() ?? 10);
   const [limits, setLimits] = useState({ min: 0, max: 24 });
   useEffect(() => {
@@ -35,7 +43,12 @@ export default function MapRail({ map, theme, onToggleTheme, regionBounds, layer
   const nextTheme = theme === "dark" ? "라이트 모드로 전환" : "다크 모드로 전환";
   return (
     <div className="rail-stack">
-      <div className="rail dn-glass" role="toolbar" aria-orientation="vertical" aria-label="지도 표시">
+      <div
+        className="rail dn-glass"
+        role="toolbar"
+        aria-orientation="vertical"
+        aria-label="지도 표시"
+      >
         <button
           type="button"
           className={`rail-btn rail-layers${layersActive || sheetOpen ? " is-active" : ""}`}
@@ -48,11 +61,22 @@ export default function MapRail({ map, theme, onToggleTheme, regionBounds, layer
         >
           <Layers aria-hidden="true" className="rail-ico-lg" />
         </button>
-        <button type="button" className="rail-btn" aria-label={nextTheme} data-tip={nextTheme} onClick={onToggleTheme}>
+        <button
+          type="button"
+          className="rail-btn"
+          aria-label={nextTheme}
+          data-tip={nextTheme}
+          onClick={onToggleTheme}
+        >
           {theme === "dark" ? <Moon aria-hidden="true" /> : <Sun aria-hidden="true" />}
         </button>
       </div>
-      <div className="rail dn-glass" role="toolbar" aria-orientation="vertical" aria-label="확대·축소">
+      <div
+        className="rail dn-glass"
+        role="toolbar"
+        aria-orientation="vertical"
+        aria-label="확대·축소"
+      >
         <button
           type="button"
           className="rail-btn"
@@ -84,7 +108,13 @@ export default function MapRail({ map, theme, onToggleTheme, regionBounds, layer
           onClick={() => {
             if (!map || !regionBounds) return;
             const [west, south, east, north] = regionBounds;
-            map.fitBounds([[west, south], [east, north]], { padding: 45, duration: 600, maxZoom: 11 });
+            map.fitBounds(
+              [
+                [west, south],
+                [east, north],
+              ],
+              { padding: 45, duration: 600, maxZoom: 11 },
+            );
           }}
         >
           <LocateFixed aria-hidden="true" />

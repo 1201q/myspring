@@ -35,11 +35,11 @@
   --dong-pos-1: #1d5a51;
   --dong-pos-2: #1f9e8a;
   --dong-pos-3: #2fd4b8;
-  --dong-empty: rgba(110, 125, 133, 0.10);
+  --dong-empty: rgba(110, 125, 133, 0.1);
   --danger: #ff8593;
   --danger-soft: rgba(255, 133, 147, 0.14);
-  --shadow-float: 0 10px 30px rgba(0, 0, 0, 0.38), 0 1px 2px rgba(0, 0, 0, 0.30);
-  --shadow-pop: 0 24px 60px rgba(0, 0, 0, 0.50), 0 2px 6px rgba(0, 0, 0, 0.30);
+  --shadow-float: 0 10px 30px rgba(0, 0, 0, 0.38), 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-pop: 0 24px 60px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.3);
   --shadow-sheen: inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
@@ -51,10 +51,10 @@
   --map-road: #fbfbf9;
   --map-road-major: #ffffff;
   --map-label: #5f6c67;
-  --glass: rgba(250, 251, 250, 0.70);
+  --glass: rgba(250, 251, 250, 0.7);
   --glass-strong: rgba(255, 255, 255, 0.88);
   --glass-line: rgba(16, 32, 28, 0.08);
-  --divider: rgba(16, 32, 28, 0.10);
+  --divider: rgba(16, 32, 28, 0.1);
   --fill-hover: rgba(16, 32, 28, 0.05);
   --fill-pressed: rgba(16, 32, 28, 0.09);
   --ink: #0f1a17;
@@ -78,12 +78,12 @@
   --dong-pos-1: #b3e3d8;
   --dong-pos-2: #5cc2ae;
   --dong-pos-3: #0e8f7c;
-  --dong-empty: rgba(110, 125, 133, 0.10);
+  --dong-empty: rgba(110, 125, 133, 0.1);
   --danger: #c2253b;
-  --danger-soft: rgba(194, 37, 59, 0.10);
+  --danger-soft: rgba(194, 37, 59, 0.1);
   --shadow-float: 0 10px 30px rgba(20, 40, 34, 0.12), 0 1px 2px rgba(20, 40, 34, 0.08);
   --shadow-pop: 0 24px 60px rgba(20, 40, 34, 0.18), 0 2px 6px rgba(20, 40, 34, 0.08);
-  --shadow-sheen: inset 0 1px 0 rgba(255, 255, 255, 0.90);
+  --shadow-sheen: inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 :root {
@@ -113,5 +113,7 @@
   --z-chrome: 10;
   --z-popover: 20;
   --z-toast: 30;
-  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  --font-sans:
+    "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+    "Malgun Gothic", system-ui, sans-serif;
 }
