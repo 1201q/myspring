@@ -51,7 +51,6 @@
   시군구는 지역 시트에서만 고르고, 칩 hover/focus 때만 지도에 미리 그립니다. 고른 시군구의 경계·바깥 덮개는 pickable이 아닙니다.
   시도 '전체'일 때는 그 시도의 윤곽(`region-outline`)만, 시군구를 고르면 그 시군구 윤곽만 accent 2.5px로 그립니다(둘 다 pickable 아님).
   동별 증감 레이어는 `showDongs`(레이어 시트)만 따릅니다 — 동별 Worker가 시군구 때문에 돌고 있어도 색을 그리지 않습니다.
-- `src/legacy/`(`SeoulPlayback.*`, `PlaybackControls.tsx`, `playback.ts`)는 어디서도 import되지 않는 예전 코드입니다. 참고하거나 되살리지 않습니다.
 
 ## 확인
 
