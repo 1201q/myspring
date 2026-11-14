@@ -30,7 +30,7 @@
 
 | 자리 | 요소 | 파일 |
 | --- | --- | --- |
-| 왼쪽 위 | 필터 캡슐(로고 · 지역 · 업종, 각각 시트) | `FilterCapsule.tsx` |
+| 왼쪽 위 | 필터 캡슐(로고 · 지역(시도 · 시군구) · 업종, 각각 시트) | `FilterCapsule.tsx` |
 | 캡슐 아래 왼쪽 | 개업 많은 순(모든 업종, 행 클릭 = 업종 필터, 1100px 미만은 접혀서 시작) | `RankPanel.tsx` |
 | 오른쪽 위 | 레일(레이어 · 테마 / 확대 · 축소 · 지역 전체 보기) | `MapRail.tsx` |
 | 레일 왼쪽 | 레이어 시트(동별 증감 · 지하철 · 개업 순위) | `LayerSheet.tsx`, 상태는 `layers.ts` + `App.tsx` |
@@ -41,6 +41,16 @@
 
 - 아래쪽 92px(재생 바 + 여백)는 재생 바 전용입니다. 순위 패널과 정보 독은 그 위에서 멈춥니다. 새 플로팅 요소를 넣으면 1440·820·375px에서 서로 겹치지 않는지 확인합니다.
 - 정보 독은 틀과 탭만 그리고, 탭 내용은 자료를 가진 컴포넌트가 `createPortal`로 넣습니다(동별 증감 → `NationalPlayback.tsx`, 지하철 → `SubwayOverlay.tsx`). 새 레이어도 같은 방식으로 붙입니다.
+- 시군구로 좁혀 보기: 재생 자료는 시도 단위 그대로이고 브라우저에서 거릅니다. 동별 Worker(`dongStatistics.worker.ts`)가 점마다 행정동을 배정하면,
+  행정동 코드 앞 5자리 = 시군구로 `sigungu.ts`가 점 필터(deck.gl 두 번째 필터 카테고리)와 `monthlyCounts`와 같은 모양의 시군구 집계를 만듭니다.
+  합계·순위·그래프는 이 `monthlyCounts`만 바꿔 끼워 계산하므로, 새 통계도 `manifest.monthlyCounts`를 직접 읽지 말고 `NationalPlayback.tsx`의 `monthlyCounts`를 씁니다.
+  경계는 `public/data/sigungu/`(행정동 경계를 합쳐 `npm run build:sigungu`로 생성). 묶음은 `kind: "si"` 피처로 하나 더 두고 소속 시군구 코드를 `members`에 적습니다:
+  일반구가 있는 시(수원시 등), 그리고 코드가 없는 이름 묶음(스크립트의 `NAMED_GROUPS` — 전남광주의 '광주 5구' = 동구·서구·남구·북구·광산구, 구 라벨은 '광주 동구', 합성 코드 12200).
+  묶음 소속은 코드 계산이 아니라 `members`로 판단합니다.
+- 지도 상호작용 규칙: **지금 고른 시도는 지도에서 반응하지 않습니다**(hover 색 변화·빈 곳 클릭 없음, 점만 동작). 다른 시도만 hover 경계·클릭 전환.
+  시군구는 지역 시트에서만 고르고, 칩 hover/focus 때만 지도에 미리 그립니다. 고른 시군구의 경계·바깥 덮개는 pickable이 아닙니다.
+  시도 '전체'일 때는 그 시도의 윤곽(`region-outline`)만, 시군구를 고르면 그 시군구 윤곽만 accent 2.5px로 그립니다(둘 다 pickable 아님).
+  동별 증감 레이어는 `showDongs`(레이어 시트)만 따릅니다 — 동별 Worker가 시군구 때문에 돌고 있어도 색을 그리지 않습니다.
 - `SeoulPlayback.tsx`, `PlaybackControls.tsx`, `SeoulPlayback.css`는 어디서도 import되지 않는 예전 코드입니다. 참고하거나 되살리지 않습니다.
 
 ## 확인

@@ -1,5 +1,6 @@
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { Check, ChevronDown, MapPin, Search, Store } from "lucide-react";
+import type { AreaOption, SigunguProperties } from "./sigungu";
 import "./FilterCapsule.css";
 
 type Option = { id: string; name: string };
@@ -8,6 +9,12 @@ type Props = {
   regionId: string;
   regionName: string;
   onRegionChange: (id: string) => void;
+  /** 시군구 of the current region (cities with 일반구 carry them as children). */
+  areas: AreaOption[];
+  area: SigunguProperties | null;
+  onAreaChange: (code: string | null) => void;
+  /** 시군구 under the pointer or focus in the sheet (null when none), outlined on the map. */
+  onAreaPreview: (code: string | null) => void;
   categories: Option[];
   category: string;
   onCategoryChange: (id: string) => void;
@@ -31,6 +38,10 @@ export default function FilterCapsule({
   regionId,
   regionName,
   onRegionChange,
+  areas,
+  area,
+  onAreaChange,
+  onAreaPreview,
   categories,
   category,
   onCategoryChange,
@@ -59,6 +70,10 @@ export default function FilterCapsule({
     };
   }, [open]);
 
+  useEffect(() => {
+    if (open !== "region") onAreaPreview(null);
+  }, [open, onAreaPreview]);
+
   // Move focus to the current choice when a sheet opens.
   useEffect(() => {
     if (!open) return;
@@ -71,6 +86,21 @@ export default function FilterCapsule({
   const toggle = (next: Open) => {
     setQuery("");
     setOpen((value) => (value === next ? null : next));
+  };
+  const placeName = area ? `${regionName} · ${area.label}` : regionName;
+  // The top-level choice in the 시군구 row: a 일반구 selects its city there.
+  const topCode = area?.kind === "gu" ? area.parent : (area?.code ?? null);
+  const city = areas.find((o) => o.code === topCode && o.children.length);
+  // Pointing at a 시군구 chip outlines it on the map; leaving clears it.
+  const preview = (code: string | null) => ({
+    onPointerEnter: () => onAreaPreview(code),
+    onPointerLeave: () => onAreaPreview(null),
+    onFocus: () => onAreaPreview(code),
+    onBlur: () => onAreaPreview(null),
+  });
+  const pickArea = (code: string | null, keepOpen = false) => {
+    if (!keepOpen) setOpen(null);
+    onAreaChange(code);
   };
   const categoryName = categoryError
     ? "업종 불러오기 실패"
@@ -97,12 +127,12 @@ export default function FilterCapsule({
           aria-haspopup="dialog"
           aria-expanded={open === "region"}
           aria-controls={open === "region" ? sheetId : undefined}
-          aria-label={`재생 지역: ${regionName}`}
+          aria-label={`재생 지역: ${placeName}`}
           disabled={!regions.length}
           onClick={() => toggle("region")}
         >
           <MapPin className="fc-ico" aria-hidden="true" />
-          <span>{regionName}</span>
+          <span>{placeName}</span>
           <ChevronDown className="fc-chev" aria-hidden="true" />
         </button>
         <span className="fc-div" aria-hidden="true" />
@@ -128,7 +158,7 @@ export default function FilterCapsule({
         <div id={sheetId} className="fc-sheet dn-glass-strong" role="dialog" aria-label="재생 지역">
           <div className="fc-sheet-head">
             <h2>재생 지역</h2>
-            <small>지도에서 눌러도 바뀝니다</small>
+            <small>다른 시도는 지도에서 눌러도 바뀝니다</small>
           </div>
           <div className="fc-chips">
             {regions.map((r) => (
@@ -137,15 +167,60 @@ export default function FilterCapsule({
                 key={r.id}
                 className="fc-chip"
                 aria-pressed={r.id === regionId}
-                onClick={() => {
-                  setOpen(null);
-                  onRegionChange(r.id);
-                }}
+                // Stay open after a region change so a 시군구 can be picked next.
+                onClick={() => onRegionChange(r.id)}
               >
                 {r.name}
               </button>
             ))}
           </div>
+          {areas.length > 1 && (
+            <div className="fc-tier">
+              <h3>{regionName} 안에서</h3>
+              <div className="fc-chips">
+                <button type="button" className="fc-chip" aria-pressed={!area} onClick={() => pickArea(null)}>
+                  전체
+                </button>
+                {areas.map((o) => (
+                  <button
+                    type="button"
+                    key={o.code}
+                    className="fc-chip"
+                    aria-pressed={o.code === topCode}
+                    title={o.label}
+                    {...preview(o.code)}
+                    // A city with 일반구 keeps the sheet open to offer its 구.
+                    onClick={() => pickArea(o.code, o.children.length > 0)}
+                  >
+                    {o.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+          {city && (
+            <div className="fc-tier">
+              <h3>{city.name} 안에서</h3>
+              <div className="fc-chips">
+                <button type="button" className="fc-chip" aria-pressed={area?.code === city.code} {...preview(city.code)} onClick={() => pickArea(city.code)}>
+                  {city.name} 전체
+                </button>
+                {city.children.map((o) => (
+                  <button
+                    type="button"
+                    key={o.code}
+                    className="fc-chip"
+                    aria-pressed={o.code === area?.code}
+                    title={o.label}
+                    {...preview(o.code)}
+                    onClick={() => pickArea(o.code)}
+                  >
+                    {o.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       )}
 

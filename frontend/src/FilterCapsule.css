@@ -283,3 +283,25 @@
     width: 100%;
   }
 }
+
+/* 시군구 tiers inside the region sheet */
+.fc-tier {
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--divider);
+}
+.fc-tier h3 {
+  margin: 0 4px var(--space-2);
+  font-size: 11px;
+  line-height: 15px;
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+.fc-tier .fc-chips {
+  max-height: min(220px, 32dvh);
+  overflow: auto;
+}
+.fc-sheet {
+  max-height: calc(100dvh - 92px - 72px);
+  overflow: auto;
+}

@@ -15,13 +15,15 @@ type Props = {
   category: string;
   onCategoryChange: (id: string) => void;
   cumulative: boolean;
+  /** Extra caveat for the footer, e.g. when a 시군구 is selected. */
+  note?: string;
 };
 
 const fmt = (n: number) => n.toLocaleString("ko-KR");
 const signed = (n: number) => (n > 0 ? "+" : n < 0 ? "−" : "") + fmt(Math.abs(n));
 
 /** Left panel under the filter capsule: period totals and categories ranked by openings. */
-export default function RankPanel({ regionName, period, opens, closes, rows, category, onCategoryChange, cumulative }: Props) {
+export default function RankPanel({ regionName, period, opens, closes, rows, category, onCategoryChange, cumulative, note }: Props) {
   // Start collapsed where the panel would crowd the map.
   const [collapsed, setCollapsed] = useState(() => typeof window !== "undefined" && window.innerWidth < 1100);
   const top = rows[0];
@@ -106,6 +108,7 @@ export default function RankPanel({ regionName, period, opens, closes, rows, cat
         </span>
         <span className="rank-foot-note">
           {cumulative ? "해당 월까지 누적한" : "선택 기간의"} 신고 건수 · 지금 영업 중인 사업장 수와 다를 수 있습니다. 행을 누르면 업종 필터.
+          {note && ` ${note}`}
         </span>
       </p>
     </section>

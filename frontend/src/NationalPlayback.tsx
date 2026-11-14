@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { MapboxOverlay } from "@deck.gl/mapbox";
-import { GeoJsonLayer, ScatterplotLayer, TextLayer } from "@deck.gl/layers";
+import { GeoJsonLayer, ScatterplotLayer, SolidPolygonLayer, TextLayer } from "@deck.gl/layers";
 import type { Color } from "@deck.gl/core";
 import type { Feature, MultiPolygon, Polygon } from "geojson";
 import { DataFilterExtension } from "@deck.gl/extensions";
@@ -19,6 +19,8 @@ import type { Theme } from "./theme";
 import RankPanel from "./RankPanel";
 import "./NationalPlayback.css";
 import FilterCapsule from "./FilterCapsule";
+import { areaBounds, areaDongMask, areaMonthlyCounts, areaOptions, areaPointFlags, loadSigungu } from "./sigungu";
+import type { SigunguBoundaries, SigunguProperties } from "./sigungu";
 import PlaybackBar, { PlaybackBarLoading } from "./PlaybackBar";
 import { activitySeries, formatMonth } from "./playbackSeries";
 import { TriangleAlert } from "lucide-react";
@@ -119,6 +121,14 @@ export default function NationalPlayback({
     code: string;
     regionId: string;
   } | null>(null);
+  // 시군구 inside the playback region. Keyed by region id, so changing region clears it.
+  const [area, setArea] = useState<{ code: string; regionId: string } | null>(null);
+  // 시군구 under the pointer or focus in the region sheet, outlined on the map as a preview.
+  const [previewArea, setPreviewArea] = useState<string | null>(null);
+  const [sigungu, setSigungu] = useState<{ regionId: string; data: SigunguBoundaries } | null>(null);
+  const [sigunguError, setSigunguError] = useState("");
+  const [sigunguAttempt, setSigunguAttempt] = useState(0);
+  const areaFit = useRef<string | null>(null);
   const overlay = useRef<MapboxOverlay | null>(null);
   const click = useRef(onSelectId);
   const locationClick = useRef(onSelectLocation);
@@ -160,7 +170,7 @@ export default function NationalPlayback({
     click.current = onSelectId;
   }, [onSelectId]);
   const extensions = useMemo(
-    () => [new DataFilterExtension({ filterSize: 1, categorySize: 1 })],
+    () => [new DataFilterExtension({ filterSize: 1, categorySize: 2 })],
     [],
   );
   useEffect(() => {
@@ -249,6 +259,21 @@ export default function NationalPlayback({
     );
   }, [map, selectedRegion, onRegionBoundsChange]);
   useEffect(() => {
+    if (!selectedRegion) return;
+    const controller = new AbortController();
+    loadSigungu(regionId, controller.signal)
+      .then((result) => {
+        if (controller.signal.aborted) return;
+        setSigungu({ regionId, data: result });
+        setSigunguError("");
+      })
+      .catch((reason) => {
+        if (!controller.signal.aborted)
+          setSigunguError(reason instanceof Error ? reason.message : "시군구 경계 조회 실패");
+      });
+    return () => controller.abort();
+  }, [selectedRegion, regionId, sigunguAttempt]);
+  useEffect(() => {
     if (!selectedRegion || data) return;
     const controller = new AbortController();
     loadRegionDataset(regionId, controller.signal, (value) => {
@@ -286,22 +311,91 @@ export default function NationalPlayback({
         .map((c) => c.code) ?? [],
     [data, category],
   );
-  const dong = useDongStatistics(showDongs, data, from, currentMonth, codes);
+  const sigunguData = sigungu?.regionId === regionId ? sigungu.data : null;
+  const areaFeature =
+    (area?.regionId === regionId &&
+      sigunguData?.features.find((feature) => feature.properties.code === area.code)) ||
+    null;
+  const areaCode = areaFeature?.properties.code ?? null;
+  const areaChoices = useMemo(() => (sigunguData ? areaOptions(sigunguData) : []), [sigunguData]);
+  // The dong worker also places points for 시군구 filtering, so it runs for either use.
+  const dong = useDongStatistics(showDongs || !!areaCode, data, from, currentMonth, codes);
+  const areaMask = useMemo(
+    () =>
+      areaFeature && dong.boundaries
+        ? areaDongMask(
+            dong.boundaries.features.map((feature) => feature.properties.code),
+            areaFeature.properties,
+          )
+        : null,
+    [areaFeature, dong.boundaries],
+  );
+  const areaFlags = useMemo(
+    () => (areaMask && dong.assignments ? dong.assignments.map((owners) => areaPointFlags(owners, areaMask)) : null),
+    [areaMask, dong.assignments],
+  );
+  const areaCounts = useMemo(
+    () =>
+      data && areaMask && dong.assignments
+        ? areaMonthlyCounts(
+            [data.open, data.close],
+            dong.assignments,
+            areaMask,
+            data.manifest.minMonth,
+            data.manifest.maxMonth,
+            data.manifest.categories.length,
+          )
+        : null,
+    [data, areaMask, dong.assignments],
+  );
+  const areaPending = !!areaCode && !areaCounts;
+  // Same layout as the manifest's monthlyCounts, scoped to the selected 시군구 when there is one.
+  const monthlyCounts = areaCode ? areaCounts : (data?.manifest.monthlyCounts ?? null);
+  const areaName = areaFeature ? `${name} ${areaFeature.properties.label}` : name;
+  const changeArea = useCallback(
+    (code: string | null) => {
+      setPlaying(false);
+      setPreviewArea(null);
+      onClearSelection();
+      setArea(code ? { code, regionId } : null);
+    },
+    [regionId, onClearSelection],
+  );
+  useEffect(() => {
+    if (!map || !selectedRegion) return;
+    const key = areaFeature?.properties.code ?? null;
+    if (areaFit.current === key) return;
+    const previous = areaFit.current;
+    areaFit.current = key;
+    // Region-level fitting is done by the region effect; only leaving an area fits back here.
+    if (!areaFeature && previous === null) return;
+    const bbox = areaFeature ? areaBounds(areaFeature.geometry) : selectedRegion.bbox;
+    onRegionBoundsChange(bbox);
+    map.fitBounds(
+      [
+        [bbox[0], bbox[1]],
+        [bbox[2], bbox[3]],
+      ],
+      { padding: 60, duration: 600, maxZoom: areaFeature ? 14 : 11 },
+    );
+  }, [map, selectedRegion, areaFeature, onRegionBoundsChange]);
   const dongFeatures = useMemo(
     () =>
       dong.boundaries && dong.result
         ? {
             ...dong.boundaries,
-            features: dong.boundaries.features.map((feature, index) => ({
-              ...feature,
-              properties: {
-                ...feature.properties,
-                ...dong.result!.counts[index],
-              },
-            })),
+            features: dong.boundaries.features
+              .map((feature, index) => ({
+                ...feature,
+                properties: {
+                  ...feature.properties,
+                  ...dong.result!.counts[index],
+                },
+              }))
+              .filter((_, index) => !areaMask || areaMask[index]),
           }
         : null,
-    [dong.boundaries, dong.result],
+    [dong.boundaries, dong.result, areaMask],
   );
   const palette = MAP_PALETTE[theme];
   const dongScale = useMemo(
@@ -309,10 +403,12 @@ export default function NationalPlayback({
       dong.result
         ? Math.max(
             1,
-            ...dong.result.counts.map((c) => Math.abs(c.open - c.close)),
+            ...dong.result.counts
+              .filter((_, index) => !areaMask || areaMask[index])
+              .map((c) => Math.abs(c.open - c.close)),
           )
         : 1,
-    [dong.result],
+    [dong.result, areaMask],
   );
   const dongSelection =
     selectedDong?.regionId === regionId
@@ -323,9 +419,9 @@ export default function NationalPlayback({
   const locations = useMemo(
     () =>
       data
-        ? groupLocations([data.open, data.close], from, currentMonth, codes)
+        ? groupLocations([data.open, data.close], from, currentMonth, codes, areaFlags)
         : new Map<string, LocationGroup>(),
-    [data, from, currentMonth, codes],
+    [data, from, currentMonth, codes, areaFlags],
   );
   const overlappingLocations = useMemo(
     () => [...locations.values()].filter((group) => group.ids.length > 1),
@@ -334,15 +430,24 @@ export default function NationalPlayback({
   const binaryData = useMemo(
     () =>
       data &&
-      [data.open, data.close].map((points) => ({
-        length: points.length,
-        attributes: {
-          getPosition: { value: points.pos, size: 2 },
-          getFilterValue: { value: points.month, size: 1 },
-          getFilterCategory: { value: points.cat, size: 1 },
-        },
-      })),
-    [data],
+      [data.open, data.close].map((points, kind) => {
+        // Filter categories per point: [업종 code, inside the selected 시군구 (1) or not (0)].
+        const flags = areaFlags?.[kind];
+        const category = new Float32Array(points.length * 2);
+        for (let i = 0; i < points.length; i++) {
+          category[i * 2] = points.cat[i];
+          category[i * 2 + 1] = flags ? flags[i] : 1;
+        }
+        return {
+          length: points.length,
+          attributes: {
+            getPosition: { value: points.pos, size: 2 },
+            getFilterValue: { value: points.month, size: 1 },
+            getFilterCategory: { value: category, size: 2 },
+          },
+        };
+      }),
+    [data, areaFlags],
   );
   useEffect(() => {
     if (!overlay.current) return;
@@ -378,7 +483,75 @@ export default function NationalPlayback({
           },
         })
       : null;
-    const dongLayer = dongFeatures
+    // Darken everything outside the selected 시군구: a world polygon with the area cut out.
+    const maskLayer = areaFeature
+      ? new SolidPolygonLayer<{ polygon: [number, number][][] }>({
+          id: "sigungu-mask",
+          data: [
+            {
+              polygon: [
+                [
+                  [-180, -85],
+                  [180, -85],
+                  [180, 85],
+                  [-180, 85],
+                  [-180, -85],
+                ],
+                ...areaFeature.geometry.coordinates.map((polygon) => polygon[0] as [number, number][]),
+              ],
+            },
+          ],
+          getPolygon: (d) => d.polygon,
+          getFillColor: [...palette.mapLand, theme === "dark" ? 165 : 150],
+          updateTriggers: { getFillColor: [palette, theme] },
+        })
+      : null;
+    const previewFeature = previewArea
+      ? sigunguData?.features.find((feature) => feature.properties.code === previewArea)
+      : undefined;
+    const previewLayer = previewFeature
+      ? new GeoJsonLayer<SigunguProperties>({
+          id: "sigungu-preview",
+          data: previewFeature,
+          filled: true,
+          stroked: true,
+          getFillColor: [...palette.accent, 30],
+          getLineColor: [...palette.accent, 230],
+          getLineWidth: 2,
+          lineWidthUnits: "pixels",
+          updateTriggers: { getFillColor: [palette], getLineColor: [palette] },
+        })
+      : null;
+    // With the whole region selected, outline the region itself. Display only: never pickable.
+    const regionFeature = !areaFeature
+      ? boundaries?.features.find((feature) => feature.properties.id === regionId)
+      : undefined;
+    const regionOutline = regionFeature
+      ? new GeoJsonLayer<RegionProperties>({
+          id: "region-outline",
+          data: regionFeature,
+          pickable: false,
+          filled: false,
+          stroked: true,
+          getLineColor: [...palette.accent, 255],
+          getLineWidth: 2.5,
+          lineWidthUnits: "pixels",
+          updateTriggers: { getLineColor: [palette] },
+        })
+      : null;
+    const areaOutline = areaFeature
+      ? new GeoJsonLayer<SigunguProperties>({
+          id: "sigungu-selected",
+          data: areaFeature,
+          filled: false,
+          stroked: true,
+          getLineColor: [...palette.accent, 255],
+          getLineWidth: 2.5,
+          lineWidthUnits: "pixels",
+          updateTriggers: { getLineColor: [palette] },
+        })
+      : null;
+    const dongLayer = showDongs && dongFeatures
       ? new GeoJsonLayer<DongProperties & { open: number; close: number }>({
           id: "dong-net-change",
           data: dongFeatures,
@@ -456,7 +629,11 @@ export default function NationalPlayback({
       },
       layers: [
         regionLayer,
+        maskLayer,
         dongLayer,
+        previewLayer,
+        regionOutline,
+        areaOutline,
         ...(data && binaryData
           ? [data.open, data.close].map(
               (points, kind) =>
@@ -465,7 +642,7 @@ export default function NationalPlayback({
                   data: binaryData[kind],
                   extensions,
                   filterRange: [from - 0.5, currentMonth + 0.5],
-                  filterCategories: codes,
+                  filterCategories: [codes, [1]],
                   pickable: true,
                   filled: true,
                   stroked: kind === 1,
@@ -554,10 +731,16 @@ export default function NationalPlayback({
     dongFeatures,
     dongScale,
     palette,
+    theme,
+    showDongs,
+    previewArea,
+    sigunguData,
+    areaFeature,
+    boundaries,
   ]);
   useEffect(() => {
     onClearSelection();
-  }, [currentMonth, unit, category, regionId, onClearSelection]);
+  }, [currentMonth, unit, category, regionId, areaCode, onClearSelection]);
   useEffect(() => {
     if (!playing || !data) return;
     const timer = window.setTimeout(() => {
@@ -569,25 +752,25 @@ export default function NationalPlayback({
   }, [playing, data, max, currentMonth, unit, speed]);
   // Openings per category id in the current window, for the category sheet.
   const categoryCounts = useMemo(() => {
-    if (!data) return null;
+    if (!data || !monthlyCounts) return null;
     const m = data.manifest,
       n = m.categories.length,
       counts = new Map<string, number>();
     for (const c of m.categories) {
       let open = 0;
       for (let t = from; t <= currentMonth; t++)
-        open += m.monthlyCounts[(t - min) * 2 * n + c.code] ?? 0;
+        open += monthlyCounts[(t - min) * 2 * n + c.code] ?? 0;
       counts.set(c.id, open);
     }
     return counts;
-  }, [data, from, currentMonth, min]);
+  }, [data, monthlyCounts, from, currentMonth, min]);
   const series = useMemo(
-    () => (data ? activitySeries(data.manifest, codes, 3) : null),
-    [data, codes],
+    () => (data && monthlyCounts ? activitySeries({ ...data.manifest, monthlyCounts }, codes, 3) : null),
+    [data, monthlyCounts, codes],
   );
   // Every category for the ranking panel; totals below follow the category filter.
   const allRows = useMemo(() => {
-    if (!data) return [];
+    if (!data || !monthlyCounts) return [];
     const m = data.manifest,
       n = m.categories.length;
     return m.categories
@@ -595,13 +778,13 @@ export default function NationalPlayback({
         let open = 0,
           close = 0;
         for (let t = from; t <= currentMonth; t++) {
-          open += m.monthlyCounts[(t - min) * 2 * n + c.code] ?? 0;
-          close += m.monthlyCounts[((t - min) * 2 + 1) * n + c.code] ?? 0;
+          open += monthlyCounts[(t - min) * 2 * n + c.code] ?? 0;
+          close += monthlyCounts[((t - min) * 2 + 1) * n + c.code] ?? 0;
         }
         return { ...c, open, close };
       })
       .sort((a, b) => b.open - a.open);
-  }, [data, from, currentMonth, min]);
+  }, [data, monthlyCounts, from, currentMonth, min]);
   const rows = useMemo(
     () => allRows.filter((row) => codes.includes(row.code)),
     [allRows, codes],
@@ -621,6 +804,10 @@ export default function NationalPlayback({
         regionId={regionId}
         regionName={name}
         onRegionChange={changeRegion}
+        areas={areaChoices}
+        area={areaFeature?.properties ?? null}
+        onAreaChange={changeArea}
+        onAreaPreview={setPreviewArea}
         categories={categories}
         category={category}
         onCategoryChange={(value) => {
@@ -633,7 +820,8 @@ export default function NationalPlayback({
       />
       {data && showRanks && (
         <RankPanel
-          regionName={name}
+          regionName={areaName}
+          note={areaCode ? "행정동 경계 밖(미배정) 기록은 시군구 집계에서 빠집니다." : undefined}
           period={`${formatMonth(from)} – ${formatMonth(currentMonth)}`}
           opens={opens}
           closes={closes}
@@ -646,7 +834,11 @@ export default function NationalPlayback({
           cumulative={unit === 0}
         />
       )}
-      {data ? (
+      {data && areaPending ? (
+        <PlaybackBarLoading
+          text={dong.error ? "시군구로 나누지 못했습니다" : `${areaName} 기록을 시군구로 나누는 중`}
+        />
+      ) : data ? (
         <PlaybackBar
           min={min}
           max={max}
@@ -754,8 +946,26 @@ export default function NationalPlayback({
           </>,
           dongDock,
         )}
-      {(error || boundaryError) && (
+      {(error || boundaryError || sigunguError || (areaCode && dong.error)) && (
         <div className="toasts">
+          {sigunguError && (
+            <p className="toast dn-glass-strong" role="alert">
+              <TriangleAlert aria-hidden="true" />
+              <span>{sigunguError}</span>
+              <button type="button" onClick={() => setSigunguAttempt((value) => value + 1)}>
+                다시 시도
+              </button>
+            </p>
+          )}
+          {areaCode && dong.error && (
+            <p className="toast dn-glass-strong" role="alert">
+              <TriangleAlert aria-hidden="true" />
+              <span>{dong.error}</span>
+              <button type="button" onClick={dong.retry}>
+                다시 시도
+              </button>
+            </p>
+          )}
           {error && (
             <p className="toast dn-glass-strong" role="alert">
               <TriangleAlert aria-hidden="true" />
