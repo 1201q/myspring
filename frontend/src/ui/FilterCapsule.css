@@ -14,7 +14,8 @@
   align-items: center;
   max-width: 100%;
   height: var(--control-lg);
-  padding: var(--space-1);
+  /* 1px 테두리를 빼고 안쪽 여백을 맞춰서, 세그먼트(36px)가 위·아래·오른쪽 모두 같은 간격(4px)으로 앉습니다. */
+  padding: calc(var(--space-1) - 1px);
   border-radius: var(--radius-pill);
 }
 .fc-brand {
