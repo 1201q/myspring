@@ -34,14 +34,16 @@
 }
 
 /* MapLibre attribution on glass */
-.maplibregl-ctrl-attrib.maplibregl-compact,
-.maplibregl-ctrl-attrib {
+/* Two classes, to beat maplibre-gl.css's `.maplibregl-ctrl.maplibregl-ctrl-attrib` white background. */
+.maplibregl-ctrl.maplibregl-ctrl-attrib.maplibregl-compact,
+.maplibregl-ctrl.maplibregl-ctrl-attrib {
   background: var(--glass);
   -webkit-backdrop-filter: blur(var(--blur-sm));
   backdrop-filter: blur(var(--blur-sm));
   color: var(--ink-subtle);
   font-size: 10px;
 }
+.maplibregl-ctrl .maplibregl-ctrl-attrib-inner a,
 .maplibregl-ctrl-attrib a {
   color: var(--ink-muted);
 }
