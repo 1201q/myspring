@@ -1,6 +1,7 @@
 @import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
 @import "./styles/tokens.css";
 @import "./styles/glass.css";
+@import "./styles/scroll.css";
 
 :root {
   font-family: var(--font-sans);

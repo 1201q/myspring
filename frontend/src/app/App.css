@@ -86,8 +86,13 @@
   right: 60px;
   width: 300px;
   max-height: calc(100dvh - 330px);
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  /* The gutter takes the right padding's place, so both sides stay at 16px. */
   padding: var(--space-4);
+  padding-inline-end: calc(var(--space-4) - var(--scrollbar-w));
   border-radius: var(--radius-lg);
 }
 .detail-top {
@@ -260,10 +265,21 @@
   color: var(--ink-muted);
   font-variant-numeric: tabular-nums;
 }
+/* The frame stays put; only the list scrolls, out to the panel's edge (see styles/scroll.css). */
+.location-records {
+  --scroll-pad: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  scrollbar-gutter: auto;
+  padding-inline-end: var(--space-4);
+}
+.location-records > :not(.location-record-list) {
+  flex: none;
+}
 .location-record-list {
   list-style: none;
-  margin: var(--space-3) 0 0;
-  padding: 0;
+  margin-block: calc(var(--space-3) - var(--scroll-edge)) calc(-1 * var(--scroll-edge));
   display: grid;
   gap: 1px;
 }
@@ -312,8 +328,10 @@
 .selection-popup.is-positioned {
   position: absolute;
   z-index: var(--z-popover);
+  display: flex;
+  flex-direction: column;
   max-height: min(420px, calc(100% - 32px));
-  overflow: auto;
+  overflow: hidden;
   border-radius: var(--radius-lg);
 }
 .selection-popup.is-positioned .detail {
@@ -321,6 +339,7 @@
   width: 100%;
   max-width: none;
   max-height: none;
+  min-height: 0;
   margin: 0;
 }
 .selection-popup.is-hover :is(.close, .location-back, .location-pages, .detail a) {

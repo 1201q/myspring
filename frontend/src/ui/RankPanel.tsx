@@ -104,7 +104,7 @@ export default function RankPanel({
           <b className={net > 0 ? "rank-pos" : net < 0 ? "rank-neg" : undefined}>{signed(net)}</b>
         </div>
       </div>
-      <ol className="rank-list" aria-label="업종 순위 · 누르면 그 업종만 표시">
+      <ol className="rank-list dn-scroll"aria-label="업종 순위 · 누르면 그 업종만 표시">
         {rows.map((row, index) => (
           <li key={row.code}>
             <button

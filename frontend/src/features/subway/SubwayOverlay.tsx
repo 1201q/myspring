@@ -297,7 +297,7 @@ export default function SubwayOverlay({
             />
           </label>
           <ul
-            className="subway-lines"
+            className="subway-lines dn-scroll"
             aria-label={`${regionName ?? ""} 노선 · 누르면 그 노선만 표시`}
           >
             {listed.map((line) => (

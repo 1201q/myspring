@@ -9,8 +9,10 @@
   max-height: calc(100dvh - 92px - 230px);
   display: flex;
   flex-direction: column;
+  --scroll-pad: var(--space-3);
   padding: var(--space-3);
   border-radius: var(--radius-lg);
+  overflow: hidden;
   font-size: 12px;
   animation: dock-in 0.16s ease-out;
 }
@@ -83,8 +85,23 @@
   color: var(--ink);
 }
 .dock-body {
-  min-height: 0;
-  overflow: auto;
+  flex: 1 1 auto;
+}
+/* A tab that has its own list (지하철 노선): the body does not scroll, so the search above
+   the list, and the note below it, stay put. Only the list (.dn-scroll) scrolls. */
+.dock-body.is-split {
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+  margin: 0;
+  padding: 0;
+  scrollbar-gutter: auto;
+}
+.dock-body.is-split > * {
+  flex: none;
+}
+.dock-body.is-split > .dn-scroll {
+  flex: 0 1 auto;
 }
 
 /* Shared pieces for dock content */

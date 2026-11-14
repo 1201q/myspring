@@ -270,6 +270,7 @@
   left: 96px;
   z-index: var(--z-popover);
   width: 312px;
+  --scroll-pad: var(--space-3);
   padding: var(--space-3);
   border-radius: var(--radius-lg);
   display: grid;
@@ -287,11 +288,11 @@
   grid-template-columns: repeat(5, 1fr);
   gap: 4px;
   max-height: 136px;
-  overflow: auto;
-  padding-bottom: var(--space-3);
-  border-bottom: 1px solid var(--divider);
 }
 .pb-pick-months {
+  /* The divider sits here, not on the years list: that list bleeds to the panel's edge. */
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--divider);
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 4px;

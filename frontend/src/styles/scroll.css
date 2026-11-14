@@ -1,0 +1,61 @@
+/*
+ * Scrolling — one look, one placement.
+ *
+ * Look: a thin pill thumb on a transparent track. It is quiet at rest (fill-pressed) and
+ * brightens on hover (ink-subtle). Nothing else (no arrows, no track fill).
+ *
+ * Placement: a glass panel never scrolls its own frame when it has a head or a search row.
+ * Only its body or list scrolls, and that scroller bleeds out to the panel's edge, so the
+ * thumb always rides along the panel's right edge, never inside the content. The gutter is
+ * always reserved (no layout jump when the thumb appears) and is taken out of the right
+ * padding, so left and right padding stay equal.
+ *
+ * Use `.dn-scroll` on the scroller, and set `--scroll-pad` on the panel to the panel's
+ * padding (omit it when the scroller already touches the panel's edge).
+ */
+:root {
+  --scrollbar-w: 8px; /* gutter; the thumb is this minus 2 x 2px inset = 4px */
+  --scroll-edge: 4px; /* focus ring room: 2px outline + 2px offset (see index.css :focus-visible) */
+}
+
+@supports selector(::-webkit-scrollbar) {
+  *::-webkit-scrollbar {
+    width: var(--scrollbar-w);
+    height: var(--scrollbar-w);
+  }
+  *::-webkit-scrollbar-track,
+  *::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+  *::-webkit-scrollbar-thumb {
+    min-height: 32px;
+    border: 2px solid transparent;
+    border-radius: var(--radius-pill);
+    background: var(--fill-pressed) padding-box;
+  }
+  *::-webkit-scrollbar-thumb:hover,
+  *::-webkit-scrollbar-thumb:active {
+    background: var(--ink-subtle) padding-box;
+  }
+}
+@supports not selector(::-webkit-scrollbar) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--fill-pressed) transparent;
+  }
+}
+
+:where(.dn-scroll) {
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  margin-inline: calc(-1 * var(--scroll-pad, 0px));
+  padding-inline: var(--scroll-pad, 0px);
+  /* Room for focus rings at the top and bottom, which overflow would otherwise clip.
+     The negative margin cancels it, so nothing moves. */
+  margin-block: calc(-1 * var(--scroll-edge));
+  padding-block: var(--scroll-edge);
+  padding-inline-end: max(0px, calc(var(--scroll-pad, 0px) - var(--scrollbar-w)));
+}

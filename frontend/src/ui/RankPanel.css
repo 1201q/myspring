@@ -107,10 +107,9 @@
 }
 .rank-list {
   list-style: none;
-  margin: var(--space-2) 0 0;
-  padding: 0 var(--space-2) var(--space-2);
-  min-height: 0;
-  overflow: auto;
+  margin: calc(var(--space-2) - var(--scroll-edge)) 0 0;
+  /* The scroller already touches the panel edge; the 8px gutter on the right balances the 8px on the left. */
+  padding: var(--scroll-edge) 0 var(--space-2) var(--space-2);
 }
 .rank-list button {
   width: 100%;

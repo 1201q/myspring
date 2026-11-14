@@ -54,7 +54,7 @@ export default function LocationRecords({
         </p>
       ) : (
         <>
-          <ul className="location-record-list">
+          <ul className="location-record-list dn-scroll">
             {rows.map((business, index) => (
               <li key={ids[page * PAGE_SIZE + index]}>
                 {business ? (

@@ -270,7 +270,7 @@ function MonthPicker({
   for (let y = monthYear(min); y <= monthYear(max); y++) years.push(y);
   return (
     <div className="pb-picker dn-glass-strong" role="dialog" aria-label="연월 고르기" ref={root}>
-      <div className="pb-pick-years">
+      <div className="pb-pick-years dn-scroll">
         {years.map((y) => (
           <button
             type="button"

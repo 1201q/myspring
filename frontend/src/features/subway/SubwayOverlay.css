@@ -34,8 +34,8 @@
 }
 .subway-lines {
   list-style: none;
-  margin: var(--space-2) 0 0;
-  padding: 0;
+  /* margin-block, not margin: the shorthand would cancel the scroller's side bleed (.dn-scroll). */
+  margin-block: calc(var(--space-2) - var(--scroll-edge)) calc(-1 * var(--scroll-edge));
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2px;

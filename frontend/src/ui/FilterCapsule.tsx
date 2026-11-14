@@ -148,78 +148,80 @@ export default function FilterCapsule({
             <h2>재생 지역</h2>
             <small>다른 시도는 지도에서 눌러도 바뀝니다</small>
           </div>
-          <div className="fc-chips">
-            {regions.map((r) => (
-              <button
-                type="button"
-                key={r.id}
-                className="fc-chip"
-                aria-pressed={r.id === regionId}
-                // 지역을 바꾼 뒤에도 열어 두어 이어서 시군구를 고를 수 있게 합니다.
-                onClick={() => onRegionChange(r.id)}
-              >
-                {r.name}
-              </button>
-            ))}
+          <div className="fc-sheet-body dn-scroll">
+            <div className="fc-chips">
+              {regions.map((r) => (
+                <button
+                  type="button"
+                  key={r.id}
+                  className="fc-chip"
+                  aria-pressed={r.id === regionId}
+                  // 지역을 바꾼 뒤에도 열어 두어 이어서 시군구를 고를 수 있게 합니다.
+                  onClick={() => onRegionChange(r.id)}
+                >
+                  {r.name}
+                </button>
+              ))}
+            </div>
+            {areas.length > 1 && (
+              <div className="fc-tier">
+                <h3>{regionName} 안에서</h3>
+                <div className="fc-chips">
+                  <button
+                    type="button"
+                    className="fc-chip"
+                    aria-pressed={!area}
+                    onClick={() => pickArea(null)}
+                  >
+                    전체
+                  </button>
+                  {areas.map((o) => (
+                    <button
+                      type="button"
+                      key={o.code}
+                      className="fc-chip"
+                      aria-pressed={o.code === topCode}
+                      title={o.label}
+                      {...preview(o.code)}
+                      // 일반구가 있는 시는 시트를 열어 둔 채 구를 보여 줍니다.
+                      onClick={() => pickArea(o.code, o.children.length > 0)}
+                    >
+                      {o.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+            {city && (
+              <div className="fc-tier">
+                <h3>{city.name} 안에서</h3>
+                <div className="fc-chips">
+                  <button
+                    type="button"
+                    className="fc-chip"
+                    aria-pressed={area?.code === city.code}
+                    {...preview(city.code)}
+                    onClick={() => pickArea(city.code)}
+                  >
+                    {city.name} 전체
+                  </button>
+                  {city.children.map((o) => (
+                    <button
+                      type="button"
+                      key={o.code}
+                      className="fc-chip"
+                      aria-pressed={o.code === area?.code}
+                      title={o.label}
+                      {...preview(o.code)}
+                      onClick={() => pickArea(o.code)}
+                    >
+                      {o.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
-          {areas.length > 1 && (
-            <div className="fc-tier">
-              <h3>{regionName} 안에서</h3>
-              <div className="fc-chips">
-                <button
-                  type="button"
-                  className="fc-chip"
-                  aria-pressed={!area}
-                  onClick={() => pickArea(null)}
-                >
-                  전체
-                </button>
-                {areas.map((o) => (
-                  <button
-                    type="button"
-                    key={o.code}
-                    className="fc-chip"
-                    aria-pressed={o.code === topCode}
-                    title={o.label}
-                    {...preview(o.code)}
-                    // 일반구가 있는 시는 시트를 열어 둔 채 구를 보여 줍니다.
-                    onClick={() => pickArea(o.code, o.children.length > 0)}
-                  >
-                    {o.name}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-          {city && (
-            <div className="fc-tier">
-              <h3>{city.name} 안에서</h3>
-              <div className="fc-chips">
-                <button
-                  type="button"
-                  className="fc-chip"
-                  aria-pressed={area?.code === city.code}
-                  {...preview(city.code)}
-                  onClick={() => pickArea(city.code)}
-                >
-                  {city.name} 전체
-                </button>
-                {city.children.map((o) => (
-                  <button
-                    type="button"
-                    key={o.code}
-                    className="fc-chip"
-                    aria-pressed={o.code === area?.code}
-                    title={o.label}
-                    {...preview(o.code)}
-                    onClick={() => pickArea(o.code)}
-                  >
-                    {o.name}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
       )}
 
@@ -239,7 +241,7 @@ export default function FilterCapsule({
               onChange={(e) => setQuery(e.target.value)}
             />
           </label>
-          <ul className="fc-rows" role="listbox" aria-label="업종 목록">
+          <ul className="fc-rows dn-scroll" role="listbox" aria-label="업종 목록">
             {!query && (
               <Row
                 selected={!category}

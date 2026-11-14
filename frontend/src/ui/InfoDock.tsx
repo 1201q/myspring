@@ -43,7 +43,7 @@ export default function InfoDock({ tabs, active, onTab, onClose, bodyRef }: Prop
       </div>
       <div
         id="dock-body"
-        className="dock-body"
+        className={`dock-body dn-scroll${active === "subway" ? " is-split" : ""}`}
         role="tabpanel"
         aria-labelledby={`dock-tab-${active}`}
         ref={bodyRef}
