@@ -27,6 +27,8 @@ export type LoadProgress = {
   bytes: number;
   total: number;
 };
+import { fetchJson } from "../lib/fetchJson.ts";
+
 const base = "/api/v1/map/playback/national";
 
 function delay(ms: number, signal: AbortSignal) {
@@ -44,12 +46,11 @@ function delay(ms: number, signal: AbortSignal) {
   });
 }
 export async function loadRegions(signal: AbortSignal): Promise<Region[]> {
-  const response = await fetch(`${base}/regions`, {
-    signal: AbortSignal.any([signal, AbortSignal.timeout(15000)]),
+  const { regions } = await fetchJson<{ regions: Region[] }>(`${base}/regions`, {
+    signal,
+    timeout: 15000,
+    error: "재생 지역 목록을 불러오지 못했습니다.",
   });
-  if (!response.ok) throw new Error("재생 지역 목록을 불러오지 못했습니다.");
-  const body = await response.json();
-  const regions: Region[] = body.regions;
   if (
     !Array.isArray(regions) ||
     !regions.length ||
@@ -108,7 +109,7 @@ export async function loadRegionDataset(
       (manifest.maxMonth - manifest.minMonth + 1) * 2 * manifest.categories.length
   )
     throw new Error("지원하지 않는 재생 데이터 형식입니다.");
-  // Only accept this API's same-origin binary URLs.
+  // 이 API의 같은 출처 바이너리 주소만 받습니다.
   const url = new URL(manifest.binaryUrl, window.location.origin);
   if (url.origin !== window.location.origin || !url.pathname.startsWith(`${base}/${regionId}/`))
     throw new Error("이벤트 파일 주소가 올바르지 않습니다.");

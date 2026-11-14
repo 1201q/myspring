@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { ListOrdered, Map as MapIcon, TrainFront } from "lucide-react";
 import type { LayerKey, LayerState } from "./layers";
 import "./LayerSheet.css";
+import { useDismiss } from "../lib/useDismiss";
 
 const TILES: { key: LayerKey; label: string; note: string; Icon: typeof MapIcon }[] = [
   { key: "dong", label: "동별 증감", note: "개업 − 폐업", Icon: MapIcon },
@@ -11,28 +12,12 @@ const TILES: { key: LayerKey; label: string; note: string; Icon: typeof MapIcon 
 
 type Props = { layers: LayerState; onToggle: (key: LayerKey) => void; onClose: () => void };
 
-/** Sheet beside the rail's layer button: one tile per map layer. */
+/** 레일의 레이어 버튼 옆 시트: 지도 레이어마다 타일 하나. */
 export default function LayerSheet({ layers, onToggle, onClose }: Props) {
   const root = useRef<HTMLDivElement>(null);
-  const close = useRef(onClose);
-  useEffect(() => {
-    close.current = onClose;
-  }, [onClose]);
+  useDismiss(root, onClose, { ignore: ".rail-layers" });
   useEffect(() => {
     root.current?.querySelector<HTMLElement>(".ls-tile")?.focus();
-    const outside = (e: PointerEvent) => {
-      const target = e.target as Element;
-      if (!root.current?.contains(target) && !target.closest?.(".rail-layers")) close.current();
-    };
-    const escape = (e: KeyboardEvent) => {
-      if (e.key === "Escape") close.current();
-    };
-    document.addEventListener("pointerdown", outside);
-    document.addEventListener("keydown", escape);
-    return () => {
-      document.removeEventListener("pointerdown", outside);
-      document.removeEventListener("keydown", escape);
-    };
   }, []);
   return (
     <div

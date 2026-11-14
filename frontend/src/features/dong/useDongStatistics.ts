@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import type { Dataset } from "../../data/nationalPlaybackData";
 import type { DongBoundaries, DongResult } from "./dongStatistics";
+import { fetchJson } from "../../lib/fetchJson";
+import { isFeatureCollection } from "../../lib/geo";
 
-/** Places the region's points into 행정동 in a worker; enabled for the dong layer or a 시군구 selection. */
+/** Worker에서 지역의 점을 행정동에 배정합니다. 동별 레이어를 켜거나 시군구를 고르면 동작합니다. */
 export function useDongStatistics(
   enabled: boolean,
   data: Dataset | null,
@@ -39,19 +41,15 @@ export function useDongStatistics(
     let activeWorker: Worker | undefined;
     const fail = (message: string) => setError({ datasetKey, attempt, message });
     async function initialize() {
-      const response = await fetch(`/data/dongs/${data!.manifest.regionId}-20261001.geojson`, {
-        signal: AbortSignal.any([controller.signal, AbortSignal.timeout(20000)]),
-      });
-      if (!response.ok) throw new Error("행정동 경계를 불러오지 못했습니다.");
-      const boundaries: DongBoundaries = await response.json();
+      const boundaries = await fetchJson<DongBoundaries>(
+        `/data/dongs/${data!.manifest.regionId}-20261001.geojson`,
+        { signal: controller.signal, timeout: 20000, error: "행정동 경계를 불러오지 못했습니다." },
+      );
       if (
-        boundaries.type !== "FeatureCollection" ||
-        !boundaries.features?.length ||
-        boundaries.features.some(
-          (f) =>
-            !f.properties?.code ||
-            !f.properties.fullName ||
-            !["Polygon", "MultiPolygon"].includes(f.geometry?.type),
+        !isFeatureCollection(
+          boundaries,
+          ["Polygon", "MultiPolygon"],
+          (p) => !!p?.code && !!p.fullName,
         )
       )
         throw new Error("행정동 경계 형식이 올바르지 않습니다.");
@@ -141,7 +139,7 @@ export function useDongStatistics(
   return {
     boundaries: live ? state.boundaries : null,
     result: current,
-    /** Dong index per point (open, close) once the worker has placed every point; for 시군구 filtering. */
+    /** Worker가 모든 점을 배정한 뒤의 점별 동 인덱스(개업, 폐업). 시군구 필터에 씁니다. */
     assignments: live ? state.assignments : null,
     error:
       enabled && error?.datasetKey === datasetKey && error.attempt === attempt ? error.message : "",

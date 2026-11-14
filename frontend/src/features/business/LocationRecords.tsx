@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
-import type { Business } from "../../app/App";
-import { formatDate } from "../../lib/format";
+import { fetchBusiness } from "../../data/business";
+import type { Business } from "../../data/business";
+import { formatCount, formatDate } from "../../lib/format";
 
 const PAGE_SIZE = 10;
 export default function LocationRecords({
@@ -23,17 +24,9 @@ export default function LocationRecords({
   useEffect(() => {
     const controller = new AbortController();
     Promise.all(
-      ids.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE).map(async (id) => {
-        try {
-          const response = await fetch(`/api/v1/map/businesses/${id}`, {
-            signal: controller.signal,
-          });
-          if (!response.ok) return null;
-          return (await response.json()) as Business;
-        } catch {
-          return null;
-        }
-      }),
+      ids
+        .slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE)
+        .map((id) => fetchBusiness(id, controller.signal).catch(() => null)),
     ).then((rows) => {
       if (!controller.signal.aborted) setResult({ page, attempt, rows });
     });
@@ -48,7 +41,7 @@ export default function LocationRecords({
           <X aria-hidden="true" />
         </button>
       </div>
-      <h2 className="dn-num">{ids.length.toLocaleString()}건</h2>
+      <h2 className="dn-num">{formatCount(ids.length)}건</h2>
       <p>
         {rows?.find((row) => row)?.roadAddress ||
           rows?.find((row) => row)?.lotAddress ||

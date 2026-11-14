@@ -30,17 +30,19 @@ import {
 import type { SigunguBoundaries, SigunguProperties } from "../../data/sigungu";
 import PlaybackBar, { PlaybackBarLoading } from "./PlaybackBar";
 import { activitySeries, formatMonth } from "./playbackSeries";
-import { TriangleAlert } from "lucide-react";
+import Toast from "../../ui/Toast";
+import { sumRange } from "../../lib/monthlyCounts";
+import { formatCount, formatDelta } from "../../lib/format";
 import { createPortal } from "react-dom";
 
 type Props = {
-  /** 동별 증감 layer on (from the layer sheet). */
+  /** 동별 증감 레이어 켜짐(레이어 시트에서). */
   showDongs: boolean;
-  /** 개업 순위 panel on (from the layer sheet). */
+  /** 개업 순위 패널 켜짐(레이어 시트에서). */
   showRanks: boolean;
-  /** Info dock body while the 동별 증감 tab is showing; the legend and details render into it. */
+  /** 동별 증감 탭이 보일 때의 정보 독 본문. 범례와 상세를 여기에 그립니다. */
   dongDock: HTMLElement | null;
-  /** Current region bounds, for the rail’s "fit region" button. */
+  /** 현재 지역 범위. 레일의 '지역 전체 보기' 버튼에 씁니다. */
   onRegionBoundsChange: (bbox: [number, number, number, number]) => void;
   theme: Theme;
   onRegionChange: (id: string) => void;
@@ -60,7 +62,7 @@ type Props = {
   onSelectId: (id: number) => void;
   onClearSelection: () => void;
 };
-// Deck tooltips are DOM nodes inside the map, so they can use the CSS tokens directly.
+// deck 툴팁은 지도 안의 DOM 노드라 CSS 토큰을 바로 쓸 수 있습니다.
 const tooltipStyle = {
   fontSize: "12px",
   fontFamily: "var(--font-sans)",
@@ -114,7 +116,7 @@ export default function NationalPlayback({
   const [boundaryError, setBoundaryError] = useState("");
   const [boundaryAttempt, setBoundaryAttempt] = useState(0);
   const [hoveredRegionId, setHoveredRegionId] = useState<string | null>(null);
-  // Keep only the current region's numeric arrays rather than retaining every visited region.
+  // 다녀간 지역을 모두 들고 있지 않고, 현재 지역의 숫자 배열만 둡니다.
   const [loaded, setLoaded] = useState<Dataset | null>(null);
   const data = loaded?.manifest.regionId === regionId ? loaded : null;
   const [error, setError] = useState("");
@@ -128,9 +130,9 @@ export default function NationalPlayback({
     code: string;
     regionId: string;
   } | null>(null);
-  // 시군구 inside the playback region. Keyed by region id, so changing region clears it.
+  // 재생 지역 안에서 고른 시군구. 지역 id로 묶여 있어 지역을 바꾸면 풀립니다.
   const [area, setArea] = useState<{ code: string; regionId: string } | null>(null);
-  // 시군구 under the pointer or focus in the region sheet, outlined on the map as a preview.
+  // 지역 시트에서 포인터나 포커스가 있는 시군구. 지도에 미리 윤곽을 그립니다.
   const [previewArea, setPreviewArea] = useState<string | null>(null);
   const [sigungu, setSigungu] = useState<{ regionId: string; data: SigunguBoundaries } | null>(
     null,
@@ -210,7 +212,7 @@ export default function NationalPlayback({
   }, [boundaryAttempt]);
   useEffect(() => {
     if (!map || !boundaries) return;
-    // Draw selection and hit detection from the same polygons, rather than bounding boxes.
+    // 선택 표시와 클릭 판정을 bbox가 아닌 같은 폴리곤으로 합니다.
     const layers = ["boundary_province", "boundary_province_halo"].filter((id) => map.getLayer(id));
     const previous = layers.map((id) => map.getLayoutProperty(id, "visibility"));
     layers.forEach((id) => map.setLayoutProperty(id, "visibility", "none"));
@@ -241,7 +243,7 @@ export default function NationalPlayback({
     if (!map || !selectedRegion) return;
     const [west, south, east, north] = selectedRegion.bbox;
     onRegionBoundsChange(selectedRegion.bbox);
-    // A resize and a region click can happen in the same frame on narrow screens.
+    // 좁은 화면에서는 크기 변경과 지역 클릭이 같은 프레임에 일어날 수 있습니다.
     map.resize();
     map.fitBounds(
       [
@@ -305,7 +307,7 @@ export default function NationalPlayback({
     null;
   const areaCode = areaFeature?.properties.code ?? null;
   const areaChoices = useMemo(() => (sigunguData ? areaOptions(sigunguData) : []), [sigunguData]);
-  // The dong worker also places points for 시군구 filtering, so it runs for either use.
+  // 동별 Worker가 시군구 필터용 점 배정도 하므로, 둘 중 하나만 필요해도 돌립니다.
   const dong = useDongStatistics(showDongs || !!areaCode, data, from, currentMonth, codes);
   const areaMask = useMemo(
     () =>
@@ -339,7 +341,7 @@ export default function NationalPlayback({
     [data, areaMask, dong.assignments],
   );
   const areaPending = !!areaCode && !areaCounts;
-  // Same layout as the manifest's monthlyCounts, scoped to the selected 시군구 when there is one.
+  // manifest의 monthlyCounts와 같은 배치. 시군구를 골랐으면 그 시군구로 좁힌 값입니다.
   const monthlyCounts = areaCode ? areaCounts : (data?.manifest.monthlyCounts ?? null);
   const areaName = areaFeature ? `${name} ${areaFeature.properties.label}` : name;
   const changeArea = useCallback(
@@ -357,7 +359,7 @@ export default function NationalPlayback({
     if (areaFit.current === key) return;
     const previous = areaFit.current;
     areaFit.current = key;
-    // Region-level fitting is done by the region effect; only leaving an area fits back here.
+    // 지역 단위 맞춤은 지역 effect가 합니다. 여기서는 시군구를 벗어날 때만 다시 맞춥니다.
     if (!areaFeature && previous === null) return;
     const bbox = areaFeature ? areaBounds(areaFeature.geometry) : selectedRegion.bbox;
     onRegionBoundsChange(bbox);
@@ -419,7 +421,7 @@ export default function NationalPlayback({
     () =>
       data &&
       [data.open, data.close].map((points, kind) => {
-        // Filter categories per point: [업종 code, inside the selected 시군구 (1) or not (0)].
+        // 점별 필터 카테고리: [업종 코드, 고른 시군구 안(1) 여부(0)].
         const flags = areaFlags?.[kind];
         const category = new Float32Array(points.length * 2);
         for (let i = 0; i < points.length; i++) {
@@ -466,7 +468,7 @@ export default function NationalPlayback({
           },
         })
       : null;
-    // Darken everything outside the selected 시군구: a world polygon with the area cut out.
+    // 고른 시군구 바깥을 어둡게: 시군구를 뚫은 세계 폴리곤.
     const maskLayer = areaFeature
       ? new SolidPolygonLayer<{ polygon: [number, number][][] }>({
           id: "sigungu-mask",
@@ -507,7 +509,7 @@ export default function NationalPlayback({
           updateTriggers: { getFillColor: [palette], getLineColor: [palette] },
         })
       : null;
-    // With the whole region selected, outline the region itself. Display only: never pickable.
+    // 지역 전체를 골랐으면 그 지역 윤곽을 그립니다. 표시만 하고 pickable이 아닙니다.
     const regionFeature = !areaFeature
       ? boundaries?.features.find((feature) => feature.properties.id === regionId)
       : undefined;
@@ -587,7 +589,7 @@ export default function NationalPlayback({
           const p = info.object.properties;
           const delta = p.open - p.close;
           return {
-            text: `${p.fullName}\n${formatMonth(from)} – ${formatMonth(currentMonth)}\n개업 ${p.open.toLocaleString()}건 · 폐업 ${p.close.toLocaleString()}건\n증감 ${delta > 0 ? "+" : ""}${delta.toLocaleString()}건${p.open + p.close === 0 ? " · 기간 내 기록 없음" : ""}`,
+            text: `${p.fullName}\n${formatMonth(from)} – ${formatMonth(currentMonth)}\n개업 ${formatCount(p.open)}건 · 폐업 ${formatCount(p.close)}건\n증감 ${formatDelta(delta)}건${p.open + p.close === 0 ? " · 기간 내 기록 없음" : ""}`,
             style: {
               ...tooltipStyle,
               padding: "10px 12px",
@@ -723,18 +725,14 @@ export default function NationalPlayback({
     }, 700 / speed);
     return () => window.clearTimeout(timer);
   }, [playing, data, max, currentMonth, unit, speed]);
-  // Openings per category id in the current window, for the category sheet.
+  // 현재 기간의 업종 id별 개업 건수. 업종 시트에 씁니다.
   const categoryCounts = useMemo(() => {
     if (!data || !monthlyCounts) return null;
     const m = data.manifest,
       n = m.categories.length,
       counts = new Map<string, number>();
-    for (const c of m.categories) {
-      let open = 0;
-      for (let t = from; t <= currentMonth; t++)
-        open += monthlyCounts[(t - min) * 2 * n + c.code] ?? 0;
-      counts.set(c.id, open);
-    }
+    for (const c of m.categories)
+      counts.set(c.id, sumRange(monthlyCounts, n, from - min, currentMonth - min, c.code).open);
     return counts;
   }, [data, monthlyCounts, from, currentMonth, min]);
   const series = useMemo(
@@ -742,21 +740,13 @@ export default function NationalPlayback({
       data && monthlyCounts ? activitySeries({ ...data.manifest, monthlyCounts }, codes, 3) : null,
     [data, monthlyCounts, codes],
   );
-  // Every category for the ranking panel; totals below follow the category filter.
+  // 순위 패널용 모든 업종. 아래 합계는 업종 필터를 따릅니다.
   const allRows = useMemo(() => {
     if (!data || !monthlyCounts) return [];
     const m = data.manifest,
       n = m.categories.length;
     return m.categories
-      .map((c) => {
-        let open = 0,
-          close = 0;
-        for (let t = from; t <= currentMonth; t++) {
-          open += monthlyCounts[(t - min) * 2 * n + c.code] ?? 0;
-          close += monthlyCounts[((t - min) * 2 + 1) * n + c.code] ?? 0;
-        }
-        return { ...c, open, close };
-      })
+      .map((c) => ({ ...c, ...sumRange(monthlyCounts, n, from - min, currentMonth - min, c.code) }))
       .sort((a, b) => b.open - a.open);
   }, [data, monthlyCounts, from, currentMonth, min]);
   const rows = useMemo(() => allRows.filter((row) => codes.includes(row.code)), [allRows, codes]);
@@ -877,12 +867,9 @@ export default function NationalPlayback({
                   <i className="c" style={{ flex: dongSelection.close || 0.0001 }} />
                 </div>
                 <div className="dong-focus-nums dn-num">
-                  <span className="o">개업 {dongSelection.open.toLocaleString()}</span>
-                  <span>
-                    순증 {dongSelection.open - dongSelection.close > 0 ? "+" : ""}
-                    {(dongSelection.open - dongSelection.close).toLocaleString()}
-                  </span>
-                  <span className="c">폐업 {dongSelection.close.toLocaleString()}</span>
+                  <span className="o">개업 {formatCount(dongSelection.open)}</span>
+                  <span>순증 {formatDelta(dongSelection.open - dongSelection.close)}</span>
+                  <span className="c">폐업 {formatCount(dongSelection.close)}</span>
                 </div>
               </div>
             ) : (
@@ -913,8 +900,8 @@ export default function NationalPlayback({
               </p>
               {dong.result && (
                 <p className="dn-num">
-                  이 기간 동 미배정: 개업 {dong.result.unassigned.open.toLocaleString()}건 · 폐업{" "}
-                  {dong.result.unassigned.close.toLocaleString()}건
+                  이 기간 동 미배정: 개업 {formatCount(dong.result.unassigned.open)}건 · 폐업{" "}
+                  {formatCount(dong.result.unassigned.close)}건
                 </p>
               )}
             </details>
@@ -924,47 +911,25 @@ export default function NationalPlayback({
       {(error || boundaryError || sigunguError || (areaCode && dong.error)) && (
         <div className="toasts">
           {sigunguError && (
-            <p className="toast dn-glass-strong" role="alert">
-              <TriangleAlert aria-hidden="true" />
-              <span>{sigunguError}</span>
-              <button type="button" onClick={() => setSigunguAttempt((value) => value + 1)}>
-                다시 시도
-              </button>
-            </p>
+            <Toast onRetry={() => setSigunguAttempt((value) => value + 1)}>{sigunguError}</Toast>
           )}
-          {areaCode && dong.error && (
-            <p className="toast dn-glass-strong" role="alert">
-              <TriangleAlert aria-hidden="true" />
-              <span>{dong.error}</span>
-              <button type="button" onClick={dong.retry}>
-                다시 시도
-              </button>
-            </p>
-          )}
+          {areaCode && dong.error && <Toast onRetry={dong.retry}>{dong.error}</Toast>}
           {error && (
-            <p className="toast dn-glass-strong" role="alert">
-              <TriangleAlert aria-hidden="true" />
-              <span>{error}</span>
-              <button
-                type="button"
-                onClick={() => {
-                  setError("");
-                  setProgress(initialProgress);
-                  setAttempt((value) => value + 1);
-                }}
-              >
-                다시 조회
-              </button>
-            </p>
+            <Toast
+              retryLabel="다시 조회"
+              onRetry={() => {
+                setError("");
+                setProgress(initialProgress);
+                setAttempt((value) => value + 1);
+              }}
+            >
+              {error}
+            </Toast>
           )}
           {boundaryError && (
-            <p className="toast dn-glass-strong" role="alert">
-              <TriangleAlert aria-hidden="true" />
-              <span>{boundaryError} 지역은 왼쪽 위 목록에서 고를 수 있습니다.</span>
-              <button type="button" onClick={() => setBoundaryAttempt((value) => value + 1)}>
-                다시 시도
-              </button>
-            </p>
+            <Toast onRetry={() => setBoundaryAttempt((value) => value + 1)}>
+              {boundaryError} 지역은 왼쪽 위 목록에서 고를 수 있습니다.
+            </Toast>
           )}
         </div>
       )}

@@ -1,6 +1,7 @@
 import type { FeatureCollection, Polygon, MultiPolygon, Position } from "geojson";
 import type { Points } from "../../data/nationalPlaybackData";
 import type { MapPalette } from "../../lib/theme";
+import { polygonsOf, ringBounds } from "../../lib/geo.ts";
 
 export type DongProperties = {
   code: string;
@@ -12,7 +13,7 @@ export type DongBoundaries = FeatureCollection<Polygon | MultiPolygon, DongPrope
 export type DongCount = { open: number; close: number };
 export type DongResult = { counts: DongCount[]; unassigned: DongCount };
 
-// Boundary-inclusive ray casting; hole interiors remain outside.
+// 경계를 포함하는 ray casting. 구멍 안쪽은 바깥으로 칩니다.
 function ringState(x: number, y: number, ring: Position[]): number {
   let inside = false;
   for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
@@ -35,19 +36,8 @@ export function createDongLocator(boundaries: DongBoundaries) {
   const grid = new Map<string, { dong: number; rings: Position[][] }[]>();
   const cell = (v: number) => Math.floor(v * 50);
   boundaries.features.forEach((f, dong) => {
-    const polygons =
-      f.geometry.type === "Polygon" ? [f.geometry.coordinates] : f.geometry.coordinates;
-    for (const rings of polygons) {
-      let west = Infinity,
-        east = -Infinity,
-        south = Infinity,
-        north = -Infinity;
-      for (const [x, y] of rings[0]) {
-        west = Math.min(west, x);
-        east = Math.max(east, x);
-        south = Math.min(south, y);
-        north = Math.max(north, y);
-      }
+    for (const rings of polygonsOf(f.geometry)) {
+      const [west, south, east, north] = ringBounds([rings[0]]);
       const entry = { dong, rings };
       for (let x = cell(west); x <= cell(east); x++)
         for (let y = cell(south); y <= cell(north); y++) {
@@ -60,7 +50,7 @@ export function createDongLocator(boundaries: DongBoundaries) {
   });
   return (x: number, y: number) => {
     if (!Number.isFinite(x) || !Number.isFinite(y)) return -1;
-    // Assets are sorted by dong code, so shared edges have one deterministic owner.
+    // 자료가 동 코드 순으로 정렬돼 있어, 공유 경계의 주인이 항상 하나로 정해집니다.
     for (const { dong, rings } of grid.get(`${cell(x)},${cell(y)}`) ?? []) {
       if (ringState(x, y, rings[0]) && !rings.slice(1).some((r) => ringState(x, y, r) === 1))
         return dong;
@@ -69,8 +59,8 @@ export function createDongLocator(boundaries: DongBoundaries) {
   };
 }
 /**
- * Dong index of every point, per kind (open, close); -1 when outside all polygons. A business that
- * appears as both an open and a close event is located once.
+ * 종류(개업, 폐업)별 모든 점의 동 인덱스. 어느 폴리곤에도 없으면 -1.
+ * 개업과 폐업 이벤트에 모두 나오는 업소는 한 번만 위치를 찾습니다.
  */
 export function assignPoints(boundaries: DongBoundaries, points: Points[]): Int32Array[] {
   const locate = createDongLocator(boundaries),
@@ -98,7 +88,7 @@ export function buildDongIndex(
 ) {
   const months = max - min + 2,
     dongs = boundaries.features.length;
-  // Last dong slot stores events outside all known polygons.
+  // 마지막 동 칸에는 알려진 폴리곤 밖의 이벤트를 모읍니다.
   const histogram = new Uint32Array((dongs + 1) * categories * 2 * months);
   points.forEach((p, kind) => {
     for (let i = 0; i < p.length; i++) {
@@ -129,7 +119,7 @@ export function buildDongIndex(
   };
 }
 
-/** Seven-step diverging ramp (palette.dong: neg-3 … even … pos-3) at 0.72 opacity. */
+/** 7단계 발산 색 띠(palette.dong: neg-3 … even … pos-3), 불투명도 0.72. */
 export function dongColor(
   count: DongCount,
   scale: number,

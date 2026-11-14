@@ -2,6 +2,8 @@ import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { Check, ChevronDown, MapPin, Search, Store } from "lucide-react";
 import type { AreaOption, SigunguProperties } from "../data/sigungu";
 import "./FilterCapsule.css";
+import { formatCount } from "../lib/format";
+import { useDismiss } from "../lib/useDismiss";
 
 type Option = { id: string; name: string };
 type Props = {
@@ -9,16 +11,16 @@ type Props = {
   regionId: string;
   regionName: string;
   onRegionChange: (id: string) => void;
-  /** 시군구 of the current region (cities with 일반구 carry them as children). */
+  /** 현재 지역의 시군구(일반구가 있는 시는 구를 children으로 가짐). */
   areas: AreaOption[];
   area: SigunguProperties | null;
   onAreaChange: (code: string | null) => void;
-  /** 시군구 under the pointer or focus in the sheet (null when none), outlined on the map. */
+  /** 시트에서 포인터나 포커스가 있는 시군구(없으면 null). 지도에 윤곽을 그립니다. */
   onAreaPreview: (code: string | null) => void;
   categories: Option[];
   category: string;
   onCategoryChange: (id: string) => void;
-  /** Openings in the current playback period, by category id. */
+  /** 현재 재생 기간의 업종 id별 개업 건수. */
   categoryCounts: Map<string, number> | null;
   categoryError: string;
   onRetryCategories: () => void;
@@ -32,7 +34,7 @@ const LOGO = (
   </svg>
 );
 
-/** Top-left capsule: logo · region · category, each opening a glass sheet below. */
+/** 왼쪽 위 캡슐: 로고 · 지역 · 업종. 각각 아래에 글래스 시트를 엽니다. */
 export default function FilterCapsule({
   regions,
   regionId,
@@ -54,27 +56,13 @@ export default function FilterCapsule({
   const root = useRef<HTMLDivElement>(null);
   const sheetId = useId();
 
-  useEffect(() => {
-    if (!open) return;
-    const outside = (event: PointerEvent) => {
-      if (!root.current?.contains(event.target as Node)) setOpen(null);
-    };
-    const escape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(null);
-    };
-    document.addEventListener("pointerdown", outside);
-    document.addEventListener("keydown", escape);
-    return () => {
-      document.removeEventListener("pointerdown", outside);
-      document.removeEventListener("keydown", escape);
-    };
-  }, [open]);
+  useDismiss(root, () => setOpen(null), { active: !!open });
 
   useEffect(() => {
     if (open !== "region") onAreaPreview(null);
   }, [open, onAreaPreview]);
 
-  // Move focus to the current choice when a sheet opens.
+  // 시트가 열리면 지금 고른 항목으로 포커스를 옮깁니다.
   useEffect(() => {
     if (!open) return;
     const el = root.current?.querySelector<HTMLElement>(
@@ -88,10 +76,10 @@ export default function FilterCapsule({
     setOpen((value) => (value === next ? null : next));
   };
   const placeName = area ? `${regionName} · ${area.label}` : regionName;
-  // The top-level choice in the 시군구 row: a 일반구 selects its city there.
+  // 시군구 줄의 최상위 선택: 일반구를 골랐으면 그 시가 선택됩니다.
   const topCode = area?.kind === "gu" ? area.parent : (area?.code ?? null);
   const city = areas.find((o) => o.code === topCode && o.children.length);
-  // Pointing at a 시군구 chip outlines it on the map; leaving clears it.
+  // 시군구 칩을 가리키면 지도에 윤곽을 그리고, 벗어나면 지웁니다.
   const preview = (code: string | null) => ({
     onPointerEnter: () => onAreaPreview(code),
     onPointerLeave: () => onAreaPreview(null),
@@ -167,7 +155,7 @@ export default function FilterCapsule({
                 key={r.id}
                 className="fc-chip"
                 aria-pressed={r.id === regionId}
-                // Stay open after a region change so a 시군구 can be picked next.
+                // 지역을 바꾼 뒤에도 열어 두어 이어서 시군구를 고를 수 있게 합니다.
                 onClick={() => onRegionChange(r.id)}
               >
                 {r.name}
@@ -194,7 +182,7 @@ export default function FilterCapsule({
                     aria-pressed={o.code === topCode}
                     title={o.label}
                     {...preview(o.code)}
-                    // A city with 일반구 keeps the sheet open to offer its 구.
+                    // 일반구가 있는 시는 시트를 열어 둔 채 구를 보여 줍니다.
                     onClick={() => pickArea(o.code, o.children.length > 0)}
                   >
                     {o.name}
@@ -309,9 +297,7 @@ function Row({
     >
       <Check className="fc-check" aria-hidden="true" />
       <span className="fc-row-name">{name}</span>
-      {count !== undefined && (
-        <span className="fc-row-n dn-num">{count.toLocaleString("ko-KR")}</span>
-      )}
+      {count !== undefined && <span className="fc-row-n dn-num">{formatCount(count)}</span>}
     </li>
   );
 }

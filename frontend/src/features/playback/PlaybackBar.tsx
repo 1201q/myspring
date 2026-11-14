@@ -3,6 +3,8 @@ import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import type { ActivitySeries } from "./playbackSeries";
 import { formatMonth, monthIndex, monthNumber, monthYear } from "./playbackSeries";
 import "./PlaybackBar.css";
+import { formatCount } from "../../lib/format";
+import { useDismiss } from "../../lib/useDismiss";
 
 const UNITS = [
   { value: 1, label: "1개월" },
@@ -16,7 +18,7 @@ type Props = {
   min: number;
   max: number;
   current: number;
-  /** First month of the visible window (min for 누적). */
+  /** 보이는 기간의 첫 달(누적이면 min). */
   from: number;
   unit: number;
   onUnitChange: (unit: number) => void;
@@ -33,9 +35,9 @@ type Props = {
 
 const pct = (value: number, min: number, max: number) =>
   max > min ? ((value - min) / (max - min)) * 100 : 0;
-const fmt = (n: number) => n.toLocaleString("ko-KR");
+const fmt = formatCount;
 
-/** Bottom-centre playback bar: play · step · month readout · activity timeline · unit · speed. */
+/** 아래 가운데 재생 바: 재생 · 한 칸 이동 · 월 표시 · 활동 타임라인 · 단위 · 속도. */
 export default function PlaybackBar(props: Props) {
   const { min, max, current, from, unit, speed, playing, opens, closes, series } = props;
   const [picker, setPicker] = useState(false);
@@ -179,7 +181,7 @@ export default function PlaybackBar(props: Props) {
   );
 }
 
-/** Loading state of the bar while a region's playback file downloads or decodes. */
+/** 지역 재생 파일을 내려받거나 해석하는 동안의 재생 바 로딩 상태. */
 export function PlaybackBarLoading({ text, percent }: { text: string; percent?: number }) {
   return (
     <div className="pb-wrap">
@@ -258,27 +260,11 @@ function MonthPicker({
 }) {
   const [year, setYear] = useState(monthYear(current));
   const root = useRef<HTMLDivElement>(null);
-  const close = useRef(onClose);
+  useDismiss(root, onClose, { ignore: ".pb-month" });
   useEffect(() => {
-    close.current = onClose;
-  }, [onClose]);
-  useEffect(() => {
-    const outside = (e: PointerEvent) => {
-      const target = e.target as Element;
-      if (!root.current?.contains(target) && !target.closest?.(".pb-month")) close.current();
-    };
-    const escape = (e: KeyboardEvent) => {
-      if (e.key === "Escape") close.current();
-    };
-    document.addEventListener("pointerdown", outside);
-    document.addEventListener("keydown", escape);
     root.current
       ?.querySelector<HTMLElement>(".pb-pick-years [aria-pressed=true]")
       ?.scrollIntoView({ block: "center" });
-    return () => {
-      document.removeEventListener("pointerdown", outside);
-      document.removeEventListener("keydown", escape);
-    };
   }, []);
   const years = [];
   for (let y = monthYear(min); y <= monthYear(max); y++) years.push(y);

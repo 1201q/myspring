@@ -1,5 +1,7 @@
-// Playback timeline helpers: month labels and the binned open/close series behind the sparkline.
-// Month indices count from 1990-01 = 0, as in the playback manifests.
+// 재생 타임라인 도우미: 월 라벨과 스파크라인에 쓰는 구간별 개업·폐업 계열.
+// 월 인덱스는 재생 manifest처럼 1990-01 = 0부터 셉니다.
+
+import { countIndex } from "../../lib/monthlyCounts.ts";
 
 export const monthYear = (m: number) => 1990 + Math.floor(m / 12);
 export const monthNumber = (m: number) => (m % 12) + 1;
@@ -23,8 +25,8 @@ export type ActivitySeries = {
 };
 
 /**
- * Sums openings and closings of the given category codes into bins of `binSize` months,
- * from the manifest's first month. The last bin may be shorter.
+ * 주어진 업종 코드의 개업·폐업을 manifest의 첫 달부터 `binSize`개월 구간으로 합칩니다.
+ * 마지막 구간은 더 짧을 수 있습니다.
  */
 export function activitySeries(
   manifest: CountsManifest,
@@ -39,8 +41,8 @@ export function activitySeries(
   for (let t = 0; t < months; t++) {
     const bin = Math.floor(t / binSize);
     for (const code of codes) {
-      opens[bin] += manifest.monthlyCounts[t * 2 * n + code] ?? 0;
-      closes[bin] += manifest.monthlyCounts[(t * 2 + 1) * n + code] ?? 0;
+      opens[bin] += manifest.monthlyCounts[countIndex(t, 0, n, code)] ?? 0;
+      closes[bin] += manifest.monthlyCounts[countIndex(t, 1, n, code)] ?? 0;
     }
   }
   let max = 0;

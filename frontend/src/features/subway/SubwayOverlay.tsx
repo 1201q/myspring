@@ -6,6 +6,7 @@ import { Info, Search } from "lucide-react";
 import "./SubwayOverlay.css";
 import { MAP_PALETTE } from "../../lib/theme";
 import type { Theme } from "../../lib/theme";
+import { fetchJson } from "../../lib/fetchJson";
 
 type Line = { id: string; name: string; color: string; region: string };
 type Manifest = { osmBaseTimestamp: string; lines: Line[] };
@@ -26,21 +27,24 @@ const regions = [
 ];
 
 async function loadDataset(signal: AbortSignal): Promise<Dataset> {
-  const responses = await Promise.all(
-    [
-      "manifest.json",
-      "seoul-metropolitan-routes.geojson",
-      "seoul-metropolitan-stations.geojson",
-      "regional-manifest.json",
-      "regional-routes.geojson",
-      "regional-stations.geojson",
-    ].map((path) =>
-      fetch(base + path, { signal: AbortSignal.any([signal, AbortSignal.timeout(30000)]) }),
-    ),
-  );
-  if (responses.some((r) => !r.ok)) throw new Error("지하철 노선을 불러오지 못했습니다.");
   const [manifest, routes, stations, regionalManifest, regionalRoutes, regionalStations] =
-    await Promise.all(responses.map((r) => r.json()));
+    await Promise.all(
+      [
+        "manifest.json",
+        "seoul-metropolitan-routes.geojson",
+        "seoul-metropolitan-stations.geojson",
+        "regional-manifest.json",
+        "regional-routes.geojson",
+        "regional-stations.geojson",
+      ].map((path) =>
+        // oxlint-disable-next-line typescript/no-explicit-any
+        fetchJson<any>(base + path, {
+          signal,
+          timeout: 30000,
+          error: "지하철 노선을 불러오지 못했습니다.",
+        }),
+      ),
+    );
   if (
     [manifest, regionalManifest].some((m) => !Array.isArray(m.lines) || !m.lines.length) ||
     [routes, stations, regionalRoutes, regionalStations].some((d) => d.type !== "FeatureCollection")
@@ -58,9 +62,9 @@ async function loadDataset(signal: AbortSignal): Promise<Dataset> {
 }
 
 type Props = {
-  /** 지하철 노선 layer on (from the layer sheet). */
+  /** 지하철 노선 레이어 켜짐(레이어 시트에서). */
   enabled: boolean;
-  /** Info dock body while the 지하철 노선 tab is showing; the line list renders into it. */
+  /** 지하철 노선 탭이 보일 때의 정보 독 본문. 노선 목록을 여기에 그립니다. */
   dock: HTMLElement | null;
   theme: Theme;
   map: LibreMap | null;
@@ -90,7 +94,7 @@ export default function SubwayOverlay({
     if (!map) return;
     const updateRegion = () => {
       const { lng, lat } = map.getCenter();
-      // The playback API groups Gwangju with Jeonnam; its province-wide center is outside the city.
+      // 재생 API는 광주를 전남과 묶으므로, 도 전체의 중심이 광주시 밖에 있습니다.
       const id =
         regions.find(
           (r) => lng >= r.bbox[0] && lng <= r.bbox[2] && lat >= r.bbox[1] && lat <= r.bbox[3],
@@ -135,7 +139,7 @@ export default function SubwayOverlay({
         '노선: © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap contributors</a> · <a href="https://opendatacommons.org/licenses/odbl/1-0/" target="_blank" rel="noreferrer">ODbL</a>',
     });
     map.addSource(sourceIds[1], { type: "geojson", data: dataset.stations });
-    // Place transit below map labels and all business overlays. These layers never capture clicks.
+    // 노선은 지도 라벨과 모든 업소 레이어 아래에 둡니다. 이 레이어들은 클릭을 받지 않습니다.
     const before = map.getStyle().layers.find((l) => l.type === "symbol")?.id;
     map.addLayer(
       {

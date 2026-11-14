@@ -1,10 +1,11 @@
-// Geometry helpers for 시군구: name parsing and dissolving 행정동 polygons that share exact edges.
-// Used by scripts/build-sigungu-boundaries.mjs (build time) and covered by sigungu.test.mjs.
+// 시군구용 도형 도우미: 이름 분리, 같은 변을 공유하는 행정동 폴리곤 합치기.
+// scripts/build-sigungu-boundaries.mjs(빌드 시점)에서 쓰고 sigungu.test.mjs로 검증합니다.
 import type { Feature, MultiPolygon, Polygon, Position } from "geojson";
+import { polygonsOf } from "../lib/geo.ts";
 
 /**
- * Splits a 시군구 name. 일반구 come joined with their city ("수원시장안구"); their parent city code
- * is the 구 code with the last digit set to 0 (41111 → 41110).
+ * 시군구 이름을 나눕니다. 일반구는 시 이름과 붙어 오고("수원시장안구"), 상위 시 코드는
+ * 구 코드의 마지막 자리를 0으로 바꾼 값입니다(41111 → 41110).
  */
 export function sigunguParts(code: string, sgg: string) {
   const match = /^(\S+?시)(\S+구)$/.exec(sgg);
@@ -25,7 +26,7 @@ export function sigunguParts(code: string, sgg: string) {
 
 const key = (p: Position) => `${p[0]},${p[1]}`;
 
-/** Shoelace area: positive for counter-clockwise rings. */
+/** 신발끈 공식 넓이: 반시계 방향 링이면 양수. */
 function signedArea(ring: Position[]) {
   let sum = 0;
   for (let i = 0; i < ring.length - 1; i++)
@@ -33,7 +34,7 @@ function signedArea(ring: Position[]) {
   return sum / 2;
 }
 
-/** A ring lies inside another when most of its vertices do (vertices may touch the other's edge). */
+/** 꼭짓점 대부분이 다른 링 안에 있으면 그 링 안으로 봅니다(꼭짓점이 상대 변에 닿을 수 있음). */
 function inside(inner: Position[], outer: Position[]) {
   let votes = 0;
   const sample = Math.min(inner.length - 1, 5);
@@ -53,16 +54,14 @@ function contains(ring: Position[], [x, y]: Position) {
 }
 
 /**
- * Dissolves polygons whose shared borders use identical vertices. Edges that appear an even number
- * of times are interior and cancel; the rest are chained into rings, then holes are matched to the
- * outer ring that contains them. Returns a MultiPolygon with outer rings counter-clockwise.
+ * 공유 경계가 같은 꼭짓점을 쓰는 폴리곤들을 합칩니다. 짝수 번 나온 변은 내부라 상쇄되고,
+ * 나머지 변을 이어 링을 만든 뒤 구멍을 그것을 감싸는 바깥 링에 붙입니다.
+ * 바깥 링이 반시계 방향인 MultiPolygon을 돌려줍니다.
  */
 export function dissolve(features: Feature<Polygon | MultiPolygon>[]): MultiPolygon {
   const edges = new Map<string, { a: Position; b: Position; count: number }>();
   for (const f of features) {
-    const polygons =
-      f.geometry.type === "Polygon" ? [f.geometry.coordinates] : f.geometry.coordinates;
-    for (const polygon of polygons)
+    for (const polygon of polygonsOf(f.geometry))
       for (const ring of polygon)
         for (let i = 0; i < ring.length - 1; i++) {
           const a = ring[i],
@@ -76,7 +75,7 @@ export function dissolve(features: Feature<Polygon | MultiPolygon>[]): MultiPoly
           else edges.set(k, { a, b, count: 1 });
         }
   }
-  // Undirected adjacency of the surviving (odd-count) edges.
+  // 남은(홀수 번 나온) 변들의 무방향 인접 목록.
   const adjacent = new Map<string, { to: Position; id: string }[]>();
   for (const [id, { a, b, count }] of edges) {
     if (count % 2 === 0) continue;
@@ -109,9 +108,8 @@ export function dissolve(features: Feature<Polygon | MultiPolygon>[]): MultiPoly
       if (ring.length >= 4) rings.push(ring);
     }
   }
-  // Chained rings have arbitrary winding, so classify by nesting: a ring inside an odd number of
-  // other rings is a hole of the smallest ring that contains it. Outer rings are made
-  // counter-clockwise and holes clockwise (RFC 7946).
+  // 이어 만든 링은 방향이 제각각이라 포함 관계로 분류합니다: 홀수 개의 다른 링 안에 있는 링은
+  // 그것을 감싸는 가장 작은 링의 구멍입니다. 바깥 링은 반시계, 구멍은 시계 방향으로 맞춥니다(RFC 7946).
   const sized = rings
     .map((ring) => ({ ring, area: Math.abs(signedArea(ring)) }))
     .sort((a, b) => b.area - a.area);

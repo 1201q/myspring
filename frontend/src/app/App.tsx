@@ -8,6 +8,9 @@ import type { LocationGroup } from "../features/business/locationGroups";
 import LocationRecords from "../features/business/LocationRecords";
 import BusinessStatus from "../features/business/BusinessStatus";
 import { formatDate } from "../lib/format";
+import { fetchBusiness, located } from "../data/business";
+import type { Business } from "../data/business";
+import type { MapPalette } from "../lib/theme";
 import { ArrowUpRight, ChevronLeft, X } from "lucide-react";
 import PlaybackBoundary from "./PlaybackBoundary";
 import SubwayOverlay from "../features/subway/SubwayOverlay";
@@ -22,30 +25,17 @@ import type { Theme } from "../lib/theme";
 const NationalPlayback = lazy(() => import("../features/playback/NationalPlayback"));
 maplibregl.setWorkerUrl(mapWorkerUrl);
 
-export type Business = {
-  id: number;
-  categoryId: string;
-  name: string;
-  businessType: string | null;
-  roadAddress: string | null;
-  lotAddress: string | null;
-  permittedAt: string | null;
-  closedAt: string | null;
-  longitude: number | null;
-  latitude: number | null;
-  coordinateStatus: string;
-  sourceUrl: string | null;
-};
 type Category = { id: string; name: string };
-const located = (b: Business) =>
-  b.coordinateStatus === "CONVERTED" &&
-  b.longitude !== null &&
-  b.latitude !== null &&
-  Number.isFinite(b.longitude) &&
-  Number.isFinite(b.latitude);
+/** 선택한 업소 표시 레이어에 테마 색을 칠합니다. */
+function applySelectedPaint(map: maplibregl.Map, palette: MapPalette) {
+  map.setPaintProperty("selected-business-halo", "circle-color", palette.accentHex);
+  map.setPaintProperty("selected-business-halo", "circle-stroke-color", palette.accentHex);
+  map.setPaintProperty("selected-business-core", "circle-color", palette.accentHex);
+  map.setPaintProperty("selected-business-core", "circle-stroke-color", palette.mapLandHex);
+}
 
 export default function App() {
-  // Dark-first: only an explicit stored "light" choice starts in light mode.
+  // 다크 우선: 저장된 값이 "light"일 때만 라이트 모드로 시작합니다.
   const [theme, setTheme] = useState<Theme>(() => {
     try {
       return localStorage.getItem("permit-map-theme") === "light" ? "light" : "dark";
@@ -61,8 +51,8 @@ export default function App() {
   const [playbackRegionVersion, setPlaybackRegionVersion] = useState(0);
   const [playbackRegionId, setPlaybackRegionId] = useState("seoul");
   const [regionBounds, setRegionBounds] = useState<[number, number, number, number] | null>(null);
-  // Layers, the layer sheet and the info dock. The dock shows one tab per dock layer that is on;
-  // closing it hides the dock until a layer is switched on again.
+  // 레이어, 레이어 시트, 정보 독. 독은 켜진 독 레이어마다 탭을 하나씩 보여 주고,
+  // 닫으면 레이어를 다시 켤 때까지 숨깁니다.
   const [layers, setLayers] = useState<LayerState>(DEFAULT_LAYERS);
   const [sheetOpen, setSheetOpen] = useState(false);
   const [dockTab, setDockTab] = useState<DockKey | null>(null);
@@ -159,7 +149,7 @@ export default function App() {
     } catch {
       map.current?.remove();
       map.current = null;
-      // Surface a failed external WebGL resource initialization.
+      // 외부 WebGL 리소스 초기화 실패를 화면에 알립니다.
       // oxlint-disable-next-line react/set-state-in-effect
       setMapError("지도를 시작하지 못했습니다. 브라우저의 WebGL 지원을 확인해주세요.");
       return;
@@ -195,30 +185,19 @@ export default function App() {
     if (source) source.setData(data);
     else {
       mapInstance.addSource("selected-business", { type: "geojson", data });
-      const accent = MAP_PALETTE[initialTheme.current];
       mapInstance.addLayer({
         id: "selected-business-halo",
         type: "circle",
         source: "selected-business",
-        paint: {
-          "circle-radius": 13,
-          "circle-color": accent.accentHex,
-          "circle-opacity": 0.16,
-          "circle-stroke-width": 1.5,
-          "circle-stroke-color": accent.accentHex,
-        },
+        paint: { "circle-radius": 13, "circle-opacity": 0.16, "circle-stroke-width": 1.5 },
       });
       mapInstance.addLayer({
         id: "selected-business-core",
         type: "circle",
         source: "selected-business",
-        paint: {
-          "circle-radius": 5,
-          "circle-color": accent.accentHex,
-          "circle-stroke-width": 2,
-          "circle-stroke-color": accent.mapLandHex,
-        },
+        paint: { "circle-radius": 5, "circle-stroke-width": 2 },
       });
+      applySelectedPaint(mapInstance, MAP_PALETTE[initialTheme.current]);
     }
   }, [mapInstance, selected, selectedPosition]);
 
@@ -226,7 +205,7 @@ export default function App() {
     try {
       localStorage.setItem("permit-map-theme", theme);
     } catch {
-      /* Storage may be disabled. */
+      /* 저장소가 꺼져 있을 수 있습니다. */
     }
     document.documentElement.dataset.theme = theme;
     if (!mapInstance) return;
@@ -248,19 +227,7 @@ export default function App() {
               value,
             );
         }
-        const palette = MAP_PALETTE[theme];
-        mapInstance!.setPaintProperty("selected-business-halo", "circle-color", palette.accentHex);
-        mapInstance!.setPaintProperty(
-          "selected-business-halo",
-          "circle-stroke-color",
-          palette.accentHex,
-        );
-        mapInstance!.setPaintProperty("selected-business-core", "circle-color", palette.accentHex);
-        mapInstance!.setPaintProperty(
-          "selected-business-core",
-          "circle-stroke-color",
-          palette.mapLandHex,
-        );
+        applySelectedPaint(mapInstance!, MAP_PALETTE[theme]);
       } catch {
         if (!controller.signal.aborted)
           setMapError("지도 테마를 불러오지 못했습니다. 다시 전환해 주세요.");
@@ -275,9 +242,7 @@ export default function App() {
     const controller = new AbortController();
     detailRequest.current = controller;
     try {
-      const response = await fetch("/api/v1/map/businesses/" + id, { signal: controller.signal });
-      if (!response.ok) throw new Error("상세 조회 실패");
-      const business: Business = await response.json();
+      const business = await fetchBusiness(id, controller.signal);
       if (!controller.signal.aborted) {
         setSelected(business);
         setMapError("");

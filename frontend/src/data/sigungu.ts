@@ -1,19 +1,22 @@
-// 시군구 (area) selection inside a playback region: boundaries, options and per-area statistics.
-// Points are placed into 행정동 by the dong worker; a 행정동's first five code digits are its 시군구,
-// and a group (kind "si": a city with 일반구, or a named group such as 광주 5구) covers its `members`.
+// 재생 지역 안의 시군구(area) 선택: 경계, 선택지, 시군구별 통계.
+// 점은 동별 Worker가 행정동에 배정하고, 행정동 코드 앞 다섯 자리가 그 시군구입니다.
+// 묶음(kind "si": 일반구가 있는 시, 또는 광주 5구 같은 이름 묶음)은 `members`의 시군구를 포함합니다.
 import type { FeatureCollection, MultiPolygon } from "geojson";
 import type { Points } from "./nationalPlaybackData";
+import { fetchJson } from "../lib/fetchJson.ts";
+import { isFeatureCollection, ringBounds } from "../lib/geo.ts";
+import { countIndex } from "../lib/monthlyCounts.ts";
 
 export type SigunguProperties = {
   code: string;
-  /** Short name: "마포구", "수원시", "장안구". */
+  /** 짧은 이름: "마포구", "수원시", "장안구". */
   name: string;
-  /** Full name for labels: "마포구", "수원시", "수원시 장안구". */
+  /** 라벨용 전체 이름: "마포구", "수원시", "수원시 장안구". */
   label: string;
-  /** Parent city code for 일반구, else null. */
+  /** 일반구면 상위 시 코드, 아니면 null. */
   parent: string | null;
   kind: "sgg" | "si" | "gu";
-  /** For a group ("si": a city with 일반구, or a named group such as 광주 5구), its 시군구 codes. */
+  /** 묶음("si": 일반구가 있는 시, 또는 광주 5구 같은 이름 묶음)에 속한 시군구 코드. */
   members?: string[];
   boundaryVersion: string;
 };
@@ -24,27 +27,19 @@ export async function loadSigungu(
   regionId: string,
   signal: AbortSignal,
 ): Promise<SigunguBoundaries> {
-  const response = await fetch(`/data/sigungu/${regionId}-20261001.geojson`, {
-    signal: AbortSignal.any([signal, AbortSignal.timeout(20000)]),
+  const data = await fetchJson<SigunguBoundaries>(`/data/sigungu/${regionId}-20261001.geojson`, {
+    signal,
+    timeout: 20000,
+    error: "시군구 경계를 불러오지 못했습니다.",
   });
-  if (!response.ok) throw new Error("시군구 경계를 불러오지 못했습니다.");
-  const data: SigunguBoundaries = await response.json();
   if (
-    data.type !== "FeatureCollection" ||
-    !Array.isArray(data.features) ||
-    !data.features.length ||
-    data.features.some(
-      (f) =>
-        !/^\d{5}$/.test(f.properties?.code ?? "") ||
-        !f.properties.name ||
-        f.geometry?.type !== "MultiPolygon",
-    )
+    !isFeatureCollection(data, ["MultiPolygon"], (p) => /^\d{5}$/.test(p?.code ?? "") && !!p?.name)
   )
     throw new Error("시군구 경계 형식이 올바르지 않습니다.");
   return data;
 }
 
-/** Top-level choices (시군구 and cities with 일반구), each city carrying its 구. Sorted by code. */
+/** 최상위 선택지(시군구와 일반구가 있는 시). 시는 소속 구를 children으로 가집니다. 코드 순. */
 export function areaOptions(boundaries: SigunguBoundaries): AreaOption[] {
   const option = (p: SigunguProperties): AreaOption => ({
     code: p.code,
@@ -62,21 +57,21 @@ export function areaOptions(boundaries: SigunguBoundaries): AreaOption[] {
   return top;
 }
 
-/** Whether a 행정동 (10-digit code) lies in the area: its own 시군구, or a member of the selected group. */
+/** 행정동(10자리 코드)이 고른 시군구 안인지 여부: 자기 시군구이거나, 고른 묶음의 소속이면 안. */
 export function dongInArea(dongCode: string, area: SigunguProperties) {
   const sgg = dongCode.slice(0, 5);
   return area.kind === "si" ? (area.members ?? []).includes(sgg) : sgg === area.code;
 }
 
-/** Marks each dong index (in the dong boundary order) that lies in the area. */
+/** 시군구 안에 있는 동 인덱스(행정동 경계 순서)를 1로 표시합니다. */
 export function areaDongMask(dongCodes: string[], area: SigunguProperties) {
   return Uint8Array.from(dongCodes, (code) => (dongInArea(code, area) ? 1 : 0));
 }
 
 /**
- * Monthly open/close counts per category for points inside the area, in the same layout as the
- * playback manifest's `monthlyCounts`: index ((t - min) * 2 + kind) * categories + category.
- * `assignments[kind][i]` is the dong index of point i (-1 when outside every dong).
+ * 시군구 안 점들의 업종별 월간 개업·폐업 건수. 재생 manifest의 `monthlyCounts`와 같은 배치입니다:
+ * 인덱스 ((t - min) * 2 + kind) * categories + category.
+ * `assignments[kind][i]`는 점 i의 동 인덱스입니다(어느 동에도 없으면 -1).
  */
 export function areaMonthlyCounts(
   points: Points[],
@@ -96,13 +91,13 @@ export function areaMonthlyCounts(
       const t = p.month[i] - min,
         cat = p.cat[i];
       if (t < 0 || t >= months || cat < 0 || cat >= categories) continue;
-      counts[(t * 2 + kind) * categories + cat]++;
+      counts[countIndex(t, kind, categories, cat)]++;
     }
   });
   return counts;
 }
 
-/** Per-point 1/0 "inside the area" values for deck.gl's category filter. */
+/** deck.gl 카테고리 필터용 점별 "시군구 안" 값(1/0). */
 export function areaPointFlags(assignments: Int32Array, mask: Uint8Array) {
   const flags = new Float32Array(assignments.length);
   for (let i = 0; i < assignments.length; i++)
@@ -110,18 +105,6 @@ export function areaPointFlags(assignments: Int32Array, mask: Uint8Array) {
   return flags;
 }
 
-/** [west, south, east, north] of a MultiPolygon. */
-export function areaBounds(geometry: MultiPolygon): [number, number, number, number] {
-  let west = Infinity,
-    south = Infinity,
-    east = -Infinity,
-    north = -Infinity;
-  for (const polygon of geometry.coordinates)
-    for (const [x, y] of polygon[0]) {
-      west = Math.min(west, x);
-      east = Math.max(east, x);
-      south = Math.min(south, y);
-      north = Math.max(north, y);
-    }
-  return [west, south, east, north];
-}
+/** MultiPolygon의 [west, south, east, north]. */
+export const areaBounds = (geometry: MultiPolygon) =>
+  ringBounds(geometry.coordinates.map((polygon) => polygon[0]));

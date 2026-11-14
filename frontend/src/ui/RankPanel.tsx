@@ -1,28 +1,29 @@
 import { useState } from "react";
 import { ChevronDown, ChevronUp, ListOrdered } from "lucide-react";
 import "./RankPanel.css";
+import { formatCount } from "../lib/format";
 
 export type RankRow = { id: string; code: number; name: string; open: number; close: number };
 type Props = {
   regionName: string;
   /** "2024.01 – 2024.03" */
   period: string;
-  /** Totals for the current filter (all categories, or the selected one). */
+  /** 현재 필터의 합계(모든 업종 또는 고른 업종). */
   opens: number;
   closes: number;
-  /** Every category, sorted by openings. */
+  /** 개업 많은 순으로 정렬한 모든 업종. */
   rows: RankRow[];
   category: string;
   onCategoryChange: (id: string) => void;
   cumulative: boolean;
-  /** Extra caveat for the footer, e.g. when a 시군구 is selected. */
+  /** 아래쪽에 붙일 추가 안내. 예: 시군구를 골랐을 때. */
   note?: string;
 };
 
-const fmt = (n: number) => n.toLocaleString("ko-KR");
+const fmt = formatCount;
 const signed = (n: number) => (n > 0 ? "+" : n < 0 ? "−" : "") + fmt(Math.abs(n));
 
-/** Left panel under the filter capsule: period totals and categories ranked by openings. */
+/** 필터 캡슐 아래 왼쪽 패널: 기간 합계와 개업 많은 순 업종. */
 export default function RankPanel({
   regionName,
   period,
@@ -34,7 +35,7 @@ export default function RankPanel({
   cumulative,
   note,
 }: Props) {
-  // Start collapsed where the panel would crowd the map.
+  // 패널이 지도를 가릴 만한 화면에서는 접힌 채로 시작합니다.
   const [collapsed, setCollapsed] = useState(
     () => typeof window !== "undefined" && window.innerWidth < 1100,
   );
