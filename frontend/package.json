@@ -10,7 +10,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@deck.gl/core": "^9.4.1",
@@ -30,6 +32,7 @@
     "@vitejs/plugin-react": "^6.1.2",
     "admdongkor": "^0.5.2",
     "oxlint": "^1.89.0",
+    "prettier": "^3.10.1",
     "typescript": "~7.0.2",
     "vite": "^8.3.5"
   }
