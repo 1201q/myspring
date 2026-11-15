@@ -1,3 +1,4 @@
+import dockStyles from "../../ui/DockContent.module.css";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { MapboxOverlay } from "@deck.gl/mapbox";
 import { GeoJsonLayer, ScatterplotLayer, SolidPolygonLayer, TextLayer } from "@deck.gl/layers";
@@ -17,7 +18,7 @@ import type { DongProperties } from "../dong/dongStatistics";
 import { MAP_PALETTE } from "../../lib/theme";
 import type { Theme } from "../../lib/theme";
 import RankPanel from "../../ui/RankPanel";
-import "./NationalPlayback.css";
+import styles from "./NationalPlayback.module.css";
 import FilterCapsule from "../../ui/FilterCapsule";
 import {
   areaBounds,
@@ -856,23 +857,23 @@ export default function NationalPlayback({
       {dongDock &&
         createPortal(
           <>
-            <div className="dong-ramp" aria-hidden="true">
+            <div className={styles["dong-ramp"]} aria-hidden="true">
               {["neg-3", "neg-2", "neg-1", "even", "pos-1", "pos-2", "pos-3"].map((stepName) => (
                 <i key={stepName} style={{ background: `var(--dong-${stepName})` }} />
               ))}
             </div>
-            <div className="dong-ramp-labels">
+            <div className={styles["dong-ramp-labels"]}>
               <span>폐업 우세</span>
               <span>같음</span>
               <span>개업 우세</span>
             </div>
-            <div className="dong-ramp-labels dong-empty-row">
-              <i className="dong-empty" aria-hidden="true" />
+            <div className={`${styles["dong-ramp-labels"]} ${styles["dong-empty-row"]}`}>
+              <i className={styles["dong-empty"]} aria-hidden="true" />
               <span>기간 내 기록 없음</span>
             </div>
             {dongSelection ? (
-              <div className="dong-focus" role="status">
-                <div className="dong-focus-name">
+              <div className={styles["dong-focus"]} role="status">
+                <div className={styles["dong-focus-name"]}>
                   <span>{dongSelection.fullName}</span>
                   <button
                     type="button"
@@ -882,19 +883,19 @@ export default function NationalPlayback({
                     ×
                   </button>
                 </div>
-                <div className="dong-split" aria-hidden="true">
-                  <i className="o" style={{ flex: dongSelection.open || 0.0001 }} />
-                  <i className="c" style={{ flex: dongSelection.close || 0.0001 }} />
+                <div className={styles["dong-split"]} aria-hidden="true">
+                  <i className={styles["o"]} style={{ flex: dongSelection.open || 0.0001 }} />
+                  <i className={styles["c"]} style={{ flex: dongSelection.close || 0.0001 }} />
                 </div>
-                <div className="dong-focus-nums dn-num">
-                  <span className="o">개업 {formatCount(dongSelection.open)}</span>
+                <div className={`${styles["dong-focus-nums"]} dn-num`}>
+                  <span className={styles["o"]}>개업 {formatCount(dongSelection.open)}</span>
                   <span>순증 {formatDelta(dongSelection.open - dongSelection.close)}</span>
-                  <span className="c">폐업 {formatCount(dongSelection.close)}</span>
+                  <span className={styles["c"]}>폐업 {formatCount(dongSelection.close)}</span>
                 </div>
               </div>
             ) : (
               !dong.error && (
-                <p className="dock-hint" role="status">
+                <p className={dockStyles["dock-hint"]} role="status">
                   {dong.result
                     ? "동을 누르면 건수를 고정해 보여 줍니다."
                     : data
@@ -904,14 +905,14 @@ export default function NationalPlayback({
               )
             )}
             {dong.error && (
-              <div className="dock-error" role="alert">
+              <div className={dockStyles["dock-error"]} role="alert">
                 {dong.error}
                 <button type="button" onClick={dong.retry}>
                   다시 시도
                 </button>
               </div>
             )}
-            <details className="dong-basis">
+            <details className={styles["dong-basis"]}>
               <summary>집계 기준</summary>
               <p>개업 − 폐업. 차이가 클수록 진하게 칠합니다.</p>
               <p>2026.10.01 행정동 경계 기준 · 읍·면 포함 · 과거 경계 복원 아님</p>
@@ -929,7 +930,7 @@ export default function NationalPlayback({
           dongDock,
         )}
       {(error || boundaryError || sigunguError || (areaCode && dong.error)) && (
-        <div className="toasts">
+        <div className={styles["toasts"]}>
           {sigunguError && (
             <Toast onRetry={() => setSigunguAttempt((value) => value + 1)}>{sigunguError}</Toast>
           )}

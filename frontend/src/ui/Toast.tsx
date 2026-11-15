@@ -1,3 +1,4 @@
+import styles from "./Toast.module.css";
 import type { ReactNode } from "react";
 import { TriangleAlert } from "lucide-react";
 
@@ -12,7 +13,7 @@ export default function Toast({
   retryLabel?: string;
 }) {
   return (
-    <p className="toast dn-glass-strong" role="alert">
+    <p className={`${styles["toast"]} dn-glass-strong`} role="alert">
       <TriangleAlert aria-hidden="true" />
       <span>{children}</span>
       <button type="button" onClick={onRetry}>

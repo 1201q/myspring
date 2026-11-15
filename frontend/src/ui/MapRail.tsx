@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import type { Map as LibreMap } from "maplibre-gl";
 import { Layers, LocateFixed, Minus, Moon, Plus, Sun } from "lucide-react";
 import type { Theme } from "../lib/theme";
-import "./MapRail.css";
+import styles from "./MapRail.module.css";
 
 type Props = {
   map: LibreMap | null;
@@ -42,16 +42,17 @@ export default function MapRail({
   const zoomText = `줌 ${zoom.toFixed(1)}`;
   const nextTheme = theme === "dark" ? "라이트 모드로 전환" : "다크 모드로 전환";
   return (
-    <div className="rail-stack">
+    <div className={styles["rail-stack"]}>
       <div
-        className="rail dn-glass"
+        className={`${styles["rail"]} dn-glass`}
         role="toolbar"
         aria-orientation="vertical"
         aria-label="지도 표시"
       >
         <button
           type="button"
-          className={`rail-btn rail-layers${layersActive || sheetOpen ? " is-active" : ""}`}
+          className={`${styles["rail-btn"]}${layersActive || sheetOpen ? ` ${styles["is-active"]}` : ""}`}
+          data-layer-trigger
           aria-label="지도 레이어"
           aria-haspopup="dialog"
           aria-expanded={sheetOpen}
@@ -59,11 +60,11 @@ export default function MapRail({
           data-tip={sheetOpen ? undefined : "지도 레이어"}
           onClick={onToggleSheet}
         >
-          <Layers aria-hidden="true" className="rail-ico-lg" />
+          <Layers aria-hidden="true" className={styles["rail-ico-lg"]} />
         </button>
         <button
           type="button"
-          className="rail-btn"
+          className={styles["rail-btn"]}
           aria-label={nextTheme}
           data-tip={nextTheme}
           onClick={onToggleTheme}
@@ -72,14 +73,14 @@ export default function MapRail({
         </button>
       </div>
       <div
-        className="rail dn-glass"
+        className={`${styles["rail"]} dn-glass`}
         role="toolbar"
         aria-orientation="vertical"
         aria-label="확대·축소"
       >
         <button
           type="button"
-          className="rail-btn"
+          className={styles["rail-btn"]}
           aria-label={`확대 (현재 ${zoomText})`}
           data-tip={`확대 · ${zoomText}`}
           disabled={!map || zoom >= limits.max}
@@ -87,10 +88,10 @@ export default function MapRail({
         >
           <Plus aria-hidden="true" />
         </button>
-        <span className="rail-sep" aria-hidden="true" />
+        <span className={styles["rail-sep"]} aria-hidden="true" />
         <button
           type="button"
-          className="rail-btn"
+          className={styles["rail-btn"]}
           aria-label={`축소 (현재 ${zoomText})`}
           data-tip={`축소 · ${zoomText}`}
           disabled={!map || zoom <= limits.min}
@@ -98,10 +99,10 @@ export default function MapRail({
         >
           <Minus aria-hidden="true" />
         </button>
-        <span className="rail-sep" aria-hidden="true" />
+        <span className={styles["rail-sep"]} aria-hidden="true" />
         <button
           type="button"
-          className="rail-btn"
+          className={styles["rail-btn"]}
           aria-label="재생 지역 전체 보기"
           data-tip="재생 지역 전체 보기"
           disabled={!map || !regionBounds}

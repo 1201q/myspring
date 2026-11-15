@@ -1,3 +1,5 @@
+import popupStyles from "./MapPopup.module.css";
+import statusStyles from "./BusinessStatus.module.css";
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import { fetchBusiness } from "../../data/business";
@@ -34,10 +36,13 @@ export default function LocationRecords({
   }, [ids, page, attempt]);
   const rows = result?.page === page && result.attempt === attempt ? result.rows : null;
   return (
-    <article className="detail location-records dn-glass-strong" aria-label="같은 위치의 기록">
-      <div className="detail-top">
-        <span className="eyebrow">같은 위치의 기록 · 현재 조회 조건 기준</span>
-        <button className="close" aria-label="목록 닫기" onClick={onClose}>
+    <article
+      className={`${popupStyles.detail} ${popupStyles["location-records"]} dn-glass-strong`}
+      aria-label="같은 위치의 기록"
+    >
+      <div className={popupStyles["detail-top"]}>
+        <span className={popupStyles.eyebrow}>같은 위치의 기록 · 현재 조회 조건 기준</span>
+        <button className={popupStyles.close} aria-label="목록 닫기" onClick={onClose}>
           <X aria-hidden="true" />
         </button>
       </div>
@@ -47,25 +52,29 @@ export default function LocationRecords({
           rows?.find((row) => row)?.lotAddress ||
           "같은 좌표의 기록"}
       </p>
-      <p className="detail-note">층·호실이 다르거나 서로 다른 시기의 기록일 수 있습니다.</p>
+      <p className={popupStyles["detail-note"]}>
+        층·호실이 다르거나 서로 다른 시기의 기록일 수 있습니다.
+      </p>
       {!rows ? (
-        <p className="detail-note" role="status">
+        <p className={popupStyles["detail-note"]} role="status">
           기록을 불러오는 중…
         </p>
       ) : (
         <>
-          <ul className="location-record-list dn-scroll">
+          <ul className={`${popupStyles["location-record-list"]} dn-scroll`}>
             {rows.map((business, index) => (
               <li key={ids[page * PAGE_SIZE + index]}>
                 {business ? (
-                  <button className="result" onClick={() => onSelect(business.id)}>
+                  <button className={popupStyles.result} onClick={() => onSelect(business.id)}>
                     <i
-                      className={business.closedAt ? "mark-close" : "mark-open"}
+                      className={
+                        business.closedAt ? statusStyles["mark-close"] : statusStyles["mark-open"]
+                      }
                       role="img"
                       aria-label={business.closedAt ? "폐업" : "폐업 기록 없음"}
                     />
-                    <span className="result-body">
-                      <span className="result-name">{business.name}</span>
+                    <span className={popupStyles["result-body"]}>
+                      <span className={popupStyles["result-name"]}>{business.name}</span>
                       <span className="dn-num">
                         {business.businessType || "업종 정보 없음"} ·{" "}
                         {formatDate(business.permittedAt) ?? "인허가일 없음"} –{" "}
@@ -74,7 +83,7 @@ export default function LocationRecords({
                     </span>
                   </button>
                 ) : (
-                  <p className="detail-note" role="alert">
+                  <p className={popupStyles["detail-note"]} role="alert">
                     기록 #{ids[page * PAGE_SIZE + index]}을 불러오지 못했습니다.
                   </p>
                 )}
@@ -87,7 +96,7 @@ export default function LocationRecords({
         </>
       )}
       {ids.length > PAGE_SIZE && (
-        <nav className="location-pages" aria-label="기록 목록 페이지">
+        <nav className={popupStyles["location-pages"]} aria-label="기록 목록 페이지">
           <button disabled={page === 0} onClick={() => setPage((value) => value - 1)}>
             이전
           </button>

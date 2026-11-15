@@ -2,6 +2,7 @@
 @import "./styles/tokens.css";
 @import "./styles/glass.css";
 @import "./styles/scroll.css";
+@import "./styles/accessibility.css";
 
 :root {
   font-family: var(--font-sans);

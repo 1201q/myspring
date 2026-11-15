@@ -1,0 +1,36 @@
+/* ---------- playback placeholder (loading fallback and error boundary) ---------- */
+/* The real bar is PlaybackBar (.pb); this only styles the stand-ins shown before it mounts. */
+.playback {
+  position: absolute;
+  z-index: var(--z-chrome);
+  bottom: var(--space-4);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(var(--playbar-max), calc(100% - 32px));
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: 0 var(--space-3) 0 20px;
+  border-radius: var(--radius-xl);
+  font-size: 12px;
+  font-weight: 600;
+}
+.playback button {
+  height: var(--control-sm);
+  padding: 0 var(--space-3);
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--fill-pressed);
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 650;
+}
+
+@media (max-width: 760px) {
+  .playback {
+    width: calc(100% - 24px);
+    bottom: var(--space-3);
+  }
+}

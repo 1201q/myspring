@@ -1,7 +1,7 @@
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { Check, ChevronDown, MapPin, Search, Store } from "lucide-react";
 import type { AreaOption, SigunguProperties } from "../data/sigungu";
-import "./FilterCapsule.css";
+import styles from "./FilterCapsule.module.css";
 import { formatCount } from "../lib/format";
 import { useDismiss } from "../lib/useDismiss";
 
@@ -28,9 +28,9 @@ type Props = {
 type Open = "region" | "category" | null;
 
 const LOGO = (
-  <svg className="fc-logo" viewBox="0 0 18 18" aria-hidden="true">
-    <circle className="a" cx="6.5" cy="9" r="4.5" />
-    <circle className="b" cx="11.5" cy="9" r="4.5" />
+  <svg className={styles["fc-logo"]} viewBox="0 0 18 18" aria-hidden="true">
+    <circle className={styles["a"]} cx="6.5" cy="9" r="4.5" />
+    <circle className={styles["b"]} cx="11.5" cy="9" r="4.5" />
   </svg>
 );
 
@@ -66,7 +66,9 @@ export default function FilterCapsule({
   useEffect(() => {
     if (!open) return;
     const el = root.current?.querySelector<HTMLElement>(
-      open === "region" ? ".fc-chip[aria-pressed=true]" : ".fc-search input",
+      open === "region"
+        ? `.${styles["fc-chip"]}[aria-pressed=true]`
+        : `.${styles["fc-search"]} input`,
     );
     el?.focus();
   }, [open]);
@@ -102,16 +104,16 @@ export default function FilterCapsule({
   }, [categories, categoryCounts, query]);
 
   return (
-    <div className="fc" ref={root}>
-      <div className="fc-capsule dn-glass" role="group" aria-label="지역과 업종">
-        <span className="fc-brand">
+    <div className={styles["fc"]} ref={root}>
+      <div className={`${styles["fc-capsule"]} dn-glass`} role="group" aria-label="지역과 업종">
+        <span className={styles["fc-brand"]}>
           {LOGO}
-          <span className="fc-brand-name">동네의 기록</span>
+          <span className={styles["fc-brand-name"]}>동네의 기록</span>
         </span>
-        <span className="fc-div" aria-hidden="true" />
+        <span className={styles["fc-div"]} aria-hidden="true" />
         <button
           type="button"
-          className="fc-seg"
+          className={styles["fc-seg"]}
           aria-haspopup="dialog"
           aria-expanded={open === "region"}
           aria-controls={open === "region" ? sheetId : undefined}
@@ -119,14 +121,14 @@ export default function FilterCapsule({
           disabled={!regions.length}
           onClick={() => toggle("region")}
         >
-          <MapPin className="fc-ico" aria-hidden="true" />
+          <MapPin className={styles["fc-ico"]} aria-hidden="true" />
           <span>{placeName}</span>
-          <ChevronDown className="fc-chev" aria-hidden="true" />
+          <ChevronDown className={styles["fc-chev"]} aria-hidden="true" />
         </button>
-        <span className="fc-div" aria-hidden="true" />
+        <span className={styles["fc-div"]} aria-hidden="true" />
         <button
           type="button"
-          className="fc-seg"
+          className={styles["fc-seg"]}
           aria-haspopup="dialog"
           aria-expanded={open === "category"}
           aria-controls={open === "category" ? sheetId : undefined}
@@ -134,27 +136,32 @@ export default function FilterCapsule({
           disabled={!categories.length && !categoryError}
           onClick={() => (categoryError ? onRetryCategories() : toggle("category"))}
         >
-          <Store className="fc-ico" aria-hidden="true" />
-          <span className={categoryError ? "fc-error" : undefined}>
+          <Store className={styles["fc-ico"]} aria-hidden="true" />
+          <span className={categoryError ? styles["fc-error"] : undefined}>
             {categories.length || categoryError ? categoryName : "업종 불러오는 중"}
           </span>
-          <ChevronDown className="fc-chev" aria-hidden="true" />
+          <ChevronDown className={styles["fc-chev"]} aria-hidden="true" />
         </button>
       </div>
 
       {open === "region" && (
-        <div id={sheetId} className="fc-sheet dn-glass-strong" role="dialog" aria-label="재생 지역">
-          <div className="fc-sheet-head">
+        <div
+          id={sheetId}
+          className={`${styles["fc-sheet"]} dn-glass-strong`}
+          role="dialog"
+          aria-label="재생 지역"
+        >
+          <div className={styles["fc-sheet-head"]}>
             <h2>재생 지역</h2>
             <small>다른 시도는 지도에서 눌러도 바뀝니다</small>
           </div>
-          <div className="fc-sheet-body dn-scroll">
-            <div className="fc-chips">
+          <div className="dn-scroll">
+            <div className={styles["fc-chips"]}>
               {regions.map((r) => (
                 <button
                   type="button"
                   key={r.id}
-                  className="fc-chip"
+                  className={styles["fc-chip"]}
                   aria-pressed={r.id === regionId}
                   // 지역을 바꾼 뒤에도 열어 두어 이어서 시군구를 고를 수 있게 합니다.
                   onClick={() => onRegionChange(r.id)}
@@ -164,12 +171,12 @@ export default function FilterCapsule({
               ))}
             </div>
             {areas.length > 1 && (
-              <div className="fc-tier">
+              <div className={styles["fc-tier"]}>
                 <h3>{regionName} 안에서</h3>
-                <div className="fc-chips">
+                <div className={styles["fc-chips"]}>
                   <button
                     type="button"
-                    className="fc-chip"
+                    className={styles["fc-chip"]}
                     aria-pressed={!area}
                     onClick={() => pickArea(null)}
                   >
@@ -179,7 +186,7 @@ export default function FilterCapsule({
                     <button
                       type="button"
                       key={o.code}
-                      className="fc-chip"
+                      className={styles["fc-chip"]}
                       aria-pressed={o.code === topCode}
                       title={o.label}
                       {...preview(o.code)}
@@ -193,12 +200,12 @@ export default function FilterCapsule({
               </div>
             )}
             {city && (
-              <div className="fc-tier">
+              <div className={styles["fc-tier"]}>
                 <h3>{city.name} 안에서</h3>
-                <div className="fc-chips">
+                <div className={styles["fc-chips"]}>
                   <button
                     type="button"
-                    className="fc-chip"
+                    className={styles["fc-chip"]}
                     aria-pressed={area?.code === city.code}
                     {...preview(city.code)}
                     onClick={() => pickArea(city.code)}
@@ -209,7 +216,7 @@ export default function FilterCapsule({
                     <button
                       type="button"
                       key={o.code}
-                      className="fc-chip"
+                      className={styles["fc-chip"]}
                       aria-pressed={o.code === area?.code}
                       title={o.label}
                       {...preview(o.code)}
@@ -226,13 +233,18 @@ export default function FilterCapsule({
       )}
 
       {open === "category" && (
-        <div id={sheetId} className="fc-sheet dn-glass-strong" role="dialog" aria-label="업종">
-          <div className="fc-sheet-head">
+        <div
+          id={sheetId}
+          className={`${styles["fc-sheet"]} dn-glass-strong`}
+          role="dialog"
+          aria-label="업종"
+        >
+          <div className={styles["fc-sheet-head"]}>
             <h2>업종</h2>
             {categoryCounts && <small>이 기간 개업 수</small>}
           </div>
-          <label className="fc-search">
-            <Search className="fc-ico" aria-hidden="true" />
+          <label className={styles["fc-search"]}>
+            <Search className={styles["fc-ico"]} aria-hidden="true" />
             <input
               type="search"
               placeholder="업종 이름으로 찾기"
@@ -241,7 +253,7 @@ export default function FilterCapsule({
               onChange={(e) => setQuery(e.target.value)}
             />
           </label>
-          <ul className="fc-rows dn-scroll" role="listbox" aria-label="업종 목록">
+          <ul className={`${styles["fc-rows"]} dn-scroll`} role="listbox" aria-label="업종 목록">
             {!query && (
               <Row
                 selected={!category}
@@ -264,7 +276,9 @@ export default function FilterCapsule({
                 }}
               />
             ))}
-            {!visible.length && <li className="fc-empty">'{query}'에 맞는 업종이 없습니다.</li>}
+            {!visible.length && (
+              <li className={styles["fc-empty"]}>'{query}'에 맞는 업종이 없습니다.</li>
+            )}
           </ul>
         </div>
       )}
@@ -285,7 +299,7 @@ function Row({
 }) {
   return (
     <li
-      className="fc-row"
+      className={styles["fc-row"]}
       role="option"
       aria-selected={selected}
       tabIndex={0}
@@ -297,9 +311,11 @@ function Row({
         }
       }}
     >
-      <Check className="fc-check" aria-hidden="true" />
-      <span className="fc-row-name">{name}</span>
-      {count !== undefined && <span className="fc-row-n dn-num">{formatCount(count)}</span>}
+      <Check className={styles["fc-check"]} aria-hidden="true" />
+      <span className={styles["fc-row-name"]}>{name}</span>
+      {count !== undefined && (
+        <span className={`${styles["fc-row-n"]} dn-num`}>{formatCount(count)}</span>
+      )}
     </li>
   );
 }

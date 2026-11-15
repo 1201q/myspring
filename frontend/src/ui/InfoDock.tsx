@@ -1,7 +1,7 @@
 import { X } from "lucide-react";
 import type { DockKey } from "./layers";
 import { DOCK_LABEL } from "./layers";
-import "./InfoDock.css";
+import styles from "./InfoDock.module.css";
 
 type Props = {
   tabs: DockKey[];
@@ -15,9 +15,9 @@ type Props = {
 /** Bottom-right card that exists only while a dock layer is on. One tab per such layer. */
 export default function InfoDock({ tabs, active, onTab, onClose, bodyRef }: Props) {
   return (
-    <section className="dock dn-glass-strong" aria-label="레이어 정보">
-      <div className="dock-head">
-        <div className="dock-tabs" role="tablist" aria-label="켜진 레이어">
+    <section className={`${styles["dock"]} dn-glass-strong`} aria-label="레이어 정보">
+      <div className={styles["dock-head"]}>
+        <div className={styles["dock-tabs"]} role="tablist" aria-label="켜진 레이어">
           {tabs.map((key) => (
             <button
               type="button"
@@ -34,7 +34,7 @@ export default function InfoDock({ tabs, active, onTab, onClose, bodyRef }: Prop
         </div>
         <button
           type="button"
-          className="dock-close"
+          className={styles["dock-close"]}
           aria-label="정보 닫기 (레이어는 켜진 채로 둡니다)"
           onClick={onClose}
         >
@@ -43,7 +43,7 @@ export default function InfoDock({ tabs, active, onTab, onClose, bodyRef }: Prop
       </div>
       <div
         id="dock-body"
-        className={`dock-body dn-scroll${active === "subway" ? " is-split" : ""}`}
+        className={`${styles["dock-body"]} dn-scroll${active === "subway" ? ` ${styles["is-split"]}` : ""}`}
         role="tabpanel"
         aria-labelledby={`dock-tab-${active}`}
         ref={bodyRef}

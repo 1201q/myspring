@@ -1,0 +1,59 @@
+/* Shared pieces for dock content */
+.dock-hint {
+  margin: var(--space-3) 0 0;
+  padding: 10px var(--space-3);
+  border-radius: var(--radius-md);
+  background: var(--fill-hover);
+  font-size: 12px;
+  line-height: 17px;
+  color: var(--ink-muted);
+}
+.dock-note {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: var(--space-3);
+  font-size: 11px;
+  line-height: 15px;
+  color: var(--ink-subtle);
+}
+.dock-note svg {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  stroke-width: 1.75;
+}
+.dock-note button {
+  flex: none;
+  margin-left: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink-muted);
+  font: inherit;
+  font-weight: 600;
+}
+.dock-note button:hover {
+  color: var(--ink);
+}
+.dock-error {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: var(--space-3);
+  color: var(--danger);
+  font-weight: 600;
+}
+.dock-error button {
+  flex: none;
+  height: 26px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--fill-pressed);
+  color: var(--ink);
+  font: inherit;
+  font-size: 11px;
+  font-weight: 650;
+}

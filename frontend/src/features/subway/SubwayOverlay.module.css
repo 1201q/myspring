@@ -83,7 +83,7 @@
   line-height: 14px;
   color: var(--ink-subtle);
 }
-.dock-note button:disabled {
+.subway-note button:disabled {
   opacity: 0.4;
   cursor: default;
 }

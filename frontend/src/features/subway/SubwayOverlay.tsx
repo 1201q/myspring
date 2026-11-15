@@ -1,9 +1,10 @@
+import dockStyles from "../../ui/DockContent.module.css";
 import { useEffect, useRef, useState } from "react";
 import type { FeatureCollection, LineString, Point } from "geojson";
 import type { Map as LibreMap } from "maplibre-gl";
 import { createPortal } from "react-dom";
 import { Info, Search } from "lucide-react";
-import "./SubwayOverlay.css";
+import styles from "./SubwayOverlay.module.css";
 import { MAP_PALETTE } from "../../lib/theme";
 import type { Theme } from "../../lib/theme";
 import { fetchJson } from "../../lib/fetchJson";
@@ -260,12 +261,12 @@ export default function SubwayOverlay({
   return createPortal(
     <>
       {!dataset && !error && (
-        <p className="dock-hint" role="status">
+        <p className={dockStyles["dock-hint"]} role="status">
           노선을 불러오는 중…
         </p>
       )}
       {error && (
-        <div className="dock-error" role="alert">
+        <div className={dockStyles["dock-error"]} role="alert">
           {error}
           <button
             type="button"
@@ -279,14 +280,14 @@ export default function SubwayOverlay({
         </div>
       )}
       {dataset && !visibleLines.length && (
-        <p className="dock-hint">
+        <p className={dockStyles["dock-hint"]}>
           지금 보는 곳에는 표시할 지하철 노선이 없습니다. 수도권·부산·대구·광주·대전으로 옮기면
           나옵니다.
         </p>
       )}
       {dataset && visibleLines.length > 0 && (
         <>
-          <label className="subway-search">
+          <label className={styles["subway-search"]}>
             <Search aria-hidden="true" />
             <input
               type="search"
@@ -297,7 +298,7 @@ export default function SubwayOverlay({
             />
           </label>
           <ul
-            className="subway-lines dn-scroll"
+            className={`${styles["subway-lines"]} dn-scroll`}
             aria-label={`${regionName ?? ""} 노선 · 누르면 그 노선만 표시`}
           >
             {listed.map((line) => (
@@ -317,11 +318,13 @@ export default function SubwayOverlay({
                 </button>
               </li>
             ))}
-            {!listed.length && <li className="subway-empty">'{q}'에 맞는 노선이 없습니다.</li>}
+            {!listed.length && (
+              <li className={styles["subway-empty"]}>'{q}'에 맞는 노선이 없습니다.</li>
+            )}
           </ul>
         </>
       )}
-      <div className="dock-note">
+      <div className={`${dockStyles["dock-note"]} ${styles["subway-note"]}`}>
         <Info aria-hidden="true" />
         <span>{selected ? "고른 노선만 표시 중" : "현재 노선 기준 · 과거 월에도 바뀌지 않음"}</span>
         {selected && (
@@ -336,7 +339,7 @@ export default function SubwayOverlay({
           범위 보기
         </button>
       </div>
-      <p className="subway-source">
+      <p className={styles["subway-source"]}>
         확대하면 역과 역명이 나옵니다 · OSM {dataset?.manifest.osmBaseTimestamp.slice(0, 10) ?? "—"}{" "}
         수집본, 누락·역명 차이 가능
       </p>

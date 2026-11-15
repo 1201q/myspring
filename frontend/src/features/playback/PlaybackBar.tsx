@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import type { ActivitySeries } from "./playbackSeries";
 import { formatMonth, monthIndex, monthNumber, monthYear } from "./playbackSeries";
-import "./PlaybackBar.css";
+import styles from "./PlaybackBar.module.css";
 import { formatCount } from "../../lib/format";
 import { useDismiss } from "../../lib/useDismiss";
 
@@ -48,20 +48,20 @@ export default function PlaybackBar(props: Props) {
     .map((y) => ({ y, at: pct(monthIndex(y, 1), min, max) }))
     .filter((t) => t.at > 6 && t.at < 94);
   return (
-    <div className="pb-wrap">
-      <section className="pb dn-glass" aria-label="시간 재생">
+    <div className={styles["pb-wrap"]}>
+      <section className={`${styles["pb"]} dn-glass`} aria-label="시간 재생">
         <button
           type="button"
-          className="pb-play"
+          className={styles["pb-play"]}
           aria-label={playing ? "일시정지" : "재생"}
           onClick={props.onTogglePlay}
         >
           {playing ? <Pause aria-hidden="true" /> : <Play aria-hidden="true" />}
         </button>
-        <div className="pb-steps">
+        <div className={styles["pb-steps"]}>
           <button
             type="button"
-            className="pb-icon"
+            className={styles["pb-icon"]}
             aria-label="이전 기간"
             disabled={current <= min}
             onClick={() => props.onStep(-1)}
@@ -70,7 +70,7 @@ export default function PlaybackBar(props: Props) {
           </button>
           <button
             type="button"
-            className="pb-icon"
+            className={styles["pb-icon"]}
             aria-label="다음 기간"
             disabled={current >= max}
             onClick={() => props.onStep(1)}
@@ -78,10 +78,10 @@ export default function PlaybackBar(props: Props) {
             <ChevronRight aria-hidden="true" />
           </button>
         </div>
-        <div className="pb-readout">
+        <div className={styles["pb-readout"]}>
           <button
             type="button"
-            className="pb-month dn-num"
+            className={`${styles["pb-month"]} dn-num`}
             aria-haspopup="dialog"
             aria-expanded={picker}
             aria-label={`${monthYear(current)}년 ${monthNumber(current)}월 · 연월 고르기`}
@@ -89,23 +89,27 @@ export default function PlaybackBar(props: Props) {
           >
             {formatMonth(current)}
           </button>
-          <div className="pb-counts dn-num" role="status" aria-live={playing ? "off" : "polite"}>
-            <span className="pb-open">
-              <i className="pb-mark-open" aria-hidden="true" />
+          <div
+            className={`${styles["pb-counts"]} dn-num`}
+            role="status"
+            aria-live={playing ? "off" : "polite"}
+          >
+            <span className={styles["pb-open"]}>
+              <i className={styles["pb-mark-open"]} aria-hidden="true" />
               <span className="visually-hidden">개업 </span>
               {fmt(opens)}
             </span>
-            <span className="pb-close">
-              <i className="pb-mark-close" aria-hidden="true" />
+            <span className={styles["pb-close"]}>
+              <i className={styles["pb-mark-close"]} aria-hidden="true" />
               <span className="visually-hidden">폐업 </span>
               {fmt(closes)}
             </span>
           </div>
         </div>
-        <div className="pb-timeline">
+        <div className={styles["pb-timeline"]}>
           <Spark series={series} current={current} />
           <div
-            className="pb-window"
+            className={styles["pb-window"]}
             style={{
               left: `${pct(from, min, max)}%`,
               width: `${Math.max(0.4, pct(current, min, max) - pct(from, min, max))}%`,
@@ -113,12 +117,12 @@ export default function PlaybackBar(props: Props) {
             aria-hidden="true"
           />
           <div
-            className="pb-head"
+            className={styles["pb-head"]}
             style={{ left: `${pct(current, min, max)}%` }}
             aria-hidden="true"
           />
           <input
-            className="pb-range"
+            className={styles["pb-range"]}
             type="range"
             min={min}
             max={max}
@@ -127,7 +131,7 @@ export default function PlaybackBar(props: Props) {
             aria-valuetext={`${monthYear(current)}년 ${monthNumber(current)}월`}
             onChange={(e) => props.onSeek(Number(e.target.value))}
           />
-          <div className="pb-ticks dn-num" aria-hidden="true">
+          <div className={`${styles["pb-ticks"]} dn-num`} aria-hidden="true">
             <span style={{ left: 0, transform: "none" }}>{monthYear(min)}</span>
             {ticks.map((t) => (
               <span key={t.y} style={{ left: `${t.at}%` }}>
@@ -136,7 +140,7 @@ export default function PlaybackBar(props: Props) {
             ))}
           </div>
         </div>
-        <div className="pb-seg" role="group" aria-label="재생 단위">
+        <div className={styles["pb-seg"]} role="group" aria-label="재생 단위">
           {UNITS.map((u) => (
             <button
               type="button"
@@ -150,7 +154,7 @@ export default function PlaybackBar(props: Props) {
         </div>
         <button
           type="button"
-          className="pb-chip pb-unit-chip"
+          className={`${styles["pb-chip"]} ${styles["pb-unit-chip"]}`}
           aria-label={`재생 단위 ${unitLabel}, 누르면 ${nextUnit.label}`}
           onClick={() => props.onUnitChange(nextUnit.value)}
         >
@@ -158,7 +162,7 @@ export default function PlaybackBar(props: Props) {
         </button>
         <button
           type="button"
-          className="pb-chip dn-num"
+          className={`${styles["pb-chip"]} dn-num`}
           aria-label={`재생 속도 ${speed}배, 누르면 ${nextSpeed}배`}
           onClick={() => props.onSpeedChange(nextSpeed)}
         >
@@ -184,20 +188,24 @@ export default function PlaybackBar(props: Props) {
 /** 지역 재생 파일을 내려받거나 해석하는 동안의 재생 바 로딩 상태. */
 export function PlaybackBarLoading({ text, percent }: { text: string; percent?: number }) {
   return (
-    <div className="pb-wrap">
-      <section className="pb pb-loading dn-glass" aria-label="시간 재생" role="status">
-        <button type="button" className="pb-play" aria-label="재생" disabled>
+    <div className={styles["pb-wrap"]}>
+      <section
+        className={`${styles["pb"]} ${styles["pb-loading"]} dn-glass`}
+        aria-label="시간 재생"
+        role="status"
+      >
+        <button type="button" className={styles["pb-play"]} aria-label="재생" disabled>
           <Play aria-hidden="true" />
         </button>
-        <div className="pb-load">
-          <div className="pb-load-text">
+        <div className={styles["pb-load"]}>
+          <div className={styles["pb-load-text"]}>
             <span>{text}</span>
             {percent !== undefined && <span className="dn-num">{percent}%</span>}
           </div>
-          <div className="pb-progress" aria-hidden="true">
+          <div className={styles["pb-progress"]} aria-hidden="true">
             <i
               style={percent === undefined ? undefined : { width: `${percent}%` }}
-              className={percent === undefined ? "is-indeterminate" : undefined}
+              className={percent === undefined ? styles["is-indeterminate"] : undefined}
             />
           </div>
         </div>
@@ -227,18 +235,18 @@ function Spark({ series, current }: { series: ActivitySeries | null; current: nu
   }, [series, current]);
   return (
     <svg
-      className="pb-spark"
+      className={styles["pb-spark"]}
       viewBox={`0 0 ${series?.opens.length || 1} 30`}
       preserveAspectRatio="none"
       aria-hidden="true"
     >
-      <line className="pb-base" x1="0" x2={series?.opens.length || 1} y1="15" y2="15" />
+      <line className={styles["pb-base"]} x1="0" x2={series?.opens.length || 1} y1="15" y2="15" />
       {paths && (
         <>
-          <path className="pb-o" d={paths.op} />
-          <path className="pb-o pb-future" d={paths.of} />
-          <path className="pb-c" d={paths.cp} />
-          <path className="pb-c pb-future" d={paths.cf} />
+          <path className={styles["pb-o"]} d={paths.op} />
+          <path className={`${styles["pb-o"]} ${styles["pb-future"]}`} d={paths.of} />
+          <path className={styles["pb-c"]} d={paths.cp} />
+          <path className={`${styles["pb-c"]} ${styles["pb-future"]}`} d={paths.cf} />
         </>
       )}
     </svg>
@@ -260,22 +268,27 @@ function MonthPicker({
 }) {
   const [year, setYear] = useState(monthYear(current));
   const root = useRef<HTMLDivElement>(null);
-  useDismiss(root, onClose, { ignore: ".pb-month" });
+  useDismiss(root, onClose, { ignore: `.${styles["pb-month"]}` });
   useEffect(() => {
     root.current
-      ?.querySelector<HTMLElement>(".pb-pick-years [aria-pressed=true]")
+      ?.querySelector<HTMLElement>(`.${styles["pb-pick-years"]} [aria-pressed=true]`)
       ?.scrollIntoView({ block: "center" });
   }, []);
   const years = [];
   for (let y = monthYear(min); y <= monthYear(max); y++) years.push(y);
   return (
-    <div className="pb-picker dn-glass-strong" role="dialog" aria-label="연월 고르기" ref={root}>
-      <div className="pb-pick-years dn-scroll">
+    <div
+      className={`${styles["pb-picker"]} dn-glass-strong`}
+      role="dialog"
+      aria-label="연월 고르기"
+      ref={root}
+    >
+      <div className={`${styles["pb-pick-years"]} dn-scroll`}>
         {years.map((y) => (
           <button
             type="button"
             key={y}
-            className="pb-pick dn-num"
+            className={`${styles["pb-pick"]} dn-num`}
             aria-pressed={y === year}
             onClick={() => setYear(y)}
           >
@@ -283,14 +296,14 @@ function MonthPicker({
           </button>
         ))}
       </div>
-      <div className="pb-pick-months">
+      <div className={styles["pb-pick-months"]}>
         {Array.from({ length: 12 }, (_, i) => {
           const m = monthIndex(year, i + 1);
           return (
             <button
               type="button"
               key={i}
-              className="pb-pick dn-num"
+              className={`${styles["pb-pick"]} dn-num`}
               aria-pressed={m === current}
               disabled={m < min || m > max}
               onClick={() => onPick(m)}

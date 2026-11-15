@@ -3,7 +3,10 @@ import type { FeatureCollection, Point } from "geojson";
 import * as maplibregl from "maplibre-gl";
 import mapWorkerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
 import "maplibre-gl/dist/maplibre-gl.css";
-import "./App.css";
+import styles from "./App.module.css";
+import popupStyles from "../features/business/MapPopup.module.css";
+import fallbackStyles from "./PlaybackFallback.module.css";
+import "../styles/maplibre.css";
 import type { LocationGroup } from "../features/business/locationGroups";
 import LocationRecords from "../features/business/LocationRecords";
 import BusinessStatus from "../features/business/BusinessStatus";
@@ -291,9 +294,13 @@ export default function App() {
   const popupHeight = mapInstance?.getContainer().clientHeight ?? 600;
 
   return (
-    <main className="app" data-theme={theme} data-playback="true">
-      <section className="map-panel" aria-label="전국 인허가 지도">
-        <div ref={container} className="map" onPointerLeave={() => hoverLocation(null, 0, 0)} />
+    <main className={styles.app} data-theme={theme} data-playback="true">
+      <section className={styles["map-panel"]} aria-label="전국 인허가 지도">
+        <div
+          ref={container}
+          className={styles.map}
+          onPointerLeave={() => hoverLocation(null, 0, 0)}
+        />
         <h1 className="visually-hidden">동네의 기록</h1>
         <MapRail
           map={mapInstance}
@@ -330,7 +337,7 @@ export default function App() {
         <PlaybackBoundary>
           <Suspense
             fallback={
-              <section className="playback is-active dn-glass" role="status">
+              <section className={`${fallbackStyles.playback} dn-glass`} role="status">
                 지역과 시간 재생을 준비하는 중…
               </section>
             }
@@ -360,13 +367,13 @@ export default function App() {
           </Suspense>
         </PlaybackBoundary>
         {mapError && (
-          <p className="map-error dn-glass-strong" role="alert">
+          <p className={`${styles["map-error"]} dn-glass-strong`} role="alert">
             {mapError}
             <button onClick={() => window.location.reload()}>새로고침</button>
           </p>
         )}
         <div
-          className={`selection-popup${hoverPoint ? " is-positioned" : ""}${isPinned ? " is-pinned" : " is-hover"}`}
+          className={`${popupStyles["selection-popup"]}${hoverPoint ? ` ${popupStyles["is-positioned"]}` : ""}${isPinned ? "" : ` ${popupStyles["is-hover"]}`}`}
           style={
             hoverPoint
               ? {
@@ -405,10 +412,10 @@ export default function App() {
             />
           )}
           {selected && (
-            <article className="detail dn-glass-strong" aria-label="인허가 상세">
+            <article className={`${popupStyles.detail} dn-glass-strong`} aria-label="인허가 상세">
               {locationIds.length > 1 && (
                 <button
-                  className="location-back"
+                  className={popupStyles["location-back"]}
                   onClick={() => {
                     detailRequest.current?.abort();
                     setSelected(null);
@@ -418,10 +425,16 @@ export default function App() {
                   같은 위치의 기록 {locationIds.length}건
                 </button>
               )}
-              <div className="detail-top">
+              <div className={popupStyles["detail-top"]}>
                 <BusinessStatus closedAt={selected.closedAt} />
-                <span className="eyebrow">{selected.businessType || "업종 정보 없음"}</span>
-                <button className="close" aria-label="상세 닫기" onClick={clearSelection}>
+                <span className={popupStyles.eyebrow}>
+                  {selected.businessType || "업종 정보 없음"}
+                </span>
+                <button
+                  className={popupStyles.close}
+                  aria-label="상세 닫기"
+                  onClick={clearSelection}
+                >
                   <X aria-hidden="true" />
                 </button>
               </div>
@@ -430,19 +443,21 @@ export default function App() {
               <dl className="dn-num">
                 <div>
                   <dt>인허가일</dt>
-                  <dd className={selected.permittedAt ? undefined : "is-missing"}>
+                  <dd className={selected.permittedAt ? undefined : popupStyles["is-missing"]}>
                     {formatDate(selected.permittedAt) ?? "기록 없음"}
                   </dd>
                 </div>
                 <div>
                   <dt>폐업일</dt>
-                  <dd className={selected.closedAt ? undefined : "is-missing"}>
+                  <dd className={selected.closedAt ? undefined : popupStyles["is-missing"]}>
                     {formatDate(selected.closedAt) ?? "기록 없음"}
                   </dd>
                 </div>
               </dl>
               {!located(selected) && (
-                <p className="detail-note">좌표가 없어 지도 위치를 표시할 수 없습니다.</p>
+                <p className={popupStyles["detail-note"]}>
+                  좌표가 없어 지도 위치를 표시할 수 없습니다.
+                </p>
               )}
               {selected.sourceUrl && (
                 <a href={selected.sourceUrl} target="_blank" rel="noreferrer">

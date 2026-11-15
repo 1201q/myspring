@@ -1,83 +1,8 @@
-/* App shell and map popups. Colors come from src/styles/tokens.css only. */
-.app {
-  position: relative;
-  height: 100dvh;
-  color: var(--ink);
-  background: var(--map-land);
-}
-.map-panel {
-  position: relative;
-  height: 100%;
-  min-width: 0;
-}
-.map {
-  width: 100%;
-  height: 100%;
-  background: var(--map-land);
-}
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-  border: 0;
-}
 .eyebrow {
   font-size: 11px;
   line-height: 15px;
   font-weight: 600;
   color: var(--ink-muted);
-}
-
-/* MapLibre attribution on glass */
-/* Two classes, to beat maplibre-gl.css's `.maplibregl-ctrl.maplibregl-ctrl-attrib` white background. */
-.maplibregl-ctrl.maplibregl-ctrl-attrib.maplibregl-compact,
-.maplibregl-ctrl.maplibregl-ctrl-attrib {
-  background: var(--glass);
-  -webkit-backdrop-filter: blur(var(--blur-sm));
-  backdrop-filter: blur(var(--blur-sm));
-  color: var(--ink-subtle);
-  font-size: 10px;
-}
-.maplibregl-ctrl .maplibregl-ctrl-attrib-inner a,
-.maplibregl-ctrl-attrib a {
-  color: var(--ink-muted);
-}
-[data-theme="dark"] .maplibregl-ctrl-attrib-button {
-  filter: invert(1);
-}
-
-/* ---------- errors ---------- */
-.map-error {
-  position: absolute;
-  z-index: var(--z-toast);
-  top: var(--space-4);
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  max-width: calc(100% - 32px);
-  margin: 0;
-  padding: 6px 6px 6px var(--space-3);
-  border-radius: var(--radius-pill);
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--danger);
-}
-.map-error button {
-  height: 26px;
-  padding: 0 10px;
-  border: 0;
-  border-radius: var(--radius-pill);
-  background: var(--fill-pressed);
-  color: var(--ink);
-  font-size: 11px;
-  font-weight: 650;
 }
 
 /* ---------- map popup (detail + same-location list). See the design system's MapPopup. ---------- */
@@ -186,42 +111,6 @@
 .close:hover {
   background: var(--fill-hover);
   color: var(--ink);
-}
-
-/* Status badge and the dot / ring marks */
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  height: 20px;
-  padding: 0 8px;
-  border-radius: var(--radius-pill);
-  font-size: 11px;
-  line-height: 15px;
-  font-weight: 600;
-  white-space: nowrap;
-}
-.badge-open {
-  background: var(--open-soft);
-  color: var(--open-ink);
-}
-.badge-close {
-  background: var(--close-soft);
-  color: var(--close-ink);
-}
-.mark-open,
-.mark-close {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  flex: none;
-  border-radius: 50%;
-}
-.mark-open {
-  background: var(--open);
-}
-.mark-close {
-  border: 1.5px solid var(--close);
 }
 
 /* Same-location list */
@@ -351,41 +240,7 @@
   pointer-events: none;
 }
 
-/* ---------- playback placeholder (loading fallback and error boundary) ---------- */
-/* The real bar is PlaybackBar (.pb); this only styles the stand-ins shown before it mounts. */
-.playback {
-  position: absolute;
-  z-index: var(--z-chrome);
-  bottom: var(--space-4);
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(var(--playbar-max), calc(100% - 32px));
-  min-height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-3);
-  padding: 0 var(--space-3) 0 20px;
-  border-radius: var(--radius-xl);
-  font-size: 12px;
-  font-weight: 600;
-}
-.playback button {
-  height: var(--control-sm);
-  padding: 0 var(--space-3);
-  border: 0;
-  border-radius: var(--radius-pill);
-  background: var(--fill-pressed);
-  color: var(--ink);
-  font-size: 11px;
-  font-weight: 650;
-}
-
 @media (max-width: 760px) {
-  .playback {
-    width: calc(100% - 24px);
-    bottom: var(--space-3);
-  }
   .detail {
     top: auto;
     right: 8px;

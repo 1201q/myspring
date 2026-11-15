@@ -1,0 +1,35 @@
+/* Status badge and the dot / ring marks */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 20px;
+  padding: 0 8px;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  line-height: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.badge-open {
+  background: var(--open-soft);
+  color: var(--open-ink);
+}
+.badge-close {
+  background: var(--close-soft);
+  color: var(--close-ink);
+}
+.mark-open,
+.mark-close {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  flex: none;
+  border-radius: 50%;
+}
+.mark-open {
+  background: var(--open);
+}
+.mark-close {
+  border: 1.5px solid var(--close);
+}
