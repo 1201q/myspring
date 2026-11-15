@@ -1,0 +1,98 @@
+.panel {
+  font-size: 12px;
+  line-height: 1.5;
+}
+.control {
+  display: grid;
+  gap: 6px;
+  font-weight: 650;
+}
+.control select {
+  width: 100%;
+  min-height: 34px;
+  padding: 6px 8px;
+  border: 1px solid var(--glass-line);
+  border-radius: var(--radius-md);
+  background: var(--glass-strong);
+  color: var(--ink);
+  font: inherit;
+}
+.basis {
+  color: var(--ink-muted);
+  font-size: 11px;
+}
+.ramp {
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(to right, transparent, var(--accent));
+  border: 1px solid var(--glass-line);
+}
+.diverging {
+  background: linear-gradient(to right, var(--dong-neg-3), var(--dong-even), var(--dong-pos-3));
+}
+.labels,
+.title {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+.labels {
+  margin-top: 4px;
+  font-size: 11px;
+  color: var(--ink-muted);
+}
+.selection {
+  margin-top: 12px;
+  border-top: 1px solid var(--glass-line);
+  padding-top: 12px;
+}
+.title button {
+  background: none;
+  color: var(--ink-muted);
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+}
+.selection dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 6px 0;
+}
+.selection dt {
+  color: var(--ink-muted);
+}
+.selection dd {
+  margin: 0;
+}
+.ages {
+  display: grid;
+  gap: 4px;
+  border-top: 1px solid var(--glass-line);
+  padding-top: 10px;
+}
+.ages div {
+  display: grid;
+  grid-template-columns: 55px minmax(30px, 1fr) 62px;
+  gap: 8px;
+  align-items: center;
+}
+.ages div > :last-child {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.ages meter {
+  width: 100%;
+  accent-color: var(--accent);
+}
+.details {
+  margin-top: 12px;
+  color: var(--ink-muted);
+  font-size: 11px;
+}
+.details summary {
+  cursor: pointer;
+}
+.details a {
+  color: var(--ink);
+}

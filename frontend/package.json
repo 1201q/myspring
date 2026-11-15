@@ -7,6 +7,7 @@
     "build:regions": "node scripts/build-region-boundaries.mjs",
     "build:dongs": "node scripts/build-dong-boundaries.mjs",
     "build:sigungu": "node scripts/build-sigungu-boundaries.mjs",
+    "build:population": "node ../scripts/build-population.mjs",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",

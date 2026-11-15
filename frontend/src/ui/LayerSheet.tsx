@@ -1,11 +1,12 @@
 import { useEffect, useRef } from "react";
-import { ListOrdered, Map as MapIcon, TrainFront } from "lucide-react";
+import { ListOrdered, Map as MapIcon, TrainFront, Users } from "lucide-react";
 import type { LayerKey, LayerState } from "./layers";
 import styles from "./LayerSheet.module.css";
 import { useDismiss } from "../lib/useDismiss";
 
 const TILES: { key: LayerKey; label: string; note: string; Icon: typeof MapIcon }[] = [
   { key: "dong", label: "동별 증감", note: "개업 − 폐업", Icon: MapIcon },
+  { key: "population", label: "인구·세대", note: "주민등록 · 월별", Icon: Users },
   { key: "subway", label: "지하철 노선", note: "현재 노선", Icon: TrainFront },
   { key: "rank", label: "개업 순위", note: "왼쪽 패널", Icon: ListOrdered },
 ];
@@ -49,7 +50,8 @@ export default function LayerSheet({ layers, onToggle, onClose }: Props) {
         ))}
       </div>
       <p className={styles["ls-foot"]}>
-        점은 개업, 고리는 폐업입니다. 동별 증감과 지하철을 모두 끄면 오른쪽 아래 정보도 사라집니다.
+        점은 개업, 고리는 폐업입니다. 인구·세대와 동별 증감을 함께 켜면 인구·세대 색상을 우선
+        표시합니다.
       </p>
     </div>
   );

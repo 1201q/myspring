@@ -344,8 +344,10 @@ export default function App() {
           >
             <NationalPlayback
               showDongs={layers.dong}
+              showPopulation={layers.population}
               showRanks={layers.rank}
               dongDock={dockOpen && activeDockTab === "dong" ? dockBody : null}
+              populationDock={dockOpen && activeDockTab === "population" ? dockBody : null}
               theme={theme}
               onRegionBoundsChange={setRegionBounds}
               map={mapInstance}
