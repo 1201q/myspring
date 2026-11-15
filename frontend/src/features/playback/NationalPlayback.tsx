@@ -183,10 +183,30 @@ export default function NationalPlayback({
   );
   useEffect(() => {
     if (!map) return;
+    let viewportWidth = 0;
+    let viewportHeight = 0;
     const control = new MapboxOverlay({
       interleaved: false,
       pickingRadius: 3,
       layers: [],
+      onResize: ({ width, height }) => {
+        viewportWidth = width;
+        viewportHeight = height;
+      },
+      onAfterRender: ({ gl }) => {
+        const canvas = gl.canvas;
+        if (!(canvas instanceof HTMLCanvasElement)) return;
+        const container = map.getContainer();
+        const mapCanvas = map.getCanvas();
+        // Deck can draw into its default 300×150 canvas before its first resize.
+        // Reveal the overlay only after a frame is drawn at the map's size.
+        const ready =
+          viewportWidth === container.clientWidth &&
+          viewportHeight === container.clientHeight &&
+          canvas.width === mapCanvas.width &&
+          canvas.height === mapCanvas.height;
+        canvas.style.visibility = ready ? "visible" : "hidden";
+      },
     });
     map.addControl(control);
     overlay.current = control;

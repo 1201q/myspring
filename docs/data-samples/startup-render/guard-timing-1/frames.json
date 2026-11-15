@@ -1,0 +1,7688 @@
+{
+  "run": "guard-timing-1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
+  "start": 1241.2999999821186,
+  "end": 3757,
+  "firstEvents": 1252,
+  "frames": [
+    {
+      "t": 1252,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 126.98,
+        "lat": 37.56,
+        "zoom": 10,
+        "moving": true,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": null,
+      "deck": {
+        "width": 0,
+        "height": 0,
+        "viewport": null
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 1282.2999999821186,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 126.9801044050962,
+        "lat": 37.56007938531495,
+        "zoom": 9.999826131832156,
+        "moving": true,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": null,
+      "deck": {
+        "width": 0,
+        "height": 0,
+        "viewport": null
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 1348.699999988079,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 126.98090737647169,
+        "lat": 37.560689928686784,
+        "zoom": 9.998495624513415,
+        "moving": true,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 300,
+        "height": 150,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 300,
+        "height": 150,
+        "viewport": {
+          "width": 300,
+          "height": 150,
+          "longitude": 126.98090737647169,
+          "latitude": 37.560689928686784,
+          "zoom": 9.998495624513415
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          300,
+          150
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 1358.5999999940395,
+      "phase": "draw",
+      "dpr": 2,
+      "map": {
+        "lng": 126.98459331404695,
+        "lat": 37.56349248588542,
+        "zoom": 9.992538759439155,
+        "moving": true,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 300,
+        "height": 150,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "hidden"
+      },
+      "deck": {
+        "width": 300,
+        "height": 150,
+        "viewport": {
+          "width": 300,
+          "height": 150,
+          "longitude": 126.98459331404695,
+          "latitude": 37.56349248588542,
+          "zoom": 9.992538759439155
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          300,
+          150
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 1973.2999999821186,
+      "phase": "draw",
+      "dpr": 2,
+      "map": {
+        "lng": 126.98459331404695,
+        "lat": 37.56349248588542,
+        "zoom": 9.992538759439155,
+        "moving": true,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 300,
+        "height": 150,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "hidden"
+      },
+      "deck": {
+        "width": 300,
+        "height": 150,
+        "viewport": {
+          "width": 300,
+          "height": 150,
+          "longitude": 126.98459331404695,
+          "latitude": 37.56349248588542,
+          "zoom": 9.992538759439155
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          300,
+          150
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2013.7999999821186,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 126.98459331404695,
+        "lat": 37.56349248588542,
+        "zoom": 9.992538759439155,
+        "moving": true,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 300,
+        "height": 150,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "hidden"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 126.98459331404695,
+          "latitude": 37.56349248588542,
+          "zoom": 9.992538759439155
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          300,
+          150
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2117.2999999821186,
+      "phase": "draw",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2162.0999999940395,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2179.199999988079,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2190.0999999940395,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2207.0999999940395,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2223.899999976158,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2240.399999976158,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2257.199999988079,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2273.5,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2290.2999999821186,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2307.199999988079,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2323.5999999940395,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2340.199999988079,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2357,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2373.7999999821186,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2390.399999976158,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2407.199999988079,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2423.5999999940395,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2440.199999988079,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2456.699999988079,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2473.399999976158,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2490.5999999940395,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2506.7999999821186,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2523.7999999821186,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2540.0999999940395,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2557.0999999940395,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2573.5999999940395,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2590.0999999940395,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2607,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2623.5999999940395,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2640.199999988079,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2656.899999976158,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2673.399999976158,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2690.199999988079,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2706.7999999821186,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2723.399999976158,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2740.399999976158,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2757.0999999940395,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2773.7999999821186,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2790.2999999821186,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2807.199999988079,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2823.699999988079,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2840.0999999940395,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2856.7999999821186,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2873.399999976158,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2890.0999999940395,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2906.699999988079,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2923.5999999940395,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2940.399999976158,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2970.2999999821186,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2973.399999976158,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 2990.199999988079,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3006.7999999821186,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3023.699999988079,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3040.2999999821186,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3057.0999999940395,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3073.5,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3094.0999999940395,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3106.7999999821186,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3123.5999999940395,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3140.5999999940395,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3172.2999999821186,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3174.0999999940395,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3203.2999999821186,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3219.199999988079,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3223.5999999940395,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3240.5,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3265.399999976158,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3273.5,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3290,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3306.699999988079,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3323.399999976158,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3340.2999999821186,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3356.7999999821186,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3373.5999999940395,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3405.399999976158,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3406.7999999821186,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3423.5,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3440.0999999940395,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3457.0999999940395,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3483.199999988079,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3490.399999976158,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3506.899999976158,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3523.7999999821186,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3545.5,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3556.7999999821186,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3573.5,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3590.399999976158,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3607.199999988079,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3624.399999976158,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3640.199999988079,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3656.7999999821186,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3673.399999976158,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3690.7999999821186,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3707.7999999821186,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3732.699999988079,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3748.2999999821186,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    },
+    {
+      "t": 3756.7999999821186,
+      "phase": "raf",
+      "dpr": 2,
+      "map": {
+        "lng": 127,
+        "lat": 37.57520562831064,
+        "zoom": 9.970213794696129,
+        "moving": false,
+        "canvas": {
+          "width": 2560,
+          "height": 1440,
+          "cssWidth": 1280,
+          "cssHeight": 720,
+          "visibility": "visible"
+        }
+      },
+      "overlay": {
+        "width": 2560,
+        "height": 1440,
+        "cssWidth": 1280,
+        "cssHeight": 720,
+        "visibility": "visible"
+      },
+      "deck": {
+        "width": 1280,
+        "height": 720,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "longitude": 127,
+          "latitude": 37.57520562831064,
+          "zoom": 9.970213794696129
+        },
+        "glViewport": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "drawingBuffer": [
+          2560,
+          1440
+        ]
+      },
+      "layers": [
+        {
+          "id": "playback-region-selection"
+        },
+        {
+          "id": "region-outline"
+        },
+        {
+          "id": "region-events-seoul-0",
+          "length": 807747,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "region-events-seoul-1",
+          "length": 635563,
+          "filterRange": [
+            440.5,
+            441.5
+          ]
+        },
+        {
+          "id": "same-location-counts",
+          "length": 698
+        }
+      ]
+    }
+  ],
+  "shots": [],
+  "events": [
+    {
+      "t": 1242.699999988079,
+      "type": "movestart"
+    },
+    {
+      "t": 1242.699999988079,
+      "type": "resize"
+    },
+    {
+      "t": 1242.699999988079,
+      "type": "moveend"
+    },
+    {
+      "t": 1245.2999999821186,
+      "type": "movestart"
+    },
+    {
+      "t": 2023.5,
+      "type": "moveend"
+    },
+    {
+      "t": 2793.2999999821186,
+      "type": "idle"
+    }
+  ]
+}

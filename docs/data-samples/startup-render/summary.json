@@ -1,0 +1,80 @@
+[
+  {
+    "run": "iab-capture-2",
+    "samples": 127,
+    "eventDraws": 6,
+    "badSizeEventDraws": 2,
+    "firstEventMs": 632.2999999821186,
+    "firstCorrectSizeEventMs": 990.6999999880791,
+    "initializationIntervalMs": 358.40000000596046,
+    "firstOverlay": {
+      "width": 300,
+      "height": 150,
+      "cssWidth": 1063,
+      "cssHeight": 703
+    },
+    "correctOverlay": {
+      "width": 2126,
+      "height": 1406,
+      "cssWidth": 1063,
+      "cssHeight": 703
+    },
+    "maxDrawCameraError": {
+      "longitude": 0,
+      "latitude": 0,
+      "zoom": 0
+    }
+  },
+  {
+    "run": "iab-timing-1",
+    "samples": 183,
+    "eventDraws": 15,
+    "badSizeEventDraws": 0,
+    "firstEventMs": 794.8999999761581,
+    "firstCorrectSizeEventMs": 794.8999999761581,
+    "initializationIntervalMs": 0,
+    "firstOverlay": {
+      "width": 1650,
+      "height": 1406,
+      "cssWidth": 825,
+      "cssHeight": 703
+    },
+    "correctOverlay": {
+      "width": 1650,
+      "height": 1406,
+      "cssWidth": 825,
+      "cssHeight": 703
+    },
+    "maxDrawCameraError": {
+      "longitude": 0,
+      "latitude": 0,
+      "zoom": 0
+    }
+  },
+  {
+    "run": "iab-timing-3",
+    "samples": 145,
+    "eventDraws": 13,
+    "badSizeEventDraws": 2,
+    "firstEventMs": 603.8999999761581,
+    "firstCorrectSizeEventMs": 909.2999999821186,
+    "initializationIntervalMs": 305.40000000596046,
+    "firstOverlay": {
+      "width": 300,
+      "height": 150,
+      "cssWidth": 1063,
+      "cssHeight": 703
+    },
+    "correctOverlay": {
+      "width": 2126,
+      "height": 1406,
+      "cssWidth": 1063,
+      "cssHeight": 703
+    },
+    "maxDrawCameraError": {
+      "longitude": 0,
+      "latitude": 0,
+      "zoom": 0
+    }
+  }
+]
