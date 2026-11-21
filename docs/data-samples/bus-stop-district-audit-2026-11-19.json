@@ -1,0 +1,2322 @@
+{
+  "boundaryVersion": "20261001",
+  "nationalSnapshot": "2026-11-09",
+  "tsBisRelease": "2026-07-16",
+  "matchRule": "Same normalized name and within 15 metres in same district. Candidates only; not verified additions.",
+  "unassigned": {
+    "base": 186,
+    "ts": 62
+  },
+  "totals": {
+    "nationalRows": 226916,
+    "tsBisRows": 54786,
+    "overlapCandidates": 43687,
+    "additionalCandidates": 11099
+  },
+  "districts": [
+    {
+      "region": "seoul",
+      "code": "11110",
+      "name": "종로구",
+      "nationalRows": 482,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "seoul",
+      "code": "11140",
+      "name": "중구",
+      "nationalRows": 316,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "seoul",
+      "code": "11170",
+      "name": "용산구",
+      "nationalRows": 434,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "seoul",
+      "code": "11200",
+      "name": "성동구",
+      "nationalRows": 495,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "seoul",
+      "code": "11215",
+      "name": "광진구",
+      "nationalRows": 399,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "seoul",
+      "code": "11230",
+      "name": "동대문구",
+      "nationalRows": 417,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "seoul",
+      "code": "11260",
+      "name": "중랑구",
+      "nationalRows": 555,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "seoul",
+      "code": "11290",
+      "name": "성북구",
+      "nationalRows": 678,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "seoul",
+      "code": "11305",
+      "name": "강북구",
+      "nationalRows": 464,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "seoul",
+      "code": "11320",
+      "name": "도봉구",
+      "nationalRows": 442,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "seoul",
+      "code": "11350",
+      "name": "노원구",
+      "nationalRows": 739,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "seoul",
+      "code": "11380",
+      "name": "은평구",
+      "nationalRows": 733,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "seoul",
+      "code": "11410",
+      "name": "서대문구",
+      "nationalRows": 564,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "seoul",
+      "code": "11440",
+      "name": "마포구",
+      "nationalRows": 744,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "seoul",
+      "code": "11470",
+      "name": "양천구",
+      "nationalRows": 502,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "seoul",
+      "code": "11500",
+      "name": "강서구",
+      "nationalRows": 855,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "seoul",
+      "code": "11530",
+      "name": "구로구",
+      "nationalRows": 719,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "seoul",
+      "code": "11545",
+      "name": "금천구",
+      "nationalRows": 545,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "seoul",
+      "code": "11560",
+      "name": "영등포구",
+      "nationalRows": 714,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "seoul",
+      "code": "11590",
+      "name": "동작구",
+      "nationalRows": 559,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "seoul",
+      "code": "11620",
+      "name": "관악구",
+      "nationalRows": 637,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "seoul",
+      "code": "11650",
+      "name": "서초구",
+      "nationalRows": 996,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "seoul",
+      "code": "11680",
+      "name": "강남구",
+      "nationalRows": 874,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "seoul",
+      "code": "11710",
+      "name": "송파구",
+      "nationalRows": 822,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "seoul",
+      "code": "11740",
+      "name": "강동구",
+      "nationalRows": 644,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12110",
+      "name": "목포시",
+      "nationalRows": 504,
+      "tsBisRows": 175,
+      "overlapCandidates": 107,
+      "additionalCandidates": 68
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12130",
+      "name": "여수시",
+      "nationalRows": 2316,
+      "tsBisRows": 2,
+      "overlapCandidates": 1,
+      "additionalCandidates": 1
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12150",
+      "name": "순천시",
+      "nationalRows": 2717,
+      "tsBisRows": 49,
+      "overlapCandidates": 41,
+      "additionalCandidates": 8
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12170",
+      "name": "나주시",
+      "nationalRows": 2161,
+      "tsBisRows": 95,
+      "overlapCandidates": 52,
+      "additionalCandidates": 43
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12190",
+      "name": "광양시",
+      "nationalRows": 1204,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12210",
+      "name": "광주 동구",
+      "nationalRows": 239,
+      "tsBisRows": 13,
+      "overlapCandidates": 8,
+      "additionalCandidates": 5
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12240",
+      "name": "광주 서구",
+      "nationalRows": 475,
+      "tsBisRows": 183,
+      "overlapCandidates": 151,
+      "additionalCandidates": 32
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12270",
+      "name": "광주 남구",
+      "nationalRows": 389,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12300",
+      "name": "광주 북구",
+      "nationalRows": 827,
+      "tsBisRows": 149,
+      "overlapCandidates": 110,
+      "additionalCandidates": 39
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12330",
+      "name": "광주 광산구",
+      "nationalRows": 1268,
+      "tsBisRows": 186,
+      "overlapCandidates": 134,
+      "additionalCandidates": 52
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12710",
+      "name": "담양군",
+      "nationalRows": 591,
+      "tsBisRows": 30,
+      "overlapCandidates": 0,
+      "additionalCandidates": 30
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12720",
+      "name": "곡성군",
+      "nationalRows": 508,
+      "tsBisRows": 13,
+      "overlapCandidates": 0,
+      "additionalCandidates": 13
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12730",
+      "name": "구례군",
+      "nationalRows": 330,
+      "tsBisRows": 350,
+      "overlapCandidates": 344,
+      "additionalCandidates": 6
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12740",
+      "name": "고흥군",
+      "nationalRows": 1249,
+      "tsBisRows": 1322,
+      "overlapCandidates": 1286,
+      "additionalCandidates": 36
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12750",
+      "name": "보성군",
+      "nationalRows": 32,
+      "tsBisRows": 97,
+      "overlapCandidates": 7,
+      "additionalCandidates": 90
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12760",
+      "name": "화순군",
+      "nationalRows": 888,
+      "tsBisRows": 17,
+      "overlapCandidates": 10,
+      "additionalCandidates": 7
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12770",
+      "name": "장흥군",
+      "nationalRows": 767,
+      "tsBisRows": 805,
+      "overlapCandidates": 778,
+      "additionalCandidates": 27
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12780",
+      "name": "강진군",
+      "nationalRows": 11,
+      "tsBisRows": 342,
+      "overlapCandidates": 10,
+      "additionalCandidates": 332
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12790",
+      "name": "해남군",
+      "nationalRows": 1310,
+      "tsBisRows": 1322,
+      "overlapCandidates": 1311,
+      "additionalCandidates": 11
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12800",
+      "name": "영암군",
+      "nationalRows": 980,
+      "tsBisRows": 946,
+      "overlapCandidates": 596,
+      "additionalCandidates": 350
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12810",
+      "name": "무안군",
+      "nationalRows": 917,
+      "tsBisRows": 137,
+      "overlapCandidates": 105,
+      "additionalCandidates": 32
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12820",
+      "name": "함평군",
+      "nationalRows": 893,
+      "tsBisRows": 180,
+      "overlapCandidates": 154,
+      "additionalCandidates": 26
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12830",
+      "name": "영광군",
+      "nationalRows": 169,
+      "tsBisRows": 856,
+      "overlapCandidates": 99,
+      "additionalCandidates": 757
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12840",
+      "name": "장성군",
+      "nationalRows": 976,
+      "tsBisRows": 905,
+      "overlapCandidates": 877,
+      "additionalCandidates": 28
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12850",
+      "name": "완도군",
+      "nationalRows": 457,
+      "tsBisRows": 490,
+      "overlapCandidates": 471,
+      "additionalCandidates": 19
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12860",
+      "name": "진도군",
+      "nationalRows": 442,
+      "tsBisRows": 451,
+      "overlapCandidates": 448,
+      "additionalCandidates": 3
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12870",
+      "name": "신안군",
+      "nationalRows": 572,
+      "tsBisRows": 536,
+      "overlapCandidates": 525,
+      "additionalCandidates": 11
+    },
+    {
+      "region": "busan",
+      "code": "26110",
+      "name": "중구",
+      "nationalRows": 165,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "busan",
+      "code": "26140",
+      "name": "서구",
+      "nationalRows": 347,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "busan",
+      "code": "26170",
+      "name": "동구",
+      "nationalRows": 281,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "busan",
+      "code": "26200",
+      "name": "영도구",
+      "nationalRows": 432,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "busan",
+      "code": "26230",
+      "name": "부산진구",
+      "nationalRows": 774,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "busan",
+      "code": "26260",
+      "name": "동래구",
+      "nationalRows": 717,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "busan",
+      "code": "26290",
+      "name": "남구",
+      "nationalRows": 568,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "busan",
+      "code": "26320",
+      "name": "북구",
+      "nationalRows": 596,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "busan",
+      "code": "26350",
+      "name": "해운대구",
+      "nationalRows": 763,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "busan",
+      "code": "26380",
+      "name": "사하구",
+      "nationalRows": 829,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "busan",
+      "code": "26410",
+      "name": "금정구",
+      "nationalRows": 738,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "busan",
+      "code": "26440",
+      "name": "강서구",
+      "nationalRows": 1847,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "busan",
+      "code": "26470",
+      "name": "연제구",
+      "nationalRows": 349,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "busan",
+      "code": "26500",
+      "name": "수영구",
+      "nationalRows": 291,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "busan",
+      "code": "26530",
+      "name": "사상구",
+      "nationalRows": 672,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "busan",
+      "code": "26710",
+      "name": "기장군",
+      "nationalRows": 1054,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "daegu",
+      "code": "27110",
+      "name": "중구",
+      "nationalRows": 287,
+      "tsBisRows": 30,
+      "overlapCandidates": 23,
+      "additionalCandidates": 7
+    },
+    {
+      "region": "daegu",
+      "code": "27140",
+      "name": "동구",
+      "nationalRows": 1283,
+      "tsBisRows": 61,
+      "overlapCandidates": 37,
+      "additionalCandidates": 24
+    },
+    {
+      "region": "daegu",
+      "code": "27170",
+      "name": "서구",
+      "nationalRows": 471,
+      "tsBisRows": 40,
+      "overlapCandidates": 32,
+      "additionalCandidates": 8
+    },
+    {
+      "region": "daegu",
+      "code": "27200",
+      "name": "남구",
+      "nationalRows": 357,
+      "tsBisRows": 38,
+      "overlapCandidates": 29,
+      "additionalCandidates": 9
+    },
+    {
+      "region": "daegu",
+      "code": "27230",
+      "name": "북구",
+      "nationalRows": 1412,
+      "tsBisRows": 111,
+      "overlapCandidates": 78,
+      "additionalCandidates": 33
+    },
+    {
+      "region": "daegu",
+      "code": "27260",
+      "name": "수성구",
+      "nationalRows": 928,
+      "tsBisRows": 72,
+      "overlapCandidates": 63,
+      "additionalCandidates": 9
+    },
+    {
+      "region": "daegu",
+      "code": "27290",
+      "name": "달서구",
+      "nationalRows": 1240,
+      "tsBisRows": 91,
+      "overlapCandidates": 65,
+      "additionalCandidates": 26
+    },
+    {
+      "region": "daegu",
+      "code": "27710",
+      "name": "달성군",
+      "nationalRows": 1497,
+      "tsBisRows": 147,
+      "overlapCandidates": 107,
+      "additionalCandidates": 40
+    },
+    {
+      "region": "daegu",
+      "code": "27720",
+      "name": "군위군",
+      "nationalRows": 725,
+      "tsBisRows": 520,
+      "overlapCandidates": 469,
+      "additionalCandidates": 51
+    },
+    {
+      "region": "incheon",
+      "code": "28125",
+      "name": "제물포구",
+      "nationalRows": 413,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "incheon",
+      "code": "28155",
+      "name": "영종구",
+      "nationalRows": 569,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "incheon",
+      "code": "28177",
+      "name": "미추홀구",
+      "nationalRows": 738,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "incheon",
+      "code": "28185",
+      "name": "연수구",
+      "nationalRows": 863,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "incheon",
+      "code": "28200",
+      "name": "남동구",
+      "nationalRows": 1174,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "incheon",
+      "code": "28237",
+      "name": "부평구",
+      "nationalRows": 1096,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "incheon",
+      "code": "28245",
+      "name": "계양구",
+      "nationalRows": 649,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "incheon",
+      "code": "28275",
+      "name": "서해구",
+      "nationalRows": 1082,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "incheon",
+      "code": "28290",
+      "name": "검단구",
+      "nationalRows": 613,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "incheon",
+      "code": "28710",
+      "name": "강화군",
+      "nationalRows": 1712,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "incheon",
+      "code": "28720",
+      "name": "옹진군",
+      "nationalRows": 190,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "daejeon",
+      "code": "30110",
+      "name": "동구",
+      "nationalRows": 680,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "daejeon",
+      "code": "30140",
+      "name": "중구",
+      "nationalRows": 428,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "daejeon",
+      "code": "30170",
+      "name": "서구",
+      "nationalRows": 661,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "daejeon",
+      "code": "30200",
+      "name": "유성구",
+      "nationalRows": 1199,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "daejeon",
+      "code": "30230",
+      "name": "대덕구",
+      "nationalRows": 460,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "ulsan",
+      "code": "31110",
+      "name": "중구",
+      "nationalRows": 479,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "ulsan",
+      "code": "31140",
+      "name": "남구",
+      "nationalRows": 734,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "ulsan",
+      "code": "31170",
+      "name": "동구",
+      "nationalRows": 345,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "ulsan",
+      "code": "31200",
+      "name": "북구",
+      "nationalRows": 563,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "ulsan",
+      "code": "31710",
+      "name": "울주군",
+      "nationalRows": 1802,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "sejong",
+      "code": "36110",
+      "name": "세종시",
+      "nationalRows": 3468,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41111",
+      "name": "수원시 장안구",
+      "nationalRows": 352,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41113",
+      "name": "수원시 권선구",
+      "nationalRows": 541,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41115",
+      "name": "수원시 팔달구",
+      "nationalRows": 264,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41117",
+      "name": "수원시 영통구",
+      "nationalRows": 377,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41131",
+      "name": "성남시 수정구",
+      "nationalRows": 457,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41133",
+      "name": "성남시 중원구",
+      "nationalRows": 374,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41135",
+      "name": "성남시 분당구",
+      "nationalRows": 912,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41150",
+      "name": "의정부시",
+      "nationalRows": 880,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41171",
+      "name": "안양시 만안구",
+      "nationalRows": 438,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41173",
+      "name": "안양시 동안구",
+      "nationalRows": 466,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41192",
+      "name": "부천시 원미구",
+      "nationalRows": 756,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41194",
+      "name": "부천시 소사구",
+      "nationalRows": 318,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41196",
+      "name": "부천시 오정구",
+      "nationalRows": 413,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41210",
+      "name": "광명시",
+      "nationalRows": 687,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41220",
+      "name": "평택시",
+      "nationalRows": 2038,
+      "tsBisRows": 2,
+      "overlapCandidates": 0,
+      "additionalCandidates": 2
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41250",
+      "name": "동두천시",
+      "nationalRows": 382,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41271",
+      "name": "안산시 상록구",
+      "nationalRows": 504,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41273",
+      "name": "안산시 단원구",
+      "nationalRows": 843,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41281",
+      "name": "고양시 덕양구",
+      "nationalRows": 1462,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41285",
+      "name": "고양시 일산동구",
+      "nationalRows": 664,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41287",
+      "name": "고양시 일산서구",
+      "nationalRows": 569,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41290",
+      "name": "과천시",
+      "nationalRows": 185,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41310",
+      "name": "구리시",
+      "nationalRows": 392,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41360",
+      "name": "남양주시",
+      "nationalRows": 2095,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41370",
+      "name": "오산시",
+      "nationalRows": 483,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41390",
+      "name": "시흥시",
+      "nationalRows": 1309,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41410",
+      "name": "군포시",
+      "nationalRows": 555,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41430",
+      "name": "의왕시",
+      "nationalRows": 480,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41450",
+      "name": "하남시",
+      "nationalRows": 650,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41461",
+      "name": "용인시 처인구",
+      "nationalRows": 1565,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41463",
+      "name": "용인시 기흥구",
+      "nationalRows": 842,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41465",
+      "name": "용인시 수지구",
+      "nationalRows": 576,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41480",
+      "name": "파주시",
+      "nationalRows": 2288,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41500",
+      "name": "이천시",
+      "nationalRows": 1179,
+      "tsBisRows": 6,
+      "overlapCandidates": 6,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41550",
+      "name": "안성시",
+      "nationalRows": 1477,
+      "tsBisRows": 4,
+      "overlapCandidates": 2,
+      "additionalCandidates": 2
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41570",
+      "name": "김포시",
+      "nationalRows": 1481,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41591",
+      "name": "화성시 만세구",
+      "nationalRows": 1693,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41593",
+      "name": "화성시 효행구",
+      "nationalRows": 652,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41595",
+      "name": "화성시 병점구",
+      "nationalRows": 286,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41597",
+      "name": "화성시 동탄구",
+      "nationalRows": 583,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41610",
+      "name": "광주시",
+      "nationalRows": 1385,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41630",
+      "name": "양주시",
+      "nationalRows": 1644,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41650",
+      "name": "포천시",
+      "nationalRows": 1270,
+      "tsBisRows": 4,
+      "overlapCandidates": 3,
+      "additionalCandidates": 1
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41670",
+      "name": "여주시",
+      "nationalRows": 1242,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41800",
+      "name": "연천군",
+      "nationalRows": 749,
+      "tsBisRows": 2,
+      "overlapCandidates": 0,
+      "additionalCandidates": 2
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41820",
+      "name": "가평군",
+      "nationalRows": 1034,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41830",
+      "name": "양평군",
+      "nationalRows": 1169,
+      "tsBisRows": 60,
+      "overlapCandidates": 21,
+      "additionalCandidates": 39
+    },
+    {
+      "region": "chungbuk",
+      "code": "43111",
+      "name": "청주시 상당구",
+      "nationalRows": 869,
+      "tsBisRows": 21,
+      "overlapCandidates": 1,
+      "additionalCandidates": 20
+    },
+    {
+      "region": "chungbuk",
+      "code": "43112",
+      "name": "청주시 서원구",
+      "nationalRows": 603,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "chungbuk",
+      "code": "43113",
+      "name": "청주시 흥덕구",
+      "nationalRows": 1255,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "chungbuk",
+      "code": "43114",
+      "name": "청주시 청원구",
+      "nationalRows": 793,
+      "tsBisRows": 21,
+      "overlapCandidates": 12,
+      "additionalCandidates": 9
+    },
+    {
+      "region": "chungbuk",
+      "code": "43130",
+      "name": "충주시",
+      "nationalRows": 1928,
+      "tsBisRows": 40,
+      "overlapCandidates": 24,
+      "additionalCandidates": 16
+    },
+    {
+      "region": "chungbuk",
+      "code": "43150",
+      "name": "제천시",
+      "nationalRows": 1625,
+      "tsBisRows": 40,
+      "overlapCandidates": 15,
+      "additionalCandidates": 25
+    },
+    {
+      "region": "chungbuk",
+      "code": "43720",
+      "name": "보은군",
+      "nationalRows": 783,
+      "tsBisRows": 1,
+      "overlapCandidates": 1,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "chungbuk",
+      "code": "43730",
+      "name": "옥천군",
+      "nationalRows": 1069,
+      "tsBisRows": 8,
+      "overlapCandidates": 0,
+      "additionalCandidates": 8
+    },
+    {
+      "region": "chungbuk",
+      "code": "43740",
+      "name": "영동군",
+      "nationalRows": 852,
+      "tsBisRows": 914,
+      "overlapCandidates": 800,
+      "additionalCandidates": 114
+    },
+    {
+      "region": "chungbuk",
+      "code": "43745",
+      "name": "증평군",
+      "nationalRows": 56,
+      "tsBisRows": 195,
+      "overlapCandidates": 11,
+      "additionalCandidates": 184
+    },
+    {
+      "region": "chungbuk",
+      "code": "43750",
+      "name": "진천군",
+      "nationalRows": 782,
+      "tsBisRows": 762,
+      "overlapCandidates": 703,
+      "additionalCandidates": 59
+    },
+    {
+      "region": "chungbuk",
+      "code": "43760",
+      "name": "괴산군",
+      "nationalRows": 911,
+      "tsBisRows": 866,
+      "overlapCandidates": 846,
+      "additionalCandidates": 20
+    },
+    {
+      "region": "chungbuk",
+      "code": "43770",
+      "name": "음성군",
+      "nationalRows": 955,
+      "tsBisRows": 890,
+      "overlapCandidates": 837,
+      "additionalCandidates": 53
+    },
+    {
+      "region": "chungbuk",
+      "code": "43800",
+      "name": "단양군",
+      "nationalRows": 594,
+      "tsBisRows": 428,
+      "overlapCandidates": 416,
+      "additionalCandidates": 12
+    },
+    {
+      "region": "chungnam",
+      "code": "44131",
+      "name": "천안시 동남구",
+      "nationalRows": 1492,
+      "tsBisRows": 1,
+      "overlapCandidates": 1,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "chungnam",
+      "code": "44133",
+      "name": "천안시 서북구",
+      "nationalRows": 1128,
+      "tsBisRows": 22,
+      "overlapCandidates": 14,
+      "additionalCandidates": 8
+    },
+    {
+      "region": "chungnam",
+      "code": "44150",
+      "name": "공주시",
+      "nationalRows": 2014,
+      "tsBisRows": 58,
+      "overlapCandidates": 10,
+      "additionalCandidates": 48
+    },
+    {
+      "region": "chungnam",
+      "code": "44180",
+      "name": "보령시",
+      "nationalRows": 1780,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "chungnam",
+      "code": "44200",
+      "name": "아산시",
+      "nationalRows": 2345,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "chungnam",
+      "code": "44210",
+      "name": "서산시",
+      "nationalRows": 2046,
+      "tsBisRows": 22,
+      "overlapCandidates": 14,
+      "additionalCandidates": 8
+    },
+    {
+      "region": "chungnam",
+      "code": "44230",
+      "name": "논산시",
+      "nationalRows": 1362,
+      "tsBisRows": 1314,
+      "overlapCandidates": 1291,
+      "additionalCandidates": 23
+    },
+    {
+      "region": "chungnam",
+      "code": "44250",
+      "name": "계룡시",
+      "nationalRows": 347,
+      "tsBisRows": 50,
+      "overlapCandidates": 17,
+      "additionalCandidates": 33
+    },
+    {
+      "region": "chungnam",
+      "code": "44270",
+      "name": "당진시",
+      "nationalRows": 2303,
+      "tsBisRows": 2259,
+      "overlapCandidates": 2207,
+      "additionalCandidates": 52
+    },
+    {
+      "region": "chungnam",
+      "code": "44710",
+      "name": "금산군",
+      "nationalRows": 1047,
+      "tsBisRows": 26,
+      "overlapCandidates": 10,
+      "additionalCandidates": 16
+    },
+    {
+      "region": "chungnam",
+      "code": "44760",
+      "name": "부여군",
+      "nationalRows": 1327,
+      "tsBisRows": 1223,
+      "overlapCandidates": 1201,
+      "additionalCandidates": 22
+    },
+    {
+      "region": "chungnam",
+      "code": "44770",
+      "name": "서천군",
+      "nationalRows": 1075,
+      "tsBisRows": 22,
+      "overlapCandidates": 20,
+      "additionalCandidates": 2
+    },
+    {
+      "region": "chungnam",
+      "code": "44790",
+      "name": "청양군",
+      "nationalRows": 1136,
+      "tsBisRows": 105,
+      "overlapCandidates": 65,
+      "additionalCandidates": 40
+    },
+    {
+      "region": "chungnam",
+      "code": "44800",
+      "name": "홍성군",
+      "nationalRows": 125,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "chungnam",
+      "code": "44810",
+      "name": "예산군",
+      "nationalRows": 114,
+      "tsBisRows": 95,
+      "overlapCandidates": 2,
+      "additionalCandidates": 93
+    },
+    {
+      "region": "chungnam",
+      "code": "44825",
+      "name": "태안군",
+      "nationalRows": 1686,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47111",
+      "name": "포항시 남구",
+      "nationalRows": 887,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47113",
+      "name": "포항시 북구",
+      "nationalRows": 1080,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47130",
+      "name": "경주시",
+      "nationalRows": 2120,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47150",
+      "name": "김천시",
+      "nationalRows": 1577,
+      "tsBisRows": 91,
+      "overlapCandidates": 58,
+      "additionalCandidates": 33
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47170",
+      "name": "안동시",
+      "nationalRows": 2119,
+      "tsBisRows": 32,
+      "overlapCandidates": 27,
+      "additionalCandidates": 5
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47190",
+      "name": "구미시",
+      "nationalRows": 2269,
+      "tsBisRows": 111,
+      "overlapCandidates": 48,
+      "additionalCandidates": 63
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47210",
+      "name": "영주시",
+      "nationalRows": 965,
+      "tsBisRows": 915,
+      "overlapCandidates": 893,
+      "additionalCandidates": 22
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47230",
+      "name": "영천시",
+      "nationalRows": 2153,
+      "tsBisRows": 12,
+      "overlapCandidates": 12,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47250",
+      "name": "상주시",
+      "nationalRows": 1497,
+      "tsBisRows": 1455,
+      "overlapCandidates": 1445,
+      "additionalCandidates": 10
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47280",
+      "name": "문경시",
+      "nationalRows": 1067,
+      "tsBisRows": 1005,
+      "overlapCandidates": 992,
+      "additionalCandidates": 13
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47290",
+      "name": "경산시",
+      "nationalRows": 2648,
+      "tsBisRows": 32,
+      "overlapCandidates": 16,
+      "additionalCandidates": 16
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47730",
+      "name": "의성군",
+      "nationalRows": 1118,
+      "tsBisRows": 1058,
+      "overlapCandidates": 1013,
+      "additionalCandidates": 45
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47750",
+      "name": "청송군",
+      "nationalRows": 568,
+      "tsBisRows": 8,
+      "overlapCandidates": 0,
+      "additionalCandidates": 8
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47760",
+      "name": "영양군",
+      "nationalRows": 615,
+      "tsBisRows": 2,
+      "overlapCandidates": 2,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47770",
+      "name": "영덕군",
+      "nationalRows": 792,
+      "tsBisRows": 2,
+      "overlapCandidates": 2,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47820",
+      "name": "청도군",
+      "nationalRows": 604,
+      "tsBisRows": 612,
+      "overlapCandidates": 604,
+      "additionalCandidates": 8
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47830",
+      "name": "고령군",
+      "nationalRows": 498,
+      "tsBisRows": 501,
+      "overlapCandidates": 472,
+      "additionalCandidates": 29
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47840",
+      "name": "성주군",
+      "nationalRows": 1099,
+      "tsBisRows": 724,
+      "overlapCandidates": 690,
+      "additionalCandidates": 34
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47850",
+      "name": "칠곡군",
+      "nationalRows": 1801,
+      "tsBisRows": 728,
+      "overlapCandidates": 529,
+      "additionalCandidates": 199
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47900",
+      "name": "예천군",
+      "nationalRows": 977,
+      "tsBisRows": 87,
+      "overlapCandidates": 60,
+      "additionalCandidates": 27
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47920",
+      "name": "봉화군",
+      "nationalRows": 584,
+      "tsBisRows": 599,
+      "overlapCandidates": 564,
+      "additionalCandidates": 35
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47930",
+      "name": "울진군",
+      "nationalRows": 836,
+      "tsBisRows": 818,
+      "overlapCandidates": 815,
+      "additionalCandidates": 3
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47940",
+      "name": "울릉군",
+      "nationalRows": 102,
+      "tsBisRows": 102,
+      "overlapCandidates": 102,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48121",
+      "name": "창원시 의창구",
+      "nationalRows": 1015,
+      "tsBisRows": 28,
+      "overlapCandidates": 9,
+      "additionalCandidates": 19
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48123",
+      "name": "창원시 성산구",
+      "nationalRows": 536,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48125",
+      "name": "창원시 마산합포구",
+      "nationalRows": 820,
+      "tsBisRows": 90,
+      "overlapCandidates": 30,
+      "additionalCandidates": 60
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48127",
+      "name": "창원시 마산회원구",
+      "nationalRows": 401,
+      "tsBisRows": 95,
+      "overlapCandidates": 32,
+      "additionalCandidates": 63
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48129",
+      "name": "창원시 진해구",
+      "nationalRows": 604,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48170",
+      "name": "진주시",
+      "nationalRows": 2239,
+      "tsBisRows": 84,
+      "overlapCandidates": 34,
+      "additionalCandidates": 50
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48220",
+      "name": "통영시",
+      "nationalRows": 787,
+      "tsBisRows": 948,
+      "overlapCandidates": 788,
+      "additionalCandidates": 160
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48240",
+      "name": "사천시",
+      "nationalRows": 817,
+      "tsBisRows": 27,
+      "overlapCandidates": 17,
+      "additionalCandidates": 10
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48250",
+      "name": "김해시",
+      "nationalRows": 2570,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48270",
+      "name": "밀양시",
+      "nationalRows": 959,
+      "tsBisRows": 6,
+      "overlapCandidates": 3,
+      "additionalCandidates": 3
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48310",
+      "name": "거제시",
+      "nationalRows": 1426,
+      "tsBisRows": 20,
+      "overlapCandidates": 4,
+      "additionalCandidates": 16
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48330",
+      "name": "양산시",
+      "nationalRows": 1672,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48720",
+      "name": "의령군",
+      "nationalRows": 676,
+      "tsBisRows": 742,
+      "overlapCandidates": 684,
+      "additionalCandidates": 58
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48730",
+      "name": "함안군",
+      "nationalRows": 875,
+      "tsBisRows": 813,
+      "overlapCandidates": 804,
+      "additionalCandidates": 9
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48740",
+      "name": "창녕군",
+      "nationalRows": 663,
+      "tsBisRows": 662,
+      "overlapCandidates": 659,
+      "additionalCandidates": 3
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48820",
+      "name": "고성군",
+      "nationalRows": 889,
+      "tsBisRows": 826,
+      "overlapCandidates": 822,
+      "additionalCandidates": 4
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48840",
+      "name": "남해군",
+      "nationalRows": 651,
+      "tsBisRows": 630,
+      "overlapCandidates": 625,
+      "additionalCandidates": 5
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48850",
+      "name": "하동군",
+      "nationalRows": 664,
+      "tsBisRows": 688,
+      "overlapCandidates": 672,
+      "additionalCandidates": 16
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48860",
+      "name": "산청군",
+      "nationalRows": 455,
+      "tsBisRows": 464,
+      "overlapCandidates": 445,
+      "additionalCandidates": 19
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48870",
+      "name": "함양군",
+      "nationalRows": 642,
+      "tsBisRows": 717,
+      "overlapCandidates": 648,
+      "additionalCandidates": 69
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48880",
+      "name": "거창군",
+      "nationalRows": 687,
+      "tsBisRows": 724,
+      "overlapCandidates": 712,
+      "additionalCandidates": 12
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48890",
+      "name": "합천군",
+      "nationalRows": 782,
+      "tsBisRows": 823,
+      "overlapCandidates": 808,
+      "additionalCandidates": 15
+    },
+    {
+      "region": "jeju",
+      "code": "50110",
+      "name": "제주시",
+      "nationalRows": 2481,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "jeju",
+      "code": "50130",
+      "name": "서귀포시",
+      "nationalRows": 1867,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gangwon",
+      "code": "51110",
+      "name": "춘천시",
+      "nationalRows": 1872,
+      "tsBisRows": 37,
+      "overlapCandidates": 20,
+      "additionalCandidates": 17
+    },
+    {
+      "region": "gangwon",
+      "code": "51130",
+      "name": "원주시",
+      "nationalRows": 1981,
+      "tsBisRows": 0,
+      "overlapCandidates": 0,
+      "additionalCandidates": 0
+    },
+    {
+      "region": "gangwon",
+      "code": "51150",
+      "name": "강릉시",
+      "nationalRows": 14,
+      "tsBisRows": 1128,
+      "overlapCandidates": 2,
+      "additionalCandidates": 1126
+    },
+    {
+      "region": "gangwon",
+      "code": "51170",
+      "name": "동해시",
+      "nationalRows": 3,
+      "tsBisRows": 389,
+      "overlapCandidates": 0,
+      "additionalCandidates": 389
+    },
+    {
+      "region": "gangwon",
+      "code": "51190",
+      "name": "태백시",
+      "nationalRows": 412,
+      "tsBisRows": 431,
+      "overlapCandidates": 413,
+      "additionalCandidates": 18
+    },
+    {
+      "region": "gangwon",
+      "code": "51210",
+      "name": "속초시",
+      "nationalRows": 4,
+      "tsBisRows": 215,
+      "overlapCandidates": 0,
+      "additionalCandidates": 215
+    },
+    {
+      "region": "gangwon",
+      "code": "51230",
+      "name": "삼척시",
+      "nationalRows": 129,
+      "tsBisRows": 813,
+      "overlapCandidates": 133,
+      "additionalCandidates": 680
+    },
+    {
+      "region": "gangwon",
+      "code": "51720",
+      "name": "홍천군",
+      "nationalRows": 1199,
+      "tsBisRows": 1115,
+      "overlapCandidates": 1086,
+      "additionalCandidates": 29
+    },
+    {
+      "region": "gangwon",
+      "code": "51730",
+      "name": "횡성군",
+      "nationalRows": 1100,
+      "tsBisRows": 35,
+      "overlapCandidates": 9,
+      "additionalCandidates": 26
+    },
+    {
+      "region": "gangwon",
+      "code": "51750",
+      "name": "영월군",
+      "nationalRows": 803,
+      "tsBisRows": 641,
+      "overlapCandidates": 629,
+      "additionalCandidates": 12
+    },
+    {
+      "region": "gangwon",
+      "code": "51760",
+      "name": "평창군",
+      "nationalRows": 75,
+      "tsBisRows": 460,
+      "overlapCandidates": 43,
+      "additionalCandidates": 417
+    },
+    {
+      "region": "gangwon",
+      "code": "51770",
+      "name": "정선군",
+      "nationalRows": 61,
+      "tsBisRows": 454,
+      "overlapCandidates": 60,
+      "additionalCandidates": 394
+    },
+    {
+      "region": "gangwon",
+      "code": "51780",
+      "name": "철원군",
+      "nationalRows": 351,
+      "tsBisRows": 374,
+      "overlapCandidates": 337,
+      "additionalCandidates": 37
+    },
+    {
+      "region": "gangwon",
+      "code": "51790",
+      "name": "화천군",
+      "nationalRows": 7,
+      "tsBisRows": 280,
+      "overlapCandidates": 0,
+      "additionalCandidates": 280
+    },
+    {
+      "region": "gangwon",
+      "code": "51800",
+      "name": "양구군",
+      "nationalRows": 2,
+      "tsBisRows": 218,
+      "overlapCandidates": 2,
+      "additionalCandidates": 216
+    },
+    {
+      "region": "gangwon",
+      "code": "51810",
+      "name": "인제군",
+      "nationalRows": 64,
+      "tsBisRows": 391,
+      "overlapCandidates": 58,
+      "additionalCandidates": 333
+    },
+    {
+      "region": "gangwon",
+      "code": "51820",
+      "name": "고성군",
+      "nationalRows": 0,
+      "tsBisRows": 256,
+      "overlapCandidates": 0,
+      "additionalCandidates": 256
+    },
+    {
+      "region": "gangwon",
+      "code": "51830",
+      "name": "양양군",
+      "nationalRows": 9,
+      "tsBisRows": 396,
+      "overlapCandidates": 0,
+      "additionalCandidates": 396
+    },
+    {
+      "region": "jeonbuk",
+      "code": "52111",
+      "name": "전주시 완산구",
+      "nationalRows": 620,
+      "tsBisRows": 90,
+      "overlapCandidates": 65,
+      "additionalCandidates": 25
+    },
+    {
+      "region": "jeonbuk",
+      "code": "52113",
+      "name": "전주시 덕진구",
+      "nationalRows": 826,
+      "tsBisRows": 52,
+      "overlapCandidates": 28,
+      "additionalCandidates": 24
+    },
+    {
+      "region": "jeonbuk",
+      "code": "52130",
+      "name": "군산시",
+      "nationalRows": 1769,
+      "tsBisRows": 114,
+      "overlapCandidates": 76,
+      "additionalCandidates": 38
+    },
+    {
+      "region": "jeonbuk",
+      "code": "52140",
+      "name": "익산시",
+      "nationalRows": 81,
+      "tsBisRows": 1475,
+      "overlapCandidates": 55,
+      "additionalCandidates": 1420
+    },
+    {
+      "region": "jeonbuk",
+      "code": "52180",
+      "name": "정읍시",
+      "nationalRows": 1402,
+      "tsBisRows": 1449,
+      "overlapCandidates": 1400,
+      "additionalCandidates": 49
+    },
+    {
+      "region": "jeonbuk",
+      "code": "52190",
+      "name": "남원시",
+      "nationalRows": 1018,
+      "tsBisRows": 94,
+      "overlapCandidates": 60,
+      "additionalCandidates": 34
+    },
+    {
+      "region": "jeonbuk",
+      "code": "52210",
+      "name": "김제시",
+      "nationalRows": 1622,
+      "tsBisRows": 1515,
+      "overlapCandidates": 1440,
+      "additionalCandidates": 75
+    },
+    {
+      "region": "jeonbuk",
+      "code": "52710",
+      "name": "완주군",
+      "nationalRows": 1325,
+      "tsBisRows": 256,
+      "overlapCandidates": 106,
+      "additionalCandidates": 150
+    },
+    {
+      "region": "jeonbuk",
+      "code": "52720",
+      "name": "진안군",
+      "nationalRows": 580,
+      "tsBisRows": 600,
+      "overlapCandidates": 583,
+      "additionalCandidates": 17
+    },
+    {
+      "region": "jeonbuk",
+      "code": "52730",
+      "name": "무주군",
+      "nationalRows": 448,
+      "tsBisRows": 430,
+      "overlapCandidates": 426,
+      "additionalCandidates": 4
+    },
+    {
+      "region": "jeonbuk",
+      "code": "52740",
+      "name": "장수군",
+      "nationalRows": 359,
+      "tsBisRows": 338,
+      "overlapCandidates": 302,
+      "additionalCandidates": 36
+    },
+    {
+      "region": "jeonbuk",
+      "code": "52750",
+      "name": "임실군",
+      "nationalRows": 653,
+      "tsBisRows": 604,
+      "overlapCandidates": 589,
+      "additionalCandidates": 15
+    },
+    {
+      "region": "jeonbuk",
+      "code": "52770",
+      "name": "순창군",
+      "nationalRows": 543,
+      "tsBisRows": 583,
+      "overlapCandidates": 523,
+      "additionalCandidates": 60
+    },
+    {
+      "region": "jeonbuk",
+      "code": "52790",
+      "name": "고창군",
+      "nationalRows": 1068,
+      "tsBisRows": 1110,
+      "overlapCandidates": 1090,
+      "additionalCandidates": 20
+    },
+    {
+      "region": "jeonbuk",
+      "code": "52800",
+      "name": "부안군",
+      "nationalRows": 937,
+      "tsBisRows": 940,
+      "overlapCandidates": 934,
+      "additionalCandidates": 6
+    }
+  ]
+}
