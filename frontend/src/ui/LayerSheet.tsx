@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { ListOrdered, Map as MapIcon, TrainFront } from "lucide-react";
+import { BusFront, ListOrdered, Map as MapIcon, TrainFront } from "lucide-react";
 import type { LayerKey, LayerState } from "./layers";
 import styles from "./LayerSheet.module.css";
 import { useDismiss } from "../lib/useDismiss";
@@ -7,6 +7,7 @@ import { useDismiss } from "../lib/useDismiss";
 const TILES: { key: LayerKey; label: string; note: string; Icon: typeof MapIcon }[] = [
   { key: "dong", label: "동별 증감", note: "개업 − 폐업", Icon: MapIcon },
   { key: "subway", label: "지하철 노선", note: "현재 노선", Icon: TrainFront },
+  { key: "bus", label: "버스정류장", note: "확대해서 보기", Icon: BusFront },
   { key: "rank", label: "개업 순위", note: "왼쪽 패널", Icon: ListOrdered },
 ];
 
@@ -49,7 +50,7 @@ export default function LayerSheet({ layers, onToggle, onClose }: Props) {
         ))}
       </div>
       <p className={styles["ls-foot"]}>
-        점은 개업, 고리는 폐업입니다. 동별 증감과 지하철을 모두 끄면 오른쪽 아래 정보도 사라집니다.
+        개폐업 기록은 개업을 점, 폐업을 고리로 표시합니다.
       </p>
     </div>
   );

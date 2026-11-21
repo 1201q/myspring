@@ -17,6 +17,7 @@ import type { MapPalette } from "../lib/theme";
 import { ArrowUpRight, ChevronLeft, X } from "lucide-react";
 import PlaybackBoundary from "./PlaybackBoundary";
 import SubwayOverlay from "../features/subway/SubwayOverlay";
+import BusStopOverlay from "../features/bus/BusStopOverlay";
 import MapRail from "../ui/MapRail";
 import LayerSheet from "../ui/LayerSheet";
 import InfoDock from "../ui/InfoDock";
@@ -334,6 +335,14 @@ export default function App() {
           playbackRegionId={playbackRegionId}
           playbackRegionVersion={playbackRegionVersion}
         />
+        {layers.bus && (
+          <BusStopOverlay
+            key={playbackRegionId}
+            map={mapInstance}
+            region={playbackRegionId}
+            dock={dockOpen && activeDockTab === "bus" ? dockBody : null}
+          />
+        )}
         <PlaybackBoundary>
           <Suspense
             fallback={
