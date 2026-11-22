@@ -1,0 +1,114 @@
+{
+  "sourceUrl": "https://www.data.go.kr/data/15090955/fileData.do",
+  "sourceName": "소상공인시장진흥공단 주요상권현황",
+  "referenceDate": "2024-01-01",
+  "acquiredDate": "2026-11-22",
+  "sha256": "23415574515072d7348b933495f498205015f222e9ce6b8ea5e7e02fb3b6358d",
+  "count": 1227,
+  "coordinateCount": 898875,
+  "multiRingCount": 440,
+  "regions": [
+    {
+      "code": "11",
+      "name": "서울특별시",
+      "count": 176,
+      "file": "11.geojson"
+    },
+    {
+      "code": "26",
+      "name": "부산광역시",
+      "count": 55,
+      "file": "26.geojson"
+    },
+    {
+      "code": "27",
+      "name": "대구광역시",
+      "count": 76,
+      "file": "27.geojson"
+    },
+    {
+      "code": "28",
+      "name": "인천광역시",
+      "count": 71,
+      "file": "28.geojson"
+    },
+    {
+      "code": "29",
+      "name": "광주광역시",
+      "count": 56,
+      "file": "29.geojson"
+    },
+    {
+      "code": "30",
+      "name": "대전광역시",
+      "count": 37,
+      "file": "30.geojson"
+    },
+    {
+      "code": "31",
+      "name": "울산광역시",
+      "count": 37,
+      "file": "31.geojson"
+    },
+    {
+      "code": "36",
+      "name": "세종특별자치시",
+      "count": 12,
+      "file": "36.geojson"
+    },
+    {
+      "code": "41",
+      "name": "경기도",
+      "count": 281,
+      "file": "41.geojson"
+    },
+    {
+      "code": "43",
+      "name": "충청북도",
+      "count": 53,
+      "file": "43.geojson"
+    },
+    {
+      "code": "44",
+      "name": "충청남도",
+      "count": 55,
+      "file": "44.geojson"
+    },
+    {
+      "code": "52",
+      "name": "전북특별자치도",
+      "count": 62,
+      "file": "52.geojson"
+    },
+    {
+      "code": "46",
+      "name": "전라남도",
+      "count": 59,
+      "file": "46.geojson"
+    },
+    {
+      "code": "47",
+      "name": "경상북도",
+      "count": 77,
+      "file": "47.geojson"
+    },
+    {
+      "code": "48",
+      "name": "경상남도",
+      "count": 71,
+      "file": "48.geojson"
+    },
+    {
+      "code": "50",
+      "name": "제주특별자치도",
+      "count": 16,
+      "file": "50.geojson"
+    },
+    {
+      "code": "51",
+      "name": "강원특별자치도",
+      "count": 33,
+      "file": "51.geojson"
+    }
+  ]
+}

@@ -17,6 +17,7 @@ import type { MapPalette } from "../lib/theme";
 import { ArrowUpRight, ChevronLeft, X } from "lucide-react";
 import PlaybackBoundary from "./PlaybackBoundary";
 import SubwayOverlay from "../features/subway/SubwayOverlay";
+import CommercialOverlay from "../features/commercial/CommercialOverlay";
 import MapRail from "../ui/MapRail";
 import LayerSheet from "../ui/LayerSheet";
 import InfoDock from "../ui/InfoDock";
@@ -75,6 +76,10 @@ export default function App() {
   const onPlaybackRegionChange = useCallback((id: string) => {
     setPlaybackRegionId(id);
     setPlaybackRegionVersion((v) => v + 1);
+  }, []);
+  const showCommercialInfo = useCallback(() => {
+    setDockTab("commercial");
+    setDockHidden(false);
   }, []);
   const pinned = useRef(false);
   const [isPinned, setIsPinned] = useState(false);
@@ -333,6 +338,15 @@ export default function App() {
           map={mapInstance}
           playbackRegionId={playbackRegionId}
           playbackRegionVersion={playbackRegionVersion}
+        />
+        <CommercialOverlay
+          key={playbackRegionId}
+          enabled={layers.commercial}
+          dock={dockOpen && activeDockTab === "commercial" ? dockBody : null}
+          theme={theme}
+          map={mapInstance}
+          regionId={playbackRegionId}
+          onSelect={showCommercialInfo}
         />
         <PlaybackBoundary>
           <Suspense

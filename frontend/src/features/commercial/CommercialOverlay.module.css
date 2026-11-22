@@ -1,0 +1,68 @@
+.note {
+  margin: var(--space-2) 0;
+  color: var(--ink-muted);
+}
+.search {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-pill);
+  background: var(--fill-hover);
+}
+.search:focus-within {
+  outline: var(--space-1) solid var(--accent);
+}
+.search svg {
+  width: var(--space-4);
+  height: var(--space-4);
+  flex: none;
+}
+.search input {
+  width: 100%;
+  min-width: 0;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  color: var(--ink);
+  font: inherit;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  margin-block: var(--space-2);
+  max-height: calc(var(--control-lg) * 4);
+}
+.list button,
+.detail button {
+  flex: none;
+  text-align: left;
+  padding: var(--space-2);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+}
+.list button:hover,
+.detail button:hover {
+  background: var(--fill-hover);
+}
+.list button[aria-pressed="true"] {
+  background: var(--selected);
+  color: var(--on-selected);
+}
+.list small {
+  display: block;
+}
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  border-top: var(--space-1) solid var(--divider);
+  padding-top: var(--space-2);
+}
+.detail span,
+.source {
+  color: var(--ink-muted);
+}
