@@ -1,0 +1,65 @@
+{
+  "nationalRows": 227102,
+  "tsRows": 54848,
+  "invalidCoordinates": {
+    "national": 0,
+    "ts": 0
+  },
+  "rule": "NFKC normalized names with whitespace removed, haversine distance, nationwide without administrative-area constraint",
+  "results": [
+    {
+      "metres": 5,
+      "tsMatched": 41210,
+      "tsUnmatched": 13638,
+      "nationalMatched": 42306,
+      "pairs": 42364,
+      "tsMultipleMatches": 1007,
+      "tsMatchPercent": 75.13491831971996,
+      "nationalMatchPercent": 18.628633829732895
+    },
+    {
+      "metres": 10,
+      "tsMatched": 42606,
+      "tsUnmatched": 12242,
+      "nationalMatched": 44483,
+      "pairs": 50648,
+      "tsMultipleMatches": 7471,
+      "tsMatchPercent": 77.6801341890315,
+      "nationalMatchPercent": 19.587233930128313
+    },
+    {
+      "metres": 15,
+      "tsMatched": 43745,
+      "tsUnmatched": 11103,
+      "nationalMatched": 45525,
+      "pairs": 71537,
+      "tsMultipleMatches": 26028,
+      "tsMatchPercent": 79.75678238039673,
+      "nationalMatchPercent": 20.046058599219734
+    },
+    {
+      "metres": 30,
+      "tsMatched": 44553,
+      "tsUnmatched": 10295,
+      "nationalMatched": 46745,
+      "pairs": 82412,
+      "tsMultipleMatches": 33914,
+      "tsMatchPercent": 81.22994457409568,
+      "nationalMatchPercent": 20.58326214652447
+    },
+    {
+      "metres": 50,
+      "tsMatched": 44833,
+      "tsUnmatched": 10015,
+      "nationalMatched": 47281,
+      "pairs": 86351,
+      "tsMultipleMatches": 36172,
+      "tsMatchPercent": 81.74044632438739,
+      "nationalMatchPercent": 20.81927944271737
+    }
+  ],
+  "nearest15m": {
+    "tsRows": 43745,
+    "nationalRows": 42791
+  }
+}

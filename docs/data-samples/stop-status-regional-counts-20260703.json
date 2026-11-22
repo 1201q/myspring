@@ -1,0 +1,2534 @@
+{
+  "source": "https://www.data.go.kr/data/15128614/fileData.do",
+  "serviceDate": "2026-07-03",
+  "totalRows": 134442,
+  "countDefinition": "Rows and unique settlement-provider + stop-ID pairs within each source district. Physical stop deduplication not performed.",
+  "provinces": [
+    {
+      "province": "서울특별시",
+      "busRows": 15151,
+      "railRows": 401
+    },
+    {
+      "province": "전남광주통합특별시",
+      "busRows": 9143,
+      "railRows": 20
+    },
+    {
+      "province": "부산광역시",
+      "busRows": 8186,
+      "railRows": 133
+    },
+    {
+      "province": "대구광역시",
+      "busRows": 3431,
+      "railRows": 92
+    },
+    {
+      "province": "인천광역시",
+      "busRows": 6130,
+      "railRows": 95
+    },
+    {
+      "province": "대전광역시",
+      "busRows": 2648,
+      "railRows": 22
+    },
+    {
+      "province": "울산광역시",
+      "busRows": 2995,
+      "railRows": 6
+    },
+    {
+      "province": "세종특별자치시",
+      "busRows": 1347,
+      "railRows": 0
+    },
+    {
+      "province": "경기도",
+      "busRows": 35346,
+      "railRows": 260
+    },
+    {
+      "province": "충청북도",
+      "busRows": 4219,
+      "railRows": 0
+    },
+    {
+      "province": "충청남도",
+      "busRows": 6164,
+      "railRows": 11
+    },
+    {
+      "province": "경상북도",
+      "busRows": 7014,
+      "railRows": 10
+    },
+    {
+      "province": "경상남도",
+      "busRows": 10513,
+      "railRows": 17
+    },
+    {
+      "province": "제주특별자치도",
+      "busRows": 3379,
+      "railRows": 0
+    },
+    {
+      "province": "강원특별자치도",
+      "busRows": 6779,
+      "railRows": 6
+    },
+    {
+      "province": "전북특별자치도",
+      "busRows": 4971,
+      "railRows": 0
+    },
+    {
+      "province": "기타",
+      "busRows": 5953,
+      "railRows": 0
+    }
+  ],
+  "districts": [
+    {
+      "code": "11110",
+      "province": "서울특별시",
+      "city": "종로구",
+      "busRows": 457,
+      "railRows": 15,
+      "busProviderStopIds": 457,
+      "railProviderStopIds": 15
+    },
+    {
+      "code": "11140",
+      "province": "서울특별시",
+      "city": "중구",
+      "busRows": 279,
+      "railRows": 26,
+      "busProviderStopIds": 279,
+      "railProviderStopIds": 26
+    },
+    {
+      "code": "11170",
+      "province": "서울특별시",
+      "city": "용산구",
+      "busRows": 418,
+      "railRows": 17,
+      "busProviderStopIds": 418,
+      "railProviderStopIds": 17
+    },
+    {
+      "code": "11200",
+      "province": "서울특별시",
+      "city": "성동구",
+      "busRows": 507,
+      "railRows": 17,
+      "busProviderStopIds": 507,
+      "railProviderStopIds": 17
+    },
+    {
+      "code": "11215",
+      "province": "서울특별시",
+      "city": "광진구",
+      "busRows": 405,
+      "railRows": 11,
+      "busProviderStopIds": 405,
+      "railProviderStopIds": 11
+    },
+    {
+      "code": "11230",
+      "province": "서울특별시",
+      "city": "동대문구",
+      "busRows": 429,
+      "railRows": 12,
+      "busProviderStopIds": 429,
+      "railProviderStopIds": 12
+    },
+    {
+      "code": "11260",
+      "province": "서울특별시",
+      "city": "중랑구",
+      "busRows": 489,
+      "railRows": 13,
+      "busProviderStopIds": 489,
+      "railProviderStopIds": 13
+    },
+    {
+      "code": "11290",
+      "province": "서울특별시",
+      "city": "성북구",
+      "busRows": 681,
+      "railRows": 14,
+      "busProviderStopIds": 681,
+      "railProviderStopIds": 14
+    },
+    {
+      "code": "11305",
+      "province": "서울특별시",
+      "city": "강북구",
+      "busRows": 527,
+      "railRows": 11,
+      "busProviderStopIds": 527,
+      "railProviderStopIds": 11
+    },
+    {
+      "code": "11320",
+      "province": "서울특별시",
+      "city": "도봉구",
+      "busRows": 533,
+      "railRows": 7,
+      "busProviderStopIds": 533,
+      "railProviderStopIds": 7
+    },
+    {
+      "code": "11350",
+      "province": "서울특별시",
+      "city": "노원구",
+      "busRows": 758,
+      "railRows": 16,
+      "busProviderStopIds": 758,
+      "railProviderStopIds": 16
+    },
+    {
+      "code": "11380",
+      "province": "서울특별시",
+      "city": "은평구",
+      "busRows": 652,
+      "railRows": 15,
+      "busProviderStopIds": 652,
+      "railProviderStopIds": 15
+    },
+    {
+      "code": "11410",
+      "province": "서울특별시",
+      "city": "서대문구",
+      "busRows": 627,
+      "railRows": 7,
+      "busProviderStopIds": 627,
+      "railProviderStopIds": 7
+    },
+    {
+      "code": "11440",
+      "province": "서울특별시",
+      "city": "마포구",
+      "busRows": 748,
+      "railRows": 23,
+      "busProviderStopIds": 748,
+      "railProviderStopIds": 23
+    },
+    {
+      "code": "11470",
+      "province": "서울특별시",
+      "city": "양천구",
+      "busRows": 523,
+      "railRows": 7,
+      "busProviderStopIds": 523,
+      "railProviderStopIds": 7
+    },
+    {
+      "code": "11500",
+      "province": "서울특별시",
+      "city": "강서구",
+      "busRows": 846,
+      "railRows": 22,
+      "busProviderStopIds": 846,
+      "railProviderStopIds": 22
+    },
+    {
+      "code": "11530",
+      "province": "서울특별시",
+      "city": "구로구",
+      "busRows": 727,
+      "railRows": 13,
+      "busProviderStopIds": 727,
+      "railProviderStopIds": 13
+    },
+    {
+      "code": "11545",
+      "province": "서울특별시",
+      "city": "금천구",
+      "busRows": 467,
+      "railRows": 4,
+      "busProviderStopIds": 467,
+      "railProviderStopIds": 4
+    },
+    {
+      "code": "11560",
+      "province": "서울특별시",
+      "city": "영등포구",
+      "busRows": 719,
+      "railRows": 24,
+      "busProviderStopIds": 719,
+      "railProviderStopIds": 24
+    },
+    {
+      "code": "11590",
+      "province": "서울특별시",
+      "city": "동작구",
+      "busRows": 536,
+      "railRows": 16,
+      "busProviderStopIds": 536,
+      "railProviderStopIds": 16
+    },
+    {
+      "code": "11620",
+      "province": "서울특별시",
+      "city": "관악구",
+      "busRows": 684,
+      "railRows": 10,
+      "busProviderStopIds": 684,
+      "railProviderStopIds": 10
+    },
+    {
+      "code": "11650",
+      "province": "서울특별시",
+      "city": "서초구",
+      "busRows": 934,
+      "railRows": 20,
+      "busProviderStopIds": 934,
+      "railProviderStopIds": 20
+    },
+    {
+      "code": "11680",
+      "province": "서울특별시",
+      "city": "강남구",
+      "busRows": 893,
+      "railRows": 37,
+      "busProviderStopIds": 893,
+      "railProviderStopIds": 37
+    },
+    {
+      "code": "11710",
+      "province": "서울특별시",
+      "city": "송파구",
+      "busRows": 734,
+      "railRows": 32,
+      "busProviderStopIds": 734,
+      "railProviderStopIds": 32
+    },
+    {
+      "code": "11740",
+      "province": "서울특별시",
+      "city": "강동구",
+      "busRows": 577,
+      "railRows": 12,
+      "busProviderStopIds": 577,
+      "railProviderStopIds": 12
+    },
+    {
+      "code": "12110",
+      "province": "전남광주통합특별시",
+      "city": "목포시",
+      "busRows": 453,
+      "railRows": 0,
+      "busProviderStopIds": 453,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "12130",
+      "province": "전남광주통합특별시",
+      "city": "여수시",
+      "busRows": 1205,
+      "railRows": 0,
+      "busProviderStopIds": 1205,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "12150",
+      "province": "전남광주통합특별시",
+      "city": "순천시",
+      "busRows": 1139,
+      "railRows": 0,
+      "busProviderStopIds": 1139,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "12170",
+      "province": "전남광주통합특별시",
+      "city": "나주시",
+      "busRows": 910,
+      "railRows": 0,
+      "busProviderStopIds": 910,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "12190",
+      "province": "전남광주통합특별시",
+      "city": "광양시",
+      "busRows": 555,
+      "railRows": 0,
+      "busProviderStopIds": 555,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "12210",
+      "province": "전남광주통합특별시",
+      "city": "동구",
+      "busRows": 238,
+      "railRows": 6,
+      "busProviderStopIds": 238,
+      "railProviderStopIds": 6
+    },
+    {
+      "code": "12240",
+      "province": "전남광주통합특별시",
+      "city": "서구",
+      "busRows": 447,
+      "railRows": 7,
+      "busProviderStopIds": 447,
+      "railProviderStopIds": 7
+    },
+    {
+      "code": "12270",
+      "province": "전남광주통합특별시",
+      "city": "남구",
+      "busRows": 322,
+      "railRows": 1,
+      "busProviderStopIds": 322,
+      "railProviderStopIds": 1
+    },
+    {
+      "code": "12300",
+      "province": "전남광주통합특별시",
+      "city": "북구",
+      "busRows": 750,
+      "railRows": 1,
+      "busProviderStopIds": 750,
+      "railProviderStopIds": 1
+    },
+    {
+      "code": "12330",
+      "province": "전남광주통합특별시",
+      "city": "광산구",
+      "busRows": 880,
+      "railRows": 5,
+      "busProviderStopIds": 880,
+      "railProviderStopIds": 5
+    },
+    {
+      "code": "12710",
+      "province": "전남광주통합특별시",
+      "city": "담양군",
+      "busRows": 230,
+      "railRows": 0,
+      "busProviderStopIds": 230,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "12720",
+      "province": "전남광주통합특별시",
+      "city": "곡성군",
+      "busRows": 1,
+      "railRows": 0,
+      "busProviderStopIds": 1,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "12730",
+      "province": "전남광주통합특별시",
+      "city": "구례군",
+      "busRows": 64,
+      "railRows": 0,
+      "busProviderStopIds": 64,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "12740",
+      "province": "전남광주통합특별시",
+      "city": "고흥군",
+      "busRows": 276,
+      "railRows": 0,
+      "busProviderStopIds": 276,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "12750",
+      "province": "전남광주통합특별시",
+      "city": "보성군",
+      "busRows": 306,
+      "railRows": 0,
+      "busProviderStopIds": 306,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "12760",
+      "province": "전남광주통합특별시",
+      "city": "화순군",
+      "busRows": 615,
+      "railRows": 0,
+      "busProviderStopIds": 615,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "12770",
+      "province": "전남광주통합특별시",
+      "city": "장흥군",
+      "busRows": 1,
+      "railRows": 0,
+      "busProviderStopIds": 1,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "12780",
+      "province": "전남광주통합특별시",
+      "city": "강진군",
+      "busRows": 47,
+      "railRows": 0,
+      "busProviderStopIds": 47,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "12790",
+      "province": "전남광주통합특별시",
+      "city": "해남군",
+      "busRows": 31,
+      "railRows": 0,
+      "busProviderStopIds": 31,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "12800",
+      "province": "전남광주통합특별시",
+      "city": "영암군",
+      "busRows": 81,
+      "railRows": 0,
+      "busProviderStopIds": 81,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "12810",
+      "province": "전남광주통합특별시",
+      "city": "무안군",
+      "busRows": 206,
+      "railRows": 0,
+      "busProviderStopIds": 206,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "12820",
+      "province": "전남광주통합특별시",
+      "city": "함평군",
+      "busRows": 59,
+      "railRows": 0,
+      "busProviderStopIds": 59,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "12830",
+      "province": "전남광주통합특별시",
+      "city": "영광군",
+      "busRows": 4,
+      "railRows": 0,
+      "busProviderStopIds": 4,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "12840",
+      "province": "전남광주통합특별시",
+      "city": "장성군",
+      "busRows": 236,
+      "railRows": 0,
+      "busProviderStopIds": 236,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "12850",
+      "province": "전남광주통합특별시",
+      "city": "완도군",
+      "busRows": 4,
+      "railRows": 0,
+      "busProviderStopIds": 4,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "12860",
+      "province": "전남광주통합특별시",
+      "city": "진도군",
+      "busRows": 1,
+      "railRows": 0,
+      "busProviderStopIds": 1,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "12870",
+      "province": "전남광주통합특별시",
+      "city": "신안군",
+      "busRows": 82,
+      "railRows": 0,
+      "busProviderStopIds": 82,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "26110",
+      "province": "부산광역시",
+      "city": "중구",
+      "busRows": 137,
+      "railRows": 3,
+      "busProviderStopIds": 137,
+      "railProviderStopIds": 3
+    },
+    {
+      "code": "26140",
+      "province": "부산광역시",
+      "city": "서구",
+      "busRows": 308,
+      "railRows": 3,
+      "busProviderStopIds": 308,
+      "railProviderStopIds": 3
+    },
+    {
+      "code": "26170",
+      "province": "부산광역시",
+      "city": "동구",
+      "busRows": 249,
+      "railRows": 5,
+      "busProviderStopIds": 249,
+      "railProviderStopIds": 5
+    },
+    {
+      "code": "26200",
+      "province": "부산광역시",
+      "city": "영도구",
+      "busRows": 404,
+      "railRows": 0,
+      "busProviderStopIds": 404,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "26230",
+      "province": "부산광역시",
+      "city": "부산진구",
+      "busRows": 619,
+      "railRows": 11,
+      "busProviderStopIds": 619,
+      "railProviderStopIds": 11
+    },
+    {
+      "code": "26260",
+      "province": "부산광역시",
+      "city": "동래구",
+      "busRows": 578,
+      "railRows": 13,
+      "busProviderStopIds": 578,
+      "railProviderStopIds": 13
+    },
+    {
+      "code": "26290",
+      "province": "부산광역시",
+      "city": "남구",
+      "busRows": 507,
+      "railRows": 6,
+      "busProviderStopIds": 507,
+      "railProviderStopIds": 6
+    },
+    {
+      "code": "26320",
+      "province": "부산광역시",
+      "city": "북구",
+      "busRows": 501,
+      "railRows": 13,
+      "busProviderStopIds": 501,
+      "railProviderStopIds": 13
+    },
+    {
+      "code": "26350",
+      "province": "부산광역시",
+      "city": "해운대구",
+      "busRows": 583,
+      "railRows": 15,
+      "busProviderStopIds": 583,
+      "railProviderStopIds": 15
+    },
+    {
+      "code": "26380",
+      "province": "부산광역시",
+      "city": "사하구",
+      "busRows": 701,
+      "railRows": 12,
+      "busProviderStopIds": 701,
+      "railProviderStopIds": 12
+    },
+    {
+      "code": "26410",
+      "province": "부산광역시",
+      "city": "금정구",
+      "busRows": 553,
+      "railRows": 9,
+      "busProviderStopIds": 553,
+      "railProviderStopIds": 9
+    },
+    {
+      "code": "26440",
+      "province": "부산광역시",
+      "city": "강서구",
+      "busRows": 1187,
+      "railRows": 10,
+      "busProviderStopIds": 1187,
+      "railProviderStopIds": 10
+    },
+    {
+      "code": "26470",
+      "province": "부산광역시",
+      "city": "연제구",
+      "busRows": 309,
+      "railRows": 11,
+      "busProviderStopIds": 309,
+      "railProviderStopIds": 11
+    },
+    {
+      "code": "26500",
+      "province": "부산광역시",
+      "city": "수영구",
+      "busRows": 245,
+      "railRows": 6,
+      "busProviderStopIds": 245,
+      "railProviderStopIds": 6
+    },
+    {
+      "code": "26530",
+      "province": "부산광역시",
+      "city": "사상구",
+      "busRows": 479,
+      "railRows": 9,
+      "busProviderStopIds": 479,
+      "railProviderStopIds": 9
+    },
+    {
+      "code": "26710",
+      "province": "부산광역시",
+      "city": "기장군",
+      "busRows": 826,
+      "railRows": 7,
+      "busProviderStopIds": 826,
+      "railProviderStopIds": 7
+    },
+    {
+      "code": "27110",
+      "province": "대구광역시",
+      "city": "중구",
+      "busRows": 129,
+      "railRows": 12,
+      "busProviderStopIds": 129,
+      "railProviderStopIds": 12
+    },
+    {
+      "code": "27140",
+      "province": "대구광역시",
+      "city": "동구",
+      "busRows": 569,
+      "railRows": 15,
+      "busProviderStopIds": 569,
+      "railProviderStopIds": 15
+    },
+    {
+      "code": "27170",
+      "province": "대구광역시",
+      "city": "서구",
+      "busRows": 194,
+      "railRows": 6,
+      "busProviderStopIds": 194,
+      "railProviderStopIds": 6
+    },
+    {
+      "code": "27200",
+      "province": "대구광역시",
+      "city": "남구",
+      "busRows": 168,
+      "railRows": 7,
+      "busProviderStopIds": 168,
+      "railProviderStopIds": 7
+    },
+    {
+      "code": "27230",
+      "province": "대구광역시",
+      "city": "북구",
+      "busRows": 594,
+      "railRows": 15,
+      "busProviderStopIds": 594,
+      "railProviderStopIds": 15
+    },
+    {
+      "code": "27260",
+      "province": "대구광역시",
+      "city": "수성구",
+      "busRows": 475,
+      "railRows": 18,
+      "busProviderStopIds": 475,
+      "railProviderStopIds": 18
+    },
+    {
+      "code": "27290",
+      "province": "대구광역시",
+      "city": "달서구",
+      "busRows": 579,
+      "railRows": 14,
+      "busProviderStopIds": 579,
+      "railProviderStopIds": 14
+    },
+    {
+      "code": "27710",
+      "province": "대구광역시",
+      "city": "달성군",
+      "busRows": 508,
+      "railRows": 5,
+      "busProviderStopIds": 508,
+      "railProviderStopIds": 5
+    },
+    {
+      "code": "27720",
+      "province": "대구광역시",
+      "city": "군위군",
+      "busRows": 215,
+      "railRows": 0,
+      "busProviderStopIds": 215,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "28125",
+      "province": "인천광역시",
+      "city": "제물포구",
+      "busRows": 287,
+      "railRows": 5,
+      "busProviderStopIds": 287,
+      "railProviderStopIds": 5
+    },
+    {
+      "code": "28155",
+      "province": "인천광역시",
+      "city": "영종구",
+      "busRows": 434,
+      "railRows": 5,
+      "busProviderStopIds": 433,
+      "railProviderStopIds": 5
+    },
+    {
+      "code": "28177",
+      "province": "인천광역시",
+      "city": "미추홀구",
+      "busRows": 511,
+      "railRows": 9,
+      "busProviderStopIds": 511,
+      "railProviderStopIds": 9
+    },
+    {
+      "code": "28185",
+      "province": "인천광역시",
+      "city": "연수구",
+      "busRows": 592,
+      "railRows": 16,
+      "busProviderStopIds": 592,
+      "railProviderStopIds": 16
+    },
+    {
+      "code": "28200",
+      "province": "인천광역시",
+      "city": "남동구",
+      "busRows": 745,
+      "railRows": 15,
+      "busProviderStopIds": 745,
+      "railProviderStopIds": 15
+    },
+    {
+      "code": "28237",
+      "province": "인천광역시",
+      "city": "부평구",
+      "busRows": 773,
+      "railRows": 14,
+      "busProviderStopIds": 773,
+      "railProviderStopIds": 14
+    },
+    {
+      "code": "28245",
+      "province": "인천광역시",
+      "city": "계양구",
+      "busRows": 552,
+      "railRows": 8,
+      "busProviderStopIds": 552,
+      "railProviderStopIds": 8
+    },
+    {
+      "code": "28275",
+      "province": "인천광역시",
+      "city": "서해구",
+      "busRows": 722,
+      "railRows": 13,
+      "busProviderStopIds": 722,
+      "railProviderStopIds": 13
+    },
+    {
+      "code": "28290",
+      "province": "인천광역시",
+      "city": "검단구",
+      "busRows": 488,
+      "railRows": 10,
+      "busProviderStopIds": 488,
+      "railProviderStopIds": 10
+    },
+    {
+      "code": "28710",
+      "province": "인천광역시",
+      "city": "강화군",
+      "busRows": 992,
+      "railRows": 0,
+      "busProviderStopIds": 992,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "28720",
+      "province": "인천광역시",
+      "city": "옹진군",
+      "busRows": 32,
+      "railRows": 0,
+      "busProviderStopIds": 32,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "30110",
+      "province": "대전광역시",
+      "city": "동구",
+      "busRows": 471,
+      "railRows": 4,
+      "busProviderStopIds": 468,
+      "railProviderStopIds": 4
+    },
+    {
+      "code": "30140",
+      "province": "대전광역시",
+      "city": "중구",
+      "busRows": 374,
+      "railRows": 4,
+      "busProviderStopIds": 364,
+      "railProviderStopIds": 4
+    },
+    {
+      "code": "30170",
+      "province": "대전광역시",
+      "city": "서구",
+      "busRows": 584,
+      "railRows": 7,
+      "busProviderStopIds": 572,
+      "railProviderStopIds": 7
+    },
+    {
+      "code": "30200",
+      "province": "대전광역시",
+      "city": "유성구",
+      "busRows": 871,
+      "railRows": 7,
+      "busProviderStopIds": 863,
+      "railProviderStopIds": 7
+    },
+    {
+      "code": "30230",
+      "province": "대전광역시",
+      "city": "대덕구",
+      "busRows": 348,
+      "railRows": 0,
+      "busProviderStopIds": 348,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "31110",
+      "province": "울산광역시",
+      "city": "중구",
+      "busRows": 381,
+      "railRows": 0,
+      "busProviderStopIds": 381,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "31140",
+      "province": "울산광역시",
+      "city": "남구",
+      "busRows": 638,
+      "railRows": 2,
+      "busProviderStopIds": 638,
+      "railProviderStopIds": 2
+    },
+    {
+      "code": "31170",
+      "province": "울산광역시",
+      "city": "동구",
+      "busRows": 315,
+      "railRows": 0,
+      "busProviderStopIds": 315,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "31200",
+      "province": "울산광역시",
+      "city": "북구",
+      "busRows": 462,
+      "railRows": 0,
+      "busProviderStopIds": 462,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "31710",
+      "province": "울산광역시",
+      "city": "울주군",
+      "busRows": 1199,
+      "railRows": 4,
+      "busProviderStopIds": 1199,
+      "railProviderStopIds": 4
+    },
+    {
+      "code": "36110",
+      "province": "세종특별자치시",
+      "city": "세종시",
+      "busRows": 1347,
+      "railRows": 0,
+      "busProviderStopIds": 1346,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "41111",
+      "province": "경기도",
+      "city": "수원시 장안구",
+      "busRows": 338,
+      "railRows": 1,
+      "busProviderStopIds": 338,
+      "railProviderStopIds": 1
+    },
+    {
+      "code": "41113",
+      "province": "경기도",
+      "city": "수원시 권선구",
+      "busRows": 491,
+      "railRows": 4,
+      "busProviderStopIds": 491,
+      "railProviderStopIds": 4
+    },
+    {
+      "code": "41115",
+      "province": "경기도",
+      "city": "수원시 팔달구",
+      "busRows": 243,
+      "railRows": 5,
+      "busProviderStopIds": 243,
+      "railProviderStopIds": 5
+    },
+    {
+      "code": "41117",
+      "province": "경기도",
+      "city": "수원시 영통구",
+      "busRows": 352,
+      "railRows": 5,
+      "busProviderStopIds": 352,
+      "railProviderStopIds": 5
+    },
+    {
+      "code": "41131",
+      "province": "경기도",
+      "city": "성남시 수정구",
+      "busRows": 405,
+      "railRows": 6,
+      "busProviderStopIds": 405,
+      "railProviderStopIds": 6
+    },
+    {
+      "code": "41133",
+      "province": "경기도",
+      "city": "성남시 중원구",
+      "busRows": 372,
+      "railRows": 4,
+      "busProviderStopIds": 372,
+      "railProviderStopIds": 4
+    },
+    {
+      "code": "41135",
+      "province": "경기도",
+      "city": "성남시 분당구",
+      "busRows": 864,
+      "railRows": 14,
+      "busProviderStopIds": 864,
+      "railProviderStopIds": 14
+    },
+    {
+      "code": "41150",
+      "province": "경기도",
+      "city": "의정부시",
+      "busRows": 806,
+      "railRows": 21,
+      "busProviderStopIds": 806,
+      "railProviderStopIds": 21
+    },
+    {
+      "code": "41171",
+      "province": "경기도",
+      "city": "안양시 만안구",
+      "busRows": 412,
+      "railRows": 4,
+      "busProviderStopIds": 412,
+      "railProviderStopIds": 4
+    },
+    {
+      "code": "41173",
+      "province": "경기도",
+      "city": "안양시 동안구",
+      "busRows": 446,
+      "railRows": 3,
+      "busProviderStopIds": 446,
+      "railProviderStopIds": 3
+    },
+    {
+      "code": "41192",
+      "province": "경기도",
+      "city": "부천시 원미구",
+      "busRows": 657,
+      "railRows": 6,
+      "busProviderStopIds": 657,
+      "railProviderStopIds": 6
+    },
+    {
+      "code": "41192",
+      "province": "인천광역시",
+      "city": "부평구",
+      "busRows": 1,
+      "railRows": 0,
+      "busProviderStopIds": 1,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "41194",
+      "province": "경기도",
+      "city": "부천시 소사구",
+      "busRows": 301,
+      "railRows": 6,
+      "busProviderStopIds": 301,
+      "railProviderStopIds": 6
+    },
+    {
+      "code": "41194",
+      "province": "경기도",
+      "city": "부천시 원미구",
+      "busRows": 1,
+      "railRows": 0,
+      "busProviderStopIds": 1,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "41196",
+      "province": "경기도",
+      "city": "부천시 오정구",
+      "busRows": 389,
+      "railRows": 3,
+      "busProviderStopIds": 389,
+      "railProviderStopIds": 3
+    },
+    {
+      "code": "41210",
+      "province": "경기도",
+      "city": "광명시",
+      "busRows": 639,
+      "railRows": 3,
+      "busProviderStopIds": 639,
+      "railProviderStopIds": 3
+    },
+    {
+      "code": "41210",
+      "province": "경기도",
+      "city": "안양시 만안구",
+      "busRows": 1,
+      "railRows": 0,
+      "busProviderStopIds": 1,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "41220",
+      "province": "경기도",
+      "city": "평택시",
+      "busRows": 1740,
+      "railRows": 5,
+      "busProviderStopIds": 1740,
+      "railProviderStopIds": 5
+    },
+    {
+      "code": "41220",
+      "province": "인천광역시",
+      "city": "평택시",
+      "busRows": 1,
+      "railRows": 0,
+      "busProviderStopIds": 1,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "41220",
+      "province": "서울특별시",
+      "city": "평택시",
+      "busRows": 1,
+      "railRows": 0,
+      "busProviderStopIds": 1,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "41250",
+      "province": "경기도",
+      "city": "동두천시",
+      "busRows": 330,
+      "railRows": 5,
+      "busProviderStopIds": 330,
+      "railProviderStopIds": 5
+    },
+    {
+      "code": "41271",
+      "province": "경기도",
+      "city": "안산시 상록구",
+      "busRows": 467,
+      "railRows": 4,
+      "busProviderStopIds": 467,
+      "railProviderStopIds": 4
+    },
+    {
+      "code": "41273",
+      "province": "경기도",
+      "city": "안산시 단원구",
+      "busRows": 743,
+      "railRows": 10,
+      "busProviderStopIds": 743,
+      "railProviderStopIds": 10
+    },
+    {
+      "code": "41273",
+      "province": "경기도",
+      "city": "안양시 동안구",
+      "busRows": 1,
+      "railRows": 0,
+      "busProviderStopIds": 1,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "41281",
+      "province": "경기도",
+      "city": "고양시 덕양구",
+      "busRows": 1327,
+      "railRows": 11,
+      "busProviderStopIds": 1327,
+      "railProviderStopIds": 11
+    },
+    {
+      "code": "41285",
+      "province": "경기도",
+      "city": "고양시 일산동구",
+      "busRows": 617,
+      "railRows": 6,
+      "busProviderStopIds": 617,
+      "railProviderStopIds": 6
+    },
+    {
+      "code": "41287",
+      "province": "경기도",
+      "city": "고양시 일산서구",
+      "busRows": 522,
+      "railRows": 5,
+      "busProviderStopIds": 522,
+      "railProviderStopIds": 5
+    },
+    {
+      "code": "41290",
+      "province": "경기도",
+      "city": "과천시",
+      "busRows": 174,
+      "railRows": 5,
+      "busProviderStopIds": 174,
+      "railProviderStopIds": 5
+    },
+    {
+      "code": "41310",
+      "province": "경기도",
+      "city": "구리시",
+      "busRows": 367,
+      "railRows": 5,
+      "busProviderStopIds": 367,
+      "railProviderStopIds": 5
+    },
+    {
+      "code": "41360",
+      "province": "경기도",
+      "city": "남양주시",
+      "busRows": 1849,
+      "railRows": 18,
+      "busProviderStopIds": 1849,
+      "railProviderStopIds": 18
+    },
+    {
+      "code": "41370",
+      "province": "경기도",
+      "city": "오산시",
+      "busRows": 442,
+      "railRows": 4,
+      "busProviderStopIds": 442,
+      "railProviderStopIds": 4
+    },
+    {
+      "code": "41390",
+      "province": "경기도",
+      "city": "시흥시",
+      "busRows": 1173,
+      "railRows": 9,
+      "busProviderStopIds": 1173,
+      "railProviderStopIds": 9
+    },
+    {
+      "code": "41390",
+      "province": "경기도",
+      "city": "안산시 상록구",
+      "busRows": 2,
+      "railRows": 0,
+      "busProviderStopIds": 2,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "41410",
+      "province": "경기도",
+      "city": "군포시",
+      "busRows": 529,
+      "railRows": 6,
+      "busProviderStopIds": 529,
+      "railProviderStopIds": 6
+    },
+    {
+      "code": "41410",
+      "province": "경기도",
+      "city": "안양시 만안구",
+      "busRows": 1,
+      "railRows": 0,
+      "busProviderStopIds": 1,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "41430",
+      "province": "경기도",
+      "city": "의왕시",
+      "busRows": 436,
+      "railRows": 1,
+      "busProviderStopIds": 436,
+      "railProviderStopIds": 1
+    },
+    {
+      "code": "41450",
+      "province": "경기도",
+      "city": "하남시",
+      "busRows": 584,
+      "railRows": 4,
+      "busProviderStopIds": 584,
+      "railProviderStopIds": 4
+    },
+    {
+      "code": "41461",
+      "province": "경기도",
+      "city": "용인시 처인구",
+      "busRows": 1268,
+      "railRows": 9,
+      "busProviderStopIds": 1268,
+      "railProviderStopIds": 9
+    },
+    {
+      "code": "41463",
+      "province": "경기도",
+      "city": "용인시 기흥구",
+      "busRows": 784,
+      "railRows": 12,
+      "busProviderStopIds": 784,
+      "railProviderStopIds": 12
+    },
+    {
+      "code": "41463",
+      "province": "경기도",
+      "city": "용인시 처인구",
+      "busRows": 13,
+      "railRows": 0,
+      "busProviderStopIds": 13,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "41465",
+      "province": "경기도",
+      "city": "용인시 수지구",
+      "busRows": 543,
+      "railRows": 5,
+      "busProviderStopIds": 543,
+      "railProviderStopIds": 5
+    },
+    {
+      "code": "41465",
+      "province": "경기도",
+      "city": "용인시 처인구",
+      "busRows": 5,
+      "railRows": 0,
+      "busProviderStopIds": 5,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "41480",
+      "province": "경기도",
+      "city": "파주시",
+      "busRows": 1905,
+      "railRows": 10,
+      "busProviderStopIds": 1905,
+      "railProviderStopIds": 10
+    },
+    {
+      "code": "41500",
+      "province": "경기도",
+      "city": "이천시",
+      "busRows": 942,
+      "railRows": 3,
+      "busProviderStopIds": 942,
+      "railProviderStopIds": 3
+    },
+    {
+      "code": "41550",
+      "province": "경기도",
+      "city": "안성시",
+      "busRows": 1121,
+      "railRows": 0,
+      "busProviderStopIds": 1121,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "41570",
+      "province": "경기도",
+      "city": "김포시",
+      "busRows": 1313,
+      "railRows": 9,
+      "busProviderStopIds": 1313,
+      "railProviderStopIds": 9
+    },
+    {
+      "code": "41591",
+      "province": "경기도",
+      "city": "화성시 만세구",
+      "busRows": 1452,
+      "railRows": 0,
+      "busProviderStopIds": 1452,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "41593",
+      "province": "경기도",
+      "city": "화성시 효행구",
+      "busRows": 557,
+      "railRows": 2,
+      "busProviderStopIds": 557,
+      "railProviderStopIds": 2
+    },
+    {
+      "code": "41595",
+      "province": "경기도",
+      "city": "화성시 병점구",
+      "busRows": 319,
+      "railRows": 1,
+      "busProviderStopIds": 319,
+      "railProviderStopIds": 1
+    },
+    {
+      "code": "41595",
+      "province": "경기도",
+      "city": "화성시 효행구",
+      "busRows": 2,
+      "railRows": 0,
+      "busProviderStopIds": 2,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "41597",
+      "province": "경기도",
+      "city": "화성시 동탄구",
+      "busRows": 472,
+      "railRows": 1,
+      "busProviderStopIds": 472,
+      "railProviderStopIds": 1
+    },
+    {
+      "code": "41597",
+      "province": "경기도",
+      "city": "화성시 효행구",
+      "busRows": 12,
+      "railRows": 0,
+      "busProviderStopIds": 12,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "41597",
+      "province": "경기도",
+      "city": "화성시 만세구",
+      "busRows": 5,
+      "railRows": 0,
+      "busProviderStopIds": 5,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "41597",
+      "province": "경기도",
+      "city": "화성시 병점구",
+      "busRows": 2,
+      "railRows": 0,
+      "busProviderStopIds": 2,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "41610",
+      "province": "경기도",
+      "city": "광주시",
+      "busRows": 1218,
+      "railRows": 4,
+      "busProviderStopIds": 1218,
+      "railProviderStopIds": 4
+    },
+    {
+      "code": "41630",
+      "province": "경기도",
+      "city": "양주시",
+      "busRows": 1397,
+      "railRows": 3,
+      "busProviderStopIds": 1397,
+      "railProviderStopIds": 3
+    },
+    {
+      "code": "41630",
+      "province": "경기도",
+      "city": "의정부시",
+      "busRows": 1,
+      "railRows": 0,
+      "busProviderStopIds": 1,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "41650",
+      "province": "경기도",
+      "city": "포천시",
+      "busRows": 1068,
+      "railRows": 0,
+      "busProviderStopIds": 1068,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "41670",
+      "province": "경기도",
+      "city": "여주시",
+      "busRows": 846,
+      "railRows": 2,
+      "busProviderStopIds": 846,
+      "railProviderStopIds": 2
+    },
+    {
+      "code": "41670",
+      "province": "경기도",
+      "city": "용인시 기흥구",
+      "busRows": 1,
+      "railRows": 0,
+      "busProviderStopIds": 1,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "41800",
+      "province": "경기도",
+      "city": "연천군",
+      "busRows": 485,
+      "railRows": 3,
+      "busProviderStopIds": 485,
+      "railProviderStopIds": 3
+    },
+    {
+      "code": "41820",
+      "province": "경기도",
+      "city": "가평군",
+      "busRows": 724,
+      "railRows": 4,
+      "busProviderStopIds": 724,
+      "railProviderStopIds": 4
+    },
+    {
+      "code": "41830",
+      "province": "경기도",
+      "city": "양평군",
+      "busRows": 868,
+      "railRows": 9,
+      "busProviderStopIds": 868,
+      "railProviderStopIds": 9
+    },
+    {
+      "code": "43111",
+      "province": "충청북도",
+      "city": "청주시 상당구",
+      "busRows": 617,
+      "railRows": 0,
+      "busProviderStopIds": 617,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "43112",
+      "province": "충청북도",
+      "city": "청주시 서원구",
+      "busRows": 408,
+      "railRows": 0,
+      "busProviderStopIds": 408,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "43113",
+      "province": "충청북도",
+      "city": "청주시 흥덕구",
+      "busRows": 741,
+      "railRows": 0,
+      "busProviderStopIds": 741,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "43114",
+      "province": "충청북도",
+      "city": "파주시",
+      "busRows": 1,
+      "railRows": 0,
+      "busProviderStopIds": 1,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "43114",
+      "province": "충청북도",
+      "city": "청주시 청원구",
+      "busRows": 609,
+      "railRows": 0,
+      "busProviderStopIds": 609,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "43130",
+      "province": "충청북도",
+      "city": "충주시",
+      "busRows": 1,
+      "railRows": 0,
+      "busProviderStopIds": 1,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "43150",
+      "province": "충청북도",
+      "city": "제천시",
+      "busRows": 559,
+      "railRows": 0,
+      "busProviderStopIds": 559,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "43720",
+      "province": "충청북도",
+      "city": "보은군",
+      "busRows": 42,
+      "railRows": 0,
+      "busProviderStopIds": 42,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "43730",
+      "province": "충청북도",
+      "city": "옥천군",
+      "busRows": 455,
+      "railRows": 0,
+      "busProviderStopIds": 455,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "43740",
+      "province": "충청북도",
+      "city": "영동군",
+      "busRows": 378,
+      "railRows": 0,
+      "busProviderStopIds": 378,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "43745",
+      "province": "충청북도",
+      "city": "증평군",
+      "busRows": 49,
+      "railRows": 0,
+      "busProviderStopIds": 49,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "43750",
+      "province": "충청북도",
+      "city": "진천군",
+      "busRows": 76,
+      "railRows": 0,
+      "busProviderStopIds": 76,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "43760",
+      "province": "충청북도",
+      "city": "괴산군",
+      "busRows": 1,
+      "railRows": 0,
+      "busProviderStopIds": 1,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "43770",
+      "province": "충청북도",
+      "city": "음성군",
+      "busRows": 20,
+      "railRows": 0,
+      "busProviderStopIds": 20,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "43800",
+      "province": "충청북도",
+      "city": "단양군",
+      "busRows": 262,
+      "railRows": 0,
+      "busProviderStopIds": 262,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "44131",
+      "province": "충청남도",
+      "city": "천안시 동남구",
+      "busRows": 893,
+      "railRows": 2,
+      "busProviderStopIds": 893,
+      "railProviderStopIds": 2
+    },
+    {
+      "code": "44133",
+      "province": "충청남도",
+      "city": "천안시 서북구",
+      "busRows": 787,
+      "railRows": 4,
+      "busProviderStopIds": 787,
+      "railProviderStopIds": 4
+    },
+    {
+      "code": "44150",
+      "province": "충청남도",
+      "city": "공주시",
+      "busRows": 213,
+      "railRows": 0,
+      "busProviderStopIds": 213,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "44180",
+      "province": "충청남도",
+      "city": "보령시",
+      "busRows": 727,
+      "railRows": 0,
+      "busProviderStopIds": 727,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "44200",
+      "province": "충청남도",
+      "city": "아산시",
+      "busRows": 1299,
+      "railRows": 5,
+      "busProviderStopIds": 1299,
+      "railProviderStopIds": 5
+    },
+    {
+      "code": "44210",
+      "province": "충청남도",
+      "city": "서산시",
+      "busRows": 58,
+      "railRows": 0,
+      "busProviderStopIds": 58,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "44230",
+      "province": "충청남도",
+      "city": "논산시",
+      "busRows": 79,
+      "railRows": 0,
+      "busProviderStopIds": 79,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "44250",
+      "province": "충청남도",
+      "city": "계룡시",
+      "busRows": 161,
+      "railRows": 0,
+      "busProviderStopIds": 145,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "44270",
+      "province": "충청남도",
+      "city": "당진시",
+      "busRows": 150,
+      "railRows": 0,
+      "busProviderStopIds": 150,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "44710",
+      "province": "충청남도",
+      "city": "금산군",
+      "busRows": 226,
+      "railRows": 0,
+      "busProviderStopIds": 226,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "44760",
+      "province": "충청남도",
+      "city": "부여군",
+      "busRows": 106,
+      "railRows": 0,
+      "busProviderStopIds": 106,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "44770",
+      "province": "충청남도",
+      "city": "서천군",
+      "busRows": 77,
+      "railRows": 0,
+      "busProviderStopIds": 77,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "44790",
+      "province": "충청남도",
+      "city": "청양군",
+      "busRows": 137,
+      "railRows": 0,
+      "busProviderStopIds": 137,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "44800",
+      "province": "충청남도",
+      "city": "홍성군",
+      "busRows": 610,
+      "railRows": 0,
+      "busProviderStopIds": 610,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "44810",
+      "province": "충청남도",
+      "city": "예산군",
+      "busRows": 271,
+      "railRows": 0,
+      "busProviderStopIds": 271,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "44825",
+      "province": "충청남도",
+      "city": "태안군",
+      "busRows": 370,
+      "railRows": 0,
+      "busProviderStopIds": 370,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "47111",
+      "province": "경상북도",
+      "city": "포항시 남구",
+      "busRows": 690,
+      "railRows": 0,
+      "busProviderStopIds": 690,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "47113",
+      "province": "경상북도",
+      "city": "포항시 북구",
+      "busRows": 663,
+      "railRows": 0,
+      "busProviderStopIds": 663,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "47130",
+      "province": "경상북도",
+      "city": "경주시",
+      "busRows": 1189,
+      "railRows": 0,
+      "busProviderStopIds": 1189,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "47150",
+      "province": "경상북도",
+      "city": "김천시",
+      "busRows": 836,
+      "railRows": 0,
+      "busProviderStopIds": 836,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "47170",
+      "province": "경상북도",
+      "city": "안동시",
+      "busRows": 845,
+      "railRows": 0,
+      "busProviderStopIds": 843,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "47190",
+      "province": "경상북도",
+      "city": "구미시",
+      "busRows": 806,
+      "railRows": 2,
+      "busProviderStopIds": 806,
+      "railProviderStopIds": 2
+    },
+    {
+      "code": "47210",
+      "province": "경상북도",
+      "city": "영주시",
+      "busRows": 405,
+      "railRows": 0,
+      "busProviderStopIds": 405,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "47230",
+      "province": "경상북도",
+      "city": "영천시",
+      "busRows": 451,
+      "railRows": 0,
+      "busProviderStopIds": 451,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "47250",
+      "province": "경상북도",
+      "city": "상주시",
+      "busRows": 6,
+      "railRows": 0,
+      "busProviderStopIds": 6,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "47280",
+      "province": "경상북도",
+      "city": "문경시",
+      "busRows": 33,
+      "railRows": 0,
+      "busProviderStopIds": 33,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "47290",
+      "province": "경상북도",
+      "city": "경산시",
+      "busRows": 227,
+      "railRows": 6,
+      "busProviderStopIds": 227,
+      "railProviderStopIds": 6
+    },
+    {
+      "code": "47730",
+      "province": "경상북도",
+      "city": "의성군",
+      "busRows": 19,
+      "railRows": 0,
+      "busProviderStopIds": 19,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "47750",
+      "province": "경상북도",
+      "city": "청송군",
+      "busRows": 4,
+      "railRows": 0,
+      "busProviderStopIds": 4,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "47820",
+      "province": "경상북도",
+      "city": "청도군",
+      "busRows": 2,
+      "railRows": 0,
+      "busProviderStopIds": 2,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "47830",
+      "province": "경상북도",
+      "city": "고령군",
+      "busRows": 11,
+      "railRows": 0,
+      "busProviderStopIds": 11,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "47840",
+      "province": "경상북도",
+      "city": "성주군",
+      "busRows": 71,
+      "railRows": 0,
+      "busProviderStopIds": 71,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "47850",
+      "province": "경상북도",
+      "city": "칠곡군",
+      "busRows": 258,
+      "railRows": 2,
+      "busProviderStopIds": 258,
+      "railProviderStopIds": 2
+    },
+    {
+      "code": "47900",
+      "province": "경상북도",
+      "city": "예천군",
+      "busRows": 455,
+      "railRows": 0,
+      "busProviderStopIds": 455,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "47920",
+      "province": "경상북도",
+      "city": "봉화군",
+      "busRows": 43,
+      "railRows": 0,
+      "busProviderStopIds": 43,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "48121",
+      "province": "경상남도",
+      "city": "창원시 의창구",
+      "busRows": 653,
+      "railRows": 0,
+      "busProviderStopIds": 653,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "48123",
+      "province": "경상남도",
+      "city": "창원시 성산구",
+      "busRows": 464,
+      "railRows": 0,
+      "busProviderStopIds": 464,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "48125",
+      "province": "경상남도",
+      "city": "창원시 마산합포구",
+      "busRows": 558,
+      "railRows": 0,
+      "busProviderStopIds": 558,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "48127",
+      "province": "경상남도",
+      "city": "창원시 마산회원구",
+      "busRows": 410,
+      "railRows": 0,
+      "busProviderStopIds": 410,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "48129",
+      "province": "경상남도",
+      "city": "창원시 진해구",
+      "busRows": 425,
+      "railRows": 0,
+      "busProviderStopIds": 425,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "48170",
+      "province": "경상남도",
+      "city": "진주시",
+      "busRows": 1156,
+      "railRows": 0,
+      "busProviderStopIds": 1156,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "48220",
+      "province": "경상남도",
+      "city": "통영시",
+      "busRows": 579,
+      "railRows": 0,
+      "busProviderStopIds": 579,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "48240",
+      "province": "경상남도",
+      "city": "사천시",
+      "busRows": 417,
+      "railRows": 0,
+      "busProviderStopIds": 417,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "48250",
+      "province": "경상남도",
+      "city": "김해시",
+      "busRows": 1655,
+      "railRows": 12,
+      "busProviderStopIds": 1655,
+      "railProviderStopIds": 12
+    },
+    {
+      "code": "48270",
+      "province": "경상남도",
+      "city": "밀양시",
+      "busRows": 488,
+      "railRows": 0,
+      "busProviderStopIds": 488,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "48310",
+      "province": "경상남도",
+      "city": "거제시",
+      "busRows": 986,
+      "railRows": 0,
+      "busProviderStopIds": 986,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "48330",
+      "province": "경상남도",
+      "city": "양산시",
+      "busRows": 1123,
+      "railRows": 5,
+      "busProviderStopIds": 1123,
+      "railProviderStopIds": 5
+    },
+    {
+      "code": "48720",
+      "province": "경상남도",
+      "city": "의령군",
+      "busRows": 16,
+      "railRows": 0,
+      "busProviderStopIds": 16,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "48730",
+      "province": "경상남도",
+      "city": "함안군",
+      "busRows": 320,
+      "railRows": 0,
+      "busProviderStopIds": 320,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "48740",
+      "province": "경상남도",
+      "city": "창녕군",
+      "busRows": 112,
+      "railRows": 0,
+      "busProviderStopIds": 112,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "48820",
+      "province": "경상남도",
+      "city": "고성군",
+      "busRows": 319,
+      "railRows": 0,
+      "busProviderStopIds": 319,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "48840",
+      "province": "경상남도",
+      "city": "남해군",
+      "busRows": 288,
+      "railRows": 0,
+      "busProviderStopIds": 288,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "48850",
+      "province": "경상남도",
+      "city": "하동군",
+      "busRows": 195,
+      "railRows": 0,
+      "busProviderStopIds": 195,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "48860",
+      "province": "경상남도",
+      "city": "산청군",
+      "busRows": 27,
+      "railRows": 0,
+      "busProviderStopIds": 27,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "48870",
+      "province": "경상남도",
+      "city": "함양군",
+      "busRows": 308,
+      "railRows": 0,
+      "busProviderStopIds": 308,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "48880",
+      "province": "경상남도",
+      "city": "거창군",
+      "busRows": 2,
+      "railRows": 0,
+      "busProviderStopIds": 2,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "48890",
+      "province": "경상남도",
+      "city": "합천군",
+      "busRows": 12,
+      "railRows": 0,
+      "busProviderStopIds": 12,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "50110",
+      "province": "제주특별자치도",
+      "city": "제주시",
+      "busRows": 1939,
+      "railRows": 0,
+      "busProviderStopIds": 1939,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "50130",
+      "province": "제주특별자치도",
+      "city": "서귀포시",
+      "busRows": 1440,
+      "railRows": 0,
+      "busProviderStopIds": 1440,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "51110",
+      "province": "강원특별자치도",
+      "city": "춘천시",
+      "busRows": 1124,
+      "railRows": 6,
+      "busProviderStopIds": 1118,
+      "railProviderStopIds": 6
+    },
+    {
+      "code": "51130",
+      "province": "강원특별자치도",
+      "city": "원주시",
+      "busRows": 1199,
+      "railRows": 0,
+      "busProviderStopIds": 1199,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "51150",
+      "province": "강원특별자치도",
+      "city": "강릉시",
+      "busRows": 827,
+      "railRows": 0,
+      "busProviderStopIds": 827,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "51170",
+      "province": "강원특별자치도",
+      "city": "동해시",
+      "busRows": 262,
+      "railRows": 0,
+      "busProviderStopIds": 262,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "51190",
+      "province": "강원특별자치도",
+      "city": "태백시",
+      "busRows": 227,
+      "railRows": 0,
+      "busProviderStopIds": 225,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "51210",
+      "province": "강원특별자치도",
+      "city": "속초시",
+      "busRows": 203,
+      "railRows": 0,
+      "busProviderStopIds": 203,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "51230",
+      "province": "강원특별자치도",
+      "city": "삼척시",
+      "busRows": 330,
+      "railRows": 0,
+      "busProviderStopIds": 330,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "51720",
+      "province": "강원특별자치도",
+      "city": "홍천군",
+      "busRows": 469,
+      "railRows": 0,
+      "busProviderStopIds": 469,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "51730",
+      "province": "강원특별자치도",
+      "city": "횡성군",
+      "busRows": 370,
+      "railRows": 0,
+      "busProviderStopIds": 370,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "51750",
+      "province": "강원특별자치도",
+      "city": "영월군",
+      "busRows": 287,
+      "railRows": 0,
+      "busProviderStopIds": 286,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "51760",
+      "province": "경기도",
+      "city": "평창군",
+      "busRows": 2,
+      "railRows": 0,
+      "busProviderStopIds": 2,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "51760",
+      "province": "강원특별자치도",
+      "city": "평창군",
+      "busRows": 172,
+      "railRows": 0,
+      "busProviderStopIds": 172,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "51770",
+      "province": "강원특별자치도",
+      "city": "정선군",
+      "busRows": 371,
+      "railRows": 0,
+      "busProviderStopIds": 371,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "51780",
+      "province": "강원특별자치도",
+      "city": "철원군",
+      "busRows": 193,
+      "railRows": 0,
+      "busProviderStopIds": 193,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "51790",
+      "province": "강원특별자치도",
+      "city": "화천군",
+      "busRows": 120,
+      "railRows": 0,
+      "busProviderStopIds": 120,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "51810",
+      "province": "강원특별자치도",
+      "city": "인제군",
+      "busRows": 231,
+      "railRows": 0,
+      "busProviderStopIds": 231,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "51820",
+      "province": "강원특별자치도",
+      "city": "고성군",
+      "busRows": 230,
+      "railRows": 0,
+      "busProviderStopIds": 230,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "51830",
+      "province": "강원특별자치도",
+      "city": "양양군",
+      "busRows": 164,
+      "railRows": 0,
+      "busProviderStopIds": 164,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "52111",
+      "province": "전북특별자치도",
+      "city": "전주시 완산구",
+      "busRows": 215,
+      "railRows": 0,
+      "busProviderStopIds": 215,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "52113",
+      "province": "전북특별자치도",
+      "city": "전주시 덕진구",
+      "busRows": 355,
+      "railRows": 0,
+      "busProviderStopIds": 355,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "52130",
+      "province": "전북특별자치도",
+      "city": "군산시",
+      "busRows": 909,
+      "railRows": 0,
+      "busProviderStopIds": 909,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "52140",
+      "province": "전북특별자치도",
+      "city": "익산시",
+      "busRows": 1206,
+      "railRows": 0,
+      "busProviderStopIds": 1206,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "52180",
+      "province": "전북특별자치도",
+      "city": "정읍시",
+      "busRows": 414,
+      "railRows": 0,
+      "busProviderStopIds": 414,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "52190",
+      "province": "전북특별자치도",
+      "city": "남원시",
+      "busRows": 148,
+      "railRows": 0,
+      "busProviderStopIds": 148,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "52210",
+      "province": "전북특별자치도",
+      "city": "김제시",
+      "busRows": 226,
+      "railRows": 0,
+      "busProviderStopIds": 226,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "52710",
+      "province": "전북특별자치도",
+      "city": "완주군",
+      "busRows": 769,
+      "railRows": 0,
+      "busProviderStopIds": 769,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "52720",
+      "province": "전북특별자치도",
+      "city": "진안군",
+      "busRows": 165,
+      "railRows": 0,
+      "busProviderStopIds": 165,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "52730",
+      "province": "전북특별자치도",
+      "city": "무주군",
+      "busRows": 97,
+      "railRows": 0,
+      "busProviderStopIds": 97,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "52740",
+      "province": "전북특별자치도",
+      "city": "장수군",
+      "busRows": 53,
+      "railRows": 0,
+      "busProviderStopIds": 53,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "52750",
+      "province": "전북특별자치도",
+      "city": "임실군",
+      "busRows": 140,
+      "railRows": 0,
+      "busProviderStopIds": 140,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "52770",
+      "province": "전북특별자치도",
+      "city": "순창군",
+      "busRows": 248,
+      "railRows": 0,
+      "busProviderStopIds": 248,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "52790",
+      "province": "전북특별자치도",
+      "city": "고창군",
+      "busRows": 23,
+      "railRows": 0,
+      "busProviderStopIds": 23,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "52800",
+      "province": "전북특별자치도",
+      "city": "부안군",
+      "busRows": 3,
+      "railRows": 0,
+      "busProviderStopIds": 3,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "90001",
+      "province": "기타",
+      "city": "기타",
+      "busRows": 2,
+      "railRows": 0,
+      "busProviderStopIds": 2,
+      "railProviderStopIds": 0
+    },
+    {
+      "code": "99999",
+      "province": "기타",
+      "city": "기타",
+      "busRows": 5951,
+      "railRows": 0,
+      "busProviderStopIds": 5933,
+      "railProviderStopIds": 0
+    }
+  ]
+}
