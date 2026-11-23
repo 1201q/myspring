@@ -36,11 +36,18 @@ import Toast from "../../ui/Toast";
 import { sumRange } from "../../lib/monthlyCounts";
 import { formatCount, formatDelta } from "../../lib/format";
 import { createPortal } from "react-dom";
+import { usePopulation } from "../population/usePopulation";
+import PopulationPanel from "../population/PopulationPanel";
+import { populationColor, populationValue, POPULATION_METRICS } from "../population/population";
+import type { PopulationMetric } from "../population/population";
+import { dongInArea } from "../../data/sigungu";
 
 type Props = {
   showRoads: boolean;
   roadDock: HTMLElement | null;
   onRoadSelect: () => void;
+  showPopulation: boolean;
+  populationDock: HTMLElement | null;
   /** 동별 증감 레이어 켜짐(레이어 시트에서). */
   showDongs: boolean;
   /** 개업 순위 패널 켜짐(레이어 시트에서). */
@@ -100,6 +107,8 @@ export default function NationalPlayback({
   showRoads,
   roadDock,
   onRoadSelect,
+  showPopulation,
+  populationDock,
   showDongs,
   showRanks,
   dongDock,
@@ -134,6 +143,7 @@ export default function NationalPlayback({
   const [unit, setUnit] = useState(1);
   const [speed, setSpeed] = useState(1);
   const [playing, setPlaying] = useState(false);
+  const [populationMetric, setPopulationMetric] = useState<PopulationMetric>("population");
   const [selectedDong, setSelectedDong] = useState<{
     code: string;
     regionId: string;
@@ -337,6 +347,58 @@ export default function NationalPlayback({
   const areaChoices = useMemo(() => (sigunguData ? areaOptions(sigunguData) : []), [sigunguData]);
   // 동별 Worker가 시군구 필터용 점 배정도 하므로, 둘 중 하나만 필요해도 돌립니다.
   const dong = useDongStatistics(showDongs || !!areaCode, data, from, currentMonth, codes);
+  const population = usePopulation(showPopulation, regionId);
+  const populationMonth = formatMonth(currentMonth).replace(".", "-");
+  const populationMonthIndex = population.data?.months.indexOf(populationMonth) ?? -1;
+  const populationFeatures = useMemo(() => {
+    if (!population.boundaries || !population.data) return null;
+    const dataset = population.data;
+    const date = new Date(`${populationMonth}-01T00:00:00Z`);
+    date.setUTCMonth(date.getUTCMonth() - 1);
+    const previousIndex = dataset.months.indexOf(date.toISOString().slice(0, 7));
+    return {
+      ...population.boundaries,
+      features: population.boundaries.features
+        .filter(
+          (feature) => !areaFeature || dongInArea(feature.properties.code, areaFeature.properties),
+        )
+        .map((feature) => {
+          const rows = dataset.rows[feature.properties.code];
+          const row = rows?.[populationMonthIndex] ?? null;
+          // The previous observation must be the immediately preceding calendar month.
+          const previous = rows?.[previousIndex] ?? null;
+          return {
+            ...feature,
+            properties: {
+              ...feature.properties,
+              row,
+              previous,
+              value: populationValue(row, previous, populationMetric),
+            },
+          };
+        }),
+    };
+  }, [
+    population.boundaries,
+    population.data,
+    areaFeature,
+    populationMonthIndex,
+    populationMonth,
+    populationMetric,
+  ]);
+  const populationScale = useMemo(
+    () =>
+      Math.max(
+        1,
+        ...(populationFeatures?.features.map((f) => Math.abs(f.properties.value ?? 0)) ?? []),
+      ),
+    [populationFeatures],
+  );
+  const populationSelection =
+    selectedDong?.regionId === regionId
+      ? populationFeatures?.features.find((f) => f.properties.code === selectedDong.code)
+          ?.properties
+      : null;
   const areaMask = useMemo(
     () =>
       areaFeature && dong.boundaries
@@ -567,7 +629,7 @@ export default function NationalPlayback({
         })
       : null;
     const dongLayer =
-      showDongs && dongFeatures
+      showDongs && !showPopulation && dongFeatures
         ? new GeoJsonLayer<DongProperties & { open: number; close: number }>({
             id: "dong-net-change",
             data: dongFeatures,
@@ -579,6 +641,31 @@ export default function NationalPlayback({
             getLineWidth: 0.7,
             lineWidthUnits: "pixels",
             updateTriggers: { getFillColor: [dongScale, palette], getLineColor: [palette] },
+            onClick: (info) => {
+              if (!info.object) return false;
+              setPlaying(false);
+              setSelectedDong({ code: info.object.properties.code, regionId });
+              return true;
+            },
+          })
+        : null;
+    const populationLayer =
+      showPopulation && populationFeatures
+        ? new GeoJsonLayer({
+            id: "resident-population",
+            data: populationFeatures,
+            pickable: true,
+            filled: true,
+            stroked: true,
+            getFillColor: (feature) =>
+              populationColor(feature.properties.value, populationScale, populationMetric, palette),
+            getLineColor: [...palette.dongStroke, 110],
+            getLineWidth: 0.7,
+            lineWidthUnits: "pixels",
+            updateTriggers: {
+              getFillColor: [populationScale, populationMetric, palette],
+              getLineColor: [palette],
+            },
             onClick: (info) => {
               if (!info.object) return false;
               setPlaying(false);
@@ -613,6 +700,18 @@ export default function NationalPlayback({
         if (map) map.getCanvas().style.cursor = info.picked ? "pointer" : "";
       },
       getTooltip: (info) => {
+        if (info.layer?.id === "resident-population" && info.object) {
+          const p = info.object.properties;
+          const metric = POPULATION_METRICS[populationMetric];
+          const value =
+            p.value === null
+              ? "자료 없음"
+              : `${populationMetric === "change" ? formatDelta(p.value) : populationMetric === "young" || populationMetric === "senior" ? p.value.toFixed(1) : formatCount(p.value)}${metric.unit}`;
+          return {
+            text: `${p.fullName}\n${populationMonth} 말 기준\n${metric.label}: ${value}`,
+            style: { ...tooltipStyle, padding: "10px 12px" },
+          };
+        }
         if (info.layer?.id === "dong-net-change" && info.object) {
           const p = info.object.properties;
           const delta = p.open - p.close;
@@ -639,6 +738,7 @@ export default function NationalPlayback({
         regionLayer,
         maskLayer,
         dongLayer,
+        populationLayer,
         previewLayer,
         regionOutline,
         areaOutline,
@@ -736,6 +836,11 @@ export default function NationalPlayback({
     palette,
     theme,
     showDongs,
+    showPopulation,
+    populationFeatures,
+    populationScale,
+    populationMetric,
+    populationMonth,
     previewArea,
     sigunguData,
     areaFeature,
@@ -809,6 +914,38 @@ export default function NationalPlayback({
           onSelectId(id);
         }}
       />
+      {populationDock &&
+        createPortal(
+          <PopulationPanel
+            metric={populationMetric}
+            onMetric={setPopulationMetric}
+            month={populationMonth}
+            range={
+              population.data
+                ? `${population.data.months[0]} ~ ${population.data.months.at(-1)}`
+                : ""
+            }
+            loaded={!!population.data}
+            error={population.error}
+            retry={population.retry}
+            matched={
+              populationFeatures?.features.filter((f) => f.properties.value !== null).length ?? 0
+            }
+            total={populationFeatures?.features.length ?? 0}
+            scale={populationScale}
+            selection={
+              populationSelection
+                ? {
+                    name: populationSelection.fullName,
+                    row: populationSelection.row,
+                    previous: populationSelection.previous,
+                  }
+                : null
+            }
+            onClear={() => setSelectedDong(null)}
+          />,
+          populationDock,
+        )}
       <FilterCapsule
         regions={regions}
         regionId={regionId}

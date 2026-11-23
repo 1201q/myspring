@@ -369,8 +369,10 @@ export default function App() {
               roadDock={dockOpen && activeDockTab === "roads" ? dockBody : null}
               onRoadSelect={showRoadInfo}
               showDongs={layers.dong}
+              showPopulation={layers.population}
               showRanks={layers.rank}
               dongDock={dockOpen && activeDockTab === "dong" ? dockBody : null}
+              populationDock={dockOpen && activeDockTab === "population" ? dockBody : null}
               theme={theme}
               onRegionBoundsChange={setRegionBounds}
               map={mapInstance}
