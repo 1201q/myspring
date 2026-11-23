@@ -125,3 +125,11 @@
     max-height: calc(100dvh - 138px - 72px - 40vh);
   }
 }
+
+/* At phone widths long period totals can put playback controls on a third row. */
+@media (max-width: 400px) {
+  .dock {
+    bottom: calc(var(--space-3) + 118px + var(--space-2) + var(--space-5) * 2);
+    max-height: calc(100dvh - 138px - 72px - 40vh - var(--space-5) * 2);
+  }
+}

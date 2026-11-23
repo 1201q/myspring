@@ -1,3 +1,4 @@
+import CommercialRoadOverlay from "../commercial/CommercialRoadOverlay";
 import dockStyles from "../../ui/DockContent.module.css";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { MapboxOverlay } from "@deck.gl/mapbox";
@@ -37,6 +38,9 @@ import { formatCount, formatDelta } from "../../lib/format";
 import { createPortal } from "react-dom";
 
 type Props = {
+  showRoads: boolean;
+  roadDock: HTMLElement | null;
+  onRoadSelect: () => void;
   /** 동별 증감 레이어 켜짐(레이어 시트에서). */
   showDongs: boolean;
   /** 개업 순위 패널 켜짐(레이어 시트에서). */
@@ -93,6 +97,9 @@ function progressLabel(value: LoadProgress, name: string): { text: string; perce
   };
 }
 export default function NationalPlayback({
+  showRoads,
+  roadDock,
+  onRoadSelect,
   showDongs,
   showRanks,
   dongDock,
@@ -779,6 +786,29 @@ export default function NationalPlayback({
   };
   return (
     <>
+      <CommercialRoadOverlay
+        key={regionId}
+        enabled={showRoads}
+        dock={roadDock}
+        map={map}
+        theme={theme}
+        regionId={regionId}
+        data={areaCode && !areaFlags ? null : data}
+        from={from}
+        to={currentMonth}
+        codes={codes}
+        areaFlags={areaFlags}
+        onSelect={() => {
+          setPlaying(false);
+          onClearSelection();
+          onRoadSelect();
+        }}
+        onBusiness={(id, position) => {
+          setPlaying(false);
+          onSelectLocation([id], position);
+          onSelectId(id);
+        }}
+      />
       <FilterCapsule
         regions={regions}
         regionId={regionId}

@@ -1,0 +1,1270 @@
+{
+  "date": "2026-11-23",
+  "root": "C:\\Users\\1201q\\OneDrive\\Desktop\\data",
+  "regions": [
+    {
+      "region": "강원",
+      "alley": {
+        "csvFile": "C:\\Users\\1201q\\OneDrive\\Desktop\\data\\1. 길단위 골목상권 (2023년 1분기) csv-길단위 골목상권(csv)\\강원\\강원_길단위 골목 상권.csv",
+        "rows": 20138,
+        "flags": {
+          "(blank)": 17787,
+          "골목": 2351
+        },
+        "uniqueIds": 706,
+        "duplicateCompositeKeys": 0,
+        "malformed": 0,
+        "geometryHash": "195de92a5fd953165bddd20d2119131ca1a9451c47b9ea7db110f9241ced8474",
+        "nonFlagAttributesHash": "b324fe971ff61063589185879a9a9c1e06591a7f7d87bdbd36048e6db0d7af63",
+        "shpHash": "98d4e62b6fcb4f49bc44f4752f38b9bcc3917117744caf4571774485bfc3025c",
+        "shp": {
+          "records": 20138,
+          "types": {
+            "3": 20138
+          },
+          "vertices": 811303,
+          "invalid": 0,
+          "bbox": [
+            325406.576042353,
+            496782.0849660681,
+            520741.61019164184,
+            669142.9952077463
+          ]
+        },
+        "dbfRows": 20138,
+        "dbfDifference": 0,
+        "encoding": "EUC-KR"
+      },
+      "developed": {
+        "csvFile": "C:\\Users\\1201q\\OneDrive\\Desktop\\data\\2. 길단위 발달상권 (2023년 1분기) csv-길단위 발달상권(csv)\\강원\\강원_길단위 발달 상권.csv",
+        "rows": 20138,
+        "flags": {
+          "발달": 3000,
+          "(blank)": 17138
+        },
+        "uniqueIds": 706,
+        "duplicateCompositeKeys": 0,
+        "malformed": 0,
+        "geometryHash": "195de92a5fd953165bddd20d2119131ca1a9451c47b9ea7db110f9241ced8474",
+        "nonFlagAttributesHash": "b324fe971ff61063589185879a9a9c1e06591a7f7d87bdbd36048e6db0d7af63",
+        "shpHash": "98d4e62b6fcb4f49bc44f4752f38b9bcc3917117744caf4571774485bfc3025c",
+        "shp": {
+          "records": 20138,
+          "types": {
+            "3": 20138
+          },
+          "vertices": 811303,
+          "invalid": 0,
+          "bbox": [
+            325406.576042353,
+            496782.0849660681,
+            520741.61019164184,
+            669142.9952077463
+          ]
+        },
+        "dbfRows": 20138,
+        "dbfDifference": 0,
+        "encoding": "EUC-KR"
+      },
+      "sameGeometry": true,
+      "sameAttributesExceptFlag": true,
+      "sameShp": true,
+      "pairs": {
+        "(blank) / 발달": 3000,
+        "(blank) / (blank)": 14787,
+        "골목 / (blank)": 2351
+      }
+    },
+    {
+      "region": "경기",
+      "alley": {
+        "csvFile": "C:\\Users\\1201q\\OneDrive\\Desktop\\data\\1. 길단위 골목상권 (2023년 1분기) csv-길단위 골목상권(csv)\\경기\\경기_길단위 골목 상권.csv",
+        "rows": 74636,
+        "flags": {
+          "(blank)": 68899,
+          "골목": 5737
+        },
+        "uniqueIds": 422,
+        "duplicateCompositeKeys": 0,
+        "malformed": 0,
+        "geometryHash": "5d9bfa565c47105b345d86db76860dbeb884d5c802a750039ddaef5e06d29dfd",
+        "nonFlagAttributesHash": "f48a8965d2a5672fa1b53e228bbf4e3e7c8109b49584e6a011adc790b6fa0c64",
+        "shpHash": "c9c202356ea70633e7cd0617e79fe8ea88f1b6048b36224d1269bd67c8826d68",
+        "shp": {
+          "records": 74636,
+          "types": {
+            "3": 74636
+          },
+          "vertices": 1302540,
+          "invalid": 0,
+          "bbox": [
+            256747.80951444383,
+            478251.7632300308,
+            383366.8094367458,
+            626562.1556042965
+          ]
+        },
+        "dbfRows": 74636,
+        "dbfDifference": 0,
+        "encoding": "EUC-KR"
+      },
+      "developed": {
+        "csvFile": "C:\\Users\\1201q\\OneDrive\\Desktop\\data\\2. 길단위 발달상권 (2023년 1분기) csv-길단위 발달상권(csv)\\경기\\경기_길단위 발달 상권.csv",
+        "rows": 74636,
+        "flags": {
+          "발달": 11119,
+          "(blank)": 63517
+        },
+        "uniqueIds": 422,
+        "duplicateCompositeKeys": 0,
+        "malformed": 0,
+        "geometryHash": "5d9bfa565c47105b345d86db76860dbeb884d5c802a750039ddaef5e06d29dfd",
+        "nonFlagAttributesHash": "f48a8965d2a5672fa1b53e228bbf4e3e7c8109b49584e6a011adc790b6fa0c64",
+        "shpHash": "c9c202356ea70633e7cd0617e79fe8ea88f1b6048b36224d1269bd67c8826d68",
+        "shp": {
+          "records": 74636,
+          "types": {
+            "3": 74636
+          },
+          "vertices": 1302540,
+          "invalid": 0,
+          "bbox": [
+            256747.80951444383,
+            478251.7632300308,
+            383366.8094367458,
+            626562.1556042965
+          ]
+        },
+        "dbfRows": 74636,
+        "dbfDifference": 0,
+        "encoding": "EUC-KR"
+      },
+      "sameGeometry": true,
+      "sameAttributesExceptFlag": true,
+      "sameShp": true,
+      "pairs": {
+        "(blank) / 발달": 11119,
+        "(blank) / (blank)": 57780,
+        "골목 / (blank)": 5737
+      }
+    },
+    {
+      "region": "경남",
+      "alley": {
+        "csvFile": "C:\\Users\\1201q\\OneDrive\\Desktop\\data\\1. 길단위 골목상권 (2023년 1분기) csv-길단위 골목상권(csv)\\경남\\경남_길단위 골목 상권.csv",
+        "rows": 40264,
+        "flags": {
+          "(blank)": 37755,
+          "골목": 2509
+        },
+        "uniqueIds": 214,
+        "duplicateCompositeKeys": 0,
+        "malformed": 0,
+        "geometryHash": "0e31a2d39e6b599574a5b786f611d7c4b7b38f04252ed34e60d874beb2088a3a",
+        "nonFlagAttributesHash": "e9067877a3ed2efb395de1eb33245816aaab658cc3a6b2653ccc0f1539c5ab34",
+        "shpHash": "51aabe76a9da7a9d898b11a4b381ffbffeb92ffb5d4fa4a22c612d7824c94c8c",
+        "shp": {
+          "records": 40264,
+          "types": {
+            "3": 40264
+          },
+          "vertices": 1043215,
+          "invalid": 0,
+          "bbox": [
+            364547.29775345634,
+            224537.54423814255,
+            510335.4190734324,
+            367385.2229166656
+          ]
+        },
+        "dbfRows": 40264,
+        "dbfDifference": 0,
+        "encoding": "EUC-KR"
+      },
+      "developed": {
+        "csvFile": "C:\\Users\\1201q\\OneDrive\\Desktop\\data\\2. 길단위 발달상권 (2023년 1분기) csv-길단위 발달상권(csv)\\경남\\경남_길단위 발달 상권.csv",
+        "rows": 40264,
+        "flags": {
+          "(blank)": 34251,
+          "발달": 6013
+        },
+        "uniqueIds": 214,
+        "duplicateCompositeKeys": 0,
+        "malformed": 0,
+        "geometryHash": "0e31a2d39e6b599574a5b786f611d7c4b7b38f04252ed34e60d874beb2088a3a",
+        "nonFlagAttributesHash": "e9067877a3ed2efb395de1eb33245816aaab658cc3a6b2653ccc0f1539c5ab34",
+        "shpHash": "51aabe76a9da7a9d898b11a4b381ffbffeb92ffb5d4fa4a22c612d7824c94c8c",
+        "shp": {
+          "records": 40264,
+          "types": {
+            "3": 40264
+          },
+          "vertices": 1043215,
+          "invalid": 0,
+          "bbox": [
+            364547.29775345634,
+            224537.54423814255,
+            510335.4190734324,
+            367385.2229166656
+          ]
+        },
+        "dbfRows": 40264,
+        "dbfDifference": 0,
+        "encoding": "EUC-KR"
+      },
+      "sameGeometry": true,
+      "sameAttributesExceptFlag": true,
+      "sameShp": true,
+      "pairs": {
+        "(blank) / (blank)": 31742,
+        "골목 / (blank)": 2509,
+        "(blank) / 발달": 6013
+      }
+    },
+    {
+      "region": "경북",
+      "alley": {
+        "csvFile": "C:\\Users\\1201q\\OneDrive\\Desktop\\data\\1. 길단위 골목상권 (2023년 1분기) csv-길단위 골목상권(csv)\\경북\\경북_길단위 골목 상권.csv",
+        "rows": 43489,
+        "flags": {
+          "(blank)": 40663,
+          "골목": 2826
+        },
+        "uniqueIds": 1595,
+        "duplicateCompositeKeys": 0,
+        "malformed": 0,
+        "geometryHash": "e9f946ef5f9e0b9dfb8336d593005d1d41bf54914dc3d56852e420ad80bed886",
+        "nonFlagAttributesHash": "d2713530f6b321c377c9b7eec6b69ffb37fef17577a15038ebed47d785aee6ab",
+        "shpHash": "61c6e75a934c79e341fe998d7fe96ca7db23f2d8e051b5d16d2a4dd45d70ff32",
+        "shp": {
+          "records": 43489,
+          "types": {
+            "3": 43489
+          },
+          "vertices": 1592778,
+          "invalid": 0,
+          "bbox": [
+            381997.2641196623,
+            330164.722964,
+            658310.0084066327,
+            553612.0082314906
+          ]
+        },
+        "dbfRows": 43489,
+        "dbfDifference": 0,
+        "encoding": "EUC-KR"
+      },
+      "developed": {
+        "csvFile": "C:\\Users\\1201q\\OneDrive\\Desktop\\data\\2. 길단위 발달상권 (2023년 1분기) csv-길단위 발달상권(csv)\\경북\\경북_길단위 발달 상권.csv",
+        "rows": 43489,
+        "flags": {
+          "발달": 6481,
+          "(blank)": 37008
+        },
+        "uniqueIds": 1595,
+        "duplicateCompositeKeys": 0,
+        "malformed": 0,
+        "geometryHash": "e9f946ef5f9e0b9dfb8336d593005d1d41bf54914dc3d56852e420ad80bed886",
+        "nonFlagAttributesHash": "d2713530f6b321c377c9b7eec6b69ffb37fef17577a15038ebed47d785aee6ab",
+        "shpHash": "61c6e75a934c79e341fe998d7fe96ca7db23f2d8e051b5d16d2a4dd45d70ff32",
+        "shp": {
+          "records": 43489,
+          "types": {
+            "3": 43489
+          },
+          "vertices": 1592778,
+          "invalid": 0,
+          "bbox": [
+            381997.2641196623,
+            330164.722964,
+            658310.0084066327,
+            553612.0082314906
+          ]
+        },
+        "dbfRows": 43489,
+        "dbfDifference": 0,
+        "encoding": "EUC-KR"
+      },
+      "sameGeometry": true,
+      "sameAttributesExceptFlag": true,
+      "sameShp": true,
+      "pairs": {
+        "(blank) / 발달": 6481,
+        "골목 / (blank)": 2826,
+        "(blank) / (blank)": 34182
+      }
+    },
+    {
+      "region": "광주",
+      "alley": {
+        "csvFile": "C:\\Users\\1201q\\OneDrive\\Desktop\\data\\1. 길단위 골목상권 (2023년 1분기) csv-길단위 골목상권(csv)\\광주\\광주_길단위 골목 상권.csv",
+        "rows": 10039,
+        "flags": {
+          "(blank)": 8094,
+          "골목": 1945
+        },
+        "uniqueIds": 153,
+        "duplicateCompositeKeys": 0,
+        "malformed": 0,
+        "geometryHash": "f84551c812fd10d9b23787917f904e189aef1ca8a4e5facba0c0f14976eabc69",
+        "nonFlagAttributesHash": "282f5a765d664fa38da7e9568977d65d156d94dc13b8effcd6126a326289207d",
+        "shpHash": "e0816a3142b432a43d5e503bcd14abae8b5e74267647512ab31a215ecdb89b7b",
+        "shp": {
+          "records": 10039,
+          "types": {
+            "3": 10039
+          },
+          "vertices": 92368,
+          "invalid": 0,
+          "bbox": [
+            276740.78477202094,
+            273302.6097485,
+            310754.7460057897,
+            296005.00276231486
+          ]
+        },
+        "dbfRows": 10039,
+        "dbfDifference": 0,
+        "encoding": "EUC-KR"
+      },
+      "developed": {
+        "csvFile": "C:\\Users\\1201q\\OneDrive\\Desktop\\data\\2. 길단위 발달상권 (2023년 1분기) csv-길단위 발달상권(csv)\\광주\\광주_길단위 발달 상권.csv",
+        "rows": 10039,
+        "flags": {
+          "(blank)": 8538,
+          "발달": 1501
+        },
+        "uniqueIds": 153,
+        "duplicateCompositeKeys": 0,
+        "malformed": 0,
+        "geometryHash": "f84551c812fd10d9b23787917f904e189aef1ca8a4e5facba0c0f14976eabc69",
+        "nonFlagAttributesHash": "282f5a765d664fa38da7e9568977d65d156d94dc13b8effcd6126a326289207d",
+        "shpHash": "e0816a3142b432a43d5e503bcd14abae8b5e74267647512ab31a215ecdb89b7b",
+        "shp": {
+          "records": 10039,
+          "types": {
+            "3": 10039
+          },
+          "vertices": 92368,
+          "invalid": 0,
+          "bbox": [
+            276740.78477202094,
+            273302.6097485,
+            310754.7460057897,
+            296005.00276231486
+          ]
+        },
+        "dbfRows": 10039,
+        "dbfDifference": 0,
+        "encoding": "EUC-KR"
+      },
+      "sameGeometry": true,
+      "sameAttributesExceptFlag": true,
+      "sameShp": true,
+      "pairs": {
+        "(blank) / (blank)": 6593,
+        "골목 / (blank)": 1945,
+        "(blank) / 발달": 1501
+      }
+    },
+    {
+      "region": "대구",
+      "alley": {
+        "csvFile": "C:\\Users\\1201q\\OneDrive\\Desktop\\data\\1. 길단위 골목상권 (2023년 1분기) csv-길단위 골목상권(csv)\\대구\\대구_길단위 골목 상권.csv",
+        "rows": 14886,
+        "flags": {
+          "(blank)": 11905,
+          "골목": 2981
+        },
+        "uniqueIds": 326,
+        "duplicateCompositeKeys": 0,
+        "malformed": 0,
+        "geometryHash": "3561776a32c6b16e05e4ccc4b2c06b9f89815f42a656c512b2c0d0af9b7f74d4",
+        "nonFlagAttributesHash": "1f479228e479a1497a041e2c2fb12299c7e5dd0ca81ce555ee82bea783462754",
+        "shpHash": "e3ac4d24db937b78b39b82fd9a065a50f5d0027a9096c720695fbb10e0727790",
+        "shp": {
+          "records": 14886,
+          "types": {
+            "3": 14886
+          },
+          "vertices": 158077,
+          "invalid": 0,
+          "bbox": [
+            432339.92171103135,
+            334203.78970787587,
+            468921.81085258065,
+            377558.40596687
+          ]
+        },
+        "dbfRows": 14886,
+        "dbfDifference": 0,
+        "encoding": "EUC-KR"
+      },
+      "developed": {
+        "csvFile": "C:\\Users\\1201q\\OneDrive\\Desktop\\data\\2. 길단위 발달상권 (2023년 1분기) csv-길단위 발달상권(csv)\\대구\\대구_길단위 발달 상권.csv",
+        "rows": 14886,
+        "flags": {
+          "발달": 2242,
+          "(blank)": 12644
+        },
+        "uniqueIds": 326,
+        "duplicateCompositeKeys": 0,
+        "malformed": 0,
+        "geometryHash": "3561776a32c6b16e05e4ccc4b2c06b9f89815f42a656c512b2c0d0af9b7f74d4",
+        "nonFlagAttributesHash": "1f479228e479a1497a041e2c2fb12299c7e5dd0ca81ce555ee82bea783462754",
+        "shpHash": "e3ac4d24db937b78b39b82fd9a065a50f5d0027a9096c720695fbb10e0727790",
+        "shp": {
+          "records": 14886,
+          "types": {
+            "3": 14886
+          },
+          "vertices": 158077,
+          "invalid": 0,
+          "bbox": [
+            432339.92171103135,
+            334203.78970787587,
+            468921.81085258065,
+            377558.40596687
+          ]
+        },
+        "dbfRows": 14886,
+        "dbfDifference": 0,
+        "encoding": "EUC-KR"
+      },
+      "sameGeometry": true,
+      "sameAttributesExceptFlag": true,
+      "sameShp": true,
+      "pairs": {
+        "(blank) / 발달": 2242,
+        "골목 / (blank)": 2981,
+        "(blank) / (blank)": 9663
+      }
+    },
+    {
+      "region": "대전",
+      "alley": {
+        "csvFile": "C:\\Users\\1201q\\OneDrive\\Desktop\\data\\1. 길단위 골목상권 (2023년 1분기) csv-길단위 골목상권(csv)\\대전\\대전_길단위 골목 상권.csv",
+        "rows": 12678,
+        "flags": {
+          "(blank)": 10660,
+          "골목": 2018
+        },
+        "uniqueIds": 258,
+        "duplicateCompositeKeys": 0,
+        "malformed": 0,
+        "geometryHash": "0155ebb9aeb25e583086cbdaed4388a0c1f7e0aedcdd581609f5432731a445dc",
+        "nonFlagAttributesHash": "60a399392a83d2d74ea0200b747d31002203e3a40b1b7883d688d9c1c55183d6",
+        "shpHash": "22135da919646f51cc7343995f9e01b6639541c8fa6a3bc32678903fabfbcd1c",
+        "shp": {
+          "records": 12678,
+          "types": {
+            "3": 12678
+          },
+          "vertices": 140460,
+          "invalid": 0,
+          "bbox": [
+            332545.23719215975,
+            399513.45502790215,
+            359013.19262787246,
+            432808.05194569763
+          ]
+        },
+        "dbfRows": 12678,
+        "dbfDifference": 0,
+        "encoding": "EUC-KR"
+      },
+      "developed": {
+        "csvFile": "C:\\Users\\1201q\\OneDrive\\Desktop\\data\\2. 길단위 발달상권 (2023년 1분기) csv-길단위 발달상권(csv)\\대전\\대전_길단위 발달 상권.csv",
+        "rows": 12678,
+        "flags": {
+          "(blank)": 10795,
+          "발달": 1883
+        },
+        "uniqueIds": 258,
+        "duplicateCompositeKeys": 0,
+        "malformed": 0,
+        "geometryHash": "0155ebb9aeb25e583086cbdaed4388a0c1f7e0aedcdd581609f5432731a445dc",
+        "nonFlagAttributesHash": "60a399392a83d2d74ea0200b747d31002203e3a40b1b7883d688d9c1c55183d6",
+        "shpHash": "22135da919646f51cc7343995f9e01b6639541c8fa6a3bc32678903fabfbcd1c",
+        "shp": {
+          "records": 12678,
+          "types": {
+            "3": 12678
+          },
+          "vertices": 140460,
+          "invalid": 0,
+          "bbox": [
+            332545.23719215975,
+            399513.45502790215,
+            359013.19262787246,
+            432808.05194569763
+          ]
+        },
+        "dbfRows": 12678,
+        "dbfDifference": 0,
+        "encoding": "EUC-KR"
+      },
+      "sameGeometry": true,
+      "sameAttributesExceptFlag": true,
+      "sameShp": true,
+      "pairs": {
+        "(blank) / (blank)": 8777,
+        "골목 / (blank)": 2018,
+        "(blank) / 발달": 1883
+      }
+    },
+    {
+      "region": "부산",
+      "alley": {
+        "csvFile": "C:\\Users\\1201q\\OneDrive\\Desktop\\data\\1. 길단위 골목상권 (2023년 1분기) csv-길단위 골목상권(csv)\\부산\\부산_길단위 골목 상권.csv",
+        "rows": 25836,
+        "flags": {
+          "(blank)": 21805,
+          "골목": 4031
+        },
+        "uniqueIds": 303,
+        "duplicateCompositeKeys": 0,
+        "malformed": 0,
+        "geometryHash": "ec71cabb4d442336a9caf3a7ddb9dc8defca8bec90e419289e518466fbaaf465",
+        "nonFlagAttributesHash": "cb45c0e0faad0882124a70eabe42fcf2a79927ad669098781552ad85cb6cac0b",
+        "shpHash": "295dd92ef36382401685a4a6e30a6f96866356d63c9f618feb9a875e82f840c1",
+        "shp": {
+          "records": 25836,
+          "types": {
+            "3": 25836
+          },
+          "vertices": 249714,
+          "invalid": 0,
+          "bbox": [
+            468977.4843470756,
+            267642.36846882524,
+            517961.21644403145,
+            315726.9784243936
+          ]
+        },
+        "dbfRows": 25836,
+        "dbfDifference": 0,
+        "encoding": "EUC-KR"
+      },
+      "developed": {
+        "csvFile": "C:\\Users\\1201q\\OneDrive\\Desktop\\data\\2. 길단위 발달상권 (2023년 1분기) csv-길단위 발달상권(csv)\\부산\\부산_길단위 발달 상권.csv",
+        "rows": 25836,
+        "flags": {
+          "발달": 3848,
+          "(blank)": 21988
+        },
+        "uniqueIds": 303,
+        "duplicateCompositeKeys": 0,
+        "malformed": 0,
+        "geometryHash": "ec71cabb4d442336a9caf3a7ddb9dc8defca8bec90e419289e518466fbaaf465",
+        "nonFlagAttributesHash": "cb45c0e0faad0882124a70eabe42fcf2a79927ad669098781552ad85cb6cac0b",
+        "shpHash": "295dd92ef36382401685a4a6e30a6f96866356d63c9f618feb9a875e82f840c1",
+        "shp": {
+          "records": 25836,
+          "types": {
+            "3": 25836
+          },
+          "vertices": 249714,
+          "invalid": 0,
+          "bbox": [
+            468977.4843470756,
+            267642.36846882524,
+            517961.21644403145,
+            315726.9784243936
+          ]
+        },
+        "dbfRows": 25836,
+        "dbfDifference": 0,
+        "encoding": "EUC-KR"
+      },
+      "sameGeometry": true,
+      "sameAttributesExceptFlag": true,
+      "sameShp": true,
+      "pairs": {
+        "(blank) / 발달": 3848,
+        "(blank) / (blank)": 17957,
+        "골목 / (blank)": 4031
+      }
+    },
+    {
+      "region": "서울",
+      "alley": {
+        "csvFile": "C:\\Users\\1201q\\OneDrive\\Desktop\\data\\1. 길단위 골목상권 (2023년 1분기) csv-길단위 골목상권(csv)\\서울\\서울_길단위 골목 상권.csv",
+        "rows": 48582,
+        "flags": {
+          "(blank)": 40204,
+          "골목": 8378
+        },
+        "uniqueIds": 404,
+        "duplicateCompositeKeys": 0,
+        "malformed": 0,
+        "geometryHash": "8765dea69d256709559b8cf4e7478c9eb681ca00cb0fd665ab4af0243372ad68",
+        "nonFlagAttributesHash": "52b5a72d77528a0f960760f2cba745a799d1d8e72d53220f9b59556dff060fa3",
+        "shpHash": "29d3776793ad96229a35c0fc90f267b598b34419718efb1f5579f5739b4722b8",
+        "shp": {
+          "records": 48582,
+          "types": {
+            "3": 48582
+          },
+          "vertices": 485560,
+          "invalid": 0,
+          "bbox": [
+            291267.04193204007,
+            536898.3501437941,
+            328012.02459922794,
+            566297.7742956711
+          ]
+        },
+        "dbfRows": 48582,
+        "dbfDifference": 0,
+        "encoding": "EUC-KR"
+      },
+      "developed": {
+        "csvFile": "C:\\Users\\1201q\\OneDrive\\Desktop\\data\\2. 길단위 발달상권 (2023년 1분기) csv-길단위 발달상권(csv)\\서울\\서울_길단위 발달 상권.csv",
+        "rows": 48582,
+        "flags": {
+          "(blank)": 41356,
+          "발달": 7226
+        },
+        "uniqueIds": 404,
+        "duplicateCompositeKeys": 0,
+        "malformed": 0,
+        "geometryHash": "8765dea69d256709559b8cf4e7478c9eb681ca00cb0fd665ab4af0243372ad68",
+        "nonFlagAttributesHash": "52b5a72d77528a0f960760f2cba745a799d1d8e72d53220f9b59556dff060fa3",
+        "shpHash": "29d3776793ad96229a35c0fc90f267b598b34419718efb1f5579f5739b4722b8",
+        "shp": {
+          "records": 48582,
+          "types": {
+            "3": 48582
+          },
+          "vertices": 485560,
+          "invalid": 0,
+          "bbox": [
+            291267.04193204007,
+            536898.3501437941,
+            328012.02459922794,
+            566297.7742956711
+          ]
+        },
+        "dbfRows": 48582,
+        "dbfDifference": 0,
+        "encoding": "EUC-KR"
+      },
+      "sameGeometry": true,
+      "sameAttributesExceptFlag": true,
+      "sameShp": true,
+      "pairs": {
+        "(blank) / (blank)": 32978,
+        "골목 / (blank)": 8378,
+        "(blank) / 발달": 7226
+      }
+    },
+    {
+      "region": "세종",
+      "alley": {
+        "csvFile": "C:\\Users\\1201q\\OneDrive\\Desktop\\data\\1. 길단위 골목상권 (2023년 1분기) csv-길단위 골목상권(csv)\\세종\\세종_길단위 골목 상권.csv",
+        "rows": 3466,
+        "flags": {
+          "(blank)": 3230,
+          "골목": 236
+        },
+        "uniqueIds": 199,
+        "duplicateCompositeKeys": 0,
+        "malformed": 0,
+        "geometryHash": "3a237de756b015c0df03d23ffbebabe2ca095a56c6f417d8df3772ac0894fabd",
+        "nonFlagAttributesHash": "3327ac4ade8ffae00d8d69f8877a59b3ec96aeb77fbaeefb01fe97988e6956e2",
+        "shpHash": "ad48451b920f1aa72d8df088f417ef67c89b594d879127c4d82364c0825fcdb0",
+        "shp": {
+          "records": 3466,
+          "types": {
+            "3": 3466
+          },
+          "vertices": 64025,
+          "invalid": 0,
+          "bbox": [
+            322835.16963414627,
+            423192.0860086295,
+            347159.1435462822,
+            459418.20167235914
+          ]
+        },
+        "dbfRows": 3466,
+        "dbfDifference": 0,
+        "encoding": "EUC-KR"
+      },
+      "developed": {
+        "csvFile": "C:\\Users\\1201q\\OneDrive\\Desktop\\data\\2. 길단위 발달상권 (2023년 1분기) csv-길단위 발달상권(csv)\\세종\\세종_길단위 발달 상권.csv",
+        "rows": 3466,
+        "flags": {
+          "(blank)": 3169,
+          "발달": 297
+        },
+        "uniqueIds": 199,
+        "duplicateCompositeKeys": 0,
+        "malformed": 0,
+        "geometryHash": "3a237de756b015c0df03d23ffbebabe2ca095a56c6f417d8df3772ac0894fabd",
+        "nonFlagAttributesHash": "3327ac4ade8ffae00d8d69f8877a59b3ec96aeb77fbaeefb01fe97988e6956e2",
+        "shpHash": "ad48451b920f1aa72d8df088f417ef67c89b594d879127c4d82364c0825fcdb0",
+        "shp": {
+          "records": 3466,
+          "types": {
+            "3": 3466
+          },
+          "vertices": 64025,
+          "invalid": 0,
+          "bbox": [
+            322835.16963414627,
+            423192.0860086295,
+            347159.1435462822,
+            459418.20167235914
+          ]
+        },
+        "dbfRows": 3466,
+        "dbfDifference": 0,
+        "encoding": "EUC-KR"
+      },
+      "sameGeometry": true,
+      "sameAttributesExceptFlag": true,
+      "sameShp": true,
+      "pairs": {
+        "(blank) / (blank)": 2933,
+        "골목 / (blank)": 236,
+        "(blank) / 발달": 297
+      }
+    },
+    {
+      "region": "울산",
+      "alley": {
+        "csvFile": "C:\\Users\\1201q\\OneDrive\\Desktop\\data\\1. 길단위 골목상권 (2023년 1분기) csv-길단위 골목상권(csv)\\울산\\울산_길단위 골목 상권.csv",
+        "rows": 10943,
+        "flags": {
+          "골목": 2142,
+          "(blank)": 8801
+        },
+        "uniqueIds": 164,
+        "duplicateCompositeKeys": 0,
+        "malformed": 0,
+        "geometryHash": "7fd6093787670cb12c9b82979f8bdb22993e395e933607e07cb87bb0a00a0137",
+        "nonFlagAttributesHash": "4f1d33e4100afb047c12649a7834dab7fcc527401ee47298d53cf3712dd57aa7",
+        "shpHash": "bf29c423615ed8b94dc9776a549bcf83780a0648c443136fe5f851874cc446ca",
+        "shp": {
+          "records": 10943,
+          "types": {
+            "3": 10943
+          },
+          "vertices": 140846,
+          "invalid": 0,
+          "bbox": [
+            487830.19018953945,
+            304945.1437871171,
+            532762.9295914413,
+            347329.3304214186
+          ]
+        },
+        "dbfRows": 10943,
+        "dbfDifference": 0,
+        "encoding": "EUC-KR"
+      },
+      "developed": {
+        "csvFile": "C:\\Users\\1201q\\OneDrive\\Desktop\\data\\2. 길단위 발달상권 (2023년 1분기) csv-길단위 발달상권(csv)\\울산\\울산_길단위 발달 상권.csv",
+        "rows": 10943,
+        "flags": {
+          "(blank)": 9303,
+          "발달": 1640
+        },
+        "uniqueIds": 164,
+        "duplicateCompositeKeys": 0,
+        "malformed": 0,
+        "geometryHash": "7fd6093787670cb12c9b82979f8bdb22993e395e933607e07cb87bb0a00a0137",
+        "nonFlagAttributesHash": "4f1d33e4100afb047c12649a7834dab7fcc527401ee47298d53cf3712dd57aa7",
+        "shpHash": "bf29c423615ed8b94dc9776a549bcf83780a0648c443136fe5f851874cc446ca",
+        "shp": {
+          "records": 10943,
+          "types": {
+            "3": 10943
+          },
+          "vertices": 140846,
+          "invalid": 0,
+          "bbox": [
+            487830.19018953945,
+            304945.1437871171,
+            532762.9295914413,
+            347329.3304214186
+          ]
+        },
+        "dbfRows": 10943,
+        "dbfDifference": 0,
+        "encoding": "EUC-KR"
+      },
+      "sameGeometry": true,
+      "sameAttributesExceptFlag": true,
+      "sameShp": true,
+      "pairs": {
+        "골목 / (blank)": 2142,
+        "(blank) / (blank)": 7161,
+        "(blank) / 발달": 1640
+      }
+    },
+    {
+      "region": "인천",
+      "alley": {
+        "csvFile": "C:\\Users\\1201q\\OneDrive\\Desktop\\data\\1. 길단위 골목상권 (2023년 1분기) csv-길단위 골목상권(csv)\\인천\\인천_길단위 골목 상권.csv",
+        "rows": 19048,
+        "flags": {
+          "골목": 3037,
+          "(blank)": 16011
+        },
+        "uniqueIds": 249,
+        "duplicateCompositeKeys": 0,
+        "malformed": 0,
+        "geometryHash": "e2b269b35683d7308a68dcb9be4d63103fc563d6bb309a10a0815dbeb01891c0",
+        "nonFlagAttributesHash": "ef6cb71157f2a760b33c80702c23b3f1b5236acddf4d0586d191edcc9ece5c0d",
+        "shpHash": "b731b5e5eddc34ffe8eae522fefe50dcf0a5798d003a9f4ab3bcd80bfafaf9b6",
+        "shp": {
+          "records": 19048,
+          "types": {
+            "3": 19048
+          },
+          "vertices": 190215,
+          "invalid": 0,
+          "bbox": [
+            103107.20259651542,
+            493259.9595773869,
+            292629.4100967275,
+            602860.6218458989
+          ]
+        },
+        "dbfRows": 19048,
+        "dbfDifference": 0,
+        "encoding": "EUC-KR"
+      },
+      "developed": {
+        "csvFile": "C:\\Users\\1201q\\OneDrive\\Desktop\\data\\2. 길단위 발달상권 (2023년 1분기) csv-길단위 발달상권(csv)\\인천\\인천_길단위 발달 상권.csv",
+        "rows": 19048,
+        "flags": {
+          "(blank)": 16215,
+          "발달": 2833
+        },
+        "uniqueIds": 249,
+        "duplicateCompositeKeys": 0,
+        "malformed": 0,
+        "geometryHash": "e2b269b35683d7308a68dcb9be4d63103fc563d6bb309a10a0815dbeb01891c0",
+        "nonFlagAttributesHash": "ef6cb71157f2a760b33c80702c23b3f1b5236acddf4d0586d191edcc9ece5c0d",
+        "shpHash": "b731b5e5eddc34ffe8eae522fefe50dcf0a5798d003a9f4ab3bcd80bfafaf9b6",
+        "shp": {
+          "records": 19048,
+          "types": {
+            "3": 19048
+          },
+          "vertices": 190215,
+          "invalid": 0,
+          "bbox": [
+            103107.20259651542,
+            493259.9595773869,
+            292629.4100967275,
+            602860.6218458989
+          ]
+        },
+        "dbfRows": 19048,
+        "dbfDifference": 0,
+        "encoding": "EUC-KR"
+      },
+      "sameGeometry": true,
+      "sameAttributesExceptFlag": true,
+      "sameShp": true,
+      "pairs": {
+        "골목 / (blank)": 3037,
+        "(blank) / (blank)": 13178,
+        "(blank) / 발달": 2833
+      }
+    },
+    {
+      "region": "전남",
+      "alley": {
+        "csvFile": "C:\\Users\\1201q\\OneDrive\\Desktop\\data\\1. 길단위 골목상권 (2023년 1분기) csv-길단위 골목상권(csv)\\전남\\전남_길단위 골목 상권.csv",
+        "rows": 31073,
+        "flags": {
+          "(blank)": 28654,
+          "골목": 2419
+        },
+        "uniqueIds": 233,
+        "duplicateCompositeKeys": 0,
+        "malformed": 0,
+        "geometryHash": "0bede0e32f719d618953c6b4797a6d65cc40c6bc9ed27df1c26940f9c399c61a",
+        "nonFlagAttributesHash": "d2562b8fdf800733bdcb782584a0024e0215abaab2afc2c07a8939d60147a9bf",
+        "shpHash": "bb26ddd22bc7e8eca5cda65a24fb9e12d06b01c91c639e1c3a709e6ca5323032",
+        "shp": {
+          "records": 31073,
+          "types": {
+            "3": 31073
+          },
+          "vertices": 973978,
+          "invalid": 0,
+          "bbox": [
+            159876.68408299662,
+            154707.27715600462,
+            383921.903209517,
+            319449.6029572456
+          ]
+        },
+        "dbfRows": 31073,
+        "dbfDifference": 0,
+        "encoding": "EUC-KR"
+      },
+      "developed": {
+        "csvFile": "C:\\Users\\1201q\\OneDrive\\Desktop\\data\\2. 길단위 발달상권 (2023년 1분기) csv-길단위 발달상권(csv)\\전남\\전남_길단위 발달 상권.csv",
+        "rows": 31073,
+        "flags": {
+          "발달": 4631,
+          "(blank)": 26442
+        },
+        "uniqueIds": 233,
+        "duplicateCompositeKeys": 0,
+        "malformed": 0,
+        "geometryHash": "0bede0e32f719d618953c6b4797a6d65cc40c6bc9ed27df1c26940f9c399c61a",
+        "nonFlagAttributesHash": "d2562b8fdf800733bdcb782584a0024e0215abaab2afc2c07a8939d60147a9bf",
+        "shpHash": "bb26ddd22bc7e8eca5cda65a24fb9e12d06b01c91c639e1c3a709e6ca5323032",
+        "shp": {
+          "records": 31073,
+          "types": {
+            "3": 31073
+          },
+          "vertices": 973978,
+          "invalid": 0,
+          "bbox": [
+            159876.68408299662,
+            154707.27715600462,
+            383921.903209517,
+            319449.6029572456
+          ]
+        },
+        "dbfRows": 31073,
+        "dbfDifference": 0,
+        "encoding": "EUC-KR"
+      },
+      "sameGeometry": true,
+      "sameAttributesExceptFlag": true,
+      "sameShp": true,
+      "pairs": {
+        "(blank) / 발달": 4631,
+        "골목 / (blank)": 2419,
+        "(blank) / (blank)": 24023
+      }
+    },
+    {
+      "region": "전북",
+      "alley": {
+        "csvFile": "C:\\Users\\1201q\\OneDrive\\Desktop\\data\\1. 길단위 골목상권 (2023년 1분기) csv-길단위 골목상권(csv)\\전북\\전북_길단위 골목 상권.csv",
+        "rows": 29502,
+        "flags": {
+          "(blank)": 28110,
+          "골목": 1392
+        },
+        "uniqueIds": 170,
+        "duplicateCompositeKeys": 0,
+        "malformed": 0,
+        "geometryHash": "8e0deac49397f959296b1ca3f4ed6dd653f8abdd8beb1a8846028676656c0f9b",
+        "nonFlagAttributesHash": "134e3480f8b757b4ba27055d7ae7eafedc6782b2435fc752b8ca3394b4a3d5e8",
+        "shpHash": "8d2c6beddede306b704f4d6a7b7f1a2e444d3236fd3020be6c4c99d90a22907b",
+        "shp": {
+          "records": 29502,
+          "types": {
+            "3": 29502
+          },
+          "vertices": 881085,
+          "invalid": 0,
+          "bbox": [
+            217349.08577169574,
+            301002.4892204096,
+            391318.5270138166,
+            394897.8786102573
+          ]
+        },
+        "dbfRows": 29502,
+        "dbfDifference": 0,
+        "encoding": "EUC-KR"
+      },
+      "developed": {
+        "csvFile": "C:\\Users\\1201q\\OneDrive\\Desktop\\data\\2. 길단위 발달상권 (2023년 1분기) csv-길단위 발달상권(csv)\\전북\\전북_길단위 발달 상권.csv",
+        "rows": 29502,
+        "flags": {
+          "(blank)": 25125,
+          "발달": 4377
+        },
+        "uniqueIds": 170,
+        "duplicateCompositeKeys": 0,
+        "malformed": 0,
+        "geometryHash": "8e0deac49397f959296b1ca3f4ed6dd653f8abdd8beb1a8846028676656c0f9b",
+        "nonFlagAttributesHash": "134e3480f8b757b4ba27055d7ae7eafedc6782b2435fc752b8ca3394b4a3d5e8",
+        "shpHash": "8d2c6beddede306b704f4d6a7b7f1a2e444d3236fd3020be6c4c99d90a22907b",
+        "shp": {
+          "records": 29502,
+          "types": {
+            "3": 29502
+          },
+          "vertices": 881085,
+          "invalid": 0,
+          "bbox": [
+            217349.08577169574,
+            301002.4892204096,
+            391318.5270138166,
+            394897.8786102573
+          ]
+        },
+        "dbfRows": 29502,
+        "dbfDifference": 0,
+        "encoding": "EUC-KR"
+      },
+      "sameGeometry": true,
+      "sameAttributesExceptFlag": true,
+      "sameShp": true,
+      "pairs": {
+        "(blank) / (blank)": 23733,
+        "(blank) / 발달": 4377,
+        "골목 / (blank)": 1392
+      }
+    },
+    {
+      "region": "제주",
+      "alley": {
+        "csvFile": "C:\\Users\\1201q\\OneDrive\\Desktop\\data\\1. 길단위 골목상권 (2023년 1분기) csv-길단위 골목상권(csv)\\제주\\제주_길단위 골목 상권.csv",
+        "rows": 11538,
+        "flags": {
+          "(blank)": 9995,
+          "골목": 1543
+        },
+        "uniqueIds": 476,
+        "duplicateCompositeKeys": 0,
+        "malformed": 0,
+        "geometryHash": "9b3fb718863d419c83d34347e80093d5a41ffc9a90f6c2a4ad09c1d2d09e15ba",
+        "nonFlagAttributesHash": "ee3fa7ef9e58011102f33c7ca17f2000b0aec1de4c017b268968a31c6b29b083",
+        "shpHash": "ea55a546c6d7dbe06523d872946cfd7ffc5495b015354ed0cfdbe735af903ec4",
+        "shp": {
+          "records": 11538,
+          "types": {
+            "3": 11538
+          },
+          "vertices": 175846,
+          "invalid": 0,
+          "bbox": [
+            229070.49032257815,
+            58932.534037816455,
+            304635.8005888245,
+            153246.90897135454
+          ]
+        },
+        "dbfRows": 11538,
+        "dbfDifference": 0,
+        "encoding": "EUC-KR"
+      },
+      "developed": {
+        "csvFile": "C:\\Users\\1201q\\OneDrive\\Desktop\\data\\2. 길단위 발달상권 (2023년 1분기) csv-길단위 발달상권(csv)\\제주\\제주_길단위 발달 상권.csv",
+        "rows": 11538,
+        "flags": {
+          "(blank)": 9813,
+          "발달": 1725
+        },
+        "uniqueIds": 476,
+        "duplicateCompositeKeys": 0,
+        "malformed": 0,
+        "geometryHash": "9b3fb718863d419c83d34347e80093d5a41ffc9a90f6c2a4ad09c1d2d09e15ba",
+        "nonFlagAttributesHash": "ee3fa7ef9e58011102f33c7ca17f2000b0aec1de4c017b268968a31c6b29b083",
+        "shpHash": "ea55a546c6d7dbe06523d872946cfd7ffc5495b015354ed0cfdbe735af903ec4",
+        "shp": {
+          "records": 11538,
+          "types": {
+            "3": 11538
+          },
+          "vertices": 175846,
+          "invalid": 0,
+          "bbox": [
+            229070.49032257815,
+            58932.534037816455,
+            304635.8005888245,
+            153246.90897135454
+          ]
+        },
+        "dbfRows": 11538,
+        "dbfDifference": 0,
+        "encoding": "EUC-KR"
+      },
+      "sameGeometry": true,
+      "sameAttributesExceptFlag": true,
+      "sameShp": true,
+      "pairs": {
+        "(blank) / (blank)": 8270,
+        "골목 / (blank)": 1543,
+        "(blank) / 발달": 1725
+      }
+    },
+    {
+      "region": "충남",
+      "alley": {
+        "csvFile": "C:\\Users\\1201q\\OneDrive\\Desktop\\data\\1. 길단위 골목상권 (2023년 1분기) csv-길단위 골목상권(csv)\\충남\\충남_길단위 골목 상권.csv",
+        "rows": 32708,
+        "flags": {
+          "(blank)": 31492,
+          "골목": 1216
+        },
+        "uniqueIds": 389,
+        "duplicateCompositeKeys": 0,
+        "malformed": 0,
+        "geometryHash": "b2fdead88a13595748dc57f5eb079650bf6dee1d3f1e3bc33df6c0fd695e680b",
+        "nonFlagAttributesHash": "d3eb020c48409e06629a55996f700353477a93e7da2892c6093911784470756a",
+        "shpHash": "bc03ab619c266f7a6c75db11d33755079e1ea83cdda42d92166ccff1331ef885",
+        "shp": {
+          "records": 32708,
+          "types": {
+            "3": 32708
+          },
+          "vertices": 1155460,
+          "invalid": 0,
+          "bbox": [
+            227173.70878035852,
+            376004.0721518852,
+            367399.4399076698,
+            495609.9396143799
+          ]
+        },
+        "dbfRows": 32708,
+        "dbfDifference": 0,
+        "encoding": "EUC-KR"
+      },
+      "developed": {
+        "csvFile": "C:\\Users\\1201q\\OneDrive\\Desktop\\data\\2. 길단위 발달상권 (2023년 1분기) csv-길단위 발달상권(csv)\\충남\\충남_길단위 발달 상권.csv",
+        "rows": 32708,
+        "flags": {
+          "(blank)": 28338,
+          "발달": 4370
+        },
+        "uniqueIds": 389,
+        "duplicateCompositeKeys": 0,
+        "malformed": 0,
+        "geometryHash": "b2fdead88a13595748dc57f5eb079650bf6dee1d3f1e3bc33df6c0fd695e680b",
+        "nonFlagAttributesHash": "d3eb020c48409e06629a55996f700353477a93e7da2892c6093911784470756a",
+        "shpHash": "bc03ab619c266f7a6c75db11d33755079e1ea83cdda42d92166ccff1331ef885",
+        "shp": {
+          "records": 32708,
+          "types": {
+            "3": 32708
+          },
+          "vertices": 1155460,
+          "invalid": 0,
+          "bbox": [
+            227173.70878035852,
+            376004.0721518852,
+            367399.4399076698,
+            495609.9396143799
+          ]
+        },
+        "dbfRows": 32708,
+        "dbfDifference": 0,
+        "encoding": "EUC-KR"
+      },
+      "sameGeometry": true,
+      "sameAttributesExceptFlag": true,
+      "sameShp": true,
+      "pairs": {
+        "(blank) / (blank)": 27122,
+        "(blank) / 발달": 4370,
+        "골목 / (blank)": 1216
+      }
+    },
+    {
+      "region": "충북",
+      "alley": {
+        "csvFile": "C:\\Users\\1201q\\OneDrive\\Desktop\\data\\1. 길단위 골목상권 (2023년 1분기) csv-길단위 골목상권(csv)\\충북\\충북_길단위 골목 상권.csv",
+        "rows": 24630,
+        "flags": {
+          "(blank)": 23418,
+          "골목": 1212
+        },
+        "uniqueIds": 210,
+        "duplicateCompositeKeys": 0,
+        "malformed": 0,
+        "geometryHash": "e525f97a0c05fab47e02710a60882f99a0bfb5beb8bea754c6fea957ad5c6e0d",
+        "nonFlagAttributesHash": "2a7446b8ba2cb2ffa96bc49d7a822b54bca353fdc374d086f786dfa829dfb448",
+        "shpHash": "15367d92a357ad8603aba35ed2f26a715b5ecf330399feaee09253a5a1737598",
+        "shp": {
+          "records": 24630,
+          "types": {
+            "3": 24630
+          },
+          "vertices": 720116,
+          "invalid": 0,
+          "bbox": [
+            335779.9953190848,
+            379485.43973662215,
+            456898.9162535706,
+            515986.25234110036
+          ]
+        },
+        "dbfRows": 24630,
+        "dbfDifference": 0,
+        "encoding": "EUC-KR"
+      },
+      "developed": {
+        "csvFile": "C:\\Users\\1201q\\OneDrive\\Desktop\\data\\2. 길단위 발달상권 (2023년 1분기) csv-길단위 발달상권(csv)\\충북\\충북_길단위 발달 상권.csv",
+        "rows": 24630,
+        "flags": {
+          "(blank)": 20951,
+          "발달": 3679
+        },
+        "uniqueIds": 210,
+        "duplicateCompositeKeys": 0,
+        "malformed": 0,
+        "geometryHash": "e525f97a0c05fab47e02710a60882f99a0bfb5beb8bea754c6fea957ad5c6e0d",
+        "nonFlagAttributesHash": "2a7446b8ba2cb2ffa96bc49d7a822b54bca353fdc374d086f786dfa829dfb448",
+        "shpHash": "15367d92a357ad8603aba35ed2f26a715b5ecf330399feaee09253a5a1737598",
+        "shp": {
+          "records": 24630,
+          "types": {
+            "3": 24630
+          },
+          "vertices": 720116,
+          "invalid": 0,
+          "bbox": [
+            335779.9953190848,
+            379485.43973662215,
+            456898.9162535706,
+            515986.25234110036
+          ]
+        },
+        "dbfRows": 24630,
+        "dbfDifference": 0,
+        "encoding": "EUC-KR"
+      },
+      "sameGeometry": true,
+      "sameAttributesExceptFlag": true,
+      "sameShp": true,
+      "pairs": {
+        "(blank) / (blank)": 19739,
+        "(blank) / 발달": 3679,
+        "골목 / (blank)": 1212
+      }
+    }
+  ],
+  "totals": {
+    "roads": 453456,
+    "alley": 45973,
+    "developed": 66865,
+    "both": 0,
+    "neither": 340618
+  },
+  "projections": [
+    "PROJCS[\"unknown\",GEOGCS[\"GCS_unknown\",DATUM[\"D_Unknown_based_on_Bessel_1841_ellipsoid\",SPHEROID[\"Bessel_1841\",6377397.155,299.1528128]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"False_Easting\",400000.0],PARAMETER[\"False_Northing\",600000.0],PARAMETER[\"Central_Meridian\",128.0],PARAMETER[\"Scale_Factor\",0.9999],PARAMETER[\"Latitude_Of_Origin\",38.0],UNIT[\"Meter\",1.0]]"
+  ],
+  "fields": [
+    [
+      "MEGA_CD",
+      "MEGA_NM",
+      "CTY_CD",
+      "CTY_NM",
+      "RD_NM",
+      "ID",
+      "LENGTH",
+      "SG_FLG",
+      "geometry"
+    ]
+  ]
+}

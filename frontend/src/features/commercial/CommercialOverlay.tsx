@@ -104,6 +104,11 @@ export default function CommercialOverlay({
   useEffect(() => {
     if (!map || !dataset || !enabled) return;
     const click = (event: MapLayerMouseEvent) => {
+      if (
+        map.getLayer("commercial-road-hit") &&
+        map.queryRenderedFeatures(event.point, { layers: ["commercial-road-hit"] }).length
+      )
+        return;
       const id = event.features?.[0]?.properties?.id;
       if (typeof id === "string") {
         setSelectedId(id);

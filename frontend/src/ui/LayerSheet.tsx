@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { ListOrdered, Map as MapIcon, TrainFront, Store } from "lucide-react";
+import { ListOrdered, Map as MapIcon, TrainFront, Store, Route } from "lucide-react";
 import type { LayerKey, LayerState } from "./layers";
 import styles from "./LayerSheet.module.css";
 import { useDismiss } from "../lib/useDismiss";
@@ -8,6 +8,7 @@ const TILES: { key: LayerKey; label: string; note: string; Icon: typeof MapIcon 
   { key: "dong", label: "동별 증감", note: "개업 − 폐업", Icon: MapIcon },
   { key: "subway", label: "지하철 노선", note: "현재 노선", Icon: TrainFront },
   { key: "commercial", label: "상권 영역", note: "발달상권 경계", Icon: Store },
+  { key: "roads", label: "골목·발달 상권 길", note: "2023년 1분기", Icon: Route },
   { key: "rank", label: "개업 순위", note: "왼쪽 패널", Icon: ListOrdered },
 ];
 
