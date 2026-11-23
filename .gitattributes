@@ -5,3 +5,5 @@
 Dockerfile text eol=lf
 *.yml text eol=lf
 *.geojson text eol=lf
+# Published population manifests pin SHA-256 of these exact bytes.
+/frontend/public/data/population/*.json text eol=lf
