@@ -1,6 +1,6 @@
 # Feature 레이어 브랜치 통합
 
-통합일: 2026-11-23. 로컬 통합 브랜치는 `codex/feature-layer-integration`이다.
+통합일: 2026-11-23. 로컬 통합 브랜치는 `feature-layer-integration`이다.
 
 ## 포함 브랜치
 

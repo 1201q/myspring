@@ -13,7 +13,7 @@
 | `feature-transport-layers` | `201feaf` | 버스정류장 구현·지역 파일, 교통·보행 시설 감사 기록 |
 | `feature-overpasses` | `74117d9` | 신규 육교 레이어 구현은 없고 원천 조사 단계 |
 
-이 현황의 최초 조사 시점에는 다른 브랜치를 병합하지 않았다. 이후 `codex/feature-layer-integration`에서 인구·교통 브랜치를 병합했다. [통합 기록](feature-layer-integration.md)을 참고한다. 아래 표는 원래 검토한 브랜치·커밋 기준이며, 다른 브랜치의 경로는 `브랜치:경로`로 기재한다.
+이 현황의 최초 조사 시점에는 다른 브랜치를 병합하지 않았다. 이후 `feature-layer-integration`에서 인구·교통 브랜치를 병합했다. [통합 기록](feature-layer-integration.md)을 참고한다. 아래 표는 원래 검토한 브랜치·커밋 기준이며, 다른 브랜치의 경로는 `브랜치:경로`로 기재한다.
 
 ## 데이터별 현황
 
