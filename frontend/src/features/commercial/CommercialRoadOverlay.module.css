@@ -1,0 +1,29 @@
+.root {
+  color: var(--ink);
+}
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  margin-block: var(--space-2);
+}
+.controls button,
+.controls select,
+.root > p button {
+  font: inherit;
+  color: var(--ink);
+  background: var(--fill-hover);
+  border: var(--space-1) solid var(--divider);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2);
+}
+.controls button:disabled {
+  color: var(--ink-subtle);
+}
+.alley {
+  border-bottom: var(--space-1) dashed var(--ink-muted);
+}
+.developed {
+  border-bottom: var(--space-1) solid var(--ink);
+}

@@ -83,6 +83,10 @@ export default function App() {
     setDockTab("commercial");
     setDockHidden(false);
   }, []);
+  const showRoadInfo = useCallback(() => {
+    setDockTab("roads");
+    setDockHidden(false);
+  }, []);
   const pinned = useRef(false);
   const [isPinned, setIsPinned] = useState(false);
   const hoveredGroup = useRef<LocationGroup | null>(null);
@@ -361,6 +365,9 @@ export default function App() {
             }
           >
             <NationalPlayback
+              showRoads={layers.roads}
+              roadDock={dockOpen && activeDockTab === "roads" ? dockBody : null}
+              onRoadSelect={showRoadInfo}
               showDongs={layers.dong}
               showRanks={layers.rank}
               dongDock={dockOpen && activeDockTab === "dong" ? dockBody : null}
