@@ -17,6 +17,7 @@ import type { MapPalette } from "../lib/theme";
 import { ArrowUpRight, ChevronLeft, X } from "lucide-react";
 import PlaybackBoundary from "./PlaybackBoundary";
 import SubwayOverlay from "../features/subway/SubwayOverlay";
+import type { CommercialTrendFilter } from "../data/commercialTrends";
 import CommercialOverlay from "../features/commercial/CommercialOverlay";
 import MapRail from "../ui/MapRail";
 import LayerSheet from "../ui/LayerSheet";
@@ -58,6 +59,7 @@ export default function App() {
   // 레이어, 레이어 시트, 정보 독. 독은 켜진 독 레이어마다 탭을 하나씩 보여 주고,
   // 닫으면 레이어를 다시 켤 때까지 숨깁니다.
   const [layers, setLayers] = useState<LayerState>(DEFAULT_LAYERS);
+  const [commercialTrend, setCommercialTrend] = useState<CommercialTrendFilter>("all");
   const [sheetOpen, setSheetOpen] = useState(false);
   const [dockTab, setDockTab] = useState<DockKey | null>(null);
   const [dockHidden, setDockHidden] = useState(false);
@@ -347,6 +349,8 @@ export default function App() {
           map={mapInstance}
           regionId={playbackRegionId}
           onSelect={showCommercialInfo}
+          trendFilter={commercialTrend}
+          onTrendChange={setCommercialTrend}
         />
         <PlaybackBoundary>
           <Suspense

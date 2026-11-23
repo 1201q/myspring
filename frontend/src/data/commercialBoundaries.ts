@@ -15,6 +15,7 @@ export type CommercialProperties = {
 export type CommercialBoundaries = FeatureCollection<Polygon | MultiPolygon, CommercialProperties>;
 export type CommercialFeature = CommercialBoundaries["features"][number];
 type Manifest = {
+  sha256: string;
   count: number;
   referenceDate: string;
   regions: { code: string; name: string; count: number; file: string }[];
