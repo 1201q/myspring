@@ -1,0 +1,1558 @@
+{
+  "source": "https://www.data.go.kr/data/15025444/standard.do",
+  "checkedOn": "2026-11-21",
+  "boundaryVersion": "20261001",
+  "rows": 1425,
+  "invalid": 0,
+  "unassigned": 0,
+  "repeated": 19,
+  "providers": 141,
+  "referenceDate": {
+    "first": "2020-10-29",
+    "last": "2026-10-30",
+    "count": 1425
+  },
+  "completionDate": {
+    "first": "1968-01-01",
+    "last": "2025-04-25",
+    "count": 1006
+  },
+  "districts": [
+    {
+      "region": "seoul",
+      "code": "11110",
+      "name": "종로구",
+      "rows": 3
+    },
+    {
+      "region": "seoul",
+      "code": "11140",
+      "name": "중구",
+      "rows": 2
+    },
+    {
+      "region": "seoul",
+      "code": "11170",
+      "name": "용산구",
+      "rows": 12
+    },
+    {
+      "region": "seoul",
+      "code": "11200",
+      "name": "성동구",
+      "rows": 4
+    },
+    {
+      "region": "seoul",
+      "code": "11215",
+      "name": "광진구",
+      "rows": 0
+    },
+    {
+      "region": "seoul",
+      "code": "11230",
+      "name": "동대문구",
+      "rows": 7
+    },
+    {
+      "region": "seoul",
+      "code": "11260",
+      "name": "중랑구",
+      "rows": 5
+    },
+    {
+      "region": "seoul",
+      "code": "11290",
+      "name": "성북구",
+      "rows": 6
+    },
+    {
+      "region": "seoul",
+      "code": "11305",
+      "name": "강북구",
+      "rows": 0
+    },
+    {
+      "region": "seoul",
+      "code": "11320",
+      "name": "도봉구",
+      "rows": 0
+    },
+    {
+      "region": "seoul",
+      "code": "11350",
+      "name": "노원구",
+      "rows": 4
+    },
+    {
+      "region": "seoul",
+      "code": "11380",
+      "name": "은평구",
+      "rows": 0
+    },
+    {
+      "region": "seoul",
+      "code": "11410",
+      "name": "서대문구",
+      "rows": 7
+    },
+    {
+      "region": "seoul",
+      "code": "11440",
+      "name": "마포구",
+      "rows": 2
+    },
+    {
+      "region": "seoul",
+      "code": "11470",
+      "name": "양천구",
+      "rows": 13
+    },
+    {
+      "region": "seoul",
+      "code": "11500",
+      "name": "강서구",
+      "rows": 4
+    },
+    {
+      "region": "seoul",
+      "code": "11530",
+      "name": "구로구",
+      "rows": 9
+    },
+    {
+      "region": "seoul",
+      "code": "11545",
+      "name": "금천구",
+      "rows": 6
+    },
+    {
+      "region": "seoul",
+      "code": "11560",
+      "name": "영등포구",
+      "rows": 7
+    },
+    {
+      "region": "seoul",
+      "code": "11590",
+      "name": "동작구",
+      "rows": 5
+    },
+    {
+      "region": "seoul",
+      "code": "11620",
+      "name": "관악구",
+      "rows": 8
+    },
+    {
+      "region": "seoul",
+      "code": "11650",
+      "name": "서초구",
+      "rows": 12
+    },
+    {
+      "region": "seoul",
+      "code": "11680",
+      "name": "강남구",
+      "rows": 9
+    },
+    {
+      "region": "seoul",
+      "code": "11710",
+      "name": "송파구",
+      "rows": 2
+    },
+    {
+      "region": "seoul",
+      "code": "11740",
+      "name": "강동구",
+      "rows": 8
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12110",
+      "name": "목포시",
+      "rows": 10
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12130",
+      "name": "여수시",
+      "rows": 25
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12150",
+      "name": "순천시",
+      "rows": 14
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12170",
+      "name": "나주시",
+      "rows": 0
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12190",
+      "name": "광양시",
+      "rows": 36
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12210",
+      "name": "광주 동구",
+      "rows": 3
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12240",
+      "name": "광주 서구",
+      "rows": 14
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12270",
+      "name": "광주 남구",
+      "rows": 10
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12300",
+      "name": "광주 북구",
+      "rows": 17
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12330",
+      "name": "광주 광산구",
+      "rows": 19
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12710",
+      "name": "담양군",
+      "rows": 0
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12720",
+      "name": "곡성군",
+      "rows": 0
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12730",
+      "name": "구례군",
+      "rows": 0
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12740",
+      "name": "고흥군",
+      "rows": 0
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12750",
+      "name": "보성군",
+      "rows": 0
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12760",
+      "name": "화순군",
+      "rows": 0
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12770",
+      "name": "장흥군",
+      "rows": 0
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12780",
+      "name": "강진군",
+      "rows": 0
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12790",
+      "name": "해남군",
+      "rows": 0
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12800",
+      "name": "영암군",
+      "rows": 1
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12810",
+      "name": "무안군",
+      "rows": 0
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12820",
+      "name": "함평군",
+      "rows": 0
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12830",
+      "name": "영광군",
+      "rows": 3
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12840",
+      "name": "장성군",
+      "rows": 0
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12850",
+      "name": "완도군",
+      "rows": 0
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12860",
+      "name": "진도군",
+      "rows": 0
+    },
+    {
+      "region": "jeonnamgwangju",
+      "code": "12870",
+      "name": "신안군",
+      "rows": 0
+    },
+    {
+      "region": "busan",
+      "code": "26110",
+      "name": "중구",
+      "rows": 2
+    },
+    {
+      "region": "busan",
+      "code": "26140",
+      "name": "서구",
+      "rows": 5
+    },
+    {
+      "region": "busan",
+      "code": "26170",
+      "name": "동구",
+      "rows": 3
+    },
+    {
+      "region": "busan",
+      "code": "26200",
+      "name": "영도구",
+      "rows": 0
+    },
+    {
+      "region": "busan",
+      "code": "26230",
+      "name": "부산진구",
+      "rows": 9
+    },
+    {
+      "region": "busan",
+      "code": "26260",
+      "name": "동래구",
+      "rows": 6
+    },
+    {
+      "region": "busan",
+      "code": "26290",
+      "name": "남구",
+      "rows": 5
+    },
+    {
+      "region": "busan",
+      "code": "26320",
+      "name": "북구",
+      "rows": 15
+    },
+    {
+      "region": "busan",
+      "code": "26350",
+      "name": "해운대구",
+      "rows": 15
+    },
+    {
+      "region": "busan",
+      "code": "26380",
+      "name": "사하구",
+      "rows": 0
+    },
+    {
+      "region": "busan",
+      "code": "26410",
+      "name": "금정구",
+      "rows": 4
+    },
+    {
+      "region": "busan",
+      "code": "26440",
+      "name": "강서구",
+      "rows": 5
+    },
+    {
+      "region": "busan",
+      "code": "26470",
+      "name": "연제구",
+      "rows": 0
+    },
+    {
+      "region": "busan",
+      "code": "26500",
+      "name": "수영구",
+      "rows": 3
+    },
+    {
+      "region": "busan",
+      "code": "26530",
+      "name": "사상구",
+      "rows": 0
+    },
+    {
+      "region": "busan",
+      "code": "26710",
+      "name": "기장군",
+      "rows": 9
+    },
+    {
+      "region": "daegu",
+      "code": "27110",
+      "name": "중구",
+      "rows": 2
+    },
+    {
+      "region": "daegu",
+      "code": "27140",
+      "name": "동구",
+      "rows": 1
+    },
+    {
+      "region": "daegu",
+      "code": "27170",
+      "name": "서구",
+      "rows": 6
+    },
+    {
+      "region": "daegu",
+      "code": "27200",
+      "name": "남구",
+      "rows": 3
+    },
+    {
+      "region": "daegu",
+      "code": "27230",
+      "name": "북구",
+      "rows": 12
+    },
+    {
+      "region": "daegu",
+      "code": "27260",
+      "name": "수성구",
+      "rows": 5
+    },
+    {
+      "region": "daegu",
+      "code": "27290",
+      "name": "달서구",
+      "rows": 10
+    },
+    {
+      "region": "daegu",
+      "code": "27710",
+      "name": "달성군",
+      "rows": 6
+    },
+    {
+      "region": "daegu",
+      "code": "27720",
+      "name": "군위군",
+      "rows": 0
+    },
+    {
+      "region": "incheon",
+      "code": "28125",
+      "name": "제물포구",
+      "rows": 1
+    },
+    {
+      "region": "incheon",
+      "code": "28155",
+      "name": "영종구",
+      "rows": 7
+    },
+    {
+      "region": "incheon",
+      "code": "28177",
+      "name": "미추홀구",
+      "rows": 8
+    },
+    {
+      "region": "incheon",
+      "code": "28185",
+      "name": "연수구",
+      "rows": 5
+    },
+    {
+      "region": "incheon",
+      "code": "28200",
+      "name": "남동구",
+      "rows": 13
+    },
+    {
+      "region": "incheon",
+      "code": "28237",
+      "name": "부평구",
+      "rows": 11
+    },
+    {
+      "region": "incheon",
+      "code": "28245",
+      "name": "계양구",
+      "rows": 1
+    },
+    {
+      "region": "incheon",
+      "code": "28275",
+      "name": "서해구",
+      "rows": 18
+    },
+    {
+      "region": "incheon",
+      "code": "28290",
+      "name": "검단구",
+      "rows": 0
+    },
+    {
+      "region": "incheon",
+      "code": "28710",
+      "name": "강화군",
+      "rows": 0
+    },
+    {
+      "region": "incheon",
+      "code": "28720",
+      "name": "옹진군",
+      "rows": 0
+    },
+    {
+      "region": "daejeon",
+      "code": "30110",
+      "name": "동구",
+      "rows": 4
+    },
+    {
+      "region": "daejeon",
+      "code": "30140",
+      "name": "중구",
+      "rows": 20
+    },
+    {
+      "region": "daejeon",
+      "code": "30170",
+      "name": "서구",
+      "rows": 49
+    },
+    {
+      "region": "daejeon",
+      "code": "30200",
+      "name": "유성구",
+      "rows": 20
+    },
+    {
+      "region": "daejeon",
+      "code": "30230",
+      "name": "대덕구",
+      "rows": 20
+    },
+    {
+      "region": "ulsan",
+      "code": "31110",
+      "name": "중구",
+      "rows": 2
+    },
+    {
+      "region": "ulsan",
+      "code": "31140",
+      "name": "남구",
+      "rows": 3
+    },
+    {
+      "region": "ulsan",
+      "code": "31170",
+      "name": "동구",
+      "rows": 3
+    },
+    {
+      "region": "ulsan",
+      "code": "31200",
+      "name": "북구",
+      "rows": 0
+    },
+    {
+      "region": "ulsan",
+      "code": "31710",
+      "name": "울주군",
+      "rows": 2
+    },
+    {
+      "region": "sejong",
+      "code": "36110",
+      "name": "세종시",
+      "rows": 9
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41111",
+      "name": "수원시 장안구",
+      "rows": 5
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41113",
+      "name": "수원시 권선구",
+      "rows": 20
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41115",
+      "name": "수원시 팔달구",
+      "rows": 8
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41117",
+      "name": "수원시 영통구",
+      "rows": 9
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41131",
+      "name": "성남시 수정구",
+      "rows": 19
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41133",
+      "name": "성남시 중원구",
+      "rows": 7
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41135",
+      "name": "성남시 분당구",
+      "rows": 34
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41150",
+      "name": "의정부시",
+      "rows": 4
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41171",
+      "name": "안양시 만안구",
+      "rows": 7
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41173",
+      "name": "안양시 동안구",
+      "rows": 21
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41192",
+      "name": "부천시 원미구",
+      "rows": 9
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41194",
+      "name": "부천시 소사구",
+      "rows": 3
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41196",
+      "name": "부천시 오정구",
+      "rows": 6
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41210",
+      "name": "광명시",
+      "rows": 13
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41220",
+      "name": "평택시",
+      "rows": 31
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41250",
+      "name": "동두천시",
+      "rows": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41271",
+      "name": "안산시 상록구",
+      "rows": 23
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41273",
+      "name": "안산시 단원구",
+      "rows": 4
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41281",
+      "name": "고양시 덕양구",
+      "rows": 17
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41285",
+      "name": "고양시 일산동구",
+      "rows": 27
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41287",
+      "name": "고양시 일산서구",
+      "rows": 22
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41290",
+      "name": "과천시",
+      "rows": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41310",
+      "name": "구리시",
+      "rows": 3
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41360",
+      "name": "남양주시",
+      "rows": 10
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41370",
+      "name": "오산시",
+      "rows": 14
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41390",
+      "name": "시흥시",
+      "rows": 25
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41410",
+      "name": "군포시",
+      "rows": 14
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41430",
+      "name": "의왕시",
+      "rows": 14
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41450",
+      "name": "하남시",
+      "rows": 18
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41461",
+      "name": "용인시 처인구",
+      "rows": 4
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41463",
+      "name": "용인시 기흥구",
+      "rows": 32
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41465",
+      "name": "용인시 수지구",
+      "rows": 20
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41480",
+      "name": "파주시",
+      "rows": 16
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41500",
+      "name": "이천시",
+      "rows": 7
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41550",
+      "name": "안성시",
+      "rows": 4
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41570",
+      "name": "김포시",
+      "rows": 18
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41591",
+      "name": "화성시 만세구",
+      "rows": 11
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41593",
+      "name": "화성시 효행구",
+      "rows": 10
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41595",
+      "name": "화성시 병점구",
+      "rows": 9
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41597",
+      "name": "화성시 동탄구",
+      "rows": 23
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41610",
+      "name": "광주시",
+      "rows": 13
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41630",
+      "name": "양주시",
+      "rows": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41650",
+      "name": "포천시",
+      "rows": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41670",
+      "name": "여주시",
+      "rows": 4
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41800",
+      "name": "연천군",
+      "rows": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41820",
+      "name": "가평군",
+      "rows": 0
+    },
+    {
+      "region": "gyeonggi",
+      "code": "41830",
+      "name": "양평군",
+      "rows": 4
+    },
+    {
+      "region": "chungbuk",
+      "code": "43111",
+      "name": "청주시 상당구",
+      "rows": 0
+    },
+    {
+      "region": "chungbuk",
+      "code": "43112",
+      "name": "청주시 서원구",
+      "rows": 4
+    },
+    {
+      "region": "chungbuk",
+      "code": "43113",
+      "name": "청주시 흥덕구",
+      "rows": 4
+    },
+    {
+      "region": "chungbuk",
+      "code": "43114",
+      "name": "청주시 청원구",
+      "rows": 3
+    },
+    {
+      "region": "chungbuk",
+      "code": "43130",
+      "name": "충주시",
+      "rows": 5
+    },
+    {
+      "region": "chungbuk",
+      "code": "43150",
+      "name": "제천시",
+      "rows": 1
+    },
+    {
+      "region": "chungbuk",
+      "code": "43720",
+      "name": "보은군",
+      "rows": 0
+    },
+    {
+      "region": "chungbuk",
+      "code": "43730",
+      "name": "옥천군",
+      "rows": 0
+    },
+    {
+      "region": "chungbuk",
+      "code": "43740",
+      "name": "영동군",
+      "rows": 0
+    },
+    {
+      "region": "chungbuk",
+      "code": "43745",
+      "name": "증평군",
+      "rows": 2
+    },
+    {
+      "region": "chungbuk",
+      "code": "43750",
+      "name": "진천군",
+      "rows": 3
+    },
+    {
+      "region": "chungbuk",
+      "code": "43760",
+      "name": "괴산군",
+      "rows": 0
+    },
+    {
+      "region": "chungbuk",
+      "code": "43770",
+      "name": "음성군",
+      "rows": 0
+    },
+    {
+      "region": "chungbuk",
+      "code": "43800",
+      "name": "단양군",
+      "rows": 0
+    },
+    {
+      "region": "chungnam",
+      "code": "44131",
+      "name": "천안시 동남구",
+      "rows": 2
+    },
+    {
+      "region": "chungnam",
+      "code": "44133",
+      "name": "천안시 서북구",
+      "rows": 13
+    },
+    {
+      "region": "chungnam",
+      "code": "44150",
+      "name": "공주시",
+      "rows": 0
+    },
+    {
+      "region": "chungnam",
+      "code": "44180",
+      "name": "보령시",
+      "rows": 0
+    },
+    {
+      "region": "chungnam",
+      "code": "44200",
+      "name": "아산시",
+      "rows": 24
+    },
+    {
+      "region": "chungnam",
+      "code": "44210",
+      "name": "서산시",
+      "rows": 1
+    },
+    {
+      "region": "chungnam",
+      "code": "44230",
+      "name": "논산시",
+      "rows": 5
+    },
+    {
+      "region": "chungnam",
+      "code": "44250",
+      "name": "계룡시",
+      "rows": 1
+    },
+    {
+      "region": "chungnam",
+      "code": "44270",
+      "name": "당진시",
+      "rows": 8
+    },
+    {
+      "region": "chungnam",
+      "code": "44710",
+      "name": "금산군",
+      "rows": 0
+    },
+    {
+      "region": "chungnam",
+      "code": "44760",
+      "name": "부여군",
+      "rows": 2
+    },
+    {
+      "region": "chungnam",
+      "code": "44770",
+      "name": "서천군",
+      "rows": 3
+    },
+    {
+      "region": "chungnam",
+      "code": "44790",
+      "name": "청양군",
+      "rows": 1
+    },
+    {
+      "region": "chungnam",
+      "code": "44800",
+      "name": "홍성군",
+      "rows": 0
+    },
+    {
+      "region": "chungnam",
+      "code": "44810",
+      "name": "예산군",
+      "rows": 0
+    },
+    {
+      "region": "chungnam",
+      "code": "44825",
+      "name": "태안군",
+      "rows": 0
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47111",
+      "name": "포항시 남구",
+      "rows": 5
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47113",
+      "name": "포항시 북구",
+      "rows": 2
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47130",
+      "name": "경주시",
+      "rows": 2
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47150",
+      "name": "김천시",
+      "rows": 5
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47170",
+      "name": "안동시",
+      "rows": 0
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47190",
+      "name": "구미시",
+      "rows": 16
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47210",
+      "name": "영주시",
+      "rows": 2
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47230",
+      "name": "영천시",
+      "rows": 1
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47250",
+      "name": "상주시",
+      "rows": 0
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47280",
+      "name": "문경시",
+      "rows": 0
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47290",
+      "name": "경산시",
+      "rows": 8
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47730",
+      "name": "의성군",
+      "rows": 0
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47750",
+      "name": "청송군",
+      "rows": 0
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47760",
+      "name": "영양군",
+      "rows": 0
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47770",
+      "name": "영덕군",
+      "rows": 0
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47820",
+      "name": "청도군",
+      "rows": 0
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47830",
+      "name": "고령군",
+      "rows": 0
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47840",
+      "name": "성주군",
+      "rows": 0
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47850",
+      "name": "칠곡군",
+      "rows": 0
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47900",
+      "name": "예천군",
+      "rows": 0
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47920",
+      "name": "봉화군",
+      "rows": 0
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47930",
+      "name": "울진군",
+      "rows": 0
+    },
+    {
+      "region": "gyeongbuk",
+      "code": "47940",
+      "name": "울릉군",
+      "rows": 0
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48121",
+      "name": "창원시 의창구",
+      "rows": 1
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48123",
+      "name": "창원시 성산구",
+      "rows": 2
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48125",
+      "name": "창원시 마산합포구",
+      "rows": 4
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48127",
+      "name": "창원시 마산회원구",
+      "rows": 9
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48129",
+      "name": "창원시 진해구",
+      "rows": 5
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48170",
+      "name": "진주시",
+      "rows": 10
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48220",
+      "name": "통영시",
+      "rows": 1
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48240",
+      "name": "사천시",
+      "rows": 0
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48250",
+      "name": "김해시",
+      "rows": 11
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48270",
+      "name": "밀양시",
+      "rows": 0
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48310",
+      "name": "거제시",
+      "rows": 10
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48330",
+      "name": "양산시",
+      "rows": 6
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48720",
+      "name": "의령군",
+      "rows": 1
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48730",
+      "name": "함안군",
+      "rows": 0
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48740",
+      "name": "창녕군",
+      "rows": 0
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48820",
+      "name": "고성군",
+      "rows": 0
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48840",
+      "name": "남해군",
+      "rows": 1
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48850",
+      "name": "하동군",
+      "rows": 1
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48860",
+      "name": "산청군",
+      "rows": 0
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48870",
+      "name": "함양군",
+      "rows": 0
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48880",
+      "name": "거창군",
+      "rows": 0
+    },
+    {
+      "region": "gyeongnam",
+      "code": "48890",
+      "name": "합천군",
+      "rows": 1
+    },
+    {
+      "region": "jeju",
+      "code": "50110",
+      "name": "제주시",
+      "rows": 0
+    },
+    {
+      "region": "jeju",
+      "code": "50130",
+      "name": "서귀포시",
+      "rows": 1
+    },
+    {
+      "region": "gangwon",
+      "code": "51110",
+      "name": "춘천시",
+      "rows": 4
+    },
+    {
+      "region": "gangwon",
+      "code": "51130",
+      "name": "원주시",
+      "rows": 4
+    },
+    {
+      "region": "gangwon",
+      "code": "51150",
+      "name": "강릉시",
+      "rows": 6
+    },
+    {
+      "region": "gangwon",
+      "code": "51170",
+      "name": "동해시",
+      "rows": 3
+    },
+    {
+      "region": "gangwon",
+      "code": "51190",
+      "name": "태백시",
+      "rows": 1
+    },
+    {
+      "region": "gangwon",
+      "code": "51210",
+      "name": "속초시",
+      "rows": 0
+    },
+    {
+      "region": "gangwon",
+      "code": "51230",
+      "name": "삼척시",
+      "rows": 3
+    },
+    {
+      "region": "gangwon",
+      "code": "51720",
+      "name": "홍천군",
+      "rows": 0
+    },
+    {
+      "region": "gangwon",
+      "code": "51730",
+      "name": "횡성군",
+      "rows": 0
+    },
+    {
+      "region": "gangwon",
+      "code": "51750",
+      "name": "영월군",
+      "rows": 0
+    },
+    {
+      "region": "gangwon",
+      "code": "51760",
+      "name": "평창군",
+      "rows": 0
+    },
+    {
+      "region": "gangwon",
+      "code": "51770",
+      "name": "정선군",
+      "rows": 0
+    },
+    {
+      "region": "gangwon",
+      "code": "51780",
+      "name": "철원군",
+      "rows": 0
+    },
+    {
+      "region": "gangwon",
+      "code": "51790",
+      "name": "화천군",
+      "rows": 0
+    },
+    {
+      "region": "gangwon",
+      "code": "51800",
+      "name": "양구군",
+      "rows": 0
+    },
+    {
+      "region": "gangwon",
+      "code": "51810",
+      "name": "인제군",
+      "rows": 0
+    },
+    {
+      "region": "gangwon",
+      "code": "51820",
+      "name": "고성군",
+      "rows": 0
+    },
+    {
+      "region": "gangwon",
+      "code": "51830",
+      "name": "양양군",
+      "rows": 0
+    },
+    {
+      "region": "jeonbuk",
+      "code": "52111",
+      "name": "전주시 완산구",
+      "rows": 2
+    },
+    {
+      "region": "jeonbuk",
+      "code": "52113",
+      "name": "전주시 덕진구",
+      "rows": 8
+    },
+    {
+      "region": "jeonbuk",
+      "code": "52130",
+      "name": "군산시",
+      "rows": 5
+    },
+    {
+      "region": "jeonbuk",
+      "code": "52140",
+      "name": "익산시",
+      "rows": 6
+    },
+    {
+      "region": "jeonbuk",
+      "code": "52180",
+      "name": "정읍시",
+      "rows": 0
+    },
+    {
+      "region": "jeonbuk",
+      "code": "52190",
+      "name": "남원시",
+      "rows": 1
+    },
+    {
+      "region": "jeonbuk",
+      "code": "52210",
+      "name": "김제시",
+      "rows": 1
+    },
+    {
+      "region": "jeonbuk",
+      "code": "52710",
+      "name": "완주군",
+      "rows": 8
+    },
+    {
+      "region": "jeonbuk",
+      "code": "52720",
+      "name": "진안군",
+      "rows": 1
+    },
+    {
+      "region": "jeonbuk",
+      "code": "52730",
+      "name": "무주군",
+      "rows": 0
+    },
+    {
+      "region": "jeonbuk",
+      "code": "52740",
+      "name": "장수군",
+      "rows": 0
+    },
+    {
+      "region": "jeonbuk",
+      "code": "52750",
+      "name": "임실군",
+      "rows": 0
+    },
+    {
+      "region": "jeonbuk",
+      "code": "52770",
+      "name": "순창군",
+      "rows": 0
+    },
+    {
+      "region": "jeonbuk",
+      "code": "52790",
+      "name": "고창군",
+      "rows": 14
+    },
+    {
+      "region": "jeonbuk",
+      "code": "52800",
+      "name": "부안군",
+      "rows": 0
+    }
+  ]
+}
